@@ -84,11 +84,11 @@ Allocators are used by the C++ Standard Library to handle the allocation and dea
 * [cpp reference - vector](https://en.cppreference.com/w/cpp/container/vector)
 * [VECTOR/DYNAMIC ARRAY - Making DATA STRUCTURES in C++](https://www.youtube.com/watch?v=ryRf4Jh_YC0)
 
-**Size and Capacity**
+### Size and Capacity
 
 The size of a vector is the number of elements stored in a vector. The capacity of a vector is the total number of elements that can potentially be stored in the vector before it reallocates memory to accommodate more elements.
 
-**reallocation**
+### reallocation
 
 The implementation of the reallocation logic is smart—to avoid another reallocation on insertion of another element, it preemptively allocates a capacity greater than the requirements of the immediate scenario.
 
