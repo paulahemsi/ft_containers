@@ -93,3 +93,71 @@ The size of a vector is the number of elements stored in a vector. The capacity 
 The implementation of the reallocation logic is smart—to avoid another reallocation on insertion of another element, it preemptively allocates a capacity greater than the requirements of the immediate scenario.
 
 > The preemptive increase in the capacity of the vector when the internal buffer is reallocated is not regulated by any clause in the C++ standard. This level of performance optimization may vary depending on the provider of STL library in use.
+
+## Vector in C++98 :
+
+| Member Type | Definition |
+|------------------|------------|
+| value_type | T |
+|allocator_type | Allocator |
+|size_type | Unsigned integer type (usually std::size_t)|
+|difference_type | Signed integer type (usually std::ptrdiff_t)|
+|reference | value_type&|
+|const_reference |const value_type&|
+|pointer | Allocator::pointer|
+|const_pointer | Allocator::const_pointer|
+|iterator | [LegacyRandomAccessIterator](https://en.cppreference.com/w/cpp/named_req/RandomAccessIterator) and [LegacyContiguousIterator](https://en.cppreference.com/w/cpp/named_req/ContiguousIterator) to value_type|
+|const_iterator | [LegacyRandomAccessIterator](https://en.cppreference.com/w/cpp/named_req/RandomAccessIterator) and [LegacyContiguousIterator](https://en.cppreference.com/w/cpp/named_req/ContiguousIterator) to const|
+|reverse_iterator | std::reverse_iterator<iterator>|
+|const_reverse_iterator | std::reverse_iterator<const_iterator>|
+
+
+
+
+| Public Member Functions | |
+|------------------|------------|
+| *constructor* | |
+| *destructor* | |
+| *operator=*        |assigns values to the container|
+| *assign*           |assigns values to the container|
+| *get_allocator*    |returns the associated allocator|
+| **Element access:**|  |
+| *at* | access specified element with bounds checking|
+|*operator[]*|	access specified element|
+|*front* | access the first element |
+|*back* | access the last element |
+|*data* | direct access to the underlying array |
+| **Iterators:**|  |
+| *begin* | returns an iterator to the beginning |
+| *end* | returns an iterator to the end |
+| *rbegin* | returns a reverse iterator to the beginning |
+| *rend* | returns a reverse iterator to the end |
+| **Capacity:**|  |
+| *empty* | checks whether the container is empty |
+| *size* | returns the number of elements |
+| *max_size* | returns the maximum possible number of elements |
+| *reserve* | reserves storage |
+| *capacity* | returns the number of elements that can be held in currently allocated storage |
+| *shrink_to_fit* | reduces memory usage by freeing unused memory |
+| **Modifiers:**|  |
+| *clear* | clears the contents |
+| *insert* | inserts elements |
+| *erase* | erases elements |
+| *push_back* | adds an element to the end |
+| *pop_back* | removes the last element |
+| *resize* | changes the number of elements stored |
+| *swap* | swaps the contents |
+
+
+|Non-Member Functions||
+|-------------------|--------|
+|(function templates)||
+|operator== | lexicographically compares the values in the vector |
+|operator!= | lexicographically compares the values in the vector |
+|operator< | lexicographically compares the values in the vector |
+|operator<= | lexicographically compares the values in the vector |
+|operator> | lexicographically compares the values in the vector |
+|operator>= | lexicographically compares the values in the vector |
+|std::swap(std::vector)| specializes the std::swap algorithm |
+  
+

@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/10 20:23:40 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/10 20:35:17 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 template <typename T>
 void displayVector(const std::vector<T>& vector_)
 {
-	std::cout << "vector capacity: " << vector_.capacity() << std::endl;
+	std::cout << "vector capacity: " << vector_.capacity() << "vector max size: " << vector_.max_size() << std::endl;
 	std::cout << "The vector contains " << vector_.size () << " elements" << std::endl;
 	std::cout << YELLOW << "\nvector: " << std::endl;
 	for (typename std::vector<T>::const_iterator element = vector_.begin(); element != vector_.end(); ++element )

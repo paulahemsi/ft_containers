@@ -27,6 +27,8 @@ namespace ft {
 				
 			}
 			// at()
+			// max_size() (!?)
+			// capacity()
 			
 	};
 }
