@@ -81,8 +81,9 @@ integers.insert (integers.begin () + 1, another.begin (), another.end ());
 
 Allocators are used by the C++ Standard Library to handle the allocation and deallocation of elements stored in containers. All C++ Standard Library containers except std::array have a template parameter of type allocator<Type>, where Type represents the type of the container element. 
 
-* [cpp reference - vector](https://en.cppreference.com/w/cpp/container/vector)
-* [VECTOR/DYNAMIC ARRAY - Making DATA STRUCTURES in C++](https://www.youtube.com/watch?v=ryRf4Jh_YC0)
+> Allocators represent a special memory model and are an abstraction used to translate the need to use memory into a raw call for memory. They provide an interface to allocate, create, destroy, and deallocate objects. With allocators, containers and algorithms can be parameterized by the way the elements are stored. For example, you could implement allocators that use shared memory or that map the elements to a persistent database
+
+* [C-Standard-Allocator-An-Introduction-and-Implement](https://www.codeproject.com/Articles/4795/C-Standard-Allocator-An-Introduction-and-Implement)
 
 ### Size and Capacity
 
@@ -181,3 +182,13 @@ Calls to `Allocator::allocate` may throw exceptions
 *This constructor has the same effect as vector(static_cast<size_type>(first), static_cast<value_type>(last), a) if InputIt is an integral type.
 
 [cpp reference constructors](https://en.cppreference.com/w/cpp/container/vector/vector)
+
+
+
+
+
+
+
+
+* [cpp reference - vector](https://en.cppreference.com/w/cpp/container/vector)
+* [VECTOR/DYNAMIC ARRAY - Making DATA STRUCTURES in C++](https://www.youtube.com/watch?v=ryRf4Jh_YC0)
