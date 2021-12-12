@@ -152,12 +152,32 @@ The implementation of the reallocation logic is smart—to avoid another realloc
 |Non-Member Functions||
 |-------------------|--------|
 |(function templates)||
-|operator== | lexicographically compares the values in the vector |
-|operator!= | lexicographically compares the values in the vector |
-|operator< | lexicographically compares the values in the vector |
-|operator<= | lexicographically compares the values in the vector |
-|operator> | lexicographically compares the values in the vector |
-|operator>= | lexicographically compares the values in the vector |
-|std::swap(std::vector)| specializes the std::swap algorithm |
-  
+|*operator==* | lexicographically compares the values in the vector |
+|*operator!=* | lexicographically compares the values in the vector |
+|*operator<* | lexicographically compares the values in the vector |
+|*operator<=* | lexicographically compares the values in the vector |
+|*operator>* | lexicographically compares the values in the vector |
+|*operator>=* | lexicographically compares the values in the vector |
+|*std::swap(std::vector)*| specializes the std::swap algorithm |
 
+|Constructors | |
+|-------------|---|
+|*vector();*    |Default constructor. Constructs an empty container with a default-constructed allocator.|
+|*explicit vector( const Allocator& alloc );*|Constructs an empty container with the given allocator alloc|
+|*explicit vector( size_type count, const T& value = T(), const Allocator& alloc = Allocator());*| Constructs the container with count copies of elements with value value|
+|*template< class InputIt > vector( InputIt first, InputIt last,const Allocator& alloc = Allocator() );*|Constructs the container with the contents of the range (first, last)*|
+|*vector( const vector& other );*|Copy constructor. Constructs the container with the copy of the contents of other.|
+
+**Parameters**
+*alloc* - allocator to use for all memory allocations of this container
+*count* - the size of the container
+*value* - the value to initialize elements of the container with
+*first*, *last* - the range to copy the elements from
+*other* - another container to be used as source to initialize the elements of the container with
+*init* - initializer list to initialize the elements of the container with
+
+Calls to `Allocator::allocate` may throw exceptions
+
+*This constructor has the same effect as vector(static_cast<size_type>(first), static_cast<value_type>(last), a) if InputIt is an integral type.
+
+[cpp reference constructors](https://en.cppreference.com/w/cpp/container/vector/vector)

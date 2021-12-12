@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/10 20:35:17 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:43:47 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 template <typename T>
 void displayVector(const std::vector<T>& vector_)
 {
-	std::cout << "vector capacity: " << vector_.capacity() << "vector max size: " << vector_.max_size() << std::endl;
+	std::cout << "vector capacity: " << vector_.capacity() << " vector max size: " << vector_.max_size() << std::endl;
 	std::cout << "The vector contains " << vector_.size () << " elements" << std::endl;
-	std::cout << YELLOW << "\nvector: " << std::endl;
+	std::cout << YELLOW << "vector: " << std::endl;
 	for (typename std::vector<T>::const_iterator element = vector_.begin(); element != vector_.end(); ++element )
 		std::cout << *element << ' ';
 	std::cout << RESET << std::endl;
@@ -67,6 +67,10 @@ int main (void)
 	integers.push_back (1);
 	integers.push_back (987);
 	integers.push_back (1001);
+	integers.push_back (50);
+	integers.push_back (1);
+	integers.push_back (987);
+	integers.push_back (1001);
 	displayVector(integers);
 
 	std::cout << CYAN << "\n\n*****adding new element in the begining with insert\n" << RESET << std::endl;
@@ -79,9 +83,6 @@ int main (void)
 	integers.insert(integers.begin() + 3, 77);
 	integers.insert(integers.begin() + 3, 3, 777);
 	displayVector(integers);
-
-	std::cout << CYAN << "\n\n*****accessing specific index (0) with .at(index):\n" << RESET << std::endl;
-	std::cout << "at(0): " << integers.at(0) << std::endl;
 
 	std::cout << CYAN << "\n\n*****trying to access out od bounds:\n" << RESET << std::endl;
 	try
@@ -97,4 +98,26 @@ int main (void)
 	std::cout << L_GRAY << "integers.pop_back();" << RESET << std::endl;
 	integers.pop_back();
 	displayVector(integers);
+
+	std::cout << CYAN << "\n\n*****Member Functions:\n" << RESET << std::endl;
+	copyVector.resize(2);
+	std::cout << "copyVector: " << std::endl;
+	displayVector(copyVector);
+	std::cout << "integers: " << std::endl;
+	displayVector(integers);
+	copyVector = integers;
+	std::cout << L_GRAY << "copyVector = integers;" << RESET << std::endl;
+	std::cout << "copyVector: " << std::endl;
+	displayVector(copyVector);
+	std::cout << L_GRAY << "integers.assign(2, 22);" << RESET << std::endl;
+	integers.assign(2, 22);
+	displayVector(integers);
+	std::cout << L_GRAY << "integers.resize(15);" << RESET << std::endl;
+	//integers.get_allocator();
+	integers.resize(15);
+	displayVector(integers);
+	std::cout << L_GRAY << "integers.at(3): " << RESET << integers.at(3) << std::endl;
+	std::cout << L_GRAY << "integers[1]: " << RESET << integers[1] << std::endl;
+	std::cout << L_GRAY << "integers.front(): " << RESET << integers.front() << std::endl;
+	std::cout << L_GRAY << "integers.back(): " << RESET << integers.back() << std::endl;
 }
