@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/12 11:50:38 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/12 19:17:26 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,21 @@ int main(void)
 	test.push_back(23);
 	std::cout << "test7: " << std::endl;
 	testDisplay(test);
+	try
+	{
+		std::cout << test[100];
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+		try
+	{
+		std::cout << test[-1];
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 }

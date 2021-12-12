@@ -1,4 +1,18 @@
-#include <iomanip>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Vector.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
+/*   Updated: 2021/12/12 19:23:04 by phemsi-a         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <iostream>
+#include <string>
+#include <exception>
 
 namespace ft {
 
@@ -67,11 +81,26 @@ namespace ft {
 				return (this->_capacity);
 			}
 			
-			T&	operator[](size_t pos)
+			T&	operator[](int pos)
 			{
-				//!adicionar caso de ir além dos limites
+				if(pos < 0 || pos >= static_cast<int>(this->_size))
+					throw OutOfBoundsException(pos);
 				return (this->_data[pos]);
 			}
+			
+			class OutOfBoundsException : public std::exception
+			{
+				int _pos;
+
+				public:
+					OutOfBoundsException(int pos) : _pos(pos){}
+					virtual const char* what() const throw()
+					{
+						if(this->_pos < 0)
+							return ("vector::_M_range_check: index < 0");
+						return ("vector::_M_range_check: index >= this->_size()");
+					}
+			};
 		//* operator= ok
 		// assign ok
 		// resize ok
