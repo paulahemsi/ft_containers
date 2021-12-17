@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/17 20:08:42 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/17 20:34:25 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ static void testDisplay(ft::vector<int>& vector_)
 {
 	std::cout << "vector capacity: " << vector_.capacity() << std::endl;
 	std::cout << "The vector contains " << vector_.size () << " elements" << std::endl;
-	std::cout << "vector: " << std::endl;
+	std::cout << YELLOW << "vector: " << std::endl;
 	for(size_t i = 0; i < vector_.size(); i++)
-		std::cout << vector_[i] << std::endl;
+		std::cout << vector_[i] << ' ';
+	std::cout << RESET << std::endl;
 }
 
 int main(void)
@@ -32,6 +33,8 @@ int main(void)
 	ft::vector<int> test;
 	std::cout << "test1: " << std::endl;
 	testDisplay(test);
+	std::cout << L_GRAY << "test.front(): " << RESET << test.front() << std::endl;
+	std::cout << L_GRAY << "test.back(): " << RESET << test.back() << std::endl;
 	ft::vector<int> copy(test);
 	std::cout << "copy: " << std::endl;
 	testDisplay(copy);
@@ -92,5 +95,13 @@ int main(void)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
+	std::cout << L_GRAY << "test.push_back(137);" << RESET << std::endl;
+	test.push_back(137);
+	std::cout << L_GRAY << "test.at(0) = 3;" << RESET << std::endl;
+	test.at(0) = 3;
+	testDisplay(test);
+	std::cout << L_GRAY << "test.at(3): " << RESET << test.at(3) << std::endl;
+	std::cout << L_GRAY << "test[1]: " << RESET << test[1] << std::endl;
+	std::cout << L_GRAY << "test.front(): " << RESET << test.front() << std::endl;
+	std::cout << L_GRAY << "test.back(): " << RESET << test.back() << std::endl;
 }
