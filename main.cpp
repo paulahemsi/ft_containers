@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/17 20:07:22 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/17 20:36:31 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,22 @@ int main (void)
 	std::cout << L_GRAY << "std::vector<int> integers;" << RESET << std::endl;
 	std::vector<int> integers;
 	displayVector(integers);
-
+	try
+	{
+		std::cout << L_GRAY << "integers.front(): " << RESET << integers.front() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		std::cout << L_GRAY << "integers.back(): " << RESET << integers.back() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	std::cout << CYAN << "\n\n*****passing a size to constructor\n" << RESET << std::endl;
 	std::cout << L_GRAY << "std::vector<int> tenElements (10);" << RESET << std::endl;
 	std::vector<int> tenElements(10);
@@ -139,6 +154,11 @@ int main (void)
 	std::cout << L_GRAY << "integers.resize(15);" << RESET << std::endl;
 	//integers.get_allocator();
 	integers.resize(15);
+	displayVector(integers);
+	std::cout << L_GRAY << "integers.push_back(137);" << RESET << std::endl;
+	integers.push_back(137);
+	std::cout << L_GRAY << "integers.at(0) = 3;" << RESET << std::endl;
+	integers.at(0) = 3;
 	displayVector(integers);
 	std::cout << L_GRAY << "integers.at(3): " << RESET << integers.at(3) << std::endl;
 	std::cout << L_GRAY << "integers[1]: " << RESET << integers[1] << std::endl;

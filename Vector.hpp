@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/17 20:12:30 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/17 20:42:23 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,10 @@ namespace ft {
 				_capacity = newCapacity;
 			}
 		public:
-			vector(void): _size(2), _capacity(2), _data(new T[this->_capacity])
+			vector(void): _size(0), _capacity(0), _data(new T[this->_capacity])
 			{
 				//?começar com 0 igual o original ou já começar com algum espaço?
-				_reAlloc(2);
-				this->_data[0] = 0;
-				this->_data[1] = 1;
+				// _reAlloc(2);
 			}
 			vector(vector const&	instance): _size(instance._size), _capacity(instance._capacity), _data(new T[this->_capacity])
 			{
@@ -79,6 +77,16 @@ namespace ft {
 			{
 				this->_checkOutOfBounds(pos);
 				return (this->_data[pos]);
+			}
+			
+			T&	front(void)
+			{
+				return (this->_data[0]);
+			}
+			
+			T&	back(void)
+			{
+				return (this->_data[this->_size - 1]);
 			}
 			
 			void push_back(const T&	value)
@@ -116,10 +124,10 @@ namespace ft {
 		// assign ok
 		// resize ok
 		// get_allocator ??
-		// at ok
+		//* at ok
 		//* operator[] ok
-		// front ok
-		// back ok
+		//* front ok
+		//* back ok
 		// begin
 		// end 
 		// rbegin
