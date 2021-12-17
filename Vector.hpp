@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/12 19:23:04 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/17 20:12:30 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,14 @@ namespace ft {
 			size_t	_size;
 			size_t	_capacity;
 			T		*_data = NULL;
+			
+			void	_checkOutOfBounds(int pos)
+			{
+				if(pos < 0 || pos >= static_cast<int>(this->_size))
+					throw OutOfBoundsException(pos);
+			}
 
-			void _reAlloc(size_t newCapacity)
+			void	_reAlloc(size_t newCapacity)
 			{
 				T	*newBlock = new T[newCapacity];//!trocar news e deletes para allocators
 
@@ -63,6 +69,18 @@ namespace ft {
 				return (*this);
 			}
 
+			T&	operator[](int pos)
+			{
+				this->_checkOutOfBounds(pos);
+				return (this->_data[pos]);
+			}
+			
+			T&	at(int pos)
+			{
+				this->_checkOutOfBounds(pos);
+				return (this->_data[pos]);
+			}
+			
 			void push_back(const T&	value)
 			{
 				if(this->_size == this->_capacity)
@@ -79,13 +97,6 @@ namespace ft {
 			size_t capacity(void)
 			{
 				return (this->_capacity);
-			}
-			
-			T&	operator[](int pos)
-			{
-				if(pos < 0 || pos >= static_cast<int>(this->_size))
-					throw OutOfBoundsException(pos);
-				return (this->_data[pos]);
 			}
 			
 			class OutOfBoundsException : public std::exception

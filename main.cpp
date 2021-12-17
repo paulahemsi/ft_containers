@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/11 18:43:47 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/17 20:07:22 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,30 @@ int main (void)
 	try
 	{
 		std::cout << "out of bounds - at(100): " << integers.at(100) << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		std::cout << "out of bounds - at(-1): " << integers.at(-1) << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		std::cout << "out of bounds [100]: " << integers[100] << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		std::cout << "out of bounds [-1]: " << integers[-1] << std::endl;
 	}
 	catch(const std::exception& e)
 	{

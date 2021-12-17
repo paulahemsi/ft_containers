@@ -6,12 +6,17 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/12 19:17:26 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/17 20:08:42 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Vector.hpp"
+
+# define CYAN			"\e[0;36m"
+# define L_GRAY			"\e[0;38;5;245m"
+# define YELLOW			"\e[0;33m"
+# define RESET			"\e[0m"
 
 static void testDisplay(ft::vector<int>& vector_)
 {
@@ -54,17 +59,34 @@ int main(void)
 	test.push_back(23);
 	std::cout << "test7: " << std::endl;
 	testDisplay(test);
+	std::cout << CYAN << "\n\n*****trying to access out od bounds:\n" << RESET << std::endl;
 	try
 	{
-		std::cout << test[100];
+		std::cout << "out of bounds - at(100): " << test.at(100) << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-		try
+	try
 	{
-		std::cout << test[-1];
+		std::cout << "out of bounds - at(-1): " << test.at(-1) << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		std::cout << "out of bounds [100]: " << test[100] << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		std::cout << "out of bounds [-1]: " << test[-1] << std::endl;
 	}
 	catch(const std::exception& e)
 	{
