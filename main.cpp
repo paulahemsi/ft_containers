@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/17 20:36:31 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/17 21:05:20 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,19 @@ int main (void)
 	std::cout << L_GRAY << "std::vector<int> integers;" << RESET << std::endl;
 	std::vector<int> integers;
 	displayVector(integers);
-	try
-	{
-		std::cout << L_GRAY << "integers.front(): " << RESET << integers.front() << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	try
-	{
-		std::cout << L_GRAY << "integers.back(): " << RESET << integers.back() << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	// std::cout << L_GRAY << "integers.front(): " << RESET << integers.front() << std::endl;
+	// std::cout << L_GRAY << "integers.back(): " << RESET << integers.back() << std::endl;
+	std::cout << CYAN << "\n\n*****empty\n" << RESET << std::endl;
+
+	std::cout << L_GRAY << "integers.empty(): " << RESET << integers.empty() << std::endl;
+	std::cout << L_GRAY << "integers.push_back(137);" << RESET << std::endl;
+	integers.push_back(137);
+	std::cout << L_GRAY << "integers.empty(): " << RESET << integers.empty() << std::endl;
+	std::cout << L_GRAY << "integers.pop_back();" << RESET << std::endl;
+	integers.pop_back();
+	std::cout << L_GRAY << "integers.empty(): " << RESET << integers.empty() << std::endl;
+
+
 	std::cout << CYAN << "\n\n*****passing a size to constructor\n" << RESET << std::endl;
 	std::cout << L_GRAY << "std::vector<int> tenElements (10);" << RESET << std::endl;
 	std::vector<int> tenElements(10);
