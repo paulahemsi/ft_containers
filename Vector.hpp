@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/17 20:42:23 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/17 21:02:58 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,13 @@ namespace ft {
 				return (this->_capacity);
 			}
 			
+			bool empty() const
+			{
+				if (this->_size == 0)
+					return (true);
+				return (false);
+			}
+			
 			class OutOfBoundsException : public std::exception
 			{
 				int _pos;
@@ -133,7 +140,7 @@ namespace ft {
 		// rbegin
 		// rend
 		// data
-		// empty
+		// * empty ok
 		// size
 		// max_size
 		// reserve

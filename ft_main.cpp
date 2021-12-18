@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/17 20:34:25 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/17 21:05:32 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,18 @@ int main(void)
 	ft::vector<int> test;
 	std::cout << "test1: " << std::endl;
 	testDisplay(test);
-	std::cout << L_GRAY << "test.front(): " << RESET << test.front() << std::endl;
-	std::cout << L_GRAY << "test.back(): " << RESET << test.back() << std::endl;
+	std::cout << L_GRAY << "test.front(): " << RESET << test.front() << std::endl; //segfault no original
+	std::cout << L_GRAY << "test.back(): " << RESET << test.back() << std::endl; //segfault no original
+	
+	std::cout << CYAN << "\n\n*****empty\n" << RESET << std::endl;
+	std::cout << L_GRAY << "test.empty(): " << RESET << test.empty() << std::endl;
+	std::cout << L_GRAY << "test.push_back(137);" << RESET << std::endl;
+	test.push_back(137);
+	std::cout << L_GRAY << "test.empty(): " << RESET << test.empty() << std::endl;
+	// std::cout << L_GRAY << "test.pop_back();" << RESET << std::endl;
+	// test.pop_back();
+	// std::cout << L_GRAY << "test.empty(): " << RESET << test.empty() << std::endl;
+	
 	ft::vector<int> copy(test);
 	std::cout << "copy: " << std::endl;
 	testDisplay(copy);
