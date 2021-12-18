@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/17 21:11:09 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/17 21:20:21 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,4 @@ int main (void)
 	std::cout << L_GRAY << "integers[1]: " << RESET << integers[1] << std::endl;
 	std::cout << L_GRAY << "integers.front(): " << RESET << integers.front() << std::endl;
 	std::cout << L_GRAY << "integers.back(): " << RESET << integers.back() << std::endl;
-	
-	std::cout << L_GRAY << "integers.reverse();" << RESET << std::endl;
-	integers.reverse();
 }

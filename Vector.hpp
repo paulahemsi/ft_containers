@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/17 21:17:17 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/18 12:45:52 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,22 @@ namespace ft {
 					return (true);
 				return (false);
 			}
+
+			void assign(size_t count, const T& value )
+			{
+				if (this->_data)
+					delete[] this->_data;
+				this->_size = count;
+				this->_data = new T(this->_capacity);
+				for(size_t i = 0; i < this->_size; i++)
+					this->_data[i] = value;
+			}
+
+			// template< class InputIt >
+			// void assign( InputIt first, InputIt last )
+			// {
+				
+			// }
 			
 			class OutOfBoundsException : public std::exception
 			{
@@ -147,16 +163,16 @@ namespace ft {
 		// rend
 		// data
 		// * empty ok
-		// size
+		// * size ok
 		// max_size
-		// reserve
+		// reserve?
 		//* capacity
 		// shrink_to_fit
 		// clear 
 		// insert
 		// erase
 		//* push_back
-		// pop_back
+		//* pop_back
 		// swap
 	};
 }
