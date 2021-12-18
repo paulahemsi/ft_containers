@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/17 21:02:58 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/17 21:17:17 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ namespace ft {
 				_capacity = newCapacity;
 			}
 		public:
-			vector(void): _size(0), _capacity(0), _data(new T[this->_capacity])
+			vector(void): _size(0), _capacity(2), _data(new T[this->_capacity])
 			{
 				//?começar com 0 igual o original ou já começar com algum espaço?
-				// _reAlloc(2);
+				_reAlloc(2);
 			}
 			vector(vector const&	instance): _size(instance._size), _capacity(instance._capacity), _data(new T[this->_capacity])
 			{
@@ -96,7 +96,13 @@ namespace ft {
 				this->_data[this->_size] = value;
 				this->_size++;
 			}
-			
+
+			void pop_back(void)
+			{
+				this->_data[this->_size - 1] = 0;
+				this->_size--;
+			}
+
 			size_t size(void)
 			{
 				return (this->_size);
