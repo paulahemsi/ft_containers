@@ -184,11 +184,98 @@ Calls to `Allocator::allocate` may throw exceptions
 [cpp reference constructors](https://en.cppreference.com/w/cpp/container/vector/vector)
 
 
+## Frien
 
+Subject: *For non-member overloads, the keyword friend is allowed. Each use of friend must be justified and will be checked during evaluation.*
 
+[from Microsoft Docs](https://docs.microsoft.com/en-us/cpp/cpp/friend-cpp?view=msvc-170)
 
+A `friend function` is a function that is **not** a member of a class but **has access to the class's private and protected members**. Friend functions are not considered class members; they are normal external functions that are given special access privileges. Friends are not in the class's scope, and they are not called using the member-selection operators (. and ->) unless they are members of another class. A friend function is declared by the class that is granting access. The friend declaration can be placed anywhere in the class declaration. It is not affected by the access control keywords.
 
+```c++
+#include <iostream>
 
+using namespace std;
+class Point
+{
+    friend void ChangePrivate( Point & );
+public:
+    Point( void ) : m_i(0) {}
+    void PrintPrivate( void ){cout << m_i << endl; }
+
+private:
+    int m_i;
+};
+
+void ChangePrivate ( Point &i ) { i.m_i++; }
+
+int main()
+{
+   Point sPoint;
+   sPoint.PrintPrivate();
+   ChangePrivate(sPoint);
+   sPoint.PrintPrivate();
+}
+```
+
+Class member functions can be declared as `friends` in other classes
+
+```c++
+class B;
+
+class A {
+public:
+   int Func1( B& b );
+
+private:
+   int Func2( B& b );
+};
+
+class B {
+private:
+   int _b;
+
+   // A::Func1 is a friend function to class B
+   // so A::Func1 has access to all members of B
+   friend int A::Func1( B& );
+};
+
+int A::Func1( B& b ) { return b._b; }   // OK
+int A::Func2( B& b ) { return b._b; }   // C2248
+```
+
+Last but not least, A `friend class` is a class all of whose member functions are friend functions of a class, that is, whose member functions have access to the other class's private and protected members.
+
+```cpp
+#include <iostream>
+
+using namespace std;
+class YourClass {
+friend class YourOtherClass;  // Declare a friend class
+public:
+   YourClass() : topSecret(0){}
+   void printMember() { cout << topSecret << endl; }
+private:
+   int topSecret;
+};
+
+class YourOtherClass {
+public:
+   void change( YourClass& yc, int x ){yc.topSecret = x;}
+};
+
+int main() {
+   YourClass yc1;
+   YourOtherClass yoc1;
+   yc1.printMember();
+   yoc1.change( yc1, 5 );
+   yc1.printMember();
+}
+```
+
+Friendship is not mutual unless explicitly specified as such.
+Friendship is not inherited.
+Friendship is not transitive, so classes that are friends of YourOtherClass cannot access YourClass's private members.
 
 * [cpp reference - vector](https://en.cppreference.com/w/cpp/container/vector)
 * [VECTOR/DYNAMIC ARRAY - Making DATA STRUCTURES in C++](https://www.youtube.com/watch?v=ryRf4Jh_YC0)

@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/17 21:16:01 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/18 12:44:42 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,9 @@ int main(void)
 	std::cout << L_GRAY << "test.back(): " << RESET << test.back() << std::endl;
 	std::cout << L_GRAY << "test.pop_back();" << RESET << std::endl;
 	test.pop_back();
+	testDisplay(test);
+	std::cout << CYAN << "\n\n*****assign:\n" << RESET << std::endl;
+	std::cout << L_GRAY << "test.assign(2, 22);" << RESET << std::endl;
+	test.assign(2, 22);
 	testDisplay(test);
 }
