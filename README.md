@@ -79,9 +79,94 @@ integers.insert (integers.begin () + 1, another.begin (), another.end ());
 
 ### Allocators
 
+Allocators are classes that define memory models to be used by some parts of the Standard Library, and most specifically, by STL containers.
+
 Allocators are used by the C++ Standard Library to handle the allocation and deallocation of elements stored in containers. All C++ Standard Library containers except std::array have a template parameter of type allocator<Type>, where Type represents the type of the container element. 
 
 > Allocators represent a special memory model and are an abstraction used to translate the need to use memory into a raw call for memory. They provide an interface to allocate, create, destroy, and deallocate objects. With allocators, containers and algorithms can be parameterized by the way the elements are stored. For example, you could implement allocators that use shared memory or that map the elements to a persistent database
+
+With allocators, containers and algorithms can be parameterized by the way the elements are stored.
+
+As mentioned, allocate and deallocate are simply low level memory management and do not play a part in object construction and destruction. This would mean that the default usage of the keywords new and delete would not apply in these functions
+
+the following code:
+
+```c++
+A* a = new A;
+delete a;
+```
+
+is actually interpreted by the compiler as:
+
+```c++
+// assuming new throws std::bad_alloc upon failure
+A* a = ::operator new(sizeof(A)); 
+a->A::A();
+if ( a != 0 ) {  // a check is necessary for delete
+    a->~A();
+    ::operator delete(a);
+}
+```
+
+The purpose of the allocator is to 2allocate raw memory without construction of objects, as well as simply deallocate memory without the need to destroy them, hence the usage of operator new and operator delete directly is preferred over the usage of the keywords new and delete.
+
+Following these are helper functions to do copy construction (construct(p, t)) and destroy (destroy(p)) an object, as well as getting the largest value that can meaningfully be passed to allocate (max_size), copy constructor and default constructor, and the equality checking operators(== and !=).
+
+A sample allocator:
+
+```cpp
+template<typename T>
+class Allocator {
+public : 
+    //    typedefs
+    typedef T value_type;
+    typedef value_type* pointer;
+    typedef const value_type* const_pointer;
+    typedef value_type& reference;
+    typedef const value_type& const_reference;
+    typedef std::size_t size_type;
+    typedef std::ptrdiff_t difference_type;
+
+public : 
+    //    convert an allocator<T> to allocator<U>
+    template<typename U>
+    struct rebind {
+        typedef Allocator<U> other;
+    };
+
+public : 
+    inline explicit Allocator() {}
+    inline ~Allocator() {}
+    inline explicit Allocator(Allocator const&) {}
+    template<typename U>
+    inline explicit Allocator(Allocator<U> const&) {}
+
+    //    address
+    inline pointer address(reference r) { return &r; }
+    inline const_pointer address(const_reference r) { return &r; }
+
+    //    memory allocation
+    inline pointer allocate(size_type cnt, 
+       typename std::allocator<void>::const_pointer = 0) { 
+      return reinterpret_cast<pointer>(::operator new(cnt * sizeof (T))); 
+    }
+    inline void deallocate(pointer p, size_type) { 
+        ::operator delete(p); 
+    }
+
+    //    size
+    inline size_type max_size() const { 
+        return std::numeric_limits<size_type>::max() / sizeof(T);
+ }
+
+    //    construction/destruction
+    inline void construct(pointer p, const T& t) { new(p) T(t); }
+    inline void destroy(pointer p) { p->~T(); }
+
+    inline bool operator==(Allocator const&) { return true; }
+    inline bool operator!=(Allocator const& a) { return !operator==(a); }
+};    //    end of class Allocator 
+```
 
 * [C-Standard-Allocator-An-Introduction-and-Implement](https://www.codeproject.com/Articles/4795/C-Standard-Allocator-An-Introduction-and-Implement)
 
@@ -139,7 +224,6 @@ The implementation of the reallocation logic is smart—to avoid another realloc
 | *max_size* | returns the maximum possible number of elements |
 | *reserve* | reserves storage |
 | *capacity* | returns the number of elements that can be held in currently allocated storage |
-| *shrink_to_fit* | reduces memory usage by freeing unused memory |
 | **Modifiers:**|  |
 | *clear* | clears the contents |
 | *insert* | inserts elements |
@@ -184,7 +268,7 @@ Calls to `Allocator::allocate` may throw exceptions
 [cpp reference constructors](https://en.cppreference.com/w/cpp/container/vector/vector)
 
 
-## Frien
+## Friend
 
 Subject: *For non-member overloads, the keyword friend is allowed. Each use of friend must be justified and will be checked during evaluation.*
 
