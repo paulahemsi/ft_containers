@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/20 22:12:27 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:27:50 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 static void testDisplay(ft::vector<int>& vector_)
 {
-	std::cout << "vector capacity: " << vector_.capacity() << std::endl;
+	std::cout << "vector capacity: " << vector_.capacity() << " vector max size: " << vector_.max_size() << std::endl;
 	std::cout << "The vector contains " << vector_.size () << " elements" << std::endl;
 	std::cout << YELLOW << "vector: " << std::endl;
 	for(size_t i = 0; i < vector_.size(); i++)
