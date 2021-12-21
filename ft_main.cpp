@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/18 12:44:42 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:12:27 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int main(void)
 	ft::vector<int> test;
 	std::cout << "test1: " << std::endl;
 	testDisplay(test);
-	std::cout << L_GRAY << "test.front(): " << RESET << test.front() << std::endl; //segfault no original
-	std::cout << L_GRAY << "test.back(): " << RESET << test.back() << std::endl; //segfault no original
+	//std::cout << L_GRAY << "test.front(): " << RESET << test.front() << std::endl; //segfault no original
+	//std::cout << L_GRAY << "test.back(): " << RESET << test.back() << std::endl; //segfault no original
 	
 	std::cout << CYAN << "\n\n*****empty\n" << RESET << std::endl;
 	std::cout << L_GRAY << "test.empty(): " << RESET << test.empty() << std::endl;
@@ -72,7 +72,7 @@ int main(void)
 	test.push_back(23);
 	std::cout << "test7: " << std::endl;
 	testDisplay(test);
-	std::cout << CYAN << "\n\n*****trying to access out od bounds:\n" << RESET << std::endl;
+	std::cout << CYAN << "\n\n*****trying to access out of bounds:\n" << RESET << std::endl;
 	try
 	{
 		std::cout << "out of bounds - at(100): " << test.at(100) << std::endl;

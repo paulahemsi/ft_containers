@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/18 12:45:52 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:15:19 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ namespace ft {
 	class vector
 	{
 		private:
-			size_t	_size;
-			size_t	_capacity;
-			T		*_data = NULL;
+			size_t		_size;
+			size_t		_capacity;
+			T			*_data = NULL;
+			Allocator	_allocator;
 			
 			void	_checkOutOfBounds(int pos)
 			{
@@ -32,30 +33,31 @@ namespace ft {
 
 			void	_reAlloc(size_t newCapacity)
 			{
-				T	*newBlock = new T[newCapacity];//!trocar news e deletes para allocators
+				T	*newBlock = this->_allocator.allocate(newCapacity);
 
-				if(newCapacity < _size)
-					_size = newCapacity;
 
-				for(size_t i = 0; i < _size; i++)
-					newBlock[i] = _data[i];
-				delete[] _data;
+				if(newCapacity < this->_size)
+					this->_size = newCapacity;
+
+				for(size_t i = 0; i < this->_size; i++)
+					this->_allocator.construct(&newBlock[i], this->_data[i]);
+				this->_allocator.deallocate(this->_data, this->_capacity);
 				_data = newBlock;
 				_capacity = newCapacity;
 			}
 		public:
-			vector(void): _size(0), _capacity(2), _data(new T[this->_capacity])
+			vector(void): _size(0), _capacity(2), _data(this->_allocator.allocate(this->_capacity))
 			{
 				//?começar com 0 igual o original ou já começar com algum espaço?
 				_reAlloc(2);
 			}
-			vector(vector const&	instance): _size(instance._size), _capacity(instance._capacity), _data(new T[this->_capacity])
+			vector(vector const&	instance): _size(instance._size), _capacity(instance._capacity), _data(this->_allocator.allocate(this->_capacity))
 			{
 				*this = instance;
 			}
 			~vector()
 			{
-				delete[] _data;
+				this->_allocator.deallocate(this->_data, this->_capacity);
 			}
 
 			vector&	operator=(const vector& other)
@@ -68,6 +70,12 @@ namespace ft {
 			}
 
 			T&	operator[](int pos)
+			{
+				this->_checkOutOfBounds(pos);
+				return (this->_data[pos]);
+			}
+
+			const T&	operator[](int pos) const
 			{
 				this->_checkOutOfBounds(pos);
 				return (this->_data[pos]);
@@ -120,21 +128,26 @@ namespace ft {
 				return (false);
 			}
 
-			void assign(size_t count, const T& value )
+			void assign(size_t count, const T& value)
 			{
 				if (this->_data)
-					delete[] this->_data;
+					this->_allocator.deallocate(this->_data, this->_capacity);
 				this->_size = count;
-				this->_data = new T(this->_capacity);
+				this->_data = this->_allocator.allocate(this->_capacity);
 				for(size_t i = 0; i < this->_size; i++)
 					this->_data[i] = value;
 			}
 
 			// template< class InputIt >
-			// void assign( InputIt first, InputIt last )
+			// void assign(InputIt first, InputIt last)
 			// {
 				
 			// }
+
+			void resize(size_t count, T value = T())
+			{
+				
+			}
 			
 			class OutOfBoundsException : public std::exception
 			{
@@ -150,7 +163,7 @@ namespace ft {
 					}
 			};
 		//* operator= ok
-		// assign ok
+		// HALF assign ok
 		// resize ok
 		// get_allocator ??
 		//* at ok
