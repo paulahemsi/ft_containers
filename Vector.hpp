@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/20 22:15:19 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:28:35 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,19 @@ namespace ft {
 			{
 				
 			}
+
+			//size_type max_size() const;
+			size_t max_size(void) const
+			{
+				return (this->_allocator.max_size());
+			}
 			
+			//allocator_type get_allocator() const;
+			Allocator	get_allocator(void) const
+			{
+				return (this->_allocator);
+			}
+
 			class OutOfBoundsException : public std::exception
 			{
 				int _pos;
@@ -165,7 +177,7 @@ namespace ft {
 		//* operator= ok
 		// HALF assign ok
 		// resize ok
-		// get_allocator ??
+		// * get_allocator como usa??
 		//* at ok
 		//* operator[] ok
 		//* front ok
@@ -177,7 +189,7 @@ namespace ft {
 		// data
 		// * empty ok
 		// * size ok
-		// max_size
+		// * max_size ok
 		// reserve?
 		//* capacity
 		// shrink_to_fit
