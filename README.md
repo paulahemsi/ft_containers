@@ -361,5 +361,17 @@ Friendship is not mutual unless explicitly specified as such.
 Friendship is not inherited.
 Friendship is not transitive, so classes that are friends of YourOtherClass cannot access YourClass's private members.
 
+## Iterators
+
+### Iterators traits
+
+std::iterator_traits is the type trait class that provides uniform interface to the properties of LegacyIterator types. This makes it possible to implement algorithms only in terms of iterators.
+
+The template can be specialized for user-defined iterators so that the information about the iterator can be retrieved even if the type does not provide the usual typedefs.
+
+[stackOverflow usefull thread](https://stackoverflow.com/questions/6742008/what-are-the-typical-use-cases-of-an-iterator-trait)
+
+
+
 * [cpp reference - vector](https://en.cppreference.com/w/cpp/container/vector)
 * [VECTOR/DYNAMIC ARRAY - Making DATA STRUCTURES in C++](https://www.youtube.com/watch?v=ryRf4Jh_YC0)

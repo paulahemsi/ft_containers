@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/20 22:28:35 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/03 19:15:30 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,91 @@
 #include <exception>
 
 namespace ft {
+
+	// template<typename vector>
+	// class vectorIterator
+	// {
+	// 	private:
+	// 		typename vector::T _ptr;
+
+	// 	public:
+	// 		// using ValueType = typename vector::ValueType;
+	// 		// using PointerType = ValueType*;
+	// 		// using ReferenceType = ValueType&;
+
+	// 		vectorIterator(typename vector::T* _data): _ptr(_data) {};
+
+	// 		vectorIterator& operator++(void)
+	// 		{
+	// 			this->_ptr++;
+	// 			return (*this);
+	// 		}
+
+	// 		vectorIterator operator++(int)
+	// 		{
+	// 			typename vector::T iteratorCopy = this;
+	// 			this->_ptr++;
+	// 			return (*iteratorCopy);
+	// 		}
+
+	// 		vectorIterator& operator--(void)
+	// 		{
+	// 			this->_ptr--;
+	// 			return (*this);
+	// 		}
+
+	// 		vectorIterator operator--(int)
+	// 		{
+	// 			typename vector::T iteratorCopy = this;
+	// 			this->_ptr--;
+	// 			return (*iteratorCopy);
+	// 		}
+
+	// 		typename vector::T& operator[](int index)
+	// 		{
+	// 			return *(this->_ptr + index);
+	// 		}
+
+	// 		typename vector::T* operator->(void)
+	// 		{
+	// 			return (this->_ptr);
+	// 		}
+
+	// 		typename vector::T& operator*(int index)
+	// 		{
+	// 			return (*this->_ptr);
+	// 		}
+
+	// 		bool operator==(const vectorIterator& other) const
+	// 		{
+	// 			return (this->_ptr == other._ptr);
+	// 		}
+
+	// 		bool operator!=(const vectorIterator& other) const
+	// 		{
+	// 			return (this->_ptr != other._ptr);
+	// 		}
+
+	// 		bool operator>=(const vectorIterator& other) const
+	// 		{
+	// 			return (this->_ptr >= other._ptr);
+	// 		}
+
+	// 		bool operator<=(const vectorIterator& other) const
+	// 		{
+	// 			return (this->_ptr <= other._ptr);
+	// 		}
+
+	// 		bool operator>(const vectorIterator& other) const
+	// 		{
+	// 			return (this->_ptr > other._ptr);
+	// 		}
+
+	// 		bool operator<(const vectorIterator& other) const
+	// 		{
+	// 			return (this->_ptr < other._ptr);
+	// 		}
+	// };
 
 	template<class T, class Allocator = std::allocator<T> >
 	class vector
@@ -46,6 +131,8 @@ namespace ft {
 				_capacity = newCapacity;
 			}
 		public:
+			// using ValueType = T;
+			// using Iterator = VectorIterator<vector<T>>; //para usar apenas iterator no resto do código
 			vector(void): _size(0), _capacity(2), _data(this->_allocator.allocate(this->_capacity))
 			{
 				//?começar com 0 igual o original ou já começar com algum espaço?
@@ -74,6 +161,16 @@ namespace ft {
 				this->_checkOutOfBounds(pos);
 				return (this->_data[pos]);
 			}
+
+			// ft::vectorIterator<ft::vector<T> > begin(void)
+			// {
+			// 	return ft::vectorIterator<ft::vector<T> >(this->_data);
+			// }
+
+			// ft::vectorIterator<ft::vector<T> > end(void)
+			// {
+			// 	return ft::vectorIterator<ft::vector<T> >(this->_data + this->_size);
+			// }
 
 			const T&	operator[](int pos) const
 			{

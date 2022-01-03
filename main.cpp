@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2021/12/17 21:20:21 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2021/12/25 14:52:55 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,4 +161,33 @@ int main (void)
 	std::cout << L_GRAY << "integers[1]: " << RESET << integers[1] << std::endl;
 	std::cout << L_GRAY << "integers.front(): " << RESET << integers.front() << std::endl;
 	std::cout << L_GRAY << "integers.back(): " << RESET << integers.back() << std::endl;
+	
+	std::cout << CYAN << "\n\n*****iterators:\n" << RESET << std::endl;
+	
+	std::vector<int>::const_iterator iteratorIntegers1 = integers.begin();
+	std::vector<int>::const_iterator iteratorIntegers2 = integers.begin();
+	std::vector<int>::const_iterator iteratorCopyVector = copyVector.begin();
+	
+	std::cout << L_GRAY << "(iteratorIntegers1 == iteratorIntegers2): " << RESET << (iteratorIntegers1 == iteratorIntegers2) << std::endl;
+	std::cout << L_GRAY << "(iteratorIntegers1 == iteratorCopyVector): " << RESET << (iteratorIntegers1 == iteratorCopyVector) << std::endl;
+	std::cout << L_GRAY << "(iteratorIntegers1 < iteratorCopyVector): " << RESET << (iteratorIntegers1 < iteratorCopyVector) << std::endl;
+	
+	std::cout << L_GRAY << "*iteratorIntegers1: " << RESET << *iteratorIntegers1 << std::endl;
+	std::cout << L_GRAY << "*iteratorCopyVector: " << RESET << *iteratorCopyVector << std::endl;
+	std::cout << L_GRAY << "iteratorIntegers1: " << RESET << &iteratorIntegers1 << std::endl;
+	std::cout << L_GRAY << "iteratorCopyVector: " << RESET << &iteratorCopyVector << std::endl;
+	
+	std::cout << L_GRAY << "copyVector[0] = integers[0];" << RESET << std::endl;	
+	copyVector[0] = integers[0];
+	iteratorCopyVector = copyVector.begin();
+
+	std::cout << L_GRAY << "*iteratorIntegers1: " << RESET << *iteratorIntegers1 << std::endl;
+	std::cout << L_GRAY << "*iteratorCopyVector: " << RESET << *iteratorCopyVector << std::endl;
+	std::cout << L_GRAY << "iteratorIntegers1: " << RESET << &iteratorIntegers1 << std::endl;
+	std::cout << L_GRAY << "iteratorCopyVector: " << RESET << &iteratorCopyVector << std::endl;
+	
+
+	std::cout << L_GRAY << "(iteratorIntegers1 == iteratorCopyVector): " << RESET << (iteratorIntegers1 == iteratorCopyVector) << std::endl;
+	std::cout << L_GRAY << "(iteratorIntegers1 < iteratorCopyVector): " << RESET << (iteratorIntegers1 < iteratorCopyVector) << std::endl;
+
 }
