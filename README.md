@@ -371,7 +371,25 @@ The template can be specialized for user-defined iterators so that the informati
 
 [stackOverflow usefull thread](https://stackoverflow.com/questions/6742008/what-are-the-typical-use-cases-of-an-iterator-trait)
 
+### Random-access and Bidirectional iterators
 
+**Random-access iterators** are iterators that can be used to access elements at an arbitrary offset position relative to the element they point to, offering the same functionality as pointers. Random-access iterators are the most complete iterators in terms of functionality. All pointer types are also valid random-access iterators.
+
+**Bidirectional iterators** are iterators that can be used to access the sequence of elements in a range in both directions (towards the end and towards the beginning). They are similar to forward iterators, except that they can move in the backward direction also, unlike the forward iterators, which can move only in the forward direction.
+
+It is to be noted that containers like vector, deque support random-access iterators. This means that if we declare normal iterators for them, and then those will be [random-access iterators](https://www.geeksforgeeks.org/random-access-iterators-in-cpp/), just like in case of list, map, multimap, set and multiset they are [bidirectional iterators](https://www.geeksforgeeks.org/bidirectional-iterators-in-cpp/).
+
+
+| Feature | random access iterator | bidirectional iterator |
+|---------|------------------------|------------------------|
+|can be used in multi-pass algorithms, i.e., algorithm which involves processing the container several times in various passes. |:heavy_check_mark:|:heavy_check_mark:|
+|can be compared for equality with another iterator. Since, iterators point to some location, so the two iterators will be equal only when they point to the same position, otherwise not.|:heavy_check_mark:|:heavy_check_mark:|
+|can be dereferenced both as a rvalue as well as a lvalue.|:heavy_check_mark:|:heavy_check_mark:|
+|can be incremented and decremented, so that it refers to the next/previous element in sequence, using operator ++() or --()|:heavy_check_mark:|:heavy_check_mark:|
+|support all relational operators (`==` `>=` `<=` `!=`)|:heavy_check_mark:|:x: (only `==`)|
+|can be used with arithmetic operators like +, – and so on. This means that Random-access iterators can move in both the direction, and that too randomly|:heavy_check_mark:|:x:|
+|support offset dereference operator ([ ]), which is used for random-access|:heavy_check_mark:|:x:|
+|The value pointed to by these iterators can be exchanged or swapped|:heavy_check_mark:|:heavy_check_mark:|
 
 * [cpp reference - vector](https://en.cppreference.com/w/cpp/container/vector)
 * [VECTOR/DYNAMIC ARRAY - Making DATA STRUCTURES in C++](https://www.youtube.com/watch?v=ryRf4Jh_YC0)
