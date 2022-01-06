@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/06 19:40:16 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/06 19:55:52 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,11 @@ namespace ft {
 			this->_pointer -= right_hand_side.
 			return (*this);
 		}
+		
+		//dereference operator
+		reference	operator[](const int n) const {return (this->_pointer[n]);}
+		reference	operator*(void) const {return *(this->_pointer);}
+		pointer		operator->(void) {retrun (this->_pointer);}
 	};
 }
 
