@@ -391,5 +391,82 @@ It is to be noted that containers like vector, deque support random-access itera
 |support offset dereference operator ([ ]), which is used for random-access|:heavy_check_mark:|:x:|
 |The value pointed to by these iterators can be exchanged or swapped|:heavy_check_mark:|:heavy_check_mark:|
 
+## Explicit 
+
+from [this stackOverflow thread](https://stackoverflow.com/questions/121162/what-does-the-explicit-keyword-mean)
+
+The compiler is allowed to make one implicit conversion to resolve the parameters to a function. What this means is that the compiler can use constructors callable with a single parameter to convert from one type to another in order to get the right type for a parameter.
+
+Here's an example class with a constructor that can be used for implicit conversions:
+
+```cpp
+class Foo
+{
+public:
+  // single parameter constructor, can be used as an implicit conversion
+  Foo (int foo) : m_foo (foo) 
+  {
+  }
+
+  int GetFoo () { return m_foo; }
+
+private:
+  int m_foo;
+};
+```
+
+Here's a simple function that takes a `Foo` object:
+
+```cpp
+void DoBar (Foo foo)
+{
+  int i = foo.GetFoo ();
+}
+```
+
+and here's where the `DoBar` function is called:
+
+```cpp
+int main ()
+{
+  DoBar (42);
+}
+```
+
+The argument is not a `Foo` object, but an `int`. However, there exists a constructor for `Foo` that takes an `int` so this constructor can be used to convert the parameter to the correct type.
+
+The compiler is allowed to do this once for each parameter.
+
+Prefixing the `explicit` keyword to the constructor prevents the compiler from using that constructor for implicit conversions. Adding it to the above class will create a compiler error at the function call `DoBar (42)`. It is now necessary to call for conversion explicitly with `DoBar (Foo (42))`
+
+The reason you might want to do this is to avoid accidental construction that can hide bugs.
+Contrived example:
+
+Suppose, you have a class `String`:
+
+```cpp
+class String {
+public:
+    String(int n); // allocate n bytes to the String object
+    String(const char *p); // initializes object with char *p
+};
+```
+
+Now, if you try:
+
+```cpp
+String mystring = 'x';
+```
+
+The character `'x'` will be **implicitly** converted to `int` and then the `String(int)` constructor will be called. But, this is not what the user might have intended. So, to prevent such conditions, we shall define the constructor as `explicit`:
+
+```cpp
+class String {
+public:
+    explicit String (int n); //allocate n bytes
+    String(const char *p); // initialize sobject with string p
+};
+```
+
 * [cpp reference - vector](https://en.cppreference.com/w/cpp/container/vector)
 * [VECTOR/DYNAMIC ARRAY - Making DATA STRUCTURES in C++](https://www.youtube.com/watch?v=ryRf4Jh_YC0)
