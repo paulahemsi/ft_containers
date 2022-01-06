@@ -6,13 +6,14 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/03 19:15:30 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/06 20:15:44 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <exception>
+#include "random_access_iterator.hpp"
 
 namespace ft {
 
@@ -131,6 +132,8 @@ namespace ft {
 				_capacity = newCapacity;
 			}
 		public:
+		
+			typedef ft::random_access_iterator<T>	iterator;
 			// using ValueType = T;
 			// using Iterator = VectorIterator<vector<T>>; //para usar apenas iterator no resto do código
 			vector(void): _size(0), _capacity(2), _data(this->_allocator.allocate(this->_capacity))
@@ -162,15 +165,15 @@ namespace ft {
 				return (this->_data[pos]);
 			}
 
-			// ft::vectorIterator<ft::vector<T> > begin(void)
-			// {
-			// 	return ft::vectorIterator<ft::vector<T> >(this->_data);
-			// }
+			iterator begin(void)
+			{
+				return iterator(this->_data);
+			}
 
-			// ft::vectorIterator<ft::vector<T> > end(void)
-			// {
-			// 	return ft::vectorIterator<ft::vector<T> >(this->_data + this->_size);
-			// }
+			iterator end(void)
+			{
+				return iterator(this->_data + this->_size);
+			}
 
 			const T&	operator[](int pos) const
 			{
