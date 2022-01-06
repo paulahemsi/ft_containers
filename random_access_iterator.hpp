@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/06 20:00:19 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/06 20:13:49 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,18 @@ namespace ft {
 	template <typename T>
 	class random_access_iterator
 	{
-		private:
-			pointer	_pointer;
-			
 		public:
 			typedef	random_access_iterator<T>	iterator;
-		
+			typedef std::random_access_iterator_tag	iterator_category;
+			typedef T								value_type;
+			typedef T*								pointer;
+			typedef T&								reference;
+			typedef std::ptrdiff_t					difference_type;
+
+		private:
+			pointer	_pointer;
+
+		public:
 			//canonical
 			random_access_iterator(): _pointer(NULL) {};
 			explicit random_access_iterator(pointer ptr): _pointer(ptr) {}
@@ -98,12 +104,12 @@ namespace ft {
 			}
 			iterator& operator+=(int right_hand_side)
 			{
-				this->_pointer += right_hand_side.
+				this->_pointer += right_hand_side;
 				return (*this);
 			}
 			iterator& operator-=(int right_hand_side)
 			{
-				this->_pointer -= right_hand_side.
+				this->_pointer -= right_hand_side;
 				return (*this);
 			}
 			
