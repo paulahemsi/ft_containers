@@ -1,9 +1,23 @@
 # ft_containers
+
 C++ containers re-implementation | école 42
 
 Some rules:
 
 This project is about implementing the various container types of the C++ standard template library, coding in C++98, so any new feature of the containers MUST NOT be implemented, but every old feature (even deprecated) is expected. Member functions, Non-member and overloads are expected, and the implemented containers can bu up to 20 times slower compares to STL ones (tests are expected). Names must be respected. std::allocator must be used and the inner data structure for each container must be coherent (using a simple array for a map is not ok). iterators_traits, reverse_iterator, enable_if, is_integral, equal/lexicographical compare, std::pair, std::make_pair, must be reimplemented. For non-member overloads, the keyword `friend` is allowed. Each use of `friend` must be justified.
+
+* [Vector](#Vector)
+    * [Allocators](#Allocators)
+    * [Size_and_Capacity](#Size_and_Capacity)
+    * [Reallocation](#Reallocation)
+* [Vector in C++98](#Vector_in_C++98)
+* [Friend keyword](#Friend_keyword)
+* [Explicit keyword](#Explicit_keyword)
+* [Iterators](#Iterators)
+    * [Iterators traits](#Iterators_traits)
+    * [Random access_and_Bidirectional_iterators](#Random-access_and_Bidirectional_iterators)
+
+
 
 ## Vector
 
@@ -170,17 +184,17 @@ public :
 
 * [C-Standard-Allocator-An-Introduction-and-Implement](https://www.codeproject.com/Articles/4795/C-Standard-Allocator-An-Introduction-and-Implement)
 
-### Size and Capacity
+### Size_and_Capacity
 
 The size of a vector is the number of elements stored in a vector. The capacity of a vector is the total number of elements that can potentially be stored in the vector before it reallocates memory to accommodate more elements.
 
-### reallocation
+### Reallocation
 
 The implementation of the reallocation logic is smart—to avoid another reallocation on insertion of another element, it preemptively allocates a capacity greater than the requirements of the immediate scenario.
 
 > The preemptive increase in the capacity of the vector when the internal buffer is reallocated is not regulated by any clause in the C++ standard. This level of performance optimization may vary depending on the provider of STL library in use.
 
-## Vector in C++98 :
+## Vector_in_C++98
 
 | Member Type | Definition |
 |------------------|------------|
@@ -268,7 +282,7 @@ Calls to `Allocator::allocate` may throw exceptions
 [cpp reference constructors](https://en.cppreference.com/w/cpp/container/vector/vector)
 
 
-## Friend
+## Friend_keyword
 
 Subject: *For non-member overloads, the keyword friend is allowed. Each use of friend must be justified and will be checked during evaluation.*
 
@@ -361,37 +375,7 @@ Friendship is not mutual unless explicitly specified as such.
 Friendship is not inherited.
 Friendship is not transitive, so classes that are friends of YourOtherClass cannot access YourClass's private members.
 
-## Iterators
-
-### Iterators traits
-
-std::iterator_traits is the type trait class that provides uniform interface to the properties of LegacyIterator types. This makes it possible to implement algorithms only in terms of iterators.
-
-The template can be specialized for user-defined iterators so that the information about the iterator can be retrieved even if the type does not provide the usual typedefs.
-
-[stackOverflow usefull thread](https://stackoverflow.com/questions/6742008/what-are-the-typical-use-cases-of-an-iterator-trait)
-
-### Random-access and Bidirectional iterators
-
-**Random-access iterators** are iterators that can be used to access elements at an arbitrary offset position relative to the element they point to, offering the same functionality as pointers. Random-access iterators are the most complete iterators in terms of functionality. All pointer types are also valid random-access iterators.
-
-**Bidirectional iterators** are iterators that can be used to access the sequence of elements in a range in both directions (towards the end and towards the beginning). They are similar to forward iterators, except that they can move in the backward direction also, unlike the forward iterators, which can move only in the forward direction.
-
-It is to be noted that containers like vector, deque support random-access iterators. This means that if we declare normal iterators for them, and then those will be [random-access iterators](https://www.geeksforgeeks.org/random-access-iterators-in-cpp/), just like in case of list, map, multimap, set and multiset they are [bidirectional iterators](https://www.geeksforgeeks.org/bidirectional-iterators-in-cpp/).
-
-
-| Feature | random access iterator | bidirectional iterator |
-|---------|------------------------|------------------------|
-|can be used in multi-pass algorithms, i.e., algorithm which involves processing the container several times in various passes. |:heavy_check_mark:|:heavy_check_mark:|
-|can be compared for equality with another iterator. Since, iterators point to some location, so the two iterators will be equal only when they point to the same position, otherwise not.|:heavy_check_mark:|:heavy_check_mark:|
-|can be dereferenced both as a rvalue as well as a lvalue.|:heavy_check_mark:|:heavy_check_mark:|
-|can be incremented and decremented, so that it refers to the next/previous element in sequence, using operator ++() or --()|:heavy_check_mark:|:heavy_check_mark:|
-|support all relational operators (`==` `>=` `<=` `!=`)|:heavy_check_mark:|:x: (only `==`)|
-|can be used with arithmetic operators like +, – and so on. This means that Random-access iterators can move in both the direction, and that too randomly|:heavy_check_mark:|:x:|
-|support offset dereference operator ([ ]), which is used for random-access|:heavy_check_mark:|:x:|
-|The value pointed to by these iterators can be exchanged or swapped|:heavy_check_mark:|:heavy_check_mark:|
-
-## Explicit 
+## Explicit_keyword
 
 from [this stackOverflow thread](https://stackoverflow.com/questions/121162/what-does-the-explicit-keyword-mean)
 
@@ -467,6 +451,38 @@ public:
     String(const char *p); // initialize sobject with string p
 };
 ```
+
+## Iterators
+
+### Iterators_traits
+
+std::iterator_traits is the type trait class that provides uniform interface to the properties of LegacyIterator types. This makes it possible to implement algorithms only in terms of iterators.
+
+The template can be specialized for user-defined iterators so that the information about the iterator can be retrieved even if the type does not provide the usual typedefs.
+
+[stackOverflow usefull thread](https://stackoverflow.com/questions/6742008/what-are-the-typical-use-cases-of-an-iterator-trait)
+
+### Random-access_and_Bidirectional_iterators
+
+**Random-access iterators** are iterators that can be used to access elements at an arbitrary offset position relative to the element they point to, offering the same functionality as pointers. Random-access iterators are the most complete iterators in terms of functionality. All pointer types are also valid random-access iterators.
+
+**Bidirectional iterators** are iterators that can be used to access the sequence of elements in a range in both directions (towards the end and towards the beginning). They are similar to forward iterators, except that they can move in the backward direction also, unlike the forward iterators, which can move only in the forward direction.
+
+It is to be noted that containers like vector, deque support random-access iterators. This means that if we declare normal iterators for them, and then those will be [random-access iterators](https://www.geeksforgeeks.org/random-access-iterators-in-cpp/), just like in case of list, map, multimap, set and multiset they are [bidirectional iterators](https://www.geeksforgeeks.org/bidirectional-iterators-in-cpp/).
+
+
+| Feature | random access iterator | bidirectional iterator |
+|---------|------------------------|------------------------|
+|can be used in multi-pass algorithms, i.e., algorithm which involves processing the container several times in various passes. |:heavy_check_mark:|:heavy_check_mark:|
+|can be compared for equality with another iterator. Since, iterators point to some location, so the two iterators will be equal only when they point to the same position, otherwise not.|:heavy_check_mark:|:heavy_check_mark:|
+|can be dereferenced both as a rvalue as well as a lvalue.|:heavy_check_mark:|:heavy_check_mark:|
+|can be incremented and decremented, so that it refers to the next/previous element in sequence, using operator ++() or --()|:heavy_check_mark:|:heavy_check_mark:|
+|support all relational operators (`==` `>=` `<=` `!=`)|:heavy_check_mark:|:x: (only `==`)|
+|can be used with arithmetic operators like +, – and so on. This means that Random-access iterators can move in both the direction, and that too randomly|:heavy_check_mark:|:x:|
+|support offset dereference operator ([ ]), which is used for random-access|:heavy_check_mark:|:x:|
+|The value pointed to by these iterators can be exchanged or swapped|:heavy_check_mark:|:heavy_check_mark:|
+
+
 
 * [cpp reference - vector](https://en.cppreference.com/w/cpp/container/vector)
 * [VECTOR/DYNAMIC ARRAY - Making DATA STRUCTURES in C++](https://www.youtube.com/watch?v=ryRf4Jh_YC0)
