@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/03 19:16:00 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/06 20:19:27 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,23 +123,23 @@ int main(void)
 	test.assign(2, 22);
 	testDisplay(test);
 	
-	// std::cout << CYAN << "\n\n*****iterators:\n" << RESET << std::endl;
+	std::cout << CYAN << "\n\n*****iterators:\n" << RESET << std::endl;
 	
-	// std::vector<int>::iterator iteratortest1 = test.begin();
-	// std::vector<int>::iterator iteratortest2 = test.begin();
-	// std::vector<int>::iterator iteratorotherVector = otherVector.begin();
+	ft::vector<int>::iterator iteratortest1 = test.begin();
+	ft::vector<int>::iterator iteratortest2 = test.begin();
+	ft::vector<int>::iterator iteratorotherVector = otherVector.begin();
+
+	std::cout << L_GRAY << "(iteratortest1 == iteratortest2): " << RESET << (iteratortest1 == iteratortest2) << std::endl;
+	std::cout << L_GRAY << "(iteratortest1 == iteratorotherVector): " << RESET << (iteratortest1 == iteratorotherVector) << std::endl;
+	std::cout << L_GRAY << "(iteratortest1 < iteratorotherVector): " << RESET << (iteratortest1 < iteratorotherVector) << std::endl;
 	
-	// std::cout << L_GRAY << "(iteratortest1 == iteratortest2): " << RESET << (iteratortest1 == iteratortest2) << std::endl;
-	// std::cout << L_GRAY << "(iteratortest1 == iteratorotherVector): " << RESET << (iteratortest1 == iteratorotherVector) << std::endl;
-	// std::cout << L_GRAY << "(iteratortest1 < iteratorotherVector): " << RESET << (iteratortest1 < iteratorotherVector) << std::endl;
+	std::cout << L_GRAY << "*iteratortest1: " << RESET << *iteratortest1 << std::endl;
+	std::cout << L_GRAY << "*iteratorotherVector: " << RESET << *iteratorotherVector << std::endl;
+	std::cout << L_GRAY << "iteratortest1: " << RESET << &iteratortest1 << std::endl;
+	std::cout << L_GRAY << "iteratorotherVector: " << RESET << &iteratorotherVector << std::endl;
 	
-	// std::cout << L_GRAY << "*iteratortest1: " << RESET << *iteratortest1 << std::endl;
-	// std::cout << L_GRAY << "*iteratorotherVector: " << RESET << *iteratorotherVector << std::endl;
-	// std::cout << L_GRAY << "iteratortest1: " << RESET << &iteratortest1 << std::endl;
-	// std::cout << L_GRAY << "iteratorotherVector: " << RESET << &iteratorotherVector << std::endl;
-	
-	// std::cout << L_GRAY << "otherVector[0] = test[0];" << RESET << std::endl;	
-	// otherVector[0] = test[0];
+	std::cout << L_GRAY << "otherVector[0] = test[0];" << RESET << std::endl;	
+	// otherVector[0] = test[0]; //!Isso aqui tá dando out of bounds
 	// iteratorotherVector = otherVector.begin();
 
 	// std::cout << L_GRAY << "*iteratortest1: " << RESET << *iteratortest1 << std::endl;
