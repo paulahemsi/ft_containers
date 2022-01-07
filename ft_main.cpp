@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/06 20:19:27 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/07 19:30:20 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,29 +125,39 @@ int main(void)
 	
 	std::cout << CYAN << "\n\n*****iterators:\n" << RESET << std::endl;
 	
+	ft::vector<int> copy2(test);
+	std::cout << "copy2: " << std::endl;
+	testDisplay(copy2);
+	std::cout << L_GRAY << "copy2[0] = 0;" << RESET << std::endl;
+	copy2[0] = 0;
+	std::cout << "copy2: " << std::endl;
+	testDisplay(copy2);
+
 	ft::vector<int>::iterator iteratortest1 = test.begin();
 	ft::vector<int>::iterator iteratortest2 = test.begin();
-	ft::vector<int>::iterator iteratorotherVector = otherVector.begin();
+	ft::vector<int>::iterator iteratorcopy2 = copy2.begin();
 
 	std::cout << L_GRAY << "(iteratortest1 == iteratortest2): " << RESET << (iteratortest1 == iteratortest2) << std::endl;
-	std::cout << L_GRAY << "(iteratortest1 == iteratorotherVector): " << RESET << (iteratortest1 == iteratorotherVector) << std::endl;
-	std::cout << L_GRAY << "(iteratortest1 < iteratorotherVector): " << RESET << (iteratortest1 < iteratorotherVector) << std::endl;
+	std::cout << L_GRAY << "(iteratortest1 == iteratorcopy2): " << RESET << (iteratortest1 == iteratorcopy2) << std::endl;
+	std::cout << L_GRAY << "(iteratortest1 < iteratorcopy2): " << RESET << (iteratortest1 < iteratorcopy2) << std::endl;
 	
 	std::cout << L_GRAY << "*iteratortest1: " << RESET << *iteratortest1 << std::endl;
-	std::cout << L_GRAY << "*iteratorotherVector: " << RESET << *iteratorotherVector << std::endl;
+	std::cout << L_GRAY << "*iteratorcopy2: " << RESET << *iteratorcopy2 << std::endl;
 	std::cout << L_GRAY << "iteratortest1: " << RESET << &iteratortest1 << std::endl;
-	std::cout << L_GRAY << "iteratorotherVector: " << RESET << &iteratorotherVector << std::endl;
+	std::cout << L_GRAY << "iteratorcopy2: " << RESET << &iteratorcopy2 << std::endl;
 	
-	std::cout << L_GRAY << "otherVector[0] = test[0];" << RESET << std::endl;	
-	// otherVector[0] = test[0]; //!Isso aqui tá dando out of bounds
-	// iteratorotherVector = otherVector.begin();
+	std::cout << L_GRAY << "copy2[0] = test[0];" << RESET << std::endl;
+	copy2[0] = test[0];
+	testDisplay(copy2);
+	testDisplay(test);
+	iteratorcopy2 = copy2.begin();
 
-	// std::cout << L_GRAY << "*iteratortest1: " << RESET << *iteratortest1 << std::endl;
-	// std::cout << L_GRAY << "*iteratorotherVector: " << RESET << *iteratorotherVector << std::endl;
-	// std::cout << L_GRAY << "iteratortest1: " << RESET << &iteratortest1 << std::endl;
-	// std::cout << L_GRAY << "iteratorotherVector: " << RESET << &iteratorotherVector << std::endl;
+	std::cout << L_GRAY << "*iteratortest1: " << RESET << *iteratortest1 << std::endl;
+	std::cout << L_GRAY << "*iteratorcopy2: " << RESET << *iteratorcopy2 << std::endl;
+	std::cout << L_GRAY << "iteratortest1: " << RESET << &iteratortest1 << std::endl;
+	std::cout << L_GRAY << "iteratorcopy2: " << RESET << &iteratorcopy2 << std::endl;
 	
 
-	// std::cout << L_GRAY << "(iteratortest1 == iteratorotherVector): " << RESET << (iteratortest1 == iteratorotherVector) << std::endl;
-	// std::cout << L_GRAY << "(iteratortest1 < iteratorotherVector): " << RESET << (iteratortest1 < iteratorotherVector) << std::endl;
+	std::cout << L_GRAY << "(iteratortest1 == iteratorcopy2): " << RESET << (iteratortest1 == iteratorcopy2) << std::endl;
+	std::cout << L_GRAY << "(iteratortest1 < iteratorcopy2): " << RESET << (iteratortest1 < iteratorcopy2) << std::endl;
 }
