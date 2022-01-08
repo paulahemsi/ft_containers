@@ -15,8 +15,8 @@ This project is about implementing the various container types of the C++ standa
 * [Explicit keyword](#Explicit_keyword)
 * [Iterators](#Iterators)
     * [Iterators traits](#Iterators_traits)
-    * [Random access_and_Bidirectional_iterators](#Random-access_and_Bidirectional_iterators)
-
+    * [Random access and Bidirectional iterators](#Random-access_and_Bidirectional_iterators)
+    * [Reverse iterators](#Reverse_iterators)
 
 
 ## Vector
@@ -481,6 +481,15 @@ It is to be noted that containers like vector, deque support random-access itera
 |can be used with arithmetic operators like +, – and so on. This means that Random-access iterators can move in both the direction, and that too randomly|:heavy_check_mark:|:x:|
 |support offset dereference operator ([ ]), which is used for random-access|:heavy_check_mark:|:x:|
 |The value pointed to by these iterators can be exchanged or swapped|:heavy_check_mark:|:heavy_check_mark:|
+
+
+### Reverse_iterators
+
+[std::reverse_iterator](https://en.cppreference.com/w/cpp/iterator/reverse_iterator) is an iterator adaptor that reverses the direction of a given iterator.
+
+ In other words, when provided with (at least) a `bidirectional iterator`, `std::reverse_iterator` produces a **new iterator** that moves **from the end to the beginning** of the sequence defined by the *underlying bidirectional iterator*.
+ 
+ For a reverse iterator r constructed from an iterator i, the relationship `&*r == &*(i-1)` is always true (as long as r is dereferenceable); thus a reverse iterator constructed from a one-past-the-end iterator dereferences to the last element in a sequence.
 
 ![image](https://user-images.githubusercontent.com/63563271/148653829-be8b822c-e152-451d-bef4-9e242c81da20.png)
 
