@@ -482,6 +482,7 @@ It is to be noted that containers like vector, deque support random-access itera
 |support offset dereference operator ([ ]), which is used for random-access|:heavy_check_mark:|:x:|
 |The value pointed to by these iterators can be exchanged or swapped|:heavy_check_mark:|:heavy_check_mark:|
 
+![image](https://user-images.githubusercontent.com/63563271/148653829-be8b822c-e152-451d-bef4-9e242c81da20.png)
 
 
 * [cpp reference - vector](https://en.cppreference.com/w/cpp/container/vector)
