@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/06 20:13:49 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:54:27 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ namespace ft {
 	class random_access_iterator
 	{
 		public:
-			typedef	random_access_iterator<T>	iterator;
+			typedef	random_access_iterator<T>		iterator;
 			typedef std::random_access_iterator_tag	iterator_category;
 			typedef T								value_type;
 			typedef T*								pointer;
@@ -42,7 +42,7 @@ namespace ft {
 				this->_pointer = right_hand_side._pointer;
 				return *this;
 			}
-			
+
 			//relational operators overload
 			bool operator==(const iterator& right_hand_side)
 			{
@@ -112,7 +112,7 @@ namespace ft {
 				this->_pointer -= right_hand_side;
 				return (*this);
 			}
-			
+
 			//dereference operator
 			reference	operator[](const int n) const {return (this->_pointer[n]);}
 			reference	operator*(void) const {return *(this->_pointer);}
