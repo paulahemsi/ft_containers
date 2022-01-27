@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/23 18:39:16 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/24 13:50:35 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,9 +305,9 @@ static void test_iterators(void)
 	integers.push_back (1001);
 	displayVector(integers);
 	
-	std::vector<int>::const_iterator iteratorIntegers1 = integers.begin();
-	std::vector<int>::const_iterator iteratorIntegers2 = integers.begin();
-	std::vector<int>::const_iterator iteratorfloats = floats.begin();
+	std::vector<int>::iterator iteratorIntegers1 = integers.begin();
+	std::vector<int>::iterator iteratorIntegers2 = integers.begin();
+	std::vector<int>::iterator iteratorfloats = floats.begin();
 	
 	std::cout << L_GRAY << "(iteratorIntegers1 == iteratorIntegers2): " << RESET << (iteratorIntegers1 == iteratorIntegers2) << std::endl;
 	std::cout << L_GRAY << "(iteratorIntegers1 == iteratorfloats): " << RESET << (iteratorIntegers1 == iteratorfloats) << std::endl;
@@ -346,8 +346,6 @@ int main(void)
 	test_iterators();
 	// //integers.get_allocator();
 	
-
-
 	// std::vector<int>::reverse_iterator iteratorIntegers3 = integers.rbegin();
 	// std::vector<int>::reverse_iterator iteratorCopyVector2 = copyVector.rbegin();
 }
