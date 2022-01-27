@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/23 16:10:22 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/27 20:16:38 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,28 @@
 
 namespace ft {
 
-	template<class T, class Allocator = std::allocator<T> >
+	template<class T, class Alloc = std::allocator<T> >
 	class vector
 	{
+		public:
+		
+			typedef T										value_type;
+			typedef Alloc									allocator_type;
+			typedef allocator_type::reference				reference;
+			typedef allocator_type::const_reference			const_reference;
+			typedef allocator_type::pointer					pointer;
+			typedef allocator_type::const_pointer			const_pointer;
+			typedef ft::random_access_iterator<value_type>	iterator;
+			//typedef ft::random_access_iterator<const value_type>		const_iterator;
+			//typedef ft::reverse_iterator<iterator>			reverse_iterator;
+			//typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
+			typedef std::ptrdiff_t							difference_type;
+			typedef std::size_t								size_type;
 		private:
-			size_t		_size;
-			size_t		_capacity;
+			size_type		_size;
+			size_type		_capacity;
 			T			*_data = NULL;
-			Allocator	_allocator;
+			Alloc		_allocator;
 			
 			void	_checkOutOfBounds(int pos)
 			{
@@ -32,7 +46,7 @@ namespace ft {
 					throw OutOfBoundsException(pos);
 			}
 
-			void	_reAlloc(size_t newCapacity)
+			void	_reAlloc(size_type newCapacity)
 			{
 				T	*newBlock = this->_allocator.allocate(newCapacity);
 
@@ -40,7 +54,7 @@ namespace ft {
 				if(newCapacity < this->_size)
 					this->_size = newCapacity;
 
-				for(size_t i = 0; i < this->_size; i++)
+				for(size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&newBlock[i], this->_data[i]);
 				this->_allocator.deallocate(this->_data, this->_capacity);
 				_data = newBlock;
@@ -56,6 +70,7 @@ namespace ft {
 				//?começar com 0 igual o original ou já começar com algum espaço?
 				_reAlloc(2);
 			}
+			explicit vector (const allocator_type& alloc = allocator_type()): _size(0), _capacity(2), _data(NULL), _allocator(alloc) {}
 			vector(vector const&	instance): _size(instance._size), _capacity(instance._capacity), _data(this->_allocator.allocate(this->_capacity))
 			{
 				*this = instance;
@@ -69,7 +84,7 @@ namespace ft {
 			{
 				if (this->_capacity < other._size)
 					this->_reAlloc(other._size);
-				for(size_t i = 0; i < other._size; i++)
+				for(size_type i = 0; i < other._size; i++)
 					this->_data[i] = other._data[i];
 				return (*this);
 			}
@@ -136,12 +151,12 @@ namespace ft {
 				this->_size--;
 			}
 
-			size_t size(void)
+			size_type size(void)
 			{
 				return (this->_size);
 			}
 			
-			size_t capacity(void)
+			size_type capacity(void)
 			{
 				return (this->_capacity);
 			}
@@ -153,13 +168,13 @@ namespace ft {
 				return (false);
 			}
 
-			void assign(size_t count, const T& value)
+			void assign(size_type count, const T& value)
 			{
 				if (this->_data)
 					this->_allocator.deallocate(this->_data, this->_capacity);
 				this->_size = count;
 				this->_data = this->_allocator.allocate(this->_capacity);
-				for(size_t i = 0; i < this->_size; i++)
+				for(size_type i = 0; i < this->_size; i++)
 					this->_data[i] = value;
 			}
 
@@ -169,19 +184,19 @@ namespace ft {
 				
 			// }
 
-			void resize(size_t count, T value = T())
+			void resize(size_type count, T value = T())
 			{
 				
 			}
 
 			//size_type max_size() const;
-			size_t max_size(void) const
+			size_type max_size(void) const
 			{
 				return (this->_allocator.max_size());
 			}
 			
 			//allocator_type get_allocator() const;
-			Allocator	get_allocator(void) const
+			allocator_type get_allocator(void) const
 			{
 				return (this->_allocator);
 			}
