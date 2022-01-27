@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/27 19:19:34 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/27 20:11:58 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 
 namespace ft {
 
-	template<class T, class Allocator = std::allocator<T> >
+	template<class T, class Alloc = std::allocator<T> >
 	class vector
 	{
 		public:
 		
 			typedef T										value_type;
-			typedef Allocator								allocator_type;
-			typedef value_type&								reference;
-			typedef const value_type&						const_reference;
+			typedef Alloc									allocator_type;
+			typedef allocator_type::reference				reference;
+			typedef allocator_type::const_reference			const_reference;
 			typedef allocator_type::pointer					pointer;
 			typedef allocator_type::const_pointer			const_pointer;
 			typedef ft::random_access_iterator<value_type>	iterator;
