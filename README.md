@@ -460,6 +460,8 @@ std::iterator_traits is the type trait class that provides uniform interface to 
 
 The template can be specialized for user-defined iterators so that the information about the iterator can be retrieved even if the type does not provide the usual typedefs.
 
+> the point is to make do_something work with pointers as well as class based iterators
+
 [stackOverflow usefull thread](https://stackoverflow.com/questions/6742008/what-are-the-typical-use-cases-of-an-iterator-trait)
 
 ### Random-access_and_Bidirectional_iterators
