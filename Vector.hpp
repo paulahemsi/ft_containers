@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/23 16:10:22 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:19:34 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ namespace ft {
 	template<class T, class Allocator = std::allocator<T> >
 	class vector
 	{
+		public:
+		
+			typedef T										value_type;
+			typedef Allocator								allocator_type;
+			typedef value_type&								reference;
+			typedef const value_type&						const_reference;
+			typedef allocator_type::pointer					pointer;
+			typedef allocator_type::const_pointer			const_pointer;
+			typedef ft::random_access_iterator<value_type>	iterator;
+			//typedef ft::random_access_iterator<const value_type>		const_iterator;
+			//typedef ft::reverse_iterator<iterator>			reverse_iterator;
+			//typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
+			typedef std::ptrdiff_t							difference_type;
+			typedef std::size_t									size_type;
 		private:
 			size_t		_size;
 			size_t		_capacity;
@@ -56,6 +70,7 @@ namespace ft {
 				//?começar com 0 igual o original ou já começar com algum espaço?
 				_reAlloc(2);
 			}
+			explicit vector (const allocator_type& alloc = allocator_type()): _size(0), _capacity(2), _data(NULL), _allocator(alloc) {}
 			vector(vector const&	instance): _size(instance._size), _capacity(instance._capacity), _data(this->_allocator.allocate(this->_capacity))
 			{
 				*this = instance;
