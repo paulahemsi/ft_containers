@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/27 21:23:20 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/27 22:03:39 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ namespace ft {
 	{
 		public:
 		
-			typedef T											value_type;
-			typedef Alloc										allocator_type;
-			typedef typename allocator_type::reference			reference;
-			typedef typename allocator_type::const_reference	const_reference;
-			typedef typename allocator_type::pointer			pointer;
-			typedef typename allocator_type::const_pointer		const_pointer;
-			typedef ft::random_access_iterator<value_type>		iterator;
-			//typedef ft::random_access_iterator<const value_type>		const_iterator;
+			typedef T												value_type;
+			typedef Alloc											allocator_type;
+			typedef typename allocator_type::reference				reference;
+			typedef typename allocator_type::const_reference		const_reference;
+			typedef typename allocator_type::pointer				pointer;
+			typedef typename allocator_type::const_pointer			const_pointer;
+			typedef ft::random_access_iterator<value_type>			iterator;
+			typedef ft::random_access_iterator<const value_type>	const_iterator;
 			//typedef ft::reverse_iterator<iterator>			reverse_iterator;
 			//typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
-			typedef std::ptrdiff_t								difference_type;
-			typedef std::size_t									size_type;
+			typedef std::ptrdiff_t									difference_type;
+			typedef std::size_t										size_type;
 			
 		private:
 			size_type	_size;
@@ -131,6 +131,17 @@ namespace ft {
 				return iterator(this->_data + this->_size);
 			}
 
+//! AQUI: TRETA COM CONSTS
+			const_iterator begin(void)
+			{
+				return const_iterator(this->_data);
+			}
+
+			const_iterator end(void)
+			{
+				return const_iterator(this->_data + this->_size);
+			}
+
 			iterator rbegin(void)
 			{
 				return iterator(this->_data + this->size - 1);
@@ -163,7 +174,7 @@ namespace ft {
 				return (this->_data[this->_size - 1]);
 			}
 			
-			void push_back(const reference	value)
+			void push_back(const value_type& value)
 			{
 				if(this->_size == this->_capacity)
 					this->_reAlloc(this->_capacity * 2);
@@ -194,7 +205,7 @@ namespace ft {
 				return (false);
 			}
 
-			void assign(size_type count, const reference value)
+			void assign(size_type count, const value_type& value)
 			{
 				if (this->_data)
 					this->_allocator.deallocate(this->_data, this->_capacity);
