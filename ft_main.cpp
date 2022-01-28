@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/24 13:47:49 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/27 21:53:15 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,24 +116,24 @@ static ft::vector<int> test_push_back(void)
 	return integers;
 }
 
-static void test_insert(void)
-{
-	print_title(".INSERT");
+// static void test_insert(void)
+// {
+// 	print_title(".INSERT");
 
-	print_instructions("ft::vector<int> integers;");
-	ft::vector<int> integers;
-	displayVector(integers);
-	print_instructions("integers.insert(integers.begin(), 7);");
-	integers.insert(integers.begin(), 7);
-	displayVector(integers);
+// 	print_instructions("ft::vector<int> integers;");
+// 	ft::vector<int> integers;
+// 	displayVector(integers);
+// 	print_instructions("integers.insert(integers.begin(), 7);");
+// 	integers.insert(integers.begin(), 7);
+// 	displayVector(integers);
 
-	print_instructions("integers.insert(integers.begin() + 1, 77);");
-	integers.insert(integers.begin() + 1, 77);
-	displayVector(integers);
-	print_instructions("integers.insert(integers.begin() + 1, 3, 777);");
-	integers.insert(integers.begin() + 1, 3, 777);
-	displayVector(integers);
-}
+// 	print_instructions("integers.insert(integers.begin() + 1, 77);");
+// 	integers.insert(integers.begin() + 1, 77);
+// 	displayVector(integers);
+// 	print_instructions("integers.insert(integers.begin() + 1, 3, 777);");
+// 	integers.insert(integers.begin() + 1, 3, 777);
+// 	displayVector(integers);
+// }
 
 static void test_out_of_bounds(void)
 {
@@ -186,20 +186,20 @@ static void test_pop_back(ft::vector<int> integers)
 	displayVector(integers);
 }
 
-static void test_resize(void)
-{
-	print_title(".RESIZE");
-	ft::vector<float> my_vector(5, 5.1);
-	std::cout << "my_vector: " << std::endl;
-	displayVector(my_vector);
-	print_instructions("my_vector.resize(2);");
-	my_vector.resize(2);
-	std::cout << "my_vector: " << std::endl;
-	displayVector(my_vector);
-	std::cout << L_GRAY << "my_vector.resize(15);" << RESET << std::endl;
-	my_vector.resize(15);
-	displayVector(my_vector);
-}
+// static void test_resize(void)
+// {
+// 	print_title(".RESIZE");
+// 	ft::vector<float> my_vector(5, 5.1);
+// 	std::cout << "my_vector: " << std::endl;
+// 	displayVector(my_vector);
+// 	print_instructions("my_vector.resize(2);");
+// 	my_vector.resize(2);
+// 	std::cout << "my_vector: " << std::endl;
+// 	displayVector(my_vector);
+// 	std::cout << L_GRAY << "my_vector.resize(15);" << RESET << std::endl;
+// 	my_vector.resize(15);
+// 	displayVector(my_vector);
+// }
 
 static void test_equal_operator(void)
 {
@@ -336,10 +336,10 @@ int main(void)
 {
 	test_constructors();
 	test_empty();
-	test_insert();
+	//test_insert();
 	test_out_of_bounds();
 	test_pop_back(test_push_back());
-	test_resize();
+	// test_resize();
 	test_equal_operator();
 	test_assign();
 	test_at_front_back_and_dereference();
