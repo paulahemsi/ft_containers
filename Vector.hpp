@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/27 20:38:12 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/27 21:23:20 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,20 +62,44 @@ namespace ft {
 				_capacity = newCapacity;
 			}
 		public:
-		
-
-			// vector(void): _size(0), _capacity(2), _data(this->_allocator.allocate(this->_capacity))
-			// {
-			// 	//?começar com 0 igual o original ou já começar com algum espaço?
-			// 	_reAlloc(2);
-			// }
-			explicit vector (const allocator_type& alloc = allocator_type()): _size(0), _capacity(2), _data(NULL), _allocator(alloc) {}
-			vector(vector const&	instance):
-											_size(instance._size),
-											_capacity(instance._capacity),
+			//empty container constructor (default constructor)
+			//Constructs an empty container, with no elements.
+			explicit vector (const allocator_type& alloc = allocator_type()):
+																			_size(0),
+																			_capacity(2),
+																			_data(NULL),
+																			_allocator(alloc) {}
+			//fill constructor
+			//Constructs a container with n elements. Each element is a copy of val.
+			explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()):
+								_size(n),
+								_capacity(n),
+								_allocator(alloc),
+								_data(this->_allocator.allocate(this->_capacity))
+			{
+				for (size_type i = 0; i < this->size; i++)
+					this->_allocator.construct(&this->_data[i], val);
+			}
+			//range constructor
+			//Constructs a container with as many elements as the range [first,last], with each element constructed from its corresponding element in that range, in the same order.
+			template <class InputIterator>
+			vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type()):
+																											_size(last - first),
+																											_capacity(last - first),
+																											_allocator(alloc),
+																											_data(this->_allocator.allocate(this->_capacity))
+			{
+				for (size_type i = 0; i < this->_size; i++)
+					this->_allocator.construct(&this->_data[i], *(first + i));
+			}
+			//copy constructor
+			//Constructs a container with a copy of each of the elements in other, in the same order
+			vector(const vector&	other):
+											_size(other._size),
+											_capacity(other._capacity),
 											_data(this->_allocator.allocate(this->_capacity))
 			{
-				*this = instance;
+				*this = other;
 			}
 			~vector()
 			{
