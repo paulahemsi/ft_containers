@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:52:34 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/28 22:51:37 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/29 11:12:45 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ namespace ft {
 
 	//is_integral
 	template<typename T>
-	struct is_integral<bool> : false_type {};
+	struct is_integral : false_type {};
 
 	//specializations
 	template<>
@@ -68,7 +68,7 @@ namespace ft {
 	struct enable_if {};
 	
 	//Partial specialization for true.
-	template <>
+	template <class T>
 	struct enable_if<true, T> {typedef T type;};
 }
 
