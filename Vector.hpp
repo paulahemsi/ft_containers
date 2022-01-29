@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/29 11:13:22 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/29 11:48:25 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,8 @@ namespace ft {
 			{
 				value_type	*newBlock = this->_allocator.allocate(newCapacity);
 
-
 				if(newCapacity < this->_size)
 					this->_size = newCapacity;
-
 				for(size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&newBlock[i], this->_data[i]);
 				this->_allocator.deallocate(this->_data, this->_capacity);
@@ -67,7 +65,7 @@ namespace ft {
 			//Constructs an empty container, with no elements.
 			explicit vector (const allocator_type& alloc = allocator_type()):
 																			_size(0),
-																			_capacity(2),
+																			_capacity(0),
 																			_allocator(alloc),
 																			_data(NULL) {}
 			//fill constructor
@@ -178,7 +176,15 @@ namespace ft {
 			void push_back(const value_type& value)
 			{
 				if(this->_size == this->_capacity)
-					this->_reAlloc(this->_capacity * 2);
+				{
+					if(this->_capacity == 0)
+					{
+						this->_capacity = 1;
+						this->_reAlloc(this->_capacity);
+					}
+					else
+						this->_reAlloc(this->_capacity * 2);
+				}
 				this->_data[this->_size] = value;
 				this->_size++;
 			}

@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/27 21:53:15 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/29 11:45:20 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ static void test_empty(void)
 	std::cout << my_vector.empty() << std::endl;
 	print_instructions("my_vector.push_back(137);");
 	my_vector.push_back(137);
+	displayVector(my_vector);
 	print_instructions("my_vector.empty(): ");
 	std::cout << my_vector.empty() << std::endl;
 	print_instructions("my_vector.pop_back();");
