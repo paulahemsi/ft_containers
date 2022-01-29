@@ -504,6 +504,8 @@ It is to be noted that containers like vector, deque support random-access itera
 
 [Header](https://www.cplusplus.com/reference/type_traits/) from C++11 that defines a series of classes to obtain type information on compile-time.
 
+[type_traits source code](https://code.woboq.org/gcc/libstdc++-v3/include/std/type_traits.html)
+
 ### enable_if
 
 Enable type if condition is met
@@ -579,3 +581,9 @@ int main() {
 
   return 0;
 }
+```
+
+```
+i is odd: true
+i is even: false
+```
