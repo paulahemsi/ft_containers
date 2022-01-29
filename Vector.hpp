@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/27 21:23:20 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/28 21:29:56 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,24 @@ namespace ft {
 	{
 		public:
 		
-			typedef T											value_type;
-			typedef Alloc										allocator_type;
-			typedef typename allocator_type::reference			reference;
-			typedef typename allocator_type::const_reference	const_reference;
-			typedef typename allocator_type::pointer			pointer;
-			typedef typename allocator_type::const_pointer		const_pointer;
-			typedef ft::random_access_iterator<value_type>		iterator;
-			//typedef ft::random_access_iterator<const value_type>		const_iterator;
+			typedef T												value_type;
+			typedef Alloc											allocator_type;
+			typedef typename allocator_type::reference				reference;
+			typedef typename allocator_type::const_reference		const_reference;
+			typedef typename allocator_type::pointer				pointer;
+			typedef typename allocator_type::const_pointer			const_pointer;
+			typedef ft::random_access_iterator<value_type>			iterator;
+			typedef ft::random_access_iterator<const value_type>	const_iterator;
 			//typedef ft::reverse_iterator<iterator>			reverse_iterator;
 			//typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
-			typedef std::ptrdiff_t								difference_type;
-			typedef std::size_t									size_type;
+			typedef std::ptrdiff_t									difference_type;
+			typedef std::size_t										size_type;
 			
 		private:
 			size_type	_size;
 			size_type	_capacity;
-			T			*_data = NULL;
 			Alloc		_allocator;
+			pointer		_data;
 			
 			void	_checkOutOfBounds(int pos)
 			{
@@ -67,8 +67,8 @@ namespace ft {
 			explicit vector (const allocator_type& alloc = allocator_type()):
 																			_size(0),
 																			_capacity(2),
-																			_data(NULL),
-																			_allocator(alloc) {}
+																			_allocator(alloc),
+																			_data(NULL) {}
 			//fill constructor
 			//Constructs a container with n elements. Each element is a copy of val.
 			explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()):
@@ -77,7 +77,7 @@ namespace ft {
 								_allocator(alloc),
 								_data(this->_allocator.allocate(this->_capacity))
 			{
-				for (size_type i = 0; i < this->size; i++)
+				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&this->_data[i], val);
 			}
 			//range constructor
@@ -87,7 +87,7 @@ namespace ft {
 																											_size(last - first),
 																											_capacity(last - first),
 																											_allocator(alloc),
-																											_data(this->_allocator.allocate(this->_capacity))
+																											_data(this->_allocator.allocate(this->_size))
 			{
 				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&this->_data[i], *(first + i));
@@ -131,6 +131,16 @@ namespace ft {
 				return iterator(this->_data + this->_size);
 			}
 
+			const_iterator begin(void) const //!
+			{
+				return const_iterator(this->_data);
+			}
+
+			const_iterator end(void) const
+			{
+				return const_iterator(this->_data + this->_size);
+			}
+
 			iterator rbegin(void)
 			{
 				return iterator(this->_data + this->size - 1);
@@ -163,7 +173,7 @@ namespace ft {
 				return (this->_data[this->_size - 1]);
 			}
 			
-			void push_back(const reference	value)
+			void push_back(const value_type& value)
 			{
 				if(this->_size == this->_capacity)
 					this->_reAlloc(this->_capacity * 2);
@@ -177,12 +187,12 @@ namespace ft {
 				this->_size--;
 			}
 
-			size_type size(void)
+			size_type size(void) const
 			{
 				return (this->_size);
 			}
 			
-			size_type capacity(void)
+			size_type capacity(void) const
 			{
 				return (this->_capacity);
 			}
@@ -194,7 +204,7 @@ namespace ft {
 				return (false);
 			}
 
-			void assign(size_type count, const reference value)
+			void assign(size_type count, const value_type& value)
 			{
 				if (this->_data)
 					this->_allocator.deallocate(this->_data, this->_capacity);
