@@ -519,10 +519,10 @@ For eg. those two vector constructors are very distincts: besides the allocator,
 
 ```cpp
 			explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()):
-								_size(n),
-								_capacity(n),
-								_allocator(alloc),
-								_data(this->_allocator.allocate(this->_capacity))
+				_size(n),
+				_capacity(n),
+				_allocator(alloc),
+				_data(this->_allocator.allocate(this->_capacity))
 			{
 				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&this->_data[i], val);
@@ -530,10 +530,10 @@ For eg. those two vector constructors are very distincts: besides the allocator,
 
 			template <class InputIterator>
 			vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type()):
-																											_size(last - first),
-																											_capacity(last - first),
-																											_allocator(alloc),
-																											_data(this->_allocator.allocate(this->_size))
+				_size(last - first),
+				_capacity(last - first),
+				_allocator(alloc),
+				_data(this->_allocator.allocate(this->_size))
 			{
 				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&this->_data[i], *(first + i));
