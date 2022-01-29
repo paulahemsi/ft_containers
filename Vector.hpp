@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/27 22:03:39 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/28 21:29:56 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ namespace ft {
 		private:
 			size_type	_size;
 			size_type	_capacity;
-			T			*_data = NULL;
 			Alloc		_allocator;
+			pointer		_data;
 			
 			void	_checkOutOfBounds(int pos)
 			{
@@ -67,8 +67,8 @@ namespace ft {
 			explicit vector (const allocator_type& alloc = allocator_type()):
 																			_size(0),
 																			_capacity(2),
-																			_data(NULL),
-																			_allocator(alloc) {}
+																			_allocator(alloc),
+																			_data(NULL) {}
 			//fill constructor
 			//Constructs a container with n elements. Each element is a copy of val.
 			explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()):
@@ -77,7 +77,7 @@ namespace ft {
 								_allocator(alloc),
 								_data(this->_allocator.allocate(this->_capacity))
 			{
-				for (size_type i = 0; i < this->size; i++)
+				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&this->_data[i], val);
 			}
 			//range constructor
@@ -87,7 +87,7 @@ namespace ft {
 																											_size(last - first),
 																											_capacity(last - first),
 																											_allocator(alloc),
-																											_data(this->_allocator.allocate(this->_capacity))
+																											_data(this->_allocator.allocate(this->_size))
 			{
 				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&this->_data[i], *(first + i));
@@ -131,13 +131,12 @@ namespace ft {
 				return iterator(this->_data + this->_size);
 			}
 
-//! AQUI: TRETA COM CONSTS
-			const_iterator begin(void)
+			const_iterator begin(void) const //!
 			{
 				return const_iterator(this->_data);
 			}
 
-			const_iterator end(void)
+			const_iterator end(void) const
 			{
 				return const_iterator(this->_data + this->_size);
 			}
@@ -188,12 +187,12 @@ namespace ft {
 				this->_size--;
 			}
 
-			size_type size(void)
+			size_type size(void) const
 			{
 				return (this->_size);
 			}
 			
-			size_type capacity(void)
+			size_type capacity(void) const
 			{
 				return (this->_capacity);
 			}
