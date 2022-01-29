@@ -17,7 +17,7 @@ This project is about implementing the various container types of the C++ standa
     * [Iterators traits](#Iterators_traits)
     * [Random access and Bidirectional iterators](#Random-access_and_Bidirectional_iterators)
     * [Reverse iterators](#Reverse_iterators)
-
+* [Type_traits](#Type_traits)
 
 ## Vector
 
@@ -498,3 +498,84 @@ It is to be noted that containers like vector, deque support random-access itera
 
 * [cpp reference - vector](https://en.cppreference.com/w/cpp/container/vector)
 * [VECTOR/DYNAMIC ARRAY - Making DATA STRUCTURES in C++](https://www.youtube.com/watch?v=ryRf4Jh_YC0)
+
+
+## Type_traits
+
+[Header](https://www.cplusplus.com/reference/type_traits/) from C++11 that defines a series of classes to obtain type information on compile-time.
+
+### enable_if
+
+Enable type if condition is met
+The type T is enabled as member type `enable_if::type` if `Cond` is **true**.
+
+Otherwise, `enable_if::type` is not defined.
+
+This is useful to hide signatures on compile time when a particular condition is not met, since in this case, the member `enable_if::type` will not be defined and attempting to compile using it should fail.
+
+For eg. those two vector constructors are very distincts: besides the allocator, one is suposed to receive Iterators, the other a size_t and the vector type:
+
+```cpp
+			explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()):
+								_size(n),
+								_capacity(n),
+								_allocator(alloc),
+								_data(this->_allocator.allocate(this->_capacity))
+			{
+				for (size_type i = 0; i < this->_size; i++)
+					this->_allocator.construct(&this->_data[i], val);
+			}
+
+			template <class InputIterator>
+			vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type()):
+																											_size(last - first),
+																											_capacity(last - first),
+																											_allocator(alloc),
+																											_data(this->_allocator.allocate(this->_size))
+			{
+				for (size_type i = 0; i < this->_size; i++)
+					this->_allocator.construct(&this->_data[i], *(first + i));
+			}
+```
+
+But as the second one is a template, this initialization:
+
+```cpp
+ft::vector<int> tenElement90(10, 90);
+```
+
+will call the second contructor, and as the arguments are integers and not iterators, we have a compiler error.
+
+To avoid those kind of situations, [enable_if](https://www.cplusplus.com/reference/type_traits/enable_if/) must be implemented, adding an extra condition to the second constructor saying *"not call this if the type being passed are an integral type"*
+
+### is_integral
+
+[is_integral](https://www.cplusplus.com/reference/type_traits/is_integral/) is the other piece needed to the condicion above.
+
+Trait class that identifies whether T is an integral type.
+
+```cpp
+// enable_if example: two ways of using enable_if
+#include <iostream>
+#include <type_traits>
+
+// 1. the return type (bool) is only valid if T is an integral type:
+template <class T>
+typename std::enable_if<std::is_integral<T>::value,bool>::type
+  is_odd (T i) {return bool(i%2);}
+
+// 2. the second template argument is only valid if T is an integral type:
+template < class T,
+           class = typename std::enable_if<std::is_integral<T>::value>::type>
+bool is_even (T i) {return !bool(i%2);}
+
+int main() {
+
+  short int i = 1;    // code does not compile if type of i is not integral
+
+  std::cout << std::boolalpha;
+  std::cout << "i is odd: " << is_odd(i) << std::endl;
+  std::cout << "i is even: " << is_even(i) << std::endl;
+
+  return 0;
+}
