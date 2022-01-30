@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/29 11:45:15 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/30 15:36:51 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,14 @@ static std::vector<int> test_push_back(void)
 	std::vector<int> integers;
 	displayVector(integers);
 	print_instructions("integers.push_back(number) x 8");
-	integers.push_back (50);
-	integers.push_back (1);
-	integers.push_back (987);
-	integers.push_back (1001);
-	integers.push_back (50);
-	integers.push_back (1);
-	integers.push_back (987);
-	integers.push_back (1001);
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
 	displayVector(integers);
 	return integers;
 }
@@ -210,11 +210,11 @@ static void test_equal_operator(void)
 	displayVector(string_vector2);
 	std::vector<std::string> string_vector;
 	print_instructions("string_vector.push_back(name) x 5");
-	string_vector.push_back ("Ada");
-	string_vector.push_back ("Bell");
-	string_vector.push_back ("Djamila");
-	string_vector.push_back ("Chimamanda");
-	string_vector.push_back ("Elza");
+	string_vector.push_back("Ada");
+	string_vector.push_back("Bell");
+	string_vector.push_back("Djamila");
+	string_vector.push_back("Chimamanda");
+	string_vector.push_back("Elza");
 	displayVector(string_vector);
 	std::cout << L_GRAY << "string_vector2 = string_vector;" << RESET << std::endl;
 	string_vector2 = string_vector;
@@ -232,22 +232,22 @@ static void test_assign(void)
 	integers.assign(2, 22);
 	displayVector(integers);
 	print_instructions("integers.push_back(number) x 3");
-	integers.push_back (50);
-	integers.push_back (1);
-	integers.push_back (987);
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
 	displayVector(integers);
 	std::cout << L_GRAY << "integers.assign(3, 33);" << RESET << std::endl;
 	integers.assign(3, 33);
 	displayVector(integers);
 	print_instructions("integers.push_back(number) x 8");
-	integers.push_back (50);
-	integers.push_back (1);
-	integers.push_back (987);
-	integers.push_back (1001);
-	integers.push_back (50);
-	integers.push_back (1);
-	integers.push_back (987);
-	integers.push_back (1001);
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
 	displayVector(integers);
 	std::cout << L_GRAY << "integers.assign(4, 44);" << RESET << std::endl;
 	integers.assign(4, 44);
@@ -261,14 +261,14 @@ static void test_at_front_back_and_dereference(void)
 	std::vector<int> integers;
 	displayVector(integers);
 	print_instructions("integers.push_back(number) x 8");
-	integers.push_back (50);
-	integers.push_back (1);
-	integers.push_back (987);
-	integers.push_back (1001);
-	integers.push_back (50);
-	integers.push_back (1);
-	integers.push_back (987);
-	integers.push_back (1001);
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
 	displayVector(integers);
 	std::cout << L_GRAY << "integers.at(0) = 3;" << RESET << std::endl;
 	integers.at(0) = 3;
@@ -285,25 +285,25 @@ static void test_iterators(void)
 
 	std::vector<int> floats;
 	print_instructions("floats.push_back(number) x 8");
-	floats.push_back (59.57);
-	floats.push_back (9.57);
-	floats.push_back (989.57);
-	floats.push_back (1009.57);
-	floats.push_back (59.57);
-	floats.push_back (9.57);
-	floats.push_back (989.57);
-	floats.push_back (1009.57);
+	floats.push_back(59.57);
+	floats.push_back(9.57);
+	floats.push_back(989.57);
+	floats.push_back(1009.57);
+	floats.push_back(59.57);
+	floats.push_back(9.57);
+	floats.push_back(989.57);
+	floats.push_back(1009.57);
 	displayVector(floats);
 	std::vector<int> integers;
 	print_instructions("integers.push_back(number) x 8");
-	integers.push_back (50);
-	integers.push_back (1);
-	integers.push_back (987);
-	integers.push_back (1001);
-	integers.push_back (50);
-	integers.push_back (1);
-	integers.push_back (987);
-	integers.push_back (1001);
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
 	displayVector(integers);
 	
 	std::vector<int>::iterator iteratorIntegers1 = integers.begin();
