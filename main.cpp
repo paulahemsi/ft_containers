@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/30 15:36:51 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/30 16:10:41 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -333,6 +333,60 @@ static void test_iterators(void)
 	std::cout << L_GRAY << "(iteratorIntegers1 < iteratorfloats): " << RESET << (iteratorIntegers1 < iteratorfloats) << std::endl;
 }
 
+static void test_const_iterators(void)
+{
+	print_title("ITERATORS");
+
+	std::vector<int> floats;
+	print_instructions("floats.push_back(number) x 8");
+	floats.push_back(59.57);
+	floats.push_back(9.57);
+	floats.push_back(989.57);
+	floats.push_back(1009.57);
+	floats.push_back(59.57);
+	floats.push_back(9.57);
+	floats.push_back(989.57);
+	floats.push_back(1009.57);
+	displayVector(floats);
+	std::vector<int> integers;
+	print_instructions("integers.push_back(number) x 8");
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
+	displayVector(integers);
+	
+	std::vector<int>::iterator iteratorIntegers1 = integers.begin();
+	std::vector<int>::iterator iteratorIntegers2 = integers.begin();
+	std::vector<int>::iterator iteratorfloats = floats.begin();
+	
+	std::cout << L_GRAY << "(iteratorIntegers1 == iteratorIntegers2): " << RESET << (iteratorIntegers1 == iteratorIntegers2) << std::endl;
+	std::cout << L_GRAY << "(iteratorIntegers1 == iteratorfloats): " << RESET << (iteratorIntegers1 == iteratorfloats) << std::endl;
+	std::cout << L_GRAY << "(iteratorIntegers1 < iteratorfloats): " << RESET << (iteratorIntegers1 < iteratorfloats) << std::endl;
+	
+	std::cout << L_GRAY << "*iteratorIntegers1: " << RESET << *iteratorIntegers1 << std::endl;
+	std::cout << L_GRAY << "*iteratorfloats: " << RESET << *iteratorfloats << std::endl;
+	std::cout << L_GRAY << "iteratorIntegers1: " << RESET << &iteratorIntegers1 << std::endl;
+	std::cout << L_GRAY << "iteratorfloats: " << RESET << &iteratorfloats << std::endl;
+	
+	std::cout << L_GRAY << "floats[0] = integers[0];" << RESET << std::endl;	
+	floats[0] = integers[0];
+	iteratorfloats = floats.begin();
+
+	std::cout << L_GRAY << "*iteratorIntegers1: " << RESET << *iteratorIntegers1 << std::endl;
+	std::cout << L_GRAY << "*iteratorfloats: " << RESET << *iteratorfloats << std::endl;
+	std::cout << L_GRAY << "iteratorIntegers1: " << RESET << &iteratorIntegers1 << std::endl;
+	std::cout << L_GRAY << "iteratorfloats: " << RESET << &iteratorfloats << std::endl;
+	
+
+	std::cout << L_GRAY << "(iteratorIntegers1 == iteratorfloats): " << RESET << (iteratorIntegers1 == iteratorfloats) << std::endl;
+	std::cout << L_GRAY << "(iteratorIntegers1 < iteratorfloats): " << RESET << (iteratorIntegers1 < iteratorfloats) << std::endl;
+}
+
 int main(void)
 {
 	test_constructors();
@@ -342,9 +396,10 @@ int main(void)
 	test_pop_back(test_push_back());
 	test_resize();
 	test_equal_operator();
-	test_assign();
 	test_at_front_back_and_dereference();
 	test_iterators();
+	test_const_iterators();
+	test_assign();
 	// //integers.get_allocator();
 	
 	// std::vector<int>::reverse_iterator iteratorIntegers3 = integers.rbegin();

@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/29 11:27:51 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/30 16:21:45 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ namespace ft {
 			typedef T*								pointer;
 			typedef T&								reference;
 			typedef std::ptrdiff_t					difference_type;
+			typedef random_access_iterator<const T>	const_iterator;
 
 		private:
 			pointer	_pointer;
@@ -42,6 +43,9 @@ namespace ft {
 				this->_pointer = right_hand_side._pointer;
 				return *this;
 			}
+
+			// convertion to const if needed
+			operator const_iterator() const { return const_iterator(_pointer); }
 
 			//relational operators overload
 			bool operator==(const iterator& right_hand_side)
