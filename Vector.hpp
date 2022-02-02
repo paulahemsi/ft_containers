@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/29 11:48:25 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/01 22:25:20 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ namespace ft {
 				if (this->_capacity < other._size)
 					this->_reAlloc(other._size);
 				for(size_type i = 0; i < other._size; i++)
-					this->_data[i] = other._data[i];
+					this->_allocator.construct(&this->_data[i], other._data[i]);
 				return (*this);
 			}
 
@@ -131,7 +131,7 @@ namespace ft {
 				return iterator(this->_data + this->_size);
 			}
 
-			const_iterator begin(void) const //!
+			const_iterator begin(void) const
 			{
 				return const_iterator(this->_data);
 			}
@@ -185,7 +185,7 @@ namespace ft {
 					else
 						this->_reAlloc(this->_capacity * 2);
 				}
-				this->_data[this->_size] = value;
+				this->_allocator.construct(&this->_data[this->_size], value);
 				this->_size++;
 			}
 
@@ -217,6 +217,8 @@ namespace ft {
 				if (this->_data)
 					this->_allocator.deallocate(this->_data, this->_capacity);
 				this->_size = count;
+				if (this->_capacity < this->_size)
+					this->_capacity = this->_size;
 				this->_data = this->_allocator.allocate(this->_capacity);
 				for(size_type i = 0; i < this->_size; i++)
 					this->_data[i] = value;

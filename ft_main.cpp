@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/30 16:10:06 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/01 21:57:55 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,24 +117,35 @@ static ft::vector<int> test_push_back(void)
 	return integers;
 }
 
-// static void test_insert(void)
-// {
-// 	print_title(".INSERT");
+static void test_pop_back(ft::vector<int> integers)
+{
+	print_title(".POP_BACK");
+	print_instructions("integers.pop_back();");
+	integers.pop_back();
+	displayVector(integers);
+	print_instructions("integers.pop_back();");
+	integers.pop_back();
+	displayVector(integers);
+}
 
-// 	print_instructions("ft::vector<int> integers;");
-// 	ft::vector<int> integers;
-// 	displayVector(integers);
-// 	print_instructions("integers.insert(integers.begin(), 7);");
-// 	integers.insert(integers.begin(), 7);
-// 	displayVector(integers);
+// // static void test_insert(void)
+// // {
+// // 	print_title(".INSERT");
 
-// 	print_instructions("integers.insert(integers.begin() + 1, 77);");
-// 	integers.insert(integers.begin() + 1, 77);
-// 	displayVector(integers);
-// 	print_instructions("integers.insert(integers.begin() + 1, 3, 777);");
-// 	integers.insert(integers.begin() + 1, 3, 777);
-// 	displayVector(integers);
-// }
+// // 	print_instructions("ft::vector<int> integers;");
+// // 	ft::vector<int> integers;
+// // 	displayVector(integers);
+// // 	print_instructions("integers.insert(integers.begin(), 7);");
+// // 	integers.insert(integers.begin(), 7);
+// // 	displayVector(integers);
+
+// // 	print_instructions("integers.insert(integers.begin() + 1, 77);");
+// // 	integers.insert(integers.begin() + 1, 77);
+// // 	displayVector(integers);
+// // 	print_instructions("integers.insert(integers.begin() + 1, 3, 777);");
+// // 	integers.insert(integers.begin() + 1, 3, 777);
+// // 	displayVector(integers);
+// // }
 
 static void test_out_of_bounds(void)
 {
@@ -176,32 +187,42 @@ static void test_out_of_bounds(void)
 	}
 }
 
-static void test_pop_back(ft::vector<int> integers)
-{
-	print_title(".POP_BACK");
-	print_instructions("integers.pop_back();");
-	integers.pop_back();
-	displayVector(integers);
-	print_instructions("integers.pop_back();");
-	integers.pop_back();
-	displayVector(integers);
-}
+// // static void test_resize(void)
+// // {
+// // 	print_title(".RESIZE");
+// // 	ft::vector<float> my_vector(5, 5.1);
+// // 	std::cout << "my_vector: " << std::endl;
+// // 	displayVector(my_vector);
+// // 	print_instructions("my_vector.resize(2);");
+// // 	my_vector.resize(2);
+// // 	std::cout << "my_vector: " << std::endl;
+// // 	displayVector(my_vector);
+// // 	std::cout << L_GRAY << "my_vector.resize(15);" << RESET << std::endl;
+// // 	my_vector.resize(15);
+// // 	displayVector(my_vector);
+// // }
 
-// static void test_resize(void)
+// static void test_equal_operator(void)
 // {
-// 	print_title(".RESIZE");
-// 	ft::vector<float> my_vector(5, 5.1);
-// 	std::cout << "my_vector: " << std::endl;
-// 	displayVector(my_vector);
-// 	print_instructions("my_vector.resize(2);");
-// 	my_vector.resize(2);
-// 	std::cout << "my_vector: " << std::endl;
-// 	displayVector(my_vector);
-// 	std::cout << L_GRAY << "my_vector.resize(15);" << RESET << std::endl;
-// 	my_vector.resize(15);
-// 	displayVector(my_vector);
+// 	print_title("  =  ");
+// 	print_instructions("ft::vector<int> string_vector2(2, 2);");
+// 	ft::vector<int> string_vector2(2, 2);
+// 	displayVector(string_vector2);
+// 	ft::vector<int> string_vector;
+// 	print_instructions("string_vector.push_back(name) x 5");
+// 	string_vector.push_back(1);
+// 	string_vector.push_back(2);
+// 	string_vector.push_back(3);
+// 	string_vector.push_back(4);
+// 	string_vector.push_back(5);
+// 	displayVector(string_vector);
+// 	std::cout << L_GRAY << "string_vector2 = string_vector;" << RESET << std::endl;
+// 	string_vector2 = string_vector;
+// 	std::cout << "string_vector2: " << std::endl;
+// 	displayVector(string_vector2);
 // }
 
+//! BUGADO POR SER COM STRINGS:
 static void test_equal_operator(void)
 {
 	print_title("  =  ");
@@ -222,6 +243,7 @@ static void test_equal_operator(void)
 	displayVector(string_vector2);
 }
 
+//! BUGADO
 static void test_assign(void)
 {
 	print_title(".ASSIGN");
@@ -391,15 +413,15 @@ int main(void)
 {
 	test_constructors();
 	test_empty();
-	// test_insert();
-	test_out_of_bounds();
+	// // test_insert();
 	test_pop_back(test_push_back());
-	// test_resize();
+	test_out_of_bounds();
+	// // test_resize();
 	test_equal_operator();
+	test_assign();
 	test_at_front_back_and_dereference();
 	test_iterators();
 	test_const_iterators();
-	test_assign();
 	// //integers.get_allocator();
 	
 	// std::vector<int>::reverse_iterator iteratorIntegers3 = integers.rbegin();

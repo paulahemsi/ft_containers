@@ -66,6 +66,10 @@ return 0;
 ```
 Insertion in a vector happens at the end of the array, and elements are “pushed” into its back using the member function `push_back()`
 
+
+* [cpp reference - vector](https://en.cppreference.com/w/cpp/container/vector)
+* [VECTOR/DYNAMIC ARRAY - Making DATA STRUCTURES in C++](https://www.youtube.com/watch?v=ryRf4Jh_YC0)
+
 **insert()**
 
 ```cpp
@@ -495,11 +499,8 @@ It is to be noted that containers like vector, deque support random-access itera
 
 ![image](https://user-images.githubusercontent.com/63563271/148653829-be8b822c-e152-451d-bef4-9e242c81da20.png) 
 ![image](https://user-images.githubusercontent.com/63563271/151715136-dc6932c1-9947-4a3e-9dd0-4f04985ec786.png)
-						 
-* [cpp reference - vector](https://en.cppreference.com/w/cpp/container/vector)
-* [VECTOR/DYNAMIC ARRAY - Making DATA STRUCTURES in C++](https://www.youtube.com/watch?v=ryRf4Jh_YC0)
 
-
+* [Tricky Reverse Iterator](https://www.youtube.com/watch?v=V89gtNl4pZM)
 
 ## Type_traits
 

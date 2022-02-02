@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 14:27:04 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/13 20:46:12 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/01/30 17:45:25 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ namespace ft {
 	public:
 		//member functions
 		reverse_iterator(void): _current() {};
-		explicit reverse_iterator(iterator_type x): _current(x) {};
+		explicit reverse_iterator(iterator_type it): _current(it) {};
 		template< class U >
-		reverse_iterator(const reverse_iterator<U>& other) {*this = other};
+		reverse_iterator(const reverse_iterator<Iter>& other) {*this = other};
 		~reverse_iterator(void) {};
 	};
-	
+
 // 	Member functions
 // (constructor)
  
@@ -88,37 +88,6 @@ namespace ft {
 // operator>
 // operator>=
 // operator<=>
-  
-// (C++20)
- 
-// compares the underlying iterators
-// (function template)
-// operator+
- 
-// advances the iterator
-// (function template)
-// operator-
- 
-// computes the distance between two iterator adaptors
-// (function template)
-// iter_move
-  
-// (C++20)
- 
-// casts the result of dereferencing the adjusted underlying iterator to its associated rvalue reference type
-// (function)
-// iter_swap
-  
-// (C++20)
- 
-// swaps the objects pointed to by two adjusted underlying iterators
-// (function template)
-// make_reverse_iterator
-  
-// (C++14)
- 
-// creates a std::reverse_iterator of type inferred from the argument
-// (function template)
 }
 
 #endif
