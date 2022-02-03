@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/02 21:36:28 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/02 21:39:27 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <exception>
 #include "type_traits.hpp"
 #include "random_access_iterator.hpp"
+#include "reverse_iterator.hpp"
 
 namespace ft {
 
@@ -149,6 +150,16 @@ namespace ft {
 			reverse_iterator rend(void)
 			{
 				return reverse_iterator(this->_data - 1);
+			}
+
+			const_reverse_iterator rbegin(void) const
+			{
+				return const_reverse_iterator(this->_data + this->size - 1);
+			}
+
+			const_reverse_iterator rend(void)
+			{
+				return const_reverse_iterator(this->_data - 1);
 			}
 
 			const reference	operator[](int pos) const
