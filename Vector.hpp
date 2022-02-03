@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/01 22:25:20 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/02 19:53:28 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,12 +199,12 @@ namespace ft {
 			{
 				return (this->_size);
 			}
-			
+
 			size_type capacity(void) const
 			{
 				return (this->_capacity);
 			}
-			
+
 			bool empty() const
 			{
 				if (this->_size == 0)
@@ -230,6 +230,7 @@ namespace ft {
 				
 			// }
 
+			//!Dá diferença pro workspace
 			// void resize(size_type count, value_type value = value_type())
 			// {
 				
@@ -240,7 +241,7 @@ namespace ft {
 			{
 				return (this->_allocator.max_size());
 			}
-			
+
 			//allocator_type get_allocator() const;
 			allocator_type get_allocator(void) const
 			{
