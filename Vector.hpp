@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/02 19:53:28 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/02 21:36:28 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ namespace ft {
 			typedef typename allocator_type::const_pointer			const_pointer;
 			typedef ft::random_access_iterator<value_type>			iterator;
 			typedef ft::random_access_iterator<const value_type>	const_iterator;
-			//typedef ft::reverse_iterator<iterator>			reverse_iterator;
-			//typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
+			typedef ft::reverse_iterator<iterator>					reverse_iterator;
+			typedef ft::reverse_iterator<const_iterator>			const_reverse_iterator;
 			typedef std::ptrdiff_t									difference_type;
 			typedef std::size_t										size_type;
 			
@@ -141,14 +141,14 @@ namespace ft {
 				return const_iterator(this->_data + this->_size);
 			}
 
-			iterator rbegin(void)
+			reverse_iterator rbegin(void)
 			{
-				return iterator(this->_data + this->size - 1);
+				return reverse_iterator(this->_data + this->size - 1);
 			}
 
-			iterator rend(void)
+			reverse_iterator rend(void)
 			{
-				return iterator(this->_data - 1);
+				return reverse_iterator(this->_data - 1);
 			}
 
 			const reference	operator[](int pos) const
