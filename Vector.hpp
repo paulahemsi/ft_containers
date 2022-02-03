@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/02 21:39:27 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/02 22:07:15 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ namespace ft {
 
 			reverse_iterator rbegin(void)
 			{
-				return reverse_iterator(this->_data + this->size - 1);
+				return reverse_iterator(this->_data + this->_size - 1);
 			}
 
 			reverse_iterator rend(void)
@@ -154,10 +154,10 @@ namespace ft {
 
 			const_reverse_iterator rbegin(void) const
 			{
-				return const_reverse_iterator(this->_data + this->size - 1);
+				return const_reverse_iterator(this->_data + this->_size - 1);
 			}
 
-			const_reverse_iterator rend(void)
+			const_reverse_iterator rend(void) const
 			{
 				return const_reverse_iterator(this->_data - 1);
 			}

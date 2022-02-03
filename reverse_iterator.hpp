@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 14:27:04 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/02 21:32:57 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/02 22:05:26 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 
 namespace ft {
 
-	template<class Iter>
+	template<class Iterator>
 	class reverse_iterator
 	{
 	public:
 		//member types until C++20 
-		typedef Iterator													iterator_type;
+		typedef Iterator												iterator_type;
 		typedef typename ft::iterator_traits<Iterator>::iterator_category 	iterator_category;
 		typedef typename ft::iterator_traits<Iterator>::value_type			value_type;
 		typedef typename ft::iterator_traits<Iterator>::difference_type		difference_type;
@@ -42,12 +42,12 @@ namespace ft {
 		explicit reverse_iterator(iterator_type it): _current(it) {};
 		
 		template<class Iter>
-		reverse_iterator(const reverse_iterator<Iter>& other) {*this = other};
+		reverse_iterator(const reverse_iterator<Iter>& other) { *this = other; };
 		
 		~reverse_iterator(void) {};
 
 		template<class Iter>
-		reverse_iterator& operator=(const reverse_iterator<Iter>& right_hand_side);
+		reverse_iterator& operator=(const reverse_iterator<Iter>& right_hand_side)
 		{
 			this->_current = right_hand_side.base();
 			return *this;
@@ -72,7 +72,7 @@ namespace ft {
 
 		pointer		operator->(void) const
 		{
-			retrun std::adressof(operator*());
+			return &(operator*());
 		}
 
 		//advances or decrements the iterator
