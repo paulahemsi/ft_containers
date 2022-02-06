@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/30 16:10:41 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/02 22:05:59 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,7 +335,7 @@ static void test_iterators(void)
 
 static void test_const_iterators(void)
 {
-	print_title("ITERATORS");
+	print_title("CONST ITERATORS");
 
 	std::vector<int> floats;
 	print_instructions("floats.push_back(number) x 8");
@@ -387,6 +387,67 @@ static void test_const_iterators(void)
 	std::cout << L_GRAY << "(iteratorIntegers1 < iteratorfloats): " << RESET << (iteratorIntegers1 < iteratorfloats) << std::endl;
 }
 
+static void test_reverse_iterators(void)
+{
+	print_title("REVERSE ITERATORS");
+
+	std::vector<int> floats;
+	print_instructions("floats.push_back(number) x 8");
+	floats.push_back(59.57);
+	floats.push_back(9.57);
+	floats.push_back(989.57);
+	floats.push_back(1009.57);
+	floats.push_back(59.57);
+	floats.push_back(9.57);
+	floats.push_back(989.57);
+	floats.push_back(1009.57);
+	displayVector(floats);
+	std::vector<int> integers;
+	print_instructions("integers.push_back(number) x 8");
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
+	displayVector(integers);
+	
+	std::vector<int>::reverse_iterator reverse_iteratorIntegers1 = integers.rbegin();
+	std::vector<int>::reverse_iterator reverse_iteratorIntegers2 = integers.rbegin();
+	std::vector<int>::reverse_iterator reverse_iteratorfloats = floats.rbegin();
+	
+	std::cout << L_GRAY << "(reverse_iteratorIntegers1 == reverse_iteratorIntegers2): " << RESET << (reverse_iteratorIntegers1 == reverse_iteratorIntegers2) << std::endl;
+	std::cout << L_GRAY << "(reverse_iteratorIntegers1 == reverse_iteratorfloats): " << RESET << (reverse_iteratorIntegers1 == reverse_iteratorfloats) << std::endl;
+	std::cout << L_GRAY << "(reverse_iteratorIntegers1 < reverse_iteratorfloats): " << RESET << (reverse_iteratorIntegers1 < reverse_iteratorfloats) << std::endl;
+	
+	std::cout << L_GRAY << "*reverse_iteratorIntegers1: " << RESET << *reverse_iteratorIntegers1 << std::endl;
+	std::cout << L_GRAY << "*reverse_iteratorfloats: " << RESET << *reverse_iteratorfloats << std::endl;
+	std::cout << L_GRAY << "reverse_iteratorIntegers1: " << RESET << &reverse_iteratorIntegers1 << std::endl;
+	std::cout << L_GRAY << "reverse_iteratorfloats: " << RESET << &reverse_iteratorfloats << std::endl;
+	
+	std::cout << L_GRAY << "floats[0] = integers[0];" << RESET << std::endl;	
+	floats[0] = integers[0];
+	reverse_iteratorfloats = floats.rbegin();
+
+	std::cout << L_GRAY << "*reverse_iteratorIntegers1: " << RESET << *reverse_iteratorIntegers1 << std::endl;
+	std::cout << L_GRAY << "*reverse_iteratorfloats: " << RESET << *reverse_iteratorfloats << std::endl;
+	std::cout << L_GRAY << "reverse_iteratorIntegers1: " << RESET << &reverse_iteratorIntegers1 << std::endl;
+	std::cout << L_GRAY << "reverse_iteratorfloats: " << RESET << &reverse_iteratorfloats << std::endl;
+	
+
+	std::cout << L_GRAY << "(reverse_iteratorIntegers1 == reverse_iteratorfloats): " << RESET << (reverse_iteratorIntegers1 == reverse_iteratorfloats) << std::endl;
+	std::cout << L_GRAY << "(reverse_iteratorIntegers1 < reverse_iteratorfloats): " << RESET << (reverse_iteratorIntegers1 < reverse_iteratorfloats) << std::endl;
+
+	std::vector<int>::reverse_iterator rend = integers.rend();
+	while (reverse_iteratorIntegers1 <= rend)
+	{
+		std::cout << *reverse_iteratorIntegers1 << std::endl;
+		reverse_iteratorIntegers1++;
+	}
+}
+
 int main(void)
 {
 	test_constructors();
@@ -400,6 +461,7 @@ int main(void)
 	test_iterators();
 	test_const_iterators();
 	test_assign();
+	test_reverse_iterators();
 	// //integers.get_allocator();
 	
 	// std::vector<int>::reverse_iterator iteratorIntegers3 = integers.rbegin();

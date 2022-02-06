@@ -6,12 +6,12 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/30 16:21:45 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/03 23:12:41 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RANDOM_ACCESS_ITERATOR
-#define RANDOM_ACCESS_ITERATOR
+#ifndef RANDOM_ACCESS_ITERATOR_HPP
+#define RANDOM_ACCESS_ITERATOR_HPP
 
 #include "iterators_traits.hpp"
 
@@ -34,10 +34,14 @@ namespace ft {
 
 		public:
 			//canonical
-			random_access_iterator(): _pointer(NULL) {};
+			random_access_iterator(): _pointer(NULL) {}
+
 			explicit random_access_iterator(pointer ptr): _pointer(ptr) {}
+
 			random_access_iterator(const random_access_iterator& instance) {*this = instance;}
-			~random_access_iterator() {};
+
+			~random_access_iterator() {}
+
 			random_access_iterator& operator=(const random_access_iterator& right_hand_side)
 			{
 				this->_pointer = right_hand_side._pointer;
@@ -45,7 +49,7 @@ namespace ft {
 			}
 
 			// convertion to const if needed
-			operator const_iterator() const { return const_iterator(_pointer); }
+			operator const_iterator() const {return const_iterator(_pointer);}
 
 			//relational operators overload
 			bool operator==(const iterator& right_hand_side)

@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/01 22:25:20 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/06 20:29:49 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <exception>
 #include "type_traits.hpp"
 #include "random_access_iterator.hpp"
+#include "reverse_iterator.hpp"
 
 namespace ft {
 
@@ -31,8 +32,8 @@ namespace ft {
 			typedef typename allocator_type::const_pointer			const_pointer;
 			typedef ft::random_access_iterator<value_type>			iterator;
 			typedef ft::random_access_iterator<const value_type>	const_iterator;
-			//typedef ft::reverse_iterator<iterator>			reverse_iterator;
-			//typedef ft::reverse_iterator<const_iterator>	const_reverse_iterator;
+			typedef ft::reverse_iterator<iterator>					reverse_iterator;
+			typedef ft::reverse_iterator<const_iterator>			const_reverse_iterator;
 			typedef std::ptrdiff_t									difference_type;
 			typedef std::size_t										size_type;
 			
@@ -70,11 +71,11 @@ namespace ft {
 																			_data(NULL) {}
 			//fill constructor
 			//Constructs a container with n elements. Each element is a copy of val.
-			explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()):
-								_size(n),
-								_capacity(n),
-								_allocator(alloc),
-								_data(this->_allocator.allocate(this->_capacity))
+			explicit vector(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()):
+																																_size(n),
+																																_capacity(n),
+																																_allocator(alloc),
+																																_data(this->_allocator.allocate(this->_capacity))
 			{
 				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&this->_data[i], val);
@@ -82,7 +83,7 @@ namespace ft {
 			//range constructor
 			//Constructs a container with as many elements as the range [first,last], with each element constructed from its corresponding element in that range, in the same order.
 			template <class InputIterator>
-			vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
+			vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
 					typename ft::enable_if<!ft::is_integral<InputIterator>::value, bool>::type = false):
 																											_size(last - first),
 																											_capacity(last - first),
@@ -141,14 +142,24 @@ namespace ft {
 				return const_iterator(this->_data + this->_size);
 			}
 
-			iterator rbegin(void)
+			reverse_iterator rbegin(void)
 			{
-				return iterator(this->_data + this->size - 1);
+				return reverse_iterator(this->end() - 1); //*
 			}
 
-			iterator rend(void)
+			reverse_iterator rend(void)
 			{
-				return iterator(this->_data - 1);
+				return reverse_iterator(this->begin() - 1); //*
+			}
+
+			const_reverse_iterator rbegin(void) const
+			{
+				return const_reverse_iterator(this->_data + this->_size - 1);
+			}
+
+			const_reverse_iterator rend(void) const
+			{
+				return const_reverse_iterator(this->_data - 1);
 			}
 
 			const reference	operator[](int pos) const
@@ -199,12 +210,12 @@ namespace ft {
 			{
 				return (this->_size);
 			}
-			
+
 			size_type capacity(void) const
 			{
 				return (this->_capacity);
 			}
-			
+
 			bool empty() const
 			{
 				if (this->_size == 0)
@@ -230,6 +241,7 @@ namespace ft {
 				
 			// }
 
+			//!Dá diferença pro workspace
 			// void resize(size_type count, value_type value = value_type())
 			// {
 				
@@ -240,7 +252,7 @@ namespace ft {
 			{
 				return (this->_allocator.max_size());
 			}
-			
+
 			//allocator_type get_allocator() const;
 			allocator_type get_allocator(void) const
 			{
