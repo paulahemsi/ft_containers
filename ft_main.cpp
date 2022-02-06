@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/02 22:06:43 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/06 20:16:00 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -484,8 +484,4 @@ int main(void)
 	test_iterators();
 	test_const_iterators();
 	test_reverse_iterators();
-	// //integers.get_allocator();
-	
-	// std::vector<int>::reverse_iterator iteratorIntegers3 = integers.rbegin();
-	// std::vector<int>::reverse_iterator iteratorCopyVector2 = copyVector.rbegin();
 }
