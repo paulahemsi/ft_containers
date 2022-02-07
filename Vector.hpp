@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/06 20:29:49 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/06 21:18:58 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ namespace ft {
 				return (false);
 			}
 
+			//Replaces the contents with count copies of value value
 			void assign(size_type count, const value_type& value)
 			{
 				if (this->_data)
@@ -235,11 +236,20 @@ namespace ft {
 					this->_data[i] = value;
 			}
 
-			// template< class InputIt >
-			// void assign(InputIt first, InputIt last)
-			// {
-				
-			// }
+			// Replaces the contents with copies of those in the range (first, last). The behavior is undefined if either argument is an iterator into *this.
+			template< class InputIt >
+			void assign(InputIt first, InputIt last, typename ft::enable_if<!ft::is_integral<InputIt>::value, bool>::type = false)
+			{
+				if (this->_data)
+					this->_allocator.deallocate(this->_data, this->_capacity);
+				this->_size = last - first;
+				if (this->_capacity < this->_size)
+					this->_capacity = this->_size;
+				this->_data = this->_allocator.allocate(this->_capacity);
+				for(size_type i = 0; i < this->_size; i++)
+					this->_allocator.construct(&this->_data[i], *(first + i));
+
+			}
 
 			//!Dá diferença pro workspace
 			// void resize(size_type count, value_type value = value_type())

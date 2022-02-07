@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/02 22:05:59 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/06 20:58:17 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,7 +228,7 @@ static void test_assign(void)
 	print_instructions("std::vector<int> integers;");
 	std::vector<int> integers;
 	displayVector(integers);
-	std::cout << L_GRAY << "integers.assign(2, 22);" << RESET << std::endl;
+	print_instructions("integers.assign(2, 22);");
 	integers.assign(2, 22);
 	displayVector(integers);
 	print_instructions("integers.push_back(number) x 3");
@@ -236,7 +236,7 @@ static void test_assign(void)
 	integers.push_back(1);
 	integers.push_back(987);
 	displayVector(integers);
-	std::cout << L_GRAY << "integers.assign(3, 33);" << RESET << std::endl;
+	print_instructions("integers.assign(3, 33);");
 	integers.assign(3, 33);
 	displayVector(integers);
 	print_instructions("integers.push_back(number) x 8");
@@ -249,9 +249,32 @@ static void test_assign(void)
 	integers.push_back(987);
 	integers.push_back(1001);
 	displayVector(integers);
-	std::cout << L_GRAY << "integers.assign(4, 44);" << RESET << std::endl;
+	print_instructions("integers.assign(4, 44);");
 	integers.assign(4, 44);
 	displayVector(integers);
+
+	std::vector<int> integers2;
+	print_instructions("integers2.push_back(number) x 8");
+	integers2.push_back(50);
+	integers2.push_back(1);
+	integers2.push_back(987);
+	integers2.push_back(1001);
+	integers2.push_back(50);
+	integers2.push_back(1);
+	integers2.push_back(987);
+	integers2.push_back(1001);
+	displayVector(integers2);
+
+	std::vector<int>::iterator it = integers2.begin();
+	print_instructions("integers.assign(it, it + 3);");
+	integers.assign(it, it + 3);
+	displayVector(integers);
+
+	std::vector<int> smallVector(1);
+	displayVector(smallVector);
+	print_instructions("smallVector.assign(it, it + 7);");
+	smallVector.assign(it, it + 7);
+	displayVector(smallVector);
 }
 
 static void test_at_front_back_and_dereference(void)
