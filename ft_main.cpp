@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/06 20:16:00 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/06 21:14:22 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,6 +274,29 @@ static void test_assign(void)
 	std::cout << L_GRAY << "integers.assign(4, 44);" << RESET << std::endl;
 	integers.assign(4, 44);
 	displayVector(integers);
+
+	ft::vector<int> integers2;
+	print_instructions("integers2.push_back(number) x 8");
+	integers2.push_back(50);
+	integers2.push_back(1);
+	integers2.push_back(987);
+	integers2.push_back(1001);
+	integers2.push_back(50);
+	integers2.push_back(1);
+	integers2.push_back(987);
+	integers2.push_back(1001);
+	displayVector(integers2);
+
+	ft::vector<int>::iterator it = integers2.begin();
+	print_instructions("integers.assign(it, it + 3);");
+	integers.assign(it, it + 3);
+	displayVector(integers);
+
+	ft::vector<int> smallVector(1);
+	displayVector(smallVector);
+	print_instructions("smallVector.assign(it, it + 7);");
+	smallVector.assign(it, it + 7);
+	displayVector(smallVector);
 }
 
 static void test_at_front_back_and_dereference(void)
