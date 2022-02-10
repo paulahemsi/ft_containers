@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/09 19:08:34 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/09 21:19:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,6 +268,11 @@ namespace ft {
 			{
 				return (this->_allocator);
 			}
+
+			//Returns pointer to the underlying array serving as element storage. The pointer is such that range [data(); data() + size()) is always a valid range, even if the container is empty (data() is not dereferenceable in that case).
+			T* data() {return (this->_data);}
+
+			const T* data() const {return (this->_data);}
 
 			class OutOfBoundsException : public std::exception
 			{
