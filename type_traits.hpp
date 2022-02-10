@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 21:52:34 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/29 11:12:45 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/09 18:54:06 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ namespace ft {
 		operator value_type() const { return value; }
 	};
 
-	//tpedefs to is_integral implementation below
+	//typedefs to is_integral implementation below
 	typedef integral_constant<bool, false>	false_type;
 	typedef integral_constant<bool, true>	true_type;
 
