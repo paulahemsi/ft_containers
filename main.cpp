@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/09 21:15:48 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/09 22:08:25 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -491,6 +491,31 @@ static void test_data(void)
 	}
 }
 
+static void test_clear(void)
+{
+	print_title("CLEAR");
+
+	std::vector<float> floats;
+	print_instructions("floats.push_back(number) x 9");
+	floats.push_back(59.57);
+	floats.push_back(9.57);
+	floats.push_back(989.57);
+	floats.push_back(1009.57);
+	floats.push_back(59.57);
+	floats.push_back(9.57);
+	floats.push_back(989.57);
+	floats.push_back(1009.57);
+	floats.push_back(1234.567);
+	displayVector(floats);
+
+	print_instructions("floats.clear();");
+	floats.clear();
+	displayVector(floats);
+	print_instructions("floats.push_back(9.57);");
+	floats.push_back(9.57);
+	displayVector(floats);
+}
+
 int main(void)
 {
 	test_constructors();
@@ -506,6 +531,7 @@ int main(void)
 	test_assign();
 	test_reverse_iterators();
 	test_data();
+	test_clear();
 	// //integers.get_allocator();
 	
 	// std::vector<int>::reverse_iterator iteratorIntegers3 = integers.rbegin();

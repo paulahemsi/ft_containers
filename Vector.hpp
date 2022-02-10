@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/09 21:19:01 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/09 22:10:57 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ namespace ft {
 					else
 						this->_reAlloc(this->_capacity * 2);
 				}
-				this->_allocator.construct(&this->_data[this->_size], value);
+				this->_allocator.construct(&this->_data[this->_size ], value);
 				this->_size++;
 			}
 
@@ -274,6 +274,13 @@ namespace ft {
 
 			const T* data() const {return (this->_data);}
 
+			//Removes all elements from the vector (which are destroyed), leaving the container with a size of 0.
+			void clear(void)
+			{
+				this->_allocator.destroy(this->_data);
+				this->_size = 0;
+			}
+
 			class OutOfBoundsException : public std::exception
 			{
 				int _pos;
@@ -299,13 +306,12 @@ namespace ft {
 		// * end ok
 		// * rbegin ok
 		// * rend ok
-		// data
+		// * data ok
 		// * empty ok
 		// * size ok
 		// * max_size ok
 		// reserve?
 		//* capacity
-		// shrink_to_fit
 		// clear 
 		// insert
 		// erase
