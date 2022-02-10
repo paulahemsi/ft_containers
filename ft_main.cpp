@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/09 21:18:32 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/09 22:08:32 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -513,6 +513,31 @@ static void test_data(void)
 	}
 }
 
+static void test_clear(void)
+{
+	print_title("CLEAR");
+
+	ft::vector<float> floats;
+	print_instructions("floats.push_back(number) x 9");
+	floats.push_back(59.57);
+	floats.push_back(9.57);
+	floats.push_back(989.57);
+	floats.push_back(1009.57);
+	floats.push_back(59.57);
+	floats.push_back(9.57);
+	floats.push_back(989.57);
+	floats.push_back(1009.57);
+	floats.push_back(1234.567);
+	displayVector(floats);
+
+	print_instructions("floats.clear();");
+	floats.clear();
+	displayVector(floats);
+	print_instructions("floats.push_back(9.57);");
+	floats.push_back(9.57);
+	displayVector(floats);
+}
+
 int main(void)
 {
 	test_constructors();
@@ -528,4 +553,5 @@ int main(void)
 	test_const_iterators();
 	test_reverse_iterators();
 	test_data();
+	test_clear();
 }
