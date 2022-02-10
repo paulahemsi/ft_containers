@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/06 21:18:58 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/09 19:08:34 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ namespace ft {
 			//Constructs a container with as many elements as the range [first,last], with each element constructed from its corresponding element in that range, in the same order.
 			template <class InputIterator>
 			vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
-					typename ft::enable_if<!ft::is_integral<InputIterator>::value, bool>::type = false):
+					typename ft::enable_if<!ft::is_integral<InputIterator>::value, int>::type = 666):
 																											_size(last - first),
 																											_capacity(last - first),
 																											_allocator(alloc),
@@ -283,17 +283,17 @@ namespace ft {
 					}
 			};
 		//* operator= ok
-		// HALF assign ok
+		// * assign ok
 		// resize ok
-		// * get_allocator como usa??
+		// get_allocator como usa??
 		//* at ok
 		//* operator[] ok
 		//* front ok
 		//* back ok
-		// begin
-		// end 
-		// rbegin
-		// rend
+		// * begin ok
+		// * end ok
+		// * rbegin ok
+		// * rend ok
 		// data
 		// * empty ok
 		// * size ok
