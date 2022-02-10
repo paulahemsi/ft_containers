@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/06 20:58:17 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/09 21:15:48 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -471,6 +471,26 @@ static void test_reverse_iterators(void)
 	}
 }
 
+static void test_data(void)
+{
+	print_title("DATA");
+
+	std::vector<std::string> string_vector;
+	print_instructions("string_vector.push_back(name) x 5");
+	string_vector.push_back("Ada");
+	string_vector.push_back("Bell");
+	string_vector.push_back("Djamila");
+	string_vector.push_back("Chimamanda");
+	string_vector.push_back("Elza");
+	displayVector(string_vector);
+
+	for(size_t i = 0; i < string_vector.size(); i++)
+	{
+		print_instructions("std::cout << *(string_vector.data() + i) << std::endl;");
+		std::cout << *(string_vector.data() + i) << std::endl;
+	}
+}
+
 int main(void)
 {
 	test_constructors();
@@ -485,6 +505,7 @@ int main(void)
 	test_const_iterators();
 	test_assign();
 	test_reverse_iterators();
+	test_data();
 	// //integers.get_allocator();
 	
 	// std::vector<int>::reverse_iterator iteratorIntegers3 = integers.rbegin();
