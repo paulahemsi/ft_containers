@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/09 22:10:57 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/09 22:39:00 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ namespace ft {
 					else
 						this->_reAlloc(this->_capacity * 2);
 				}
-				this->_allocator.construct(&this->_data[this->_size ], value);
+				this->_allocator.construct(&this->_data[this->_size], value);
 				this->_size++;
 			}
 
@@ -281,6 +281,20 @@ namespace ft {
 				this->_size = 0;
 			}
 
+			//Removes from the vector either a single element (position) or a range of elements ([first,last)) This effectively reduces the container size by the number of elements removed, which are destroyed.
+			iterator erase(iterator position)
+			{
+				for(position, ft::vector<T>::iterator it_end = this->end(); (position + 1) != it_end; position++)
+					this->_allocator.construct(position, *(position + 1));
+				this->_allocator.deallocate(position, 1);
+				this->_size--;
+			}
+
+			// iterator erase(iterator first, iterator last)
+			// {
+				
+			// }
+
 			class OutOfBoundsException : public std::exception
 			{
 				int _pos;
@@ -312,7 +326,7 @@ namespace ft {
 		// * max_size ok
 		// reserve?
 		//* capacity
-		// clear 
+		//* clear ok 
 		// insert
 		// erase
 		//* push_back
