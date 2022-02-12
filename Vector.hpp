@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/09 22:39:00 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/12 19:36:20 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ namespace ft {
 			typedef ft::reverse_iterator<const_iterator>			const_reverse_iterator;
 			typedef std::ptrdiff_t									difference_type;
 			typedef std::size_t										size_type;
-			
+
 		private:
 			size_type	_size;
 			size_type	_capacity;
@@ -167,23 +167,23 @@ namespace ft {
 				this->_checkOutOfBounds(pos);
 				return (this->_data[pos]);
 			}
-			
+
 			reference	at(int pos)
 			{
 				this->_checkOutOfBounds(pos);
 				return (this->_data[pos]);
 			}
-			
+
 			reference	front(void)
 			{
 				return (this->_data[0]);
 			}
-			
+
 			reference	back(void)
 			{
 				return (this->_data[this->_size - 1]);
 			}
-			
+
 			void push_back(const value_type& value)
 			{
 				if(this->_size == this->_capacity)
@@ -248,7 +248,6 @@ namespace ft {
 				this->_data = this->_allocator.allocate(this->_capacity);
 				for(size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&this->_data[i], *(first + i));
-
 			}
 
 			//!Dá diferença pro workspace
@@ -284,10 +283,14 @@ namespace ft {
 			//Removes from the vector either a single element (position) or a range of elements ([first,last)) This effectively reduces the container size by the number of elements removed, which are destroyed.
 			iterator erase(iterator position)
 			{
-				for(position, ft::vector<T>::iterator it_end = this->end(); (position + 1) != it_end; position++)
-					this->_allocator.construct(position, *(position + 1));
-				this->_allocator.deallocate(position, 1);
+				while((position + 1) != this->end())
+				{
+					this->_allocator.construct(&(*position), *(position + 1));
+					position++;
+				}
+				this->_allocator.destroy(&(*position));
 				this->_size--;
+				return (position++);
 			}
 
 			// iterator erase(iterator first, iterator last)
@@ -326,7 +329,7 @@ namespace ft {
 		// * max_size ok
 		// reserve?
 		//* capacity
-		//* clear ok 
+		//* clear ok
 		// insert
 		// erase
 		//* push_back
