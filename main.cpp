@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/13 11:35:29 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/13 19:12:24 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,21 +185,6 @@ static void test_pop_back(std::vector<int> integers)
 	print_instructions("integers.pop_back();");
 	integers.pop_back();
 	displayVector(integers);
-}
-
-static void test_resize(void)
-{
-	print_title(".RESIZE");
-	std::vector<float> my_vector(5, 5.1);
-	std::cout << "my_vector: " << std::endl;
-	displayVector(my_vector);
-	print_instructions("my_vector.resize(2);");
-	my_vector.resize(2);
-	std::cout << "my_vector: " << std::endl;
-	displayVector(my_vector);
-	std::cout << L_GRAY << "my_vector.resize(15);" << RESET << std::endl;
-	my_vector.resize(15);
-	displayVector(my_vector);
 }
 
 static void test_equal_operator(void)
@@ -614,6 +599,25 @@ static void test_get_allocator(void)
 	myvector.get_allocator().deallocate(pointer,5);
 }
 
+static void test_resize(void)
+{
+	print_title(".RESIZE");
+	std::vector<float> my_vector(5, 5.1);
+	std::cout << "my_vector: " << std::endl;
+	displayVector(my_vector);
+	print_instructions("my_vector.resize(5);");
+	my_vector.resize(5);
+	std::cout << "my_vector: " << std::endl;
+	displayVector(my_vector);
+	print_instructions("my_vector.resize(2);");
+	my_vector.resize(2);
+	std::cout << "my_vector: " << std::endl;
+	displayVector(my_vector);
+	std::cout << L_GRAY << "my_vector.resize(15);" << RESET << std::endl;
+	my_vector.resize(15);
+	displayVector(my_vector);
+}
+
 int main(void)
 {
 	test_constructors();
@@ -621,7 +625,6 @@ int main(void)
 	test_insert();
 	test_out_of_bounds();
 	test_pop_back(test_push_back());
-	test_resize();
 	test_equal_operator();
 	test_at_front_back_and_dereference();
 	test_iterators();
@@ -633,6 +636,7 @@ int main(void)
 	test_erase();
 	test_reserve();
 	test_get_allocator();
+	test_resize();
 	
 	// std::vector<int>::reverse_iterator iteratorIntegers3 = integers.rbegin();
 	// std::vector<int>::reverse_iterator iteratorCopyVector2 = copyVector.rbegin();

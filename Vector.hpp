@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/13 11:31:16 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/13 19:10:48 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,6 +314,28 @@ namespace ft {
 						return ("vector::_M_range_check: index >= this->_size()");
 					}
 			};
+
+			//Resizes the container so that it contains n elements.
+			//If n is smaller than the current container size, the content is reduced to its first n elements, removing those beyond (and destroying them).
+			//If n is greater than the current container size, the content is expanded by inserting at the end as many elements as needed to reach a size of n. If val is specified, the new elements are initialized as copies of val, otherwise, they are value-initialized.
+			//If n is also greater than the current container capacity, an automatic reallocation of the allocated storage space takes place.
+			void resize (size_type n, value_type val = value_type())
+			{
+				if(n < this->_size)
+				{
+					for(size_type i = n; i <= this->_size; i++)
+						this->_allocator.destroy(&this->_data[i]);
+					this->_size = n;
+				}
+				else if (n > this->_size)
+				{
+					if (n > this->_capacity)
+						this->_reAlloc(n);
+					for(size_type i = this->_size; i < n; i++)
+						this->_allocator.construct(&this->_data[i], val);
+					this->_size = n;
+				}
+			}
 		//* operator= ok
 		//* assign ok
 		// resize ok
