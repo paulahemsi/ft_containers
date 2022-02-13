@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/12 22:37:41 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/13 11:29:31 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,12 +262,6 @@ namespace ft {
 				return (this->_allocator.max_size());
 			}
 
-			//allocator_type get_allocator() const;
-			allocator_type get_allocator(void) const
-			{
-				return (this->_allocator);
-			}
-
 			//Returns pointer to the underlying array serving as element storage. The pointer is such that range [data(); data() + size()) is always a valid range, even if the container is empty (data() is not dereferenceable in that case).
 			T* data() {return (this->_data);}
 
@@ -304,6 +298,9 @@ namespace ft {
 					this->_reAlloc(n);
 			}
 
+			//Returns a copy of the allocator object associated with the vector.
+			allocator_type get_allocator() const { return (this->_allocator); }
+
 			class OutOfBoundsException : public std::exception
 			{
 				int _pos;
@@ -320,7 +317,7 @@ namespace ft {
 		//* operator= ok
 		//* assign ok
 		// resize ok
-		// get_allocator como usa??
+		//* get_allocator ok
 		//* at ok
 		//* operator[] ok
 		//* front ok

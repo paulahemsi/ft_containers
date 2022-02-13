@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/12 22:39:56 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/13 11:27:33 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -596,6 +596,31 @@ static void test_reserve(void)
 	displayVector(integers);
 }
 
+static void test_get_allocator(void)
+{
+	print_title("GET_ALLOCATOR");
+
+	ft::vector<int> myvector;
+	int * pointer;
+
+	// allocate an array with space for 5 elements using vector's allocator:
+	pointer = myvector.get_allocator().allocate(5);
+
+	// construct values in-place on the array:
+	for (size_t i = 0; i < 5; i++)
+		myvector.get_allocator().construct(&pointer[i], i);
+
+	std::cout << "The allocated array contains:";
+	for (size_t i = 0; i < 5; i++)
+		std::cout << ' ' << pointer[i];
+	std::cout << '\n';
+
+	// destroy and deallocate:
+	for (size_t i = 0; i < 5; i++)
+		myvector.get_allocator().destroy(&pointer[i]);
+	myvector.get_allocator().deallocate(pointer,5);
+}
+
 int main(void)
 {
 	test_constructors();
@@ -614,4 +639,5 @@ int main(void)
 	test_clear();
 	test_erase();
 	test_reserve();
+	test_get_allocator();
 }
