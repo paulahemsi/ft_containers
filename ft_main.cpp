@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/12 21:46:42 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/12 22:39:56 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -571,6 +571,31 @@ static void test_erase(void)
 	displayVector(bocal);
 }
 
+
+static void test_reserve(void)
+{
+	print_title("RESERVE");
+
+	ft::vector<int> integers;
+	print_instructions("integers.push_back(number) x 8");
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
+	displayVector(integers);
+
+	print_instructions("integers.reserve(3);");
+	integers.reserve(3);
+	displayVector(integers);
+	print_instructions("integers.reserve(30);");
+	integers.reserve(30);
+	displayVector(integers);
+}
+
 int main(void)
 {
 	test_constructors();
@@ -588,4 +613,5 @@ int main(void)
 	test_data();
 	test_clear();
 	test_erase();
+	test_reserve();
 }
