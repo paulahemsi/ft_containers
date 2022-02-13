@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/12 19:19:55 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/12 21:47:04 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -535,10 +535,17 @@ static void test_erase(void)
 	displayVector(bocal);
 
 	print_instructions("bocal.erase(bocal.begin());");
-	bocal.erase(bocal.begin());
+	std::cout << "RETURN: " << *(bocal.erase(bocal.begin())) << std::endl;
 	displayVector(bocal);
 	print_instructions("bocal.erase(bocal.begin() + 3);");
-	bocal.erase(bocal.begin() + 3);
+	std::cout << "RETURN: " << *(bocal.erase(bocal.begin() + 3)) << std::endl;
+	displayVector(bocal);
+
+	print_instructions("bocal.erase(bocal.begin(), bocal.begin() + 2);");
+	std::cout << "RETURN: " << *(bocal.erase(bocal.begin(), bocal.begin() + 3)) << std::endl;
+	displayVector(bocal);
+	print_instructions("bocal.erase(bocal.begin() + 1, bocal.begin() + 3);");
+	std::cout << "RETURN: " << *(bocal.erase(bocal.begin() + 1, bocal.begin() + 3)) << std::endl;
 	displayVector(bocal);
 }
 

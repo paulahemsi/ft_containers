@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/12 19:36:20 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/12 22:23:16 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,20 +283,19 @@ namespace ft {
 			//Removes from the vector either a single element (position) or a range of elements ([first,last)) This effectively reduces the container size by the number of elements removed, which are destroyed.
 			iterator erase(iterator position)
 			{
-				while((position + 1) != this->end())
-				{
-					this->_allocator.construct(&(*position), *(position + 1));
-					position++;
-				}
-				this->_allocator.destroy(&(*position));
+				for(size_type i = 0; (position + i + 1) != this->end(); i++)
+					this->_allocator.construct(&(*(position + i)), *(position + i + 1));
 				this->_size--;
-				return (position++);
+				return (position);
 			}
 
-			// iterator erase(iterator first, iterator last)
-			// {
-				
-			// }
+			iterator erase(iterator first, iterator last)
+			{
+				for(int i = 0; (last + i) != this->end(); i++)
+					this->_allocator.construct(&(*(first + i)), *(last + i));
+				this->_size -= last - first;
+				return(first);
+			}
 
 			class OutOfBoundsException : public std::exception
 			{
@@ -312,26 +311,26 @@ namespace ft {
 					}
 			};
 		//* operator= ok
-		// * assign ok
+		//* assign ok
 		// resize ok
 		// get_allocator como usa??
 		//* at ok
 		//* operator[] ok
 		//* front ok
 		//* back ok
-		// * begin ok
-		// * end ok
-		// * rbegin ok
-		// * rend ok
-		// * data ok
-		// * empty ok
-		// * size ok
-		// * max_size ok
+		//* begin ok
+		//* end ok
+		//* rbegin ok
+		//* rend ok
+		//* data ok
+		//* empty ok
+		//* size ok
+		//* max_size ok
 		// reserve?
 		//* capacity
 		//* clear ok
 		// insert
-		// erase
+		// erase ok
 		//* push_back
 		//* pop_back
 		// swap
