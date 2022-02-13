@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/09 22:08:25 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/12 21:47:04 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -516,6 +516,39 @@ static void test_clear(void)
 	displayVector(floats);
 }
 
+static void test_erase(void)
+{
+	print_title("ERASE");
+
+	std::vector<std::string> bocal;
+	print_instructions("bocal.push_back(string) x 9");
+	bocal.push_back("Kaká");
+	bocal.push_back("Mari");
+	bocal.push_back("Gui");
+	bocal.push_back("Guiga");
+	bocal.push_back("Lobão");
+	bocal.push_back("Mariah");
+	bocal.push_back("Clari");
+	bocal.push_back("Tuca");
+	bocal.push_back("Juliano");
+	bocal.push_back("Vini");
+	displayVector(bocal);
+
+	print_instructions("bocal.erase(bocal.begin());");
+	std::cout << "RETURN: " << *(bocal.erase(bocal.begin())) << std::endl;
+	displayVector(bocal);
+	print_instructions("bocal.erase(bocal.begin() + 3);");
+	std::cout << "RETURN: " << *(bocal.erase(bocal.begin() + 3)) << std::endl;
+	displayVector(bocal);
+
+	print_instructions("bocal.erase(bocal.begin(), bocal.begin() + 2);");
+	std::cout << "RETURN: " << *(bocal.erase(bocal.begin(), bocal.begin() + 3)) << std::endl;
+	displayVector(bocal);
+	print_instructions("bocal.erase(bocal.begin() + 1, bocal.begin() + 3);");
+	std::cout << "RETURN: " << *(bocal.erase(bocal.begin() + 1, bocal.begin() + 3)) << std::endl;
+	displayVector(bocal);
+}
+
 int main(void)
 {
 	test_constructors();
@@ -532,6 +565,7 @@ int main(void)
 	test_reverse_iterators();
 	test_data();
 	test_clear();
+	test_erase();
 	// //integers.get_allocator();
 	
 	// std::vector<int>::reverse_iterator iteratorIntegers3 = integers.rbegin();
