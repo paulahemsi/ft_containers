@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/12 22:23:16 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/12 22:37:41 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,6 +297,13 @@ namespace ft {
 				return(first);
 			}
 
+			//Requests that the vector capacity be at least enough to contain n elements.
+			void reserve (size_type n)
+			{
+				if (this->_capacity < n)
+					this->_reAlloc(n);
+			}
+
 			class OutOfBoundsException : public std::exception
 			{
 				int _pos;
@@ -326,11 +333,11 @@ namespace ft {
 		//* empty ok
 		//* size ok
 		//* max_size ok
-		// reserve?
+		// reserve
 		//* capacity
 		//* clear ok
 		// insert
-		// erase ok
+		//* erase ok
 		//* push_back
 		//* pop_back
 		// swap
