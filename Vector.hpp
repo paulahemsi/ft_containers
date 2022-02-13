@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/13 11:29:31 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/13 11:31:16 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,7 +330,7 @@ namespace ft {
 		//* empty ok
 		//* size ok
 		//* max_size ok
-		// reserve
+		//* reserve ok
 		//* capacity
 		//* clear ok
 		// insert

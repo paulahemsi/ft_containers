@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/13 11:27:06 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/13 11:35:29 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,22 @@ static void test_equal_operator(void)
 	string_vector2 = string_vector;
 	std::cout << "string_vector2: " << std::endl;
 	displayVector(string_vector2);
+
+	print_instructions("std::vector<int> int_vector2(2, 2);");
+	std::vector<int> int_vector2(2, 2);
+	displayVector(int_vector2);
+	std::vector<int> int_vector;
+	print_instructions("int_vector.push_back(name) x 5");
+	int_vector.push_back(1);
+	int_vector.push_back(2);
+	int_vector.push_back(3);
+	int_vector.push_back(4);
+	int_vector.push_back(5);
+	displayVector(int_vector);
+	std::cout << L_GRAY << "int_vector2 = int_vector;" << RESET << std::endl;
+	int_vector2 = int_vector;
+	std::cout << "int_vector2: " << std::endl;
+	displayVector(int_vector2);
 }
 
 static void test_assign(void)

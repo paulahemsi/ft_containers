@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/13 11:27:33 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/13 11:34:44 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,24 +128,24 @@ static void test_pop_back(ft::vector<int> integers)
 	displayVector(integers);
 }
 
-// // static void test_insert(void)
-// // {
-// // 	print_title(".INSERT");
+// static void test_insert(void)
+// {
+// 	print_title(".INSERT");
 
-// // 	print_instructions("ft::vector<int> integers;");
-// // 	ft::vector<int> integers;
-// // 	displayVector(integers);
-// // 	print_instructions("integers.insert(integers.begin(), 7);");
-// // 	integers.insert(integers.begin(), 7);
-// // 	displayVector(integers);
+// 	print_instructions("ft::vector<int> integers;");
+// 	ft::vector<int> integers;
+// 	displayVector(integers);
+// 	print_instructions("integers.insert(integers.begin(), 7);");
+// 	integers.insert(integers.begin(), 7);
+// 	displayVector(integers);
 
-// // 	print_instructions("integers.insert(integers.begin() + 1, 77);");
-// // 	integers.insert(integers.begin() + 1, 77);
-// // 	displayVector(integers);
-// // 	print_instructions("integers.insert(integers.begin() + 1, 3, 777);");
-// // 	integers.insert(integers.begin() + 1, 3, 777);
-// // 	displayVector(integers);
-// // }
+// 	print_instructions("integers.insert(integers.begin() + 1, 77);");
+// 	integers.insert(integers.begin() + 1, 77);
+// 	displayVector(integers);
+// 	print_instructions("integers.insert(integers.begin() + 1, 3, 777);");
+// 	integers.insert(integers.begin() + 1, 3, 777);
+// 	displayVector(integers);
+// }
 
 static void test_out_of_bounds(void)
 {
@@ -187,42 +187,22 @@ static void test_out_of_bounds(void)
 	}
 }
 
-// // static void test_resize(void)
-// // {
-// // 	print_title(".RESIZE");
-// // 	ft::vector<float> my_vector(5, 5.1);
-// // 	std::cout << "my_vector: " << std::endl;
-// // 	displayVector(my_vector);
-// // 	print_instructions("my_vector.resize(2);");
-// // 	my_vector.resize(2);
-// // 	std::cout << "my_vector: " << std::endl;
-// // 	displayVector(my_vector);
-// // 	std::cout << L_GRAY << "my_vector.resize(15);" << RESET << std::endl;
-// // 	my_vector.resize(15);
-// // 	displayVector(my_vector);
-// // }
-
-// static void test_equal_operator(void)
+// static void test_resize(void)
 // {
-// 	print_title("  =  ");
-// 	print_instructions("ft::vector<int> string_vector2(2, 2);");
-// 	ft::vector<int> string_vector2(2, 2);
-// 	displayVector(string_vector2);
-// 	ft::vector<int> string_vector;
-// 	print_instructions("string_vector.push_back(name) x 5");
-// 	string_vector.push_back(1);
-// 	string_vector.push_back(2);
-// 	string_vector.push_back(3);
-// 	string_vector.push_back(4);
-// 	string_vector.push_back(5);
-// 	displayVector(string_vector);
-// 	std::cout << L_GRAY << "string_vector2 = string_vector;" << RESET << std::endl;
-// 	string_vector2 = string_vector;
-// 	std::cout << "string_vector2: " << std::endl;
-// 	displayVector(string_vector2);
+// 	print_title(".RESIZE");
+// 	ft::vector<float> my_vector(5, 5.1);
+// 	std::cout << "my_vector: " << std::endl;
+// 	displayVector(my_vector);
+// 	print_instructions("my_vector.resize(2);");
+// 	my_vector.resize(2);
+// 	std::cout << "my_vector: " << std::endl;
+// 	displayVector(my_vector);
+// 	std::cout << L_GRAY << "my_vector.resize(15);" << RESET << std::endl;
+// 	my_vector.resize(15);
+// 	displayVector(my_vector);
 // }
 
-//! BUGADO POR SER COM STRINGS:
+
 static void test_equal_operator(void)
 {
 	print_title("  =  ");
@@ -241,9 +221,24 @@ static void test_equal_operator(void)
 	string_vector2 = string_vector;
 	std::cout << "string_vector2: " << std::endl;
 	displayVector(string_vector2);
+
+	print_instructions("ft::vector<int> int_vector2(2, 2);");
+	ft::vector<int> int_vector2(2, 2);
+	displayVector(int_vector2);
+	ft::vector<int> int_vector;
+	print_instructions("int_vector.push_back(name) x 5");
+	int_vector.push_back(1);
+	int_vector.push_back(2);
+	int_vector.push_back(3);
+	int_vector.push_back(4);
+	int_vector.push_back(5);
+	displayVector(int_vector);
+	std::cout << L_GRAY << "int_vector2 = int_vector;" << RESET << std::endl;
+	int_vector2 = int_vector;
+	std::cout << "int_vector2: " << std::endl;
+	displayVector(int_vector2);
 }
 
-//! BUGADO
 static void test_assign(void)
 {
 	print_title(".ASSIGN");
