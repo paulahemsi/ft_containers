@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/13 22:08:01 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/13 22:14:52 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -350,12 +350,21 @@ namespace ft {
 					this->_allocator.construct(&this->_data[index_to_insert + i], val);
 				this->_size += n;
 			}
-			// //range
-			// template <class InputIterator>
-			// void insert(iterator position, InputIterator first, InputIterator last)
-			// {
-				
-			// }
+			//range
+			template <class InputIterator>
+			void insert(iterator position, InputIterator first, InputIterator last, 
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value, int>::type = 666)
+			{
+				size_type index_to_insert = position - this->begin();
+				size_type quantity_to_insert = last - first;
+				if((this->_size + quantity_to_insert) > this->_capacity)
+					this->_reAlloc(this->_size + quantity_to_insert);
+				for(size_type i = this->_size + quantity_to_insert - 1, j = 1; i >= (index_to_insert + quantity_to_insert); i--, j++)
+					this->_allocator.construct(&this->_data[i], this->_data[this->_size - j]);
+				for(size_type i = 0; i < quantity_to_insert; i++)
+					this->_allocator.construct(&this->_data[index_to_insert + i], *(first + i));
+				this->_size += quantity_to_insert;
+			}
 
 			class OutOfBoundsException : public std::exception
 			{

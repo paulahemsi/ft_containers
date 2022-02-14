@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/13 22:08:59 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/13 22:20:36 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -632,6 +632,19 @@ static void test_insert(void)
 	displayVector(integers);
 	print_instructions("integers.insert(integers.begin() + 3, 10, 1111);");
 	integers.insert(integers.begin() + 3, 10, 1111);
+	displayVector(integers);
+
+	std::vector<int> vector_to_insert;
+	vector_to_insert.push_back(1);
+	vector_to_insert.push_back(2);
+	vector_to_insert.push_back(3);
+	vector_to_insert.push_back(4);
+	vector_to_insert.push_back(5);
+	vector_to_insert.push_back(6);
+	vector_to_insert.push_back(7);
+	vector_to_insert.push_back(8);
+	print_instructions("integers.insert(integers.begin() + 2, vector_to_insert.begin(), 1111);");
+	integers.insert(integers.begin() + 2, vector_to_insert.begin(), vector_to_insert.begin() + 4);
 	displayVector(integers);
 }
 
