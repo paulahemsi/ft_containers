@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/13 19:10:48 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/13 22:14:52 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,20 +301,6 @@ namespace ft {
 			//Returns a copy of the allocator object associated with the vector.
 			allocator_type get_allocator() const { return (this->_allocator); }
 
-			class OutOfBoundsException : public std::exception
-			{
-				int _pos;
-
-				public:
-					OutOfBoundsException(int pos) : _pos(pos){}
-					virtual const char* what() const throw()
-					{
-						if(this->_pos < 0)
-							return ("vector::_M_range_check: index < 0");
-						return ("vector::_M_range_check: index >= this->_size()");
-					}
-			};
-
 			//Resizes the container so that it contains n elements.
 			//If n is smaller than the current container size, the content is reduced to its first n elements, removing those beyond (and destroying them).
 			//If n is greater than the current container size, the content is expanded by inserting at the end as many elements as needed to reach a size of n. If val is specified, the new elements are initialized as copies of val, otherwise, they are value-initialized.
@@ -336,9 +322,67 @@ namespace ft {
 					this->_size = n;
 				}
 			}
+
+			//The vector is extended by inserting new elements before the element at the specified position, effectively increasing the container size by the number of elements inserted. The parameters determine how many elements are inserted and to which values they are initialized.
+
+			//single element
+			iterator insert(iterator position, const value_type& val)
+			{
+				size_type index_to_insert = position - this->begin();
+
+				if((this->_size + 1) > this->_capacity)
+					this->_reAlloc(this->_size + 1);
+				for(size_t i = this->_size; i > index_to_insert; i--)
+					this->_allocator.construct(&this->_data[i], this->_data[i - 1]);
+				this->_allocator.construct(&this->_data[index_to_insert], val);
+				this->_size++;
+				return (this->begin() + index_to_insert);
+			}
+			//fill
+			void insert(iterator position, size_type n, const value_type& val)
+			{
+				size_type index_to_insert = position - this->begin();
+				if((this->_size + n) > this->_capacity)
+					this->_reAlloc(this->_size + n);
+				for(size_type i = this->_size + n - 1, j = 1; i >= (index_to_insert + n); i--, j++)
+					this->_allocator.construct(&this->_data[i], this->_data[this->_size - j]);
+				for(size_type i = 0; i < n; i++)
+					this->_allocator.construct(&this->_data[index_to_insert + i], val);
+				this->_size += n;
+			}
+			//range
+			template <class InputIterator>
+			void insert(iterator position, InputIterator first, InputIterator last, 
+			typename ft::enable_if<!ft::is_integral<InputIterator>::value, int>::type = 666)
+			{
+				size_type index_to_insert = position - this->begin();
+				size_type quantity_to_insert = last - first;
+				if((this->_size + quantity_to_insert) > this->_capacity)
+					this->_reAlloc(this->_size + quantity_to_insert);
+				for(size_type i = this->_size + quantity_to_insert - 1, j = 1; i >= (index_to_insert + quantity_to_insert); i--, j++)
+					this->_allocator.construct(&this->_data[i], this->_data[this->_size - j]);
+				for(size_type i = 0; i < quantity_to_insert; i++)
+					this->_allocator.construct(&this->_data[index_to_insert + i], *(first + i));
+				this->_size += quantity_to_insert;
+			}
+
+			class OutOfBoundsException : public std::exception
+			{
+				int _pos;
+
+				public:
+					OutOfBoundsException(int pos) : _pos(pos){}
+					virtual const char* what() const throw()
+					{
+						if(this->_pos < 0)
+							return ("vector::_M_range_check: index < 0");
+						return ("vector::_M_range_check: index >= this->_size()");
+					}
+			};
+
 		//* operator= ok
 		//* assign ok
-		// resize ok
+		//* resize ok
 		//* get_allocator ok
 		//* at ok
 		//* operator[] ok

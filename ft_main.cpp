@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/13 19:12:57 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/13 22:20:36 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -600,24 +600,53 @@ static void test_resize(void)
 	displayVector(my_vector);
 }
 
-// static void test_insert(void)
-// {
-// 	print_title(".INSERT");
+static void test_insert(void)
+{
+	print_title(".INSERT");
 
-// 	print_instructions("ft::vector<int> integers;");
-// 	ft::vector<int> integers;
-// 	displayVector(integers);
-// 	print_instructions("integers.insert(integers.begin(), 7);");
-// 	integers.insert(integers.begin(), 7);
-// 	displayVector(integers);
+	print_instructions("std::vector<int> integers;");
+	ft::vector<int> integers;
+	displayVector(integers);
+	print_instructions("integers.insert(integers.begin(), 7);");
+	std::cout << "first element inserted: " << *(integers.insert(integers.begin(), 7)) << std::endl;
+	displayVector(integers);
 
-// 	print_instructions("integers.insert(integers.begin() + 1, 77);");
-// 	integers.insert(integers.begin() + 1, 77);
-// 	displayVector(integers);
-// 	print_instructions("integers.insert(integers.begin() + 1, 3, 777);");
-// 	integers.insert(integers.begin() + 1, 3, 777);
-// 	displayVector(integers);
-// }
+	print_instructions("integers.insert(integers.begin() + 1, 77);");
+	std::cout << "first element inserted: " << *(integers.insert(integers.begin() + 1, 77)) << std::endl;
+	displayVector(integers);
+	print_instructions("integers.push_back(number) x 8");
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
+	integers.push_back(50);
+	integers.push_back(1);
+	integers.push_back(987);
+	integers.push_back(1001);
+	displayVector(integers);
+	print_instructions("integers.insert(integers.end() - 3, 777);");
+	std::cout << "first element inserted: " << *(integers.insert(integers.end() - 3, 777)) << std::endl;
+	displayVector(integers);
+	print_instructions("integers.insert(integers.begin() + 1, 3, 777);");
+	integers.insert(integers.begin() + 1, 3, 777);
+	displayVector(integers);
+	print_instructions("integers.insert(integers.begin() + 3, 10, 1111);");
+	integers.insert(integers.begin() + 3, 10, 1111);
+	displayVector(integers);
+
+	std::vector<int> vector_to_insert;
+	vector_to_insert.push_back(1);
+	vector_to_insert.push_back(2);
+	vector_to_insert.push_back(3);
+	vector_to_insert.push_back(4);
+	vector_to_insert.push_back(5);
+	vector_to_insert.push_back(6);
+	vector_to_insert.push_back(7);
+	vector_to_insert.push_back(8);
+	print_instructions("integers.insert(integers.begin() + 2, vector_to_insert.begin(), 1111);");
+	integers.insert(integers.begin() + 2, vector_to_insert.begin(), vector_to_insert.begin() + 4);
+	displayVector(integers);
+}
 
 int main(void)
 {
@@ -637,5 +666,5 @@ int main(void)
 	test_reserve();
 	test_get_allocator();
 	test_resize();
-	// // test_insert();
+	test_insert();
 }
