@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/13 21:39:51 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/13 22:08:59 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -627,9 +627,12 @@ static void test_insert(void)
 	print_instructions("integers.insert(integers.end() - 3, 777);");
 	std::cout << "first element inserted: " << *(integers.insert(integers.end() - 3, 777)) << std::endl;
 	displayVector(integers);
-	// print_instructions("integers.insert(integers.begin() + 1, 3, 777);");
-	// std::cout << "first element inserted: " << *(integers.insert(integers.begin() + 1, 3, 777)) << std::endl;
-	// displayVector(integers);
+	print_instructions("integers.insert(integers.begin() + 1, 3, 777);");
+	integers.insert(integers.begin() + 1, 3, 777);
+	displayVector(integers);
+	print_instructions("integers.insert(integers.begin() + 3, 10, 1111);");
+	integers.insert(integers.begin() + 3, 10, 1111);
+	displayVector(integers);
 }
 
 int main(void)

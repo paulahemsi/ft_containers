@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/13 21:38:40 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/13 22:08:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -332,17 +332,24 @@ namespace ft {
 
 				if((this->_size + 1) > this->_capacity)
 					this->_reAlloc(this->_size + 1);
-				for(size_t i = this->_size; i != index_to_insert; i--)
+				for(size_t i = this->_size; i > index_to_insert; i--)
 					this->_allocator.construct(&this->_data[i], this->_data[i - 1]);
 				this->_allocator.construct(&this->_data[index_to_insert], val);
 				this->_size++;
 				return (this->begin() + index_to_insert);
 			}
-			// //fill
-			// void insert(iterator position, size_type n, const value_type& val)
-			// {
-				
-			// }
+			//fill
+			void insert(iterator position, size_type n, const value_type& val)
+			{
+				size_type index_to_insert = position - this->begin();
+				if((this->_size + n) > this->_capacity)
+					this->_reAlloc(this->_size + n);
+				for(size_type i = this->_size + n - 1, j = 1; i >= (index_to_insert + n); i--, j++)
+					this->_allocator.construct(&this->_data[i], this->_data[this->_size - j]);
+				for(size_type i = 0; i < n; i++)
+					this->_allocator.construct(&this->_data[index_to_insert + i], val);
+				this->_size += n;
+			}
 			// //range
 			// template <class InputIterator>
 			// void insert(iterator position, InputIterator first, InputIterator last)
