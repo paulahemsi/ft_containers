@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/15 21:28:37 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:32:15 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 #include "type_traits.hpp"
 #include "random_access_iterator.hpp"
 #include "reverse_iterator.hpp"
+#include "lexicographical_compare.tpp"
 
-namespace ft {
-
+namespace ft
+{
 	template<class T, class Alloc = std::allocator<T> >
 	class vector
 	{
@@ -413,16 +414,16 @@ namespace ft {
 		if(lhs.size() != rhs.size())
 			return (false);
 		for(size_t i = 0; i < lhs.size(); i++)
-			if(lhs.data() + i != rhs.data() + i)
+			if(!(ft::equal(lhs.begin(), lhs.end(), rhs.begin())))
 				return (false);
 		return (true);
 	}
 
-	// template <class T, class Alloc>
-	// bool operator != (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
-	// {
-		
-	// }
+	template <class T, class Alloc>
+	bool operator != (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		return (!(lhs == rhs));
+	}
 
 	// template <class T, class Alloc>
 	// bool operator < (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
