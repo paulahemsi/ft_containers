@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:06:02 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/16 18:36:53 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:46:07 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -668,6 +668,34 @@ static void test_relational_operators(void)
 	std::cout << (one_vector != another_vector) << std::endl;
 	print_instructions("(one_vector != and_other_vector)");
 	std::cout << (one_vector != and_other_vector) << std::endl;
+
+	print_instructions("(one_vector > one_vector)");
+	std::cout << (one_vector > one_vector) << std::endl;
+	print_instructions("(one_vector > another_vector)");
+	std::cout << (one_vector > another_vector) << std::endl;
+	print_instructions("(one_vector > and_other_vector)");
+	std::cout << (one_vector > and_other_vector) << std::endl;
+
+	print_instructions("(one_vector >= one_vector)");
+	std::cout << (one_vector >= one_vector) << std::endl;
+	print_instructions("(one_vector >= another_vector)");
+	std::cout << (one_vector >= another_vector) << std::endl;
+	print_instructions("(one_vector >= and_other_vector)");
+	std::cout << (one_vector >= and_other_vector) << std::endl;
+
+	print_instructions("(one_vector < one_vector)");
+	std::cout << (one_vector < one_vector) << std::endl;
+	print_instructions("(one_vector < another_vector)");
+	std::cout << (one_vector < another_vector) << std::endl;
+	print_instructions("(one_vector < and_other_vector)");
+	std::cout << (one_vector < and_other_vector) << std::endl;
+
+	print_instructions("(one_vector <= one_vector)");
+	std::cout << (one_vector <= one_vector) << std::endl;
+	print_instructions("(one_vector <= another_vector)");
+	std::cout << (one_vector <= another_vector) << std::endl;
+	print_instructions("(one_vector <= and_other_vector)");
+	std::cout << (one_vector <= and_other_vector) << std::endl;
 }
 
 int main(void)

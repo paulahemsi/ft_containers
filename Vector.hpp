@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/16 18:34:37 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:58:06 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -420,28 +420,30 @@ namespace ft
 		return (!(lhs == rhs));
 	}
 
-	// template <class T, class Alloc>
-	// bool operator < (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
-	// {
-		
-	// }
+	template <class T, class Alloc>
+	bool operator < (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
+	}
 
-	// template <class T, class Alloc>
-	// bool operator <= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
-	// {
-		
-	// }
+	template <class T, class Alloc>
+	bool operator <= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		return ((lhs < rhs) || (lhs == rhs));
+	}
 
-	// template <class T, class Alloc>
-	// bool operator > (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
-	// {
-		
-	// }
+	template <class T, class Alloc>
+	bool operator > (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		if (lhs == rhs)
+			return (false);
+		return (!(lhs < rhs));
+	}
 
-	// template <class T, class Alloc>
-	// bool operator >= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
-	// {
-		
-	// }
+	template <class T, class Alloc>
+	bool operator >= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		return ((lhs > rhs) || (lhs == rhs));
+	}
 }
 
