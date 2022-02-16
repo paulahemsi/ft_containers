@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/13 22:14:52 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/15 21:28:37 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -292,7 +292,7 @@ namespace ft {
 			}
 
 			//Requests that the vector capacity be at least enough to contain n elements.
-			void reserve (size_type n)
+			void reserve(size_type n)
 			{
 				if (this->_capacity < n)
 					this->_reAlloc(n);
@@ -399,11 +399,53 @@ namespace ft {
 		//* reserve ok
 		//* capacity
 		//* clear ok
-		// insert
+		//* insert ok
 		//* erase ok
 		//* push_back
 		//* pop_back
 		// swap
 	};
+	
+	//The equality comparison (operator==) is performed by first comparing sizes, and if they match, the elements are compared sequentially using operator==, stopping at the first mismatch (as if using algorithm equal)
+	template <class T, class Alloc>
+	bool operator == (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	{
+		if(lhs.size() != rhs.size())
+			return (false);
+		for(size_t i = 0; i < lhs.size(); i++)
+			if(lhs.data() + i != rhs.data() + i)
+				return (false);
+		return (true);
+	}
+
+	// template <class T, class Alloc>
+	// bool operator != (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	// {
+		
+	// }
+
+	// template <class T, class Alloc>
+	// bool operator < (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	// {
+		
+	// }
+
+	// template <class T, class Alloc>
+	// bool operator <= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	// {
+		
+	// }
+
+	// template <class T, class Alloc>
+	// bool operator > (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	// {
+		
+	// }
+
+	// template <class T, class Alloc>
+	// bool operator >= (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
+	// {
+		
+	// }
 }
 
