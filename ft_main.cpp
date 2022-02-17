@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/16 18:47:10 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/16 20:19:56 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -699,6 +699,56 @@ static void test_relational_operators(void)
 	std::cout << (one_vector <= and_other_vector) << std::endl;
 }
 
+static void test_swap(void)
+{
+	print_title("SWAP");
+
+	ft::vector<int> vector1;
+	print_instructions("vector1.push_back(number) x 8");
+	vector1.push_back(0);
+	vector1.push_back(1);
+	vector1.push_back(2);
+	vector1.push_back(3);
+	vector1.push_back(4);
+	vector1.push_back(5);
+	vector1.push_back(6);
+	vector1.push_back(7);
+	displayVector(vector1);
+
+	ft::vector<int> vector2;
+	print_instructions("vector2.push_back(number) x 9");
+	vector2.push_back(999999999);
+	vector2.push_back(88888888);
+	vector2.push_back(7777777);
+	vector2.push_back(666666);
+	vector2.push_back(55555);
+	vector2.push_back(4444);
+	vector2.push_back(333);
+	vector2.push_back(22);
+	vector2.push_back(1);
+	displayVector(vector2);
+
+	ft::vector<int>::iterator iter_3 = vector1.begin() + 3;
+	ft::vector<int>::iterator iter_333 = vector2.end() - 3;
+
+	print_instructions("std::cout << *iter_3 << std::endl;");
+	std::cout << *iter_3 << std::endl;
+	print_instructions("std::cout << *iter_333 << std::endl;");
+	std::cout << *iter_333 << std::endl;
+
+	print_instructions("swap(vector1, vector2);");
+	swap(vector1, vector2);
+	print_instructions("\ndisplayVector(vector1);");
+	displayVector(vector1);
+	print_instructions("displayVector(vector2);");
+	displayVector(vector2);
+
+	print_instructions("std::cout << *iter_3 << std::endl;");
+	std::cout << *iter_3 << std::endl;
+	print_instructions("std::cout << *iter_333 << std::endl;");
+	std::cout << *iter_333 << std::endl;
+}
+
 int main(void)
 {
 	test_constructors();
@@ -719,4 +769,5 @@ int main(void)
 	test_resize();
 	test_insert();
 	test_relational_operators();
+	test_swap();
 }
