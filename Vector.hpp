@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/16 21:37:41 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/16 21:41:03 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -394,31 +394,6 @@ namespace ft
 						return ("vector::_M_range_check: index >= this->_size()");
 					}
 			};
-
-		//* operator= ok
-		//* assign ok
-		//* resize ok
-		//* get_allocator ok
-		//* at ok
-		//* operator[] ok
-		//* front ok
-		//* back ok
-		//* begin ok
-		//* end ok
-		//* rbegin ok
-		//* rend ok
-		//* data ok
-		//* empty ok
-		//* size ok
-		//* max_size ok
-		//* reserve ok
-		//* capacity
-		//* clear ok
-		//* insert ok
-		//* erase ok
-		//* push_back
-		//* pop_back
-		//* swap
 	};
 
 	//Specializes the std::swap algorithm for std::vector. Swaps the contents of lhs and rhs. Calls lhs.swap(rhs)
