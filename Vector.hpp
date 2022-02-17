@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/16 18:58:06 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/16 21:37:41 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,12 +251,6 @@ namespace ft
 					this->_allocator.construct(&this->_data[i], *(first + i));
 			}
 
-			//!Dá diferença pro workspace
-			// void resize(size_type count, value_type value = value_type())
-			// {
-				
-			// }
-
 			//size_type max_size() const;
 			size_type max_size(void) const
 			{
@@ -302,6 +296,7 @@ namespace ft
 			//Returns a copy of the allocator object associated with the vector.
 			allocator_type get_allocator() const { return (this->_allocator); }
 
+			//!Dá diferença pro workspace
 			//Resizes the container so that it contains n elements.
 			//If n is smaller than the current container size, the content is reduced to its first n elements, removing those beyond (and destroying them).
 			//If n is greater than the current container size, the content is expanded by inserting at the end as many elements as needed to reach a size of n. If val is specified, the new elements are initialized as copies of val, otherwise, they are value-initialized.
@@ -367,6 +362,25 @@ namespace ft
 				this->_size += quantity_to_insert;
 			}
 
+			//Exchanges the contents of the container with those of other. Does not invoke any move, copy, or swap operations on individual elements. All iterators and references remain valid. The past-the-end iterator is invalidated.
+			void swap(vector& other)
+			{
+				size_type	temp_size = other._size;
+				size_type	temp_capacity = other._capacity;
+				Alloc		temp_allocator = other._allocator;
+				pointer		temp_data = other._data;
+
+				other._size = this->_size;
+				other._capacity = this->_capacity;
+				other._allocator = this->_allocator;
+				other._data = this->_data;
+
+				this->_size = temp_size;
+				this->_capacity = temp_capacity;
+				this->_allocator = temp_allocator;
+				this->_data = temp_data;
+			}
+
 			class OutOfBoundsException : public std::exception
 			{
 				int _pos;
@@ -404,9 +418,16 @@ namespace ft
 		//* erase ok
 		//* push_back
 		//* pop_back
-		// swap
+		//* swap
 	};
-	
+
+	//Specializes the std::swap algorithm for std::vector. Swaps the contents of lhs and rhs. Calls lhs.swap(rhs)
+	template< class T, class Alloc >
+	void swap( ft::vector<T,Alloc>& lhs, ft::vector<T,Alloc>& rhs )
+	{
+		lhs.swap(rhs);
+	}
+
 	//The equality comparison (operator==) is performed by first comparing sizes, and if they match, the elements are compared sequentially using operator==, stopping at the first mismatch (as if using algorithm equal)
 	template <class T, class Alloc>
 	bool operator == (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
