@@ -10,7 +10,7 @@ This project is about implementing the various container types of the C++ standa
     * [Allocators](#Allocators)
     * [Size_and_Capacity](#Size_and_Capacity)
     * [Reallocation](#Reallocation)
-* [Vector in C++98](#Vector_in_C++98)
+    * [Vector in C++98](#Vector_in_C++98)
 * [Friend keyword](#Friend_keyword)
 * [Explicit keyword](#Explicit_keyword)
 * [Iterators](#Iterators)
