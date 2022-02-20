@@ -18,8 +18,9 @@ This project is about implementing the various container types of the C++ standa
     * [Random access and Bidirectional iterators](#Random-access_and_Bidirectional_iterators)
     * [Reverse iterators](#Reverse_iterators)
 * [Type_traits](#Type_traits)
-
-## Vector
+    * [enable_if](#enable_if)
+    * [is_integral](#is_integral)
+# Vector
 
 >std::vector is a sequence container that encapsulates dynamic size arrays
 
@@ -95,7 +96,7 @@ integers.insert (integers.begin () + 1, another.begin (), another.end ());
 
 *move vs copy*
 
-### Allocators
+## Allocators
 
 Allocators are classes that define memory models to be used by some parts of the Standard Library, and most specifically, by STL containers.
 
@@ -188,11 +189,11 @@ public :
 
 * [C-Standard-Allocator-An-Introduction-and-Implement](https://www.codeproject.com/Articles/4795/C-Standard-Allocator-An-Introduction-and-Implement)
 
-### Size_and_Capacity
+## Size_and_Capacity
 
 The size of a vector is the number of elements stored in a vector. The capacity of a vector is the total number of elements that can potentially be stored in the vector before it reallocates memory to accommodate more elements.
 
-### Reallocation
+## Reallocation
 
 The implementation of the reallocation logic is smart—to avoid another reallocation on insertion of another element, it preemptively allocates a capacity greater than the requirements of the immediate scenario.
 
@@ -286,7 +287,7 @@ Calls to `Allocator::allocate` may throw exceptions
 [cpp reference constructors](https://en.cppreference.com/w/cpp/container/vector/vector)
 
 
-## Friend_keyword
+# Friend_keyword
 
 Subject: *For non-member overloads, the keyword friend is allowed. Each use of friend must be justified and will be checked during evaluation.*
 
@@ -379,7 +380,7 @@ Friendship is not mutual unless explicitly specified as such.
 Friendship is not inherited.
 Friendship is not transitive, so classes that are friends of YourOtherClass cannot access YourClass's private members.
 
-## Explicit_keyword
+# Explicit_keyword
 
 from [this stackOverflow thread](https://stackoverflow.com/questions/121162/what-does-the-explicit-keyword-mean)
 
@@ -456,9 +457,9 @@ public:
 };
 ```
 
-## Iterators
+# Iterators
 
-### Iterators_traits
+## Iterators_traits
 
 std::iterator_traits is the type trait class that provides uniform interface to the properties of LegacyIterator types. This makes it possible to implement algorithms only in terms of iterators.
 
@@ -468,7 +469,7 @@ The template can be specialized for user-defined iterators so that the informati
 
 [stackOverflow usefull thread](https://stackoverflow.com/questions/6742008/what-are-the-typical-use-cases-of-an-iterator-trait)
 
-### Random-access_and_Bidirectional_iterators
+## Random-access_and_Bidirectional_iterators
 
 **Random-access iterators** are iterators that can be used to access elements at an arbitrary offset position relative to the element they point to, offering the same functionality as pointers. Random-access iterators are the most complete iterators in terms of functionality. All pointer types are also valid random-access iterators.
 
@@ -489,7 +490,7 @@ It is to be noted that containers like vector, deque support random-access itera
 |The value pointed to by these iterators can be exchanged or swapped|:heavy_check_mark:|:heavy_check_mark:|
 
 
-### Reverse_iterators
+## Reverse_iterators
 
 [std::reverse_iterator](https://en.cppreference.com/w/cpp/iterator/reverse_iterator) is an iterator adaptor that reverses the direction of a given iterator.
 
@@ -502,13 +503,13 @@ It is to be noted that containers like vector, deque support random-access itera
 
 * [Tricky Reverse Iterator](https://www.youtube.com/watch?v=V89gtNl4pZM)
 
-## Type_traits
+# Type_traits
 
 [Header](https://www.cplusplus.com/reference/type_traits/) from C++11 that defines a series of classes to obtain type information on compile-time.
 
 [type_traits source code](https://code.woboq.org/gcc/libstdc++-v3/include/std/type_traits.html)
 
-### enable_if
+## enable_if
 
 Enable type if condition is met
 The type T is enabled as member type `enable_if::type` if `Cond` is **true**.
@@ -552,7 +553,7 @@ will call the second contructor, and as the arguments are integers and not itera
 
 To avoid those kind of situations, [enable_if](https://www.cplusplus.com/reference/type_traits/enable_if/) must be implemented, adding an extra condition to the second constructor saying *"not call this if the type being passed are an integral type"*
 
-### is_integral
+## is_integral
 
 [is_integral](https://www.cplusplus.com/reference/type_traits/is_integral/) is the other piece needed to the condicion above.
 
