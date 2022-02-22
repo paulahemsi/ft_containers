@@ -20,9 +20,10 @@ CFLAGS	+= -std=c++98
 
 RM		:= rm -rf
 
-SRCDIR	:= ./tests/
-SRC		:= main.cpp
-FT_SRC	:= ft_main.cpp
+SRCDIR	:=	./tests/
+SRC		:=	main.cpp
+FT_SRC	:=	ft_main.cpp\
+			auxiliary.cpp
 
 CONTAINERSDIR	:=	./containers/
 CONTAINERS		:=	Vector.hpp

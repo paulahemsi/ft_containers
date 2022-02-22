@@ -10,35 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Vector.hpp"
-#include <vector>
-
-# define CYAN			"\e[0;36m"
-# define L_GRAY			"\e[0;38;5;245m"
-# define YELLOW			"\e[0;33m"
-# define RESET			"\e[0m"
-
-template <typename T>
-static void displayVector(const ft::vector<T>& vector_)
-{
-	std::cout << "vector capacity: " << vector_.capacity() << " vector max size: " << vector_.max_size() << std::endl;
-	std::cout << "The vector contains " << vector_.size () << " elements" << std::endl;
-	std::cout << YELLOW << "vector: " << std::endl;
-	for (typename ft::vector<T>::const_iterator element = vector_.begin(); element != vector_.end(); ++element )
-		std::cout << *element << ' ';
-	std::cout << std::endl << RESET << std::endl;
-}
-
-static void print_instructions(std::string instruction)
-{
-	std::cout << L_GRAY << instruction << RESET << std::endl;
-}
-
-static void print_title(std::string title)
-{
-	std::cout << CYAN << "\n\n*****" << title << "*****\n" RESET << std::endl;
-}
+#include "tests.h"
 
 static void test_constructors(void)
 {
