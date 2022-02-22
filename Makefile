@@ -10,46 +10,71 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft.out
-ORGINAL = original
+NAME	:= ft.out
+ORGINAL	:= original
 
-SRC =	main.cpp
+CC		:= c++
+CFLAGS	:= -Wall -Wextra -Werror
+CFLAGS	+= -g
+CFLAGS	+= -std=c++98
 
-FT_SRC =	ft_main.cpp
+RM		:= rm -rf
 
+SRCDIR	:= ./tests/
+SRC		:= main.cpp
+FT_SRC	:= ft_main.cpp
 
-OBJS =	main.o
+CONTAINERSDIR	:=	./containers/
+CONTAINERS		:=	Vector.hpp
 
-FT_OBJS =	ft_main.o
+ITERATORSDIR	:=	./iterators/
+ITERATORS		:=	bidirectional_iterator.hpp\
+					random_access_iterator.hpp\
+					iterators_traits.hpp\
+					reverse_iterator.hpp
 
-CC	= c++
+AUXTEMPLATESDIR	:=	./aux_templates/
+AUXTEMPLATES		:=	lexicographical_compare.tpp\
+				type_traits.hpp 
 
-RM	= rm -rf
+TEMPLATES		:= $(CONTAINERS) $(ITERATORS) $(AUXTEMPLATES)
+TEMPLATESDIR	:= $(CONTAINERSDIR) $(ITERATORSDIR) $(AUXTEMPLATESDIR) 
 
-CFLAGS	= -Wall -Wextra -Werror -g -std=c++98
+VPATH	:=	$(SRCDIR)\
+			$(CONTAINERSDIR)\
+			$(ITERATORSDIR)\
+			$(AUXTEMPLATESDIR)
 
-$(NAME):	$(FT_OBJS)
-			$(CC) $(CFLAGS) -o $(NAME) $(FT_OBJS)
+OBJDIR		:= ./objs/
+OBJS		:= $(addprefix $(OBJDIR), $(notdir $(SRC:.cpp=.o)))
+FT_OBJS		:= $(addprefix $(OBJDIR), $(notdir $(FT_SRC:.cpp=.o)))
+
+INCLUDES	:= $(addprefix -I, $(TEMPLATESDIR))
+
+$(OBJDIR)%.o:	%.cpp $(TEMPLATES) 
+				$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(NAME):	$(FT_OBJS) 
+			$(CC) $(CFLAGS) -o $@ $(FT_OBJS)
 
 $(ORGINAL):	$(OBJS)
-			$(CC) $(CFLAGS) -o $(ORGINAL) $(OBJS)
+			$(CC) $(CFLAGS) -o $@ $(OBJS)
 
-$(OBJS):	$(SRC)
-			$(CC) $(CFLAGS) -c $(SRC)
+$(FT_OBJS): | $(OBJDIR)
 
-$(FT_OBJS):	$(FT_SRC)
-			$(CC) $(CFLAGS) -c $(FT_SRC)
+$(OBJS): | $(OBJDIR)
 
-all:		$(TEST)
+$(OBJDIR):
+			mkdir $(OBJDIR)
+
+all:		$(NAME)
 
 clean:
-			$(RM) $(OBJS)
+			$(RM) $(OBJDIR)
 
 fclean:		clean
-			$(RM) $(TEST)
-			$(RM) $(OBJS)
 			$(RM) $(NAME)
-			$(RM) $(FT_OBJS)
+			$(RM) $(ORGINAL)
 
 re:			fclean all
 
