@@ -36,4 +36,8 @@ void displayVector(const ft::vector<T>& vector_)
 void print_instructions(std::string instruction);
 void print_title(std::string title);
 
+void test_iterators(void);
+void test_const_iterators(void);
+void test_reverse_iterators(void);
+
 #endif

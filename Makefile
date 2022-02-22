@@ -23,7 +23,8 @@ RM		:= rm -rf
 SRCDIR	:=	./tests/
 SRC		:=	main.cpp
 FT_SRC	:=	ft_main.cpp\
-			auxiliary.cpp
+			auxiliary.cpp\
+			iterators.cpp
 
 CONTAINERSDIR	:=	./containers/
 CONTAINERS		:=	Vector.hpp
@@ -35,7 +36,7 @@ ITERATORS		:=	bidirectional_iterator.hpp\
 					reverse_iterator.hpp
 
 AUXTEMPLATESDIR	:=	./aux_templates/
-AUXTEMPLATES		:=	lexicographical_compare.tpp\
+AUXTEMPLATES	:=	lexicographical_compare.tpp\
 				type_traits.hpp 
 
 TEMPLATES		:= $(CONTAINERS) $(ITERATORS) $(AUXTEMPLATES)
