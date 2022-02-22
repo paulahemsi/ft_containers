@@ -44,5 +44,6 @@ void test_out_of_bounds(void);
 void test_relational_operators(void);
 void test_equal_operator(void);
 void test_empty(void);
+void test_assign(void);
 
 #endif
