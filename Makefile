@@ -6,7 +6,7 @@
 #    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/22 19:59:21 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/02/22 20:05:09 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC		:=	main.cpp
 FT_SRC	:=	ft_main.cpp\
 			auxiliary.cpp\
 			iterators.cpp\
-			constructors.cpp
+			constructors.cpp\
+			out_of_bounds.cpp
 
 CONTAINERSDIR	:=	./containers/
 CONTAINERS		:=	Vector.hpp
