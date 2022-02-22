@@ -24,30 +24,48 @@ SRCDIR	:= ./tests/
 SRC		:= main.cpp
 FT_SRC	:= ft_main.cpp
 
-CONTAINERSDIR	:= ./
-CONTAINERS		:= Vector.hpp
+CONTAINERSDIR	:=	./containers/
+CONTAINERS		:=	Vector.hpp
 
-VPATH	:= $(SRCDIR)
+ITERATORSDIR	:=	./iterators/
+ITERATORS		:=	bidirectional_iterator.hpp\
+					random_access_iterator.hpp\
+					iterators_traits.hpp\
+					reverse_iterator.hpp
 
-OBJDIR	:= ./objs/
-OBJS	:= $(addprefix $(OBJDIR), $(notdir $(SRC:.cpp=.o)))
-FT_OBJS	:= $(addprefix $(OBJDIR), $(notdir $(FT_SRC:.cpp=.o)))
+OTHERSDIR	:=	./others/
+OTHERS		:=	lexicographical_compare.tpp\
+				type_traits.hpp 
 
-$(OBJDIR)%.o:	%.cpp $(CONTAINERS)
-	$(CC) $(CFLAGS) -I$(CONTAINERSDIR) -c $< -o $@
+TEMPLATES		:= $(CONTAINERS) $(ITERATORS) $(OTHERS)
+TEMPLATESDIR	:= $(CONTAINERSDIR) $(ITERATORSDIR) $(OTHERSDIR) 
+
+VPATH	:=	$(SRCDIR)\
+			$(CONTAINERSDIR)\
+			$(ITERATORSDIR)\
+			$(OTHERSDIR)
+
+OBJDIR		:= ./objs/
+OBJS		:= $(addprefix $(OBJDIR), $(notdir $(SRC:.cpp=.o)))
+FT_OBJS		:= $(addprefix $(OBJDIR), $(notdir $(FT_SRC:.cpp=.o)))
+
+INCLUDES	:= $(addprefix -I, $(TEMPLATESDIR))
+
+$(OBJDIR)%.o:	%.cpp $(TEMPLATES) 
+				$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME):	$(FT_OBJS) 
-			$(CC) $(CFLAGS) -o $(NAME) $(FT_OBJS)
+			$(CC) $(CFLAGS) -o $@ $(FT_OBJS)
 
 $(ORGINAL):	$(OBJS)
-			$(CC) $(CFLAGS) -o $(ORGINAL) $(OBJS)
+			$(CC) $(CFLAGS) -o $@ $(OBJS)
 
 $(FT_OBJS): | $(OBJDIR)
 
 $(OBJS): | $(OBJDIR)
 
 $(OBJDIR):
-	mkdir $(OBJDIR)
+			mkdir $(OBJDIR)
 
 all:		$(NAME)
 
