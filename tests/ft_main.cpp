@@ -88,31 +88,6 @@ static void test_data(void)
 	}
 }
 
-static void test_clear(void)
-{
-	print_title("CLEAR");
-
-	ft::vector<float> floats;
-	print_instructions("floats.push_back(number) x 9");
-	floats.push_back(59.57);
-	floats.push_back(9.57);
-	floats.push_back(989.57);
-	floats.push_back(1009.57);
-	floats.push_back(59.57);
-	floats.push_back(9.57);
-	floats.push_back(989.57);
-	floats.push_back(1009.57);
-	floats.push_back(1234.567);
-	displayVector(floats);
-
-	print_instructions("floats.clear();");
-	floats.clear();
-	displayVector(floats);
-	print_instructions("floats.push_back(9.57);");
-	floats.push_back(9.57);
-	displayVector(floats);
-}
-
 static void test_erase(void)
 {
 	print_title("ERASE");

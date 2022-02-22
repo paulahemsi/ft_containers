@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.h                                            :+:      :+:    :+:   */
+/*   tests.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_H
-# define TESTS_H
+#ifndef TESTS_HPP
+# define TESTS_HPP
 
 # include <iostream>
 # include <vector>
@@ -45,5 +45,6 @@ void test_relational_operators(void);
 void test_equal_operator(void);
 void test_empty(void);
 void test_assign(void);
+void test_clear(void);
 
 #endif
