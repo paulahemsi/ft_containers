@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/16 21:41:03 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/21 22:04:43 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ namespace ft
 			size_type	_size;
 			size_type	_capacity;
 			Alloc		_allocator;
-			pointer		_data;
+			pointer		_element;
 			
 			void	_checkOutOfBounds(int pos)
 			{
@@ -57,9 +57,9 @@ namespace ft
 				if(newCapacity < this->_size)
 					this->_size = newCapacity;
 				for(size_type i = 0; i < this->_size; i++)
-					this->_allocator.construct(&newBlock[i], this->_data[i]);
-				this->_allocator.deallocate(this->_data, this->_capacity);
-				_data = newBlock;
+					this->_allocator.construct(&newBlock[i], this->_element[i]);
+				this->_allocator.deallocate(this->_element, this->_capacity);
+				_element = newBlock;
 				_capacity = newCapacity;
 			}
 		public:
@@ -69,17 +69,17 @@ namespace ft
 																			_size(0),
 																			_capacity(0),
 																			_allocator(alloc),
-																			_data(NULL) {}
+																			_element(NULL) {}
 			//fill constructor
 			//Constructs a container with n elements. Each element is a copy of val.
 			explicit vector(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()):
 																																_size(n),
 																																_capacity(n),
 																																_allocator(alloc),
-																																_data(this->_allocator.allocate(this->_capacity))
+																																_element(this->_allocator.allocate(this->_capacity))
 			{
 				for (size_type i = 0; i < this->_size; i++)
-					this->_allocator.construct(&this->_data[i], val);
+					this->_allocator.construct(&this->_element[i], val);
 			}
 			//range constructor
 			//Constructs a container with as many elements as the range [first,last], with each element constructed from its corresponding element in that range, in the same order.
@@ -89,23 +89,23 @@ namespace ft
 																											_size(last - first),
 																											_capacity(last - first),
 																											_allocator(alloc),
-																											_data(this->_allocator.allocate(this->_size))
+																											_element(this->_allocator.allocate(this->_size))
 			{
 				for (size_type i = 0; i < this->_size; i++)
-					this->_allocator.construct(&this->_data[i], *(first + i));
+					this->_allocator.construct(&this->_element[i], *(first + i));
 			}
 			//copy constructor
 			//Constructs a container with a copy of each of the elements in other, in the same order
 			vector(const vector&	other):
 											_size(other._size),
 											_capacity(other._capacity),
-											_data(this->_allocator.allocate(this->_capacity))
+											_element(this->_allocator.allocate(this->_capacity))
 			{
 				*this = other;
 			}
 			~vector()
 			{
-				this->_allocator.deallocate(this->_data, this->_capacity);
+				this->_allocator.deallocate(this->_element, this->_capacity);
 			}
 
 			vector&	operator=(const vector& other)
@@ -113,76 +113,76 @@ namespace ft
 				if (this->_capacity < other._size)
 					this->_reAlloc(other._size);
 				for(size_type i = 0; i < other._size; i++)
-					this->_allocator.construct(&this->_data[i], other._data[i]);
+					this->_allocator.construct(&this->_element[i], other._element[i]);
 				return (*this);
 			}
 
 			reference	operator[](int pos)
 			{
 				this->_checkOutOfBounds(pos);
-				return (this->_data[pos]);
+				return (this->_element[pos]);
 			}
 
 			iterator begin(void)
 			{
-				return iterator(this->_data);
+				return iterator(this->_element);
 			}
 
 			iterator end(void)
 			{
-				return iterator(this->_data + this->_size);
+				return iterator(this->_element + this->_size);
 			}
 
 			const_iterator begin(void) const
 			{
-				return const_iterator(this->_data);
+				return const_iterator(this->_element);
 			}
 
 			const_iterator end(void) const
 			{
-				return const_iterator(this->_data + this->_size);
+				return const_iterator(this->_element + this->_size);
 			}
 
 			reverse_iterator rbegin(void)
 			{
-				return reverse_iterator(this->end() - 1); //*
+				return reverse_iterator(this->end() - 1);
 			}
 
 			reverse_iterator rend(void)
 			{
-				return reverse_iterator(this->begin() - 1); //*
+				return reverse_iterator(this->begin() - 1);
 			}
 
 			const_reverse_iterator rbegin(void) const
 			{
-				return const_reverse_iterator(this->_data + this->_size - 1);
+				return const_reverse_iterator(this->end() - 1);
 			}
 
 			const_reverse_iterator rend(void) const
 			{
-				return const_reverse_iterator(this->_data - 1);
+				return const_reverse_iterator(this->begin()  - 1);
 			}
 
 			const reference	operator[](int pos) const
 			{
 				this->_checkOutOfBounds(pos);
-				return (this->_data[pos]);
+				return (this->_element[pos]);
 			}
 
 			reference	at(int pos)
 			{
 				this->_checkOutOfBounds(pos);
-				return (this->_data[pos]);
+				return (this->_element[pos]);
 			}
 
 			reference	front(void)
 			{
-				return (this->_data[0]);
+				return (this->_element[0]);
 			}
 
 			reference	back(void)
 			{
-				return (this->_data[this->_size - 1]);
+				return (this->_element[this->_size - 1]);
 			}
 
 			void push_back(const value_type& value)
@@ -197,13 +197,13 @@ namespace ft
 					else
 						this->_reAlloc(this->_capacity * 2);
 				}
-				this->_allocator.construct(&this->_data[this->_size], value);
+				this->_allocator.construct(&this->_element[this->_size], value);
 				this->_size++;
 			}
 
 			void pop_back(void)
 			{
-				this->_data[this->_size - 1] = 0;
+				this->_element[this->_size - 1] = 0;
 				this->_size--;
 			}
 
@@ -227,28 +227,28 @@ namespace ft
 			//Replaces the contents with count copies of value value
 			void assign(size_type count, const value_type& value)
 			{
-				if (this->_data)
-					this->_allocator.deallocate(this->_data, this->_capacity);
+				if (this->_element)
+					this->_allocator.deallocate(this->_element, this->_capacity);
 				this->_size = count;
 				if (this->_capacity < this->_size)
 					this->_capacity = this->_size;
-				this->_data = this->_allocator.allocate(this->_capacity);
+				this->_element = this->_allocator.allocate(this->_capacity);
 				for(size_type i = 0; i < this->_size; i++)
-					this->_data[i] = value;
+					this->_element[i] = value;
 			}
 
 			// Replaces the contents with copies of those in the range (first, last). The behavior is undefined if either argument is an iterator into *this.
 			template< class InputIt >
 			void assign(InputIt first, InputIt last, typename ft::enable_if<!ft::is_integral<InputIt>::value, bool>::type = false)
 			{
-				if (this->_data)
-					this->_allocator.deallocate(this->_data, this->_capacity);
+				if (this->_element)
+					this->_allocator.deallocate(this->_element, this->_capacity);
 				this->_size = last - first;
 				if (this->_capacity < this->_size)
 					this->_capacity = this->_size;
-				this->_data = this->_allocator.allocate(this->_capacity);
+				this->_element = this->_allocator.allocate(this->_capacity);
 				for(size_type i = 0; i < this->_size; i++)
-					this->_allocator.construct(&this->_data[i], *(first + i));
+					this->_allocator.construct(&this->_element[i], *(first + i));
 			}
 
 			//size_type max_size() const;
@@ -258,14 +258,14 @@ namespace ft
 			}
 
 			//Returns pointer to the underlying array serving as element storage. The pointer is such that range [data(); data() + size()) is always a valid range, even if the container is empty (data() is not dereferenceable in that case).
-			T* data() {return (this->_data);}
+			T* data() {return (this->_element);}
 
-			const T* data() const {return (this->_data);}
+			const T* data() const {return (this->_element);}
 
 			//Removes all elements from the vector (which are destroyed), leaving the container with a size of 0.
 			void clear(void)
 			{
-				this->_allocator.destroy(this->_data);
+				this->_allocator.destroy(this->_element);
 				this->_size = 0;
 			}
 
@@ -306,7 +306,7 @@ namespace ft
 				if(n < this->_size)
 				{
 					for(size_type i = n; i <= this->_size; i++)
-						this->_allocator.destroy(&this->_data[i]);
+						this->_allocator.destroy(&this->_element[i]);
 					this->_size = n;
 				}
 				else if (n > this->_size)
@@ -314,7 +314,7 @@ namespace ft
 					if (n > this->_capacity)
 						this->_reAlloc(n);
 					for(size_type i = this->_size; i < n; i++)
-						this->_allocator.construct(&this->_data[i], val);
+						this->_allocator.construct(&this->_element[i], val);
 					this->_size = n;
 				}
 			}
@@ -329,8 +329,8 @@ namespace ft
 				if((this->_size + 1) > this->_capacity)
 					this->_reAlloc(this->_size + 1);
 				for(size_t i = this->_size; i > index_to_insert; i--)
-					this->_allocator.construct(&this->_data[i], this->_data[i - 1]);
-				this->_allocator.construct(&this->_data[index_to_insert], val);
+					this->_allocator.construct(&this->_element[i], this->_element[i - 1]);
+				this->_allocator.construct(&this->_element[index_to_insert], val);
 				this->_size++;
 				return (this->begin() + index_to_insert);
 			}
@@ -341,9 +341,9 @@ namespace ft
 				if((this->_size + n) > this->_capacity)
 					this->_reAlloc(this->_size + n);
 				for(size_type i = this->_size + n - 1, j = 1; i >= (index_to_insert + n); i--, j++)
-					this->_allocator.construct(&this->_data[i], this->_data[this->_size - j]);
+					this->_allocator.construct(&this->_element[i], this->_element[this->_size - j]);
 				for(size_type i = 0; i < n; i++)
-					this->_allocator.construct(&this->_data[index_to_insert + i], val);
+					this->_allocator.construct(&this->_element[index_to_insert + i], val);
 				this->_size += n;
 			}
 			//range
@@ -356,9 +356,9 @@ namespace ft
 				if((this->_size + quantity_to_insert) > this->_capacity)
 					this->_reAlloc(this->_size + quantity_to_insert);
 				for(size_type i = this->_size + quantity_to_insert - 1, j = 1; i >= (index_to_insert + quantity_to_insert); i--, j++)
-					this->_allocator.construct(&this->_data[i], this->_data[this->_size - j]);
+					this->_allocator.construct(&this->_element[i], this->_element[this->_size - j]);
 				for(size_type i = 0; i < quantity_to_insert; i++)
-					this->_allocator.construct(&this->_data[index_to_insert + i], *(first + i));
+					this->_allocator.construct(&this->_element[index_to_insert + i], *(first + i));
 				this->_size += quantity_to_insert;
 			}
 
@@ -368,17 +368,17 @@ namespace ft
 				size_type	temp_size = other._size;
 				size_type	temp_capacity = other._capacity;
 				Alloc		temp_allocator = other._allocator;
-				pointer		temp_data = other._data;
+				pointer		temp_element = other._element;
 
 				other._size = this->_size;
 				other._capacity = this->_capacity;
 				other._allocator = this->_allocator;
-				other._data = this->_data;
+				other._element = this->_element;
 
 				this->_size = temp_size;
 				this->_capacity = temp_capacity;
 				this->_allocator = temp_allocator;
-				this->_data = temp_data;
+				this->_element = temp_element;
 			}
 
 			class OutOfBoundsException : public std::exception
