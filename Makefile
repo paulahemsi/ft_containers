@@ -33,17 +33,17 @@ ITERATORS		:=	bidirectional_iterator.hpp\
 					iterators_traits.hpp\
 					reverse_iterator.hpp
 
-OTHERSDIR	:=	./others/
-OTHERS		:=	lexicographical_compare.tpp\
+AUXTEMPLATESDIR	:=	./aux_templates/
+AUXTEMPLATES		:=	lexicographical_compare.tpp\
 				type_traits.hpp 
 
-TEMPLATES		:= $(CONTAINERS) $(ITERATORS) $(OTHERS)
-TEMPLATESDIR	:= $(CONTAINERSDIR) $(ITERATORSDIR) $(OTHERSDIR) 
+TEMPLATES		:= $(CONTAINERS) $(ITERATORS) $(AUXTEMPLATES)
+TEMPLATESDIR	:= $(CONTAINERSDIR) $(ITERATORSDIR) $(AUXTEMPLATESDIR) 
 
 VPATH	:=	$(SRCDIR)\
 			$(CONTAINERSDIR)\
 			$(ITERATORSDIR)\
-			$(OTHERSDIR)
+			$(AUXTEMPLATESDIR)
 
 OBJDIR		:= ./objs/
 OBJS		:= $(addprefix $(OBJDIR), $(notdir $(SRC:.cpp=.o)))
