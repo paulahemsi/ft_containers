@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/22 20:04:16 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/22 20:10:03 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -379,57 +379,6 @@ static void test_insert(void)
 	print_instructions("integers.insert(integers.begin() + 2, vector_to_insert.begin(), 1111);");
 	integers.insert(integers.begin() + 2, vector_to_insert.begin(), vector_to_insert.begin() + 4);
 	displayVector(integers);
-}
-
-static void test_relational_operators(void)
-{
-	print_title("RELATIONAL OPERATORS");
-
-	ft::vector<std::string> one_vector(8, "one");
-	ft::vector<std::string> another_vector(8, "another");
-	ft::vector<std::string> and_other_vector(5, "and_other");
-
-	print_instructions("(one_vector == one_vector)");
-	std::cout << (one_vector == one_vector) << std::endl;
-	print_instructions("(one_vector == another_vector)");
-	std::cout << (one_vector == another_vector) << std::endl;
-	print_instructions("(one_vector == and_other_vector)");
-	std::cout << (one_vector == and_other_vector) << std::endl;
-
-	print_instructions("(one_vector != one_vector)");
-	std::cout << (one_vector != one_vector) << std::endl;
-	print_instructions("(one_vector != another_vector)");
-	std::cout << (one_vector != another_vector) << std::endl;
-	print_instructions("(one_vector != and_other_vector)");
-	std::cout << (one_vector != and_other_vector) << std::endl;
-
-	print_instructions("(one_vector > one_vector)");
-	std::cout << (one_vector > one_vector) << std::endl;
-	print_instructions("(one_vector > another_vector)");
-	std::cout << (one_vector > another_vector) << std::endl;
-	print_instructions("(one_vector > and_other_vector)");
-	std::cout << (one_vector > and_other_vector) << std::endl;
-
-	print_instructions("(one_vector >= one_vector)");
-	std::cout << (one_vector >= one_vector) << std::endl;
-	print_instructions("(one_vector >= another_vector)");
-	std::cout << (one_vector >= another_vector) << std::endl;
-	print_instructions("(one_vector >= and_other_vector)");
-	std::cout << (one_vector >= and_other_vector) << std::endl;
-
-	print_instructions("(one_vector < one_vector)");
-	std::cout << (one_vector < one_vector) << std::endl;
-	print_instructions("(one_vector < another_vector)");
-	std::cout << (one_vector < another_vector) << std::endl;
-	print_instructions("(one_vector < and_other_vector)");
-	std::cout << (one_vector < and_other_vector) << std::endl;
-
-	print_instructions("(one_vector <= one_vector)");
-	std::cout << (one_vector <= one_vector) << std::endl;
-	print_instructions("(one_vector <= another_vector)");
-	std::cout << (one_vector <= another_vector) << std::endl;
-	print_instructions("(one_vector <= and_other_vector)");
-	std::cout << (one_vector <= and_other_vector) << std::endl;
 }
 
 static void test_swap(void)
