@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests.h"
+#include "tests.hpp"
 
 static ft::vector<int> test_push_back(void)
 {

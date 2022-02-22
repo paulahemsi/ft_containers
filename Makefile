@@ -58,7 +58,7 @@ FT_OBJS		:= $(addprefix $(OBJDIR), $(notdir $(FT_SRC:.cpp=.o)))
 
 INCLUDES	:= $(addprefix -I, $(TEMPLATESDIR))
 
-$(OBJDIR)%.o:	%.cpp $(TEMPLATES) 
+$(OBJDIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
 				$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME):	$(FT_OBJS) 
