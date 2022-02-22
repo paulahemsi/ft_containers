@@ -6,41 +6,11 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/16 20:19:56 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:58:36 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.h"
-
-static void test_constructors(void)
-{
-	print_title("CONSTRUCTORS");
-
-	print_instructions("ft::vector<int> emptyVector;");
-	ft::vector<int> emptyVector;
-	displayVector(emptyVector);
-
-	print_instructions("ft::vector<int> fourElements(4);");
-	ft::vector<int> fourElements(4);
-	displayVector(fourElements);
-
-	print_instructions("ft::vector<int> tenElements (10);");
-	ft::vector<int> tenElements(10);
-	displayVector(tenElements);
-
-	print_instructions("ft::vector<int> tenElement90 (10, 90);");
-	ft::vector<int> tenElement90(10, 90);
-	displayVector(tenElement90);
-
-	print_instructions("ft::vector<int> copyVector (tenElement90);");
-	ft::vector<int> copyVector(tenElement90);
-	displayVector(copyVector);
-
-	print_instructions("ft::vector<int> partialCopy (tenElements.begin(), tenElements.begin() + 5);");
-	ft::vector<int> partialCopy(tenElements.begin(),
-	tenElements.begin() + 5);
-	displayVector(partialCopy);
-}
 
 static void test_empty(void)
 {

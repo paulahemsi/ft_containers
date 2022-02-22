@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/22 13:54:27 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:59:46 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void print_title(std::string title);
 void test_iterators(void);
 void test_const_iterators(void);
 void test_reverse_iterators(void);
+void test_constructors(void);
 
 #endif
