@@ -28,6 +28,7 @@ FT_SRC	:=	ft_main.cpp\
 			constructors.cpp\
 			out_of_bounds.cpp\
 			relational_operators.cpp\
+			equal_operator.cpp\
 			empty.cpp
 
 CONTAINERSDIR	:=	./containers/
