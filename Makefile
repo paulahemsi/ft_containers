@@ -10,46 +10,53 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft.out
-ORGINAL = original
+NAME	:= ft.out
+ORGINAL	:= original
 
-SRC =	main.cpp
+CC		:= c++
+CFLAGS	:= -Wall -Wextra -Werror
+CFLAGS	+= -g
+CFLAGS	+= -std=c++98
 
-FT_SRC =	ft_main.cpp
+RM		:= rm -rf
 
+SRCDIR	:= ./tests/
+SRC		:= main.cpp
+FT_SRC	:= ft_main.cpp
 
-OBJS =	main.o
+CONTAINERSDIR	:= ./
+CONTAINERS		:= Vector.hpp
 
-FT_OBJS =	ft_main.o
+VPATH	:= $(SRCDIR)
 
-CC	= c++
+OBJDIR	:= ./objs/
+OBJS	:= $(addprefix $(OBJDIR), $(notdir $(SRC:.cpp=.o)))
+FT_OBJS	:= $(addprefix $(OBJDIR), $(notdir $(FT_SRC:.cpp=.o)))
 
-RM	= rm -rf
+$(OBJDIR)%.o:	%.cpp $(CONTAINERS)
+	$(CC) $(CFLAGS) -I$(CONTAINERSDIR) -c $< -o $@
 
-CFLAGS	= -Wall -Wextra -Werror -g -std=c++98
-
-$(NAME):	$(FT_OBJS)
+$(NAME):	$(FT_OBJS) 
 			$(CC) $(CFLAGS) -o $(NAME) $(FT_OBJS)
 
 $(ORGINAL):	$(OBJS)
 			$(CC) $(CFLAGS) -o $(ORGINAL) $(OBJS)
 
-$(OBJS):	$(SRC)
-			$(CC) $(CFLAGS) -c $(SRC)
+$(FT_OBJS): | $(OBJDIR)
 
-$(FT_OBJS):	$(FT_SRC)
-			$(CC) $(CFLAGS) -c $(FT_SRC)
+$(OBJS): | $(OBJDIR)
 
-all:		$(TEST)
+$(OBJDIR):
+	mkdir $(OBJDIR)
+
+all:		$(NAME)
 
 clean:
-			$(RM) $(OBJS)
+			$(RM) $(OBJDIR)
 
 fclean:		clean
-			$(RM) $(TEST)
-			$(RM) $(OBJS)
 			$(RM) $(NAME)
-			$(RM) $(FT_OBJS)
+			$(RM) $(ORGINAL)
 
 re:			fclean all
 
