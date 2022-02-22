@@ -6,7 +6,7 @@
 #    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/22 20:10:56 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/02/22 20:19:34 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ FT_SRC	:=	ft_main.cpp\
 			iterators.cpp\
 			constructors.cpp\
 			out_of_bounds.cpp\
-			relational_operators.cpp
+			relational_operators.cpp\
+			empty.cpp
 
 CONTAINERSDIR	:=	./containers/
 CONTAINERS		:=	Vector.hpp

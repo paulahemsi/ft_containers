@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/22 20:10:29 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/22 20:19:25 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void test_reverse_iterators(void);
 void test_constructors(void);
 void test_out_of_bounds(void);
 void test_relational_operators(void);
+void test_empty(void);
 
 #endif
