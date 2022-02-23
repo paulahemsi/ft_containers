@@ -22,6 +22,8 @@ This project is about implementing the various container types of the C++ standa
 * [Type_traits](#Type_traits)
     * [enable_if](#enable_if)
     * [is_integral](#is_integral)
+* [Clock](#clock)
+
 # Vector
 
 >std::vector is a sequence container that encapsulates dynamic size arrays
@@ -592,3 +594,23 @@ int main() {
 i is odd: true
 i is even: false
 ```
+
+# Clock
+
+[from cplusplus reference](https://www.cplusplus.com/reference/ctime/clock/)
+
+`clock_t clock (void)`
+
+Returns the processor time consumed by the program.
+
+The value returned is expressed in clock ticks, which are units of time of a constant but system-specific length (with a relation of CLOCKS_PER_SEC clock ticks per second).
+
+The epoch used as reference by clock varies between systems, but it is related to the program execution (generally its launch). To calculate the actual processing time of a program, the value returned by clock shall be compared to a value returned by a previous call to the same function.
+
+**Return Value**:
+
+The number of clock ticks elapsed since an epoch related to the particular program execution.
+
+On failure, the function returns a value of -1.
+
+clock_t is a type defined in <ctime> as an alias of a fundamental arithmetic type.
