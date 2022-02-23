@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/21 22:04:43 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/23 11:25:48 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,47 +62,72 @@ namespace ft
 				_element = newBlock;
 				_capacity = newCapacity;
 			}
+
 		public:
-			//empty container constructor (default constructor)
-			//Constructs an empty container, with no elements.
+
+			/*
+			 * Empty container constructor (default constructor)
+			 *
+			 * Constructs an empty container, with no elements.
+			 */
 			explicit vector (const allocator_type& alloc = allocator_type()):
-																			_size(0),
-																			_capacity(0),
-																			_allocator(alloc),
-																			_element(NULL) {}
-			//fill constructor
-			//Constructs a container with n elements. Each element is a copy of val.
-			explicit vector(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()):
-																																_size(n),
-																																_capacity(n),
-																																_allocator(alloc),
-																																_element(this->_allocator.allocate(this->_capacity))
+				_size(0),
+				_capacity(0),
+				_allocator(alloc),
+				_element(NULL) {}
+
+			/*
+			 * Fill constructor
+			 *
+			 * Constructs a container with n elements. Each element is a copy of val.
+			 */
+			explicit vector(size_type n,
+							const value_type& val = value_type(),
+							const allocator_type& alloc = allocator_type()):
+				_size(n),
+				_capacity(n),
+				_allocator(alloc),
+				_element(this->_allocator.allocate(this->_capacity))
 			{
 				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&this->_element[i], val);
 			}
-			//range constructor
-			//Constructs a container with as many elements as the range [first,last], with each element constructed from its corresponding element in that range, in the same order.
+
+			/*
+			 * Range constructor
+			 *
+			 * Constructs a container with as many elements as the range [first,last],
+			 * with each element constructed from its corresponding element in that range,
+			 * in the same order.
+			 */
 			template <class InputIterator>
-			vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(),
+			vector(InputIterator first,
+					InputIterator last,
+					const allocator_type& alloc = allocator_type(),
 					typename ft::enable_if<!ft::is_integral<InputIterator>::value, int>::type = 666):
-																											_size(last - first),
-																											_capacity(last - first),
-																											_allocator(alloc),
-																											_element(this->_allocator.allocate(this->_size))
+				_size(last - first),
+				_capacity(last - first),
+				_allocator(alloc),
+				_element(this->_allocator.allocate(this->_size))
 			{
 				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&this->_element[i], *(first + i));
 			}
-			//copy constructor
-			//Constructs a container with a copy of each of the elements in other, in the same order
-			vector(const vector&	other):
-											_size(other._size),
-											_capacity(other._capacity),
-											_element(this->_allocator.allocate(this->_capacity))
+
+			/*
+			 * Copy constructor
+			 *
+			 * Constructs a container with a copy of each of the elements in other,
+			 * in the same order
+			 */
+			vector(const vector& other):
+				_size(other._size),
+				_capacity(other._capacity),
+				_element(this->_allocator.allocate(this->_capacity))
 			{
 				*this = other;
 			}
+
 			~vector()
 			{
 				this->_allocator.deallocate(this->_element, this->_capacity);
