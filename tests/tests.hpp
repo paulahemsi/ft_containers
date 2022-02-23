@@ -53,5 +53,6 @@ void test_swap(void);
 void test_resize(void);
 void test_reserve(void);
 void test_get_allocator(void);
+void test_at_front_back_and_dereference(void);
 
 #endif

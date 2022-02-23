@@ -38,7 +38,8 @@ FT_SRC	:=	ft_main.cpp\
 			swap.cpp\
 			resize.cpp\
 			reserve.cpp\
-			get_allocator.cpp
+			get_allocator.cpp\
+			element_access.cpp
 
 HEADER	:=	tests.hpp
 
