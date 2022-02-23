@@ -68,31 +68,6 @@ static void test_at_front_back_and_dereference(void)
 	std::cout << L_GRAY << "integers.back(): " << RESET << integers.back() << std::endl;
 }
 
-static void test_get_allocator(void)
-{
-	print_title("GET_ALLOCATOR");
-
-	ft::vector<int> myvector;
-	int * pointer;
-
-	// allocate an array with space for 5 elements using vector's allocator:
-	pointer = myvector.get_allocator().allocate(5);
-
-	// construct values in-place on the array:
-	for (size_t i = 0; i < 5; i++)
-		myvector.get_allocator().construct(&pointer[i], i);
-
-	std::cout << "The allocated array contains:";
-	for (size_t i = 0; i < 5; i++)
-		std::cout << ' ' << pointer[i];
-	std::cout << '\n';
-
-	// destroy and deallocate:
-	for (size_t i = 0; i < 5; i++)
-		myvector.get_allocator().destroy(&pointer[i]);
-	myvector.get_allocator().deallocate(pointer,5);
-}
-
 int main(void)
 {
 	test_constructors();

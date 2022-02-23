@@ -52,5 +52,6 @@ void test_insert(void);
 void test_swap(void);
 void test_resize(void);
 void test_reserve(void);
+void test_get_allocator(void);
 
 #endif
