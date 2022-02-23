@@ -6,37 +6,36 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:40:06 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/22 19:40:37 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:03:23 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.hpp"
 
+static int random_number(void)
+{
+    return std::rand()%1000;
+}
+
+ft::vector<int>	create_vector(int size, int seed)
+{
+    ft::vector<int>    vector(size);
+    
+    std::srand(seed);
+    std::generate (vector.begin(), vector.end(), random_number);
+    return vector;
+}
+
 void test_iterators(void)
 {
 	print_title("ITERATORS");
 
-	ft::vector<int> floats;
 	print_instructions("floats.push_back(number) x 8");
-	floats.push_back((int)59.57);
-	floats.push_back((int)9.57);
-	floats.push_back((int)989.57);
-	floats.push_back((int)1009.57);
-	floats.push_back((int)59.57);
-	floats.push_back((int)9.57);
-	floats.push_back((int)989.57);
-	floats.push_back((int)1009.57);
+	ft::vector<int> floats = create_vector(8, 1000);
 	displayVector(floats);
-	ft::vector<int> integers;
+	
 	print_instructions("integers.push_back(number) x 8");
-	integers.push_back(50);
-	integers.push_back(1);
-	integers.push_back(987);
-	integers.push_back(1001);
-	integers.push_back(50);
-	integers.push_back(1);
-	integers.push_back(987);
-	integers.push_back(1001);
+	ft::vector<int> integers = create_vector(8, 200);
 	displayVector(integers);
 	
 	ft::vector<int>::iterator iteratorIntegers1 = integers.begin();
@@ -70,26 +69,12 @@ void test_const_iterators(void)
 {
 	print_title("CONST ITERATORS");
 
-	ft::vector<int> floats;
 	print_instructions("floats.push_back(number) x 8");
-	floats.push_back((int)59.57);
-	floats.push_back((int)9.57);
-	floats.push_back((int)989.57);
-	floats.push_back((int)1009.57);
-	floats.push_back((int)59.57);
-	floats.push_back((int)9.57);
-	floats.push_back((int)989.57);
-	floats.push_back((int)1009.57);
-	ft::vector<int> integers;
+	ft::vector<int> floats = create_vector(8, 1000);
+	displayVector(floats);
+	
 	print_instructions("integers.push_back(number) x 8");
-	integers.push_back(50);
-	integers.push_back(1);
-	integers.push_back(987);
-	integers.push_back(1001);
-	integers.push_back(50);
-	integers.push_back(1);
-	integers.push_back(987);
-	integers.push_back(1001);
+	ft::vector<int> integers = create_vector(8, 200);
 	displayVector(integers);
 	
 	ft::vector<int>::const_iterator iteratorIntegers1 = integers.begin();
@@ -123,27 +108,12 @@ void test_reverse_iterators(void)
 {
 	print_title("REVERSE ITERATORS");
 
-	ft::vector<int> floats;
 	print_instructions("floats.push_back(number) x 8");
-	floats.push_back((int)59.57);
-	floats.push_back((int)9.57);
-	floats.push_back((int)989.57);
-	floats.push_back((int)1009.57);
-	floats.push_back((int)59.57);
-	floats.push_back((int)9.57);
-	floats.push_back((int)989.57);
-	floats.push_back((int)1009.57);
+	ft::vector<int> floats = create_vector(8, 1000);
 	displayVector(floats);
-	ft::vector<int> integers;
+	
 	print_instructions("integers.push_back(number) x 8");
-	integers.push_back(50);
-	integers.push_back(1);
-	integers.push_back(987);
-	integers.push_back(1001);
-	integers.push_back(50);
-	integers.push_back(1);
-	integers.push_back(987);
-	integers.push_back(1001);
+	ft::vector<int> integers = create_vector(8, 200);
 	displayVector(integers);
 	
 	ft::vector<int>::reverse_iterator reverse_iteratorIntegers1 = integers.rbegin();

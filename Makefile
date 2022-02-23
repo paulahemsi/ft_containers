@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/28 20:08:23 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/02/28 22:19:29 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ LOGSDIR		:=	./logs/
 TESTDIR		:=	./tests/
 
 VECTORTESTDIR	:=	member_functions/\
-					non-member_functions/
+					non-member_functions/\
+					iterators/
 VECTORTESTDIR	:=	$(addprefix $(TESTDIR), $(VECTORTESTDIR))
 
 SRC	:=	ft_main.cpp\
