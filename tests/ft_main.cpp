@@ -12,17 +12,6 @@
 
 #include "tests.hpp"
 
-static void test_pop_back(ft::vector<int> integers)
-{
-	print_title(".POP_BACK");
-	print_instructions("integers.pop_back();");
-	integers.pop_back();
-	displayVector(integers);
-	print_instructions("integers.pop_back();");
-	integers.pop_back();
-	displayVector(integers);
-}
-
 int main(void)
 {
 	test_constructors();

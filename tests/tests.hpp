@@ -55,5 +55,6 @@ void test_reserve(void);
 void test_get_allocator(void);
 void test_at_front_back_and_dereference(void);
 ft::vector<int> test_push_back(void);
+void test_pop_back(ft::vector<int> integers);
 
 #endif
