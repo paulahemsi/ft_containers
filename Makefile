@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/23 11:10:21 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/02/23 11:17:55 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ VECTORTESTDIR	:=	$(addprefix $(TESTDIR), $(VECTORTESTDIR))
 SRC		:=	main.cpp
 FT_SRC	:=	ft_main.cpp\
 			constructors.cpp\
-			equal_operator.cpp\
+			simple_assignment_operator.cpp\
 			auxiliary.cpp\
 			iterators.cpp\
 			out_of_bounds.cpp\
