@@ -68,30 +68,6 @@ static void test_at_front_back_and_dereference(void)
 	std::cout << L_GRAY << "integers.back(): " << RESET << integers.back() << std::endl;
 }
 
-static void test_reserve(void)
-{
-	print_title("RESERVE");
-
-	ft::vector<int> integers;
-	print_instructions("integers.push_back(number) x 8");
-	integers.push_back(50);
-	integers.push_back(1);
-	integers.push_back(987);
-	integers.push_back(1001);
-	integers.push_back(50);
-	integers.push_back(1);
-	integers.push_back(987);
-	integers.push_back(1001);
-	displayVector(integers);
-
-	print_instructions("integers.reserve(3);");
-	integers.reserve(3);
-	displayVector(integers);
-	print_instructions("integers.reserve(30);");
-	integers.reserve(30);
-	displayVector(integers);
-}
-
 static void test_get_allocator(void)
 {
 	print_title("GET_ALLOCATOR");

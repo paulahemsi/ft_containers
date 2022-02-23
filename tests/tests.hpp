@@ -51,5 +51,6 @@ void test_erase(void);
 void test_insert(void);
 void test_swap(void);
 void test_resize(void);
+void test_reserve(void);
 
 #endif

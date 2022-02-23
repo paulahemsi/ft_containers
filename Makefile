@@ -36,7 +36,8 @@ FT_SRC	:=	ft_main.cpp\
 			erase.cpp\
 			insert.cpp\
 			swap.cpp\
-			resize.cpp
+			resize.cpp\
+			reserve.cpp
 
 HEADER	:=	tests.hpp
 
