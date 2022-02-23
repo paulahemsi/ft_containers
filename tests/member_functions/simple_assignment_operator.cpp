@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   equal_operator.cpp                                 :+:      :+:    :+:   */
+/*   simple_assignment_operator.cpp                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 20:34:52 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/22 20:35:08 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/02/23 11:46:31 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.hpp"
 
-void test_equal_operator(void)
+static void	test_with_vector_of_string(void)
 {
-	print_title("  =  ");
 	print_instructions("ft::vector<std::string> string_vector2(2, nothing);");
 	ft::vector<std::string> string_vector2(2, "nothing");
 	displayVector(string_vector2);
@@ -30,7 +29,10 @@ void test_equal_operator(void)
 	string_vector2 = string_vector;
 	std::cout << "string_vector2: " << std::endl;
 	displayVector(string_vector2);
+}
 
+static void test_with_vector_of_integers(void)
+{
 	print_instructions("ft::vector<int> int_vector2(2, 2);");
 	ft::vector<int> int_vector2(2, 2);
 	displayVector(int_vector2);
@@ -46,4 +48,11 @@ void test_equal_operator(void)
 	int_vector2 = int_vector;
 	std::cout << "int_vector2: " << std::endl;
 	displayVector(int_vector2);
+}
+
+void test_simple_assignment_operator(void)
+{
+	print_title("  SIMPLE ASSIGNMENT OPERATOR (=)  ");
+	test_with_vector_of_string();
+	test_with_vector_of_integers();
 }

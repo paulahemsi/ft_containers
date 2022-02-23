@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/22 20:19:25 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/23 11:34:49 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void displayVector(const ft::vector<T>& vector_)
 void print_instructions(std::string instruction);
 void print_title(std::string title);
 
+void test_constructors(void);
+void test_simple_assignment_operator(void);
 void test_iterators(void);
 void test_const_iterators(void);
 void test_reverse_iterators(void);
-void test_constructors(void);
 void test_out_of_bounds(void);
 void test_relational_operators(void);
-void test_equal_operator(void);
 void test_empty(void);
 void test_assign(void);
 void test_clear(void);
