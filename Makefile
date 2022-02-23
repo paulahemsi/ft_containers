@@ -31,7 +31,8 @@ FT_SRC	:=	ft_main.cpp\
 			equal_operator.cpp\
 			empty.cpp\
 			assign.cpp\
-			clear.cpp
+			clear.cpp\
+			data.cpp
 
 CONTAINERSDIR	:=	./containers/
 CONTAINERS		:=	Vector.hpp
