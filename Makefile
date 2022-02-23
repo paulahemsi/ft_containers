@@ -6,7 +6,7 @@
 #    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2021/12/12 00:10:18 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/02/22 20:19:34 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,30 @@ CFLAGS	+= -std=c++98
 
 RM		:= rm -rf
 
-SRCDIR	:= ./tests/
-SRC		:= main.cpp
-FT_SRC	:= ft_main.cpp
+SRCDIR	:=	./tests/
+SRC		:=	main.cpp
+FT_SRC	:=	ft_main.cpp\
+			auxiliary.cpp\
+			iterators.cpp\
+			constructors.cpp\
+			out_of_bounds.cpp\
+			relational_operators.cpp\
+			equal_operator.cpp\
+			empty.cpp\
+			assign.cpp\
+			clear.cpp\
+			data.cpp\
+			erase.cpp\
+			insert.cpp\
+			swap.cpp\
+			resize.cpp\
+			reserve.cpp\
+			get_allocator.cpp\
+			element_access.cpp\
+			push_back.cpp\
+			pop_back.cpp
+
+HEADER	:=	tests.hpp
 
 CONTAINERSDIR	:=	./containers/
 CONTAINERS		:=	Vector.hpp
@@ -34,7 +55,7 @@ ITERATORS		:=	bidirectional_iterator.hpp\
 					reverse_iterator.hpp
 
 AUXTEMPLATESDIR	:=	./aux_templates/
-AUXTEMPLATES		:=	lexicographical_compare.tpp\
+AUXTEMPLATES	:=	lexicographical_compare.tpp\
 				type_traits.hpp 
 
 TEMPLATES		:= $(CONTAINERS) $(ITERATORS) $(AUXTEMPLATES)
@@ -51,7 +72,7 @@ FT_OBJS		:= $(addprefix $(OBJDIR), $(notdir $(FT_SRC:.cpp=.o)))
 
 INCLUDES	:= $(addprefix -I, $(TEMPLATESDIR))
 
-$(OBJDIR)%.o:	%.cpp $(TEMPLATES) 
+$(OBJDIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
 				$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME):	$(FT_OBJS) 
