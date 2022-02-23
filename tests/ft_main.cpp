@@ -12,26 +12,6 @@
 
 #include "tests.hpp"
 
-static ft::vector<int> test_push_back(void)
-{
-	print_title(".PUSH_BACK");
-
-	print_instructions("ft::vector<int> integers;");
-	ft::vector<int> integers;
-	displayVector(integers);
-	print_instructions("integers.push_back(number) x 8");
-	integers.push_back(50);
-	integers.push_back(1);
-	integers.push_back(987);
-	integers.push_back(1001);
-	integers.push_back(50);
-	integers.push_back(1);
-	integers.push_back(987);
-	integers.push_back(1001);
-	displayVector(integers);
-	return integers;
-}
-
 static void test_pop_back(ft::vector<int> integers)
 {
 	print_title(".POP_BACK");
