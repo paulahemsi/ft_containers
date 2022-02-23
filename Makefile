@@ -32,7 +32,8 @@ FT_SRC	:=	ft_main.cpp\
 			empty.cpp\
 			assign.cpp\
 			clear.cpp\
-			data.cpp
+			data.cpp\
+			erase.cpp
 
 CONTAINERSDIR	:=	./containers/
 CONTAINERS		:=	Vector.hpp
