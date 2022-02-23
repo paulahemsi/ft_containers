@@ -49,5 +49,6 @@ void test_clear(void);
 void test_data(void);
 void test_erase(void);
 void test_insert(void);
+void test_swap(void);
 
 #endif
