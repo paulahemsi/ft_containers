@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 20:10:06 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/24 18:38:54 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/24 18:39:10 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void test_relational_operators(void)
 	ft::vector<std::string> another_vector(8, "another");
 	ft::vector<std::string> and_other_vector(5, "and_other");
 
+	std::cout.setf(std::ios::boolalpha);
 	print_instructions("(one_vector == one_vector)");
 	std::cout << (one_vector == one_vector) << std::endl;
 	print_instructions("(one_vector == another_vector)");
