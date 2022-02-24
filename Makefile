@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/22 20:19:34 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/02/23 11:17:55 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,15 +20,19 @@ CFLAGS	+= -std=c++98
 
 RM		:= rm -rf
 
-SRCDIR	:=	./tests/
+TESTDIR		:=	./tests/
+
+VECTORTESTDIR	:=	member_functions/
+VECTORTESTDIR	:=	$(addprefix $(TESTDIR), $(VECTORTESTDIR))
+
 SRC		:=	main.cpp
 FT_SRC	:=	ft_main.cpp\
+			constructors.cpp\
+			simple_assignment_operator.cpp\
 			auxiliary.cpp\
 			iterators.cpp\
-			constructors.cpp\
 			out_of_bounds.cpp\
 			relational_operators.cpp\
-			equal_operator.cpp\
 			empty.cpp\
 			assign.cpp\
 			clear.cpp\
@@ -61,16 +65,15 @@ AUXTEMPLATES	:=	lexicographical_compare.tpp\
 TEMPLATES		:= $(CONTAINERS) $(ITERATORS) $(AUXTEMPLATES)
 TEMPLATESDIR	:= $(CONTAINERSDIR) $(ITERATORSDIR) $(AUXTEMPLATESDIR) 
 
-VPATH	:=	$(SRCDIR)\
-			$(CONTAINERSDIR)\
-			$(ITERATORSDIR)\
-			$(AUXTEMPLATESDIR)
+VPATH	:=	$(TESTDIR)\
+			$(TEMPLATESDIR)\
+			$(VECTORTESTDIR)
 
 OBJDIR		:= ./objs/
 OBJS		:= $(addprefix $(OBJDIR), $(notdir $(SRC:.cpp=.o)))
 FT_OBJS		:= $(addprefix $(OBJDIR), $(notdir $(FT_SRC:.cpp=.o)))
 
-INCLUDES	:= $(addprefix -I, $(TEMPLATESDIR))
+INCLUDES	:= $(addprefix -I, $(TEMPLATESDIR) $(TESTDIR))
 
 $(OBJDIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
 				$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
