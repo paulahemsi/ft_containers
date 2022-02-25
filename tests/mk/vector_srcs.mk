@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 18:39:11 by lfrasson          #+#    #+#              #
-#    Updated: 2022/03/06 23:38:20 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/19 20:19:34 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ TEST_DIR	:=	./
 
 SUB_DIR		:=	member_functions/\
 				non-member_functions/
+				iterators/
 SUB_DIR		:=	$(addprefix $(TEST_DIR), $(SUB_DIR))
 
 SRC			+=	ft_main.cpp\
@@ -25,6 +26,8 @@ SRC			+=	ft_main.cpp\
 				simple_assignment_operator.cpp\
 				utils.cpp\
 				iterators.cpp\
+				const_iterators.cpp\
+				reverse_iterators.cpp\
 				out_of_bounds.cpp\
 				relational_operators.cpp\
 				empty.cpp\
@@ -43,7 +46,8 @@ SRC			+=	ft_main.cpp\
 
 HEADER		+=	tests.hpp\
 				comparison.hpp\
-				swap.tpp
+				swap.tpp\
+				iterators.hpp
 
 INCLUDES	+= $(addprefix -I, $(TEST_DIR))
 
