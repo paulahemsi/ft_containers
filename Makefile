@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/28 22:19:29 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/02/28 22:22:51 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,8 @@ SRC	:=	ft_main.cpp\
 		simple_assignment_operator.cpp\
 		auxiliary.cpp\
 		iterators.cpp\
+		const_iterators.cpp\
+		reverse_iterators.cpp\
 		out_of_bounds.cpp\
 		relational_operators.cpp\
 		empty.cpp\
@@ -54,7 +56,8 @@ SRC	:=	ft_main.cpp\
 
 HEADER	:=	tests.hpp\
 			comparison.hpp\
-			swap.tpp
+			swap.tpp\
+			iterators.hpp
 
 CONTAINERSDIR	:=	./containers/
 CONTAINERS		:=	Vector.hpp

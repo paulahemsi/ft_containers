@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iterators.cpp                                      :+:      :+:    :+:   */
+/*   const_iterators.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 19:40:06 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/25 10:45:09 by lfrasson         ###   ########.fr       */
+/*   Created: 2022/02/25 10:37:10 by lfrasson          #+#    #+#             */
+/*   Updated: 2022/02/25 10:45:18 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iterators.hpp"
 
-void test_iterators(void)
+void test_const_iterators(void)
 {
-	std::cout.setf(std::ios::boolalpha);
-	
-	print_title("ITERATORS");
-	x<ft::vector<int>::iterator>();
+	print_title("CONST ITERATORS");
+	x<ft::vector<int>::const_iterator>();
 }
