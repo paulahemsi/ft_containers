@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 20:10:06 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/24 22:30:17 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/24 23:12:18 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@ static void test_string_vector(void)
 	call_comparsions<ft::vector<std::string> >(one_vector, another_vector, and_other_vector);
 }
 
-static void test_int_vector(void)
-{
-	print_subheading("int");
-	ft::vector<int> one_vector(8, 1);
-	ft::vector<int> another_vector(8, 2);
-	ft::vector<int> and_other_vector(5, 1);
+// static void test_int_vector(void)
+// {
+// 	print_subheading("int");
+// 	ft::vector<int> one_vector(8, 1);
+// 	ft::vector<int> another_vector(8, 2);
+// 	ft::vector<int> and_other_vector(5, 1);
 
-	print_vectors<ft::vector<int> >(one_vector, another_vector, and_other_vector);
-	call_comparsions<ft::vector<int> >(one_vector, another_vector, and_other_vector);
-}
+// 	print_vectors<ft::vector<int> >(one_vector, another_vector, and_other_vector);
+// 	call_comparsions<ft::vector<int> >(one_vector, another_vector, and_other_vector);
+// }
 
 void test_relational_operators(void)
 {
 	print_title("RELATIONAL OPERATORS");
 
 	test_string_vector();
-	test_int_vector();
+	// test_int_vector();
 }
