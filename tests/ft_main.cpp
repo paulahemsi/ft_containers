@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/23 11:43:49 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/02/24 22:27:12 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main(void)
 
 	start = clock();
 
+	std::cout.setf(std::ios::boolalpha);
 	test_constructors();
 	test_simple_assignment_operator();
 	test_empty();
