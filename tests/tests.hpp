@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/28 16:15:52 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:11:10 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void displayVector(const ft::vector<T>& vector_)
 void print_instructions(std::string instruction);
 void print_title(std::string title);
 void print_subheading(std::string subheading);
+ft::vector<int>	create_vector_of_random_integers(int size, int seed);
 
 void test_constructors(void);
 void test_simple_assignment_operator(void);
