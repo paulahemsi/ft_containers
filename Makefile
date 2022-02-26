@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/23 11:17:55 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/02/26 20:56:19 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ CFLAGS	:= -Wall -Wextra -Werror
 CFLAGS	+= -g
 CFLAGS	+= -std=c++98
 
+STD_VERSION := -D STD_VERSION
+
 RM		:= rm -rf
 
 TESTDIR		:=	./tests/
@@ -25,27 +27,26 @@ TESTDIR		:=	./tests/
 VECTORTESTDIR	:=	member_functions/
 VECTORTESTDIR	:=	$(addprefix $(TESTDIR), $(VECTORTESTDIR))
 
-SRC		:=	main.cpp
-FT_SRC	:=	ft_main.cpp\
-			constructors.cpp\
-			simple_assignment_operator.cpp\
-			auxiliary.cpp\
-			iterators.cpp\
-			out_of_bounds.cpp\
-			relational_operators.cpp\
-			empty.cpp\
-			assign.cpp\
-			clear.cpp\
-			data.cpp\
-			erase.cpp\
-			insert.cpp\
-			swap.cpp\
-			resize.cpp\
-			reserve.cpp\
-			get_allocator.cpp\
-			element_access.cpp\
-			push_back.cpp\
-			pop_back.cpp
+SRC	:=	ft_main.cpp\
+		constructors.cpp\
+		simple_assignment_operator.cpp\
+		auxiliary.cpp\
+		iterators.cpp\
+		out_of_bounds.cpp\
+		relational_operators.cpp\
+		empty.cpp\
+		assign.cpp\
+		clear.cpp\
+		data.cpp\
+		erase.cpp\
+		insert.cpp\
+		swap.cpp\
+		resize.cpp\
+		reserve.cpp\
+		get_allocator.cpp\
+		element_access.cpp\
+		push_back.cpp\
+		pop_back.cpp
 
 HEADER	:=	tests.hpp
 
@@ -71,15 +72,18 @@ VPATH	:=	$(TESTDIR)\
 
 OBJDIR		:= ./objs/
 OBJS		:= $(addprefix $(OBJDIR), $(notdir $(SRC:.cpp=.o)))
-FT_OBJS		:= $(addprefix $(OBJDIR), $(notdir $(FT_SRC:.cpp=.o)))
+FT_OBJS		:= $(addprefix $(FT_OBJDIR), $(notdir $(SRC:.cpp=.o)))
 
 INCLUDES	:= $(addprefix -I, $(TEMPLATESDIR) $(TESTDIR))
 
 $(OBJDIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
-				$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+				$(CC) $(STD_VERSION) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(FT_OBJDIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
+					$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME):	$(FT_OBJS) 
-			$(CC) $(CFLAGS) -o $@ $(FT_OBJS)
+			$(CC) $(CFLAGS) $(STD_VERSION) -o $@ $(FT_OBJS)
 
 $(ORGINAL):	$(OBJS)
 			$(CC) $(CFLAGS) -o $@ $(OBJS)
