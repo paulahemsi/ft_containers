@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/23 11:25:48 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/02/26 10:49:06 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -432,7 +432,9 @@ namespace ft
 	template <class T, class Alloc>
 	bool operator == (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
 	{
-		return (ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
+		if (lhs.size() < rhs.size())
+			return (ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
+		return (ft::equal(rhs.begin(), rhs.end(), lhs.begin()));
 	}
 
 	template <class T, class Alloc>
