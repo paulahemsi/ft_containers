@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/26 21:23:35 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/02/27 12:32:17 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ $(FT_OBJDIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
 					$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME):	$(FT_OBJS) 
-			$(CC) $(CFLAGS) $(STD_VERSION) -o $@ $(FT_OBJS)
+			$(CC) $(CFLAGS) -o $@ $(FT_OBJS)
 
 $(ORGINAL):	$(OBJS)
 			$(CC) $(CFLAGS) -o $@ $(OBJS)
