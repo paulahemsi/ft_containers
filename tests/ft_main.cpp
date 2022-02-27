@@ -28,6 +28,7 @@ int main(void)
 
 	start = clock();
 
+	std::cout.setf(std::ios::boolalpha);
 	test_constructors();
 	test_simple_assignment_operator();
 	test_empty();

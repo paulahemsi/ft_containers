@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/27 12:32:17 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/02/27 12:59:30 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ RM		:= rm -rf
 
 TESTDIR		:=	./tests/
 
-VECTORTESTDIR	:=	member_functions/
+VECTORTESTDIR	:=	member_functions/\
+					non-member_functions/
 VECTORTESTDIR	:=	$(addprefix $(TESTDIR), $(VECTORTESTDIR))
 
 SRC	:=	ft_main.cpp\
@@ -48,7 +49,9 @@ SRC	:=	ft_main.cpp\
 		push_back.cpp\
 		pop_back.cpp
 
-HEADER	:=	tests.hpp
+HEADER	:=	tests.hpp\
+			comparison.hpp\
+			swap.tpp
 
 CONTAINERSDIR	:=	./containers/
 CONTAINERS		:=	Vector.hpp
