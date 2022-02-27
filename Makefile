@@ -18,6 +18,8 @@ CFLAGS	:= -Wall -Wextra -Werror
 CFLAGS	+= -g
 CFLAGS	+= -std=c++98
 
+STD_VERSION := -D STD_VERSION
+
 RM		:= rm -rf
 
 TESTDIR		:=	./tests/
@@ -26,27 +28,26 @@ VECTORTESTDIR	:=	member_functions/\
 					non-member_functions/
 VECTORTESTDIR	:=	$(addprefix $(TESTDIR), $(VECTORTESTDIR))
 
-SRC		:=	main.cpp
-FT_SRC	:=	ft_main.cpp\
-			constructors.cpp\
-			simple_assignment_operator.cpp\
-			auxiliary.cpp\
-			iterators.cpp\
-			out_of_bounds.cpp\
-			relational_operators.cpp\
-			empty.cpp\
-			assign.cpp\
-			clear.cpp\
-			data.cpp\
-			erase.cpp\
-			insert.cpp\
-			swap.cpp\
-			resize.cpp\
-			reserve.cpp\
-			get_allocator.cpp\
-			element_access.cpp\
-			push_back.cpp\
-			pop_back.cpp
+SRC	:=	ft_main.cpp\
+		constructors.cpp\
+		simple_assignment_operator.cpp\
+		auxiliary.cpp\
+		iterators.cpp\
+		out_of_bounds.cpp\
+		relational_operators.cpp\
+		empty.cpp\
+		assign.cpp\
+		clear.cpp\
+		data.cpp\
+		erase.cpp\
+		insert.cpp\
+		swap.cpp\
+		resize.cpp\
+		reserve.cpp\
+		get_allocator.cpp\
+		element_access.cpp\
+		push_back.cpp\
+		pop_back.cpp
 
 HEADER	:=	tests.hpp\
 			comparison.hpp\
@@ -73,13 +74,17 @@ VPATH	:=	$(TESTDIR)\
 			$(VECTORTESTDIR)
 
 OBJDIR		:= ./objs/
+FT_OBJDIR	:= ./ft_objs/
 OBJS		:= $(addprefix $(OBJDIR), $(notdir $(SRC:.cpp=.o)))
-FT_OBJS		:= $(addprefix $(OBJDIR), $(notdir $(FT_SRC:.cpp=.o)))
+FT_OBJS		:= $(addprefix $(FT_OBJDIR), $(notdir $(SRC:.cpp=.o)))
 
 INCLUDES	:= $(addprefix -I, $(TEMPLATESDIR) $(TESTDIR))
 
 $(OBJDIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
-				$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+				$(CC) $(STD_VERSION) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(FT_OBJDIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
+					$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME):	$(FT_OBJS) 
 			$(CC) $(CFLAGS) -o $@ $(FT_OBJS)
@@ -87,17 +92,21 @@ $(NAME):	$(FT_OBJS)
 $(ORGINAL):	$(OBJS)
 			$(CC) $(CFLAGS) -o $@ $(OBJS)
 
-$(FT_OBJS): | $(OBJDIR)
+$(FT_OBJS): | $(FT_OBJDIR)
 
 $(OBJS): | $(OBJDIR)
 
 $(OBJDIR):
 			mkdir $(OBJDIR)
 
+$(FT_OBJDIR):
+			mkdir $(FT_OBJDIR)
+
 all:		$(NAME)
 
 clean:
 			$(RM) $(OBJDIR)
+			$(RM) $(FT_OBJDIR)
 
 fclean:		clean
 			$(RM) $(NAME)
