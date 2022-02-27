@@ -6,7 +6,7 @@
 #    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/24 22:40:47 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/02/27 12:59:30 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ FT_SRC	:=	ft_main.cpp\
 			pop_back.cpp
 
 HEADER	:=	tests.hpp\
-			comparison.hpp
+			comparison.hpp\
+			swap.tpp
 
 CONTAINERSDIR	:=	./containers/
 CONTAINERS		:=	Vector.hpp
