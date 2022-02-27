@@ -6,7 +6,7 @@
 #    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/26 20:56:19 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/02/26 21:23:35 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,7 @@ VPATH	:=	$(TESTDIR)\
 			$(VECTORTESTDIR)
 
 OBJDIR		:= ./objs/
+FT_OBJDIR	:= ./ft_objs/
 OBJS		:= $(addprefix $(OBJDIR), $(notdir $(SRC:.cpp=.o)))
 FT_OBJS		:= $(addprefix $(FT_OBJDIR), $(notdir $(SRC:.cpp=.o)))
 
@@ -88,17 +89,21 @@ $(NAME):	$(FT_OBJS)
 $(ORGINAL):	$(OBJS)
 			$(CC) $(CFLAGS) -o $@ $(OBJS)
 
-$(FT_OBJS): | $(OBJDIR)
+$(FT_OBJS): | $(FT_OBJDIR)
 
 $(OBJS): | $(OBJDIR)
 
 $(OBJDIR):
 			mkdir $(OBJDIR)
 
+$(FT_OBJDIR):
+			mkdir $(FT_OBJDIR)
+
 all:		$(NAME)
 
 clean:
 			$(RM) $(OBJDIR)
+			$(RM) $(FT_OBJDIR)
 
 fclean:		clean
 			$(RM) $(NAME)
