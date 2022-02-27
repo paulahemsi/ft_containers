@@ -12,13 +12,12 @@ echo -e "\n${V_GREEN} ----------making ft version----------\n${RESET}"
 make -s
 
 echo -e "\n${V_GREEN} ----------executing and comparing----------\n${RESET}"
-./original > std.txt
-./ft.out > ft.txt
+./original > std.txt 2> std.txt
+./ft.out > ft.txt 2> ft.txt
 
 diff --color std.txt ft.txt
 
 echo -e "\n${V_GREEN} ----------cleaning up----------\n${RESET}"
 
-rm std.txt
-rm ft.txt
+rm *.txt
 make -s fclean
