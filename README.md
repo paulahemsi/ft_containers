@@ -732,6 +732,9 @@ When the tree is modified, the new tree is rearranged and "repainted" to restore
 
 [Red-black three visualization](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html)
 
+![red-black-tree](https://user-images.githubusercontent.com/63563271/156001637-d9b2a4da-0431-44f7-be29-a4ad14a7c5b7.gif)
+
+	
 # Value_type_C++98
 
 ```cpp
