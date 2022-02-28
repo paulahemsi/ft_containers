@@ -639,21 +639,21 @@ std::map is a **sorted associative container** that contains key-value pairs wit
 
 | Member Type | Definition |
 |------------------|------------|
-| key_type | The first template parameter (Key) |
-|mapped_type | The second template parameter (T) |
-|value_type| pair<const key_type,mapped_type>|
-|key_compare | The third template parameter (Compare)|
-|allocator_type |The fourth template parameter (Alloc)|
-|reference | allocator_type::reference|
-|const_reference | allocator_type::const_reference|
-|pointer | allocator_type::pointer|
-|const_pointer | allocator_type::const_pointer|
-|iterator | a bidirectional iterator to value_type|
-|const_iterator	| a bidirectional iterator to const value_type|
-|reverse_iterator | reverse_iterator<iterator>|
-|const_reverse_iterator | reverse_iterator<const_iterator>|
-|difference_type | a signed integral type, identical to: iterator_traits<iterator>::difference_type|
-|size_type | an unsigned integral type that can represent any non-negative value of difference_type|
+|*key_type* | The first template parameter (Key) |
+|*mapped_type* | The second template parameter (T) |
+|*value_type*| pair<const key_type,mapped_type>|
+|*key_compare* | The third template parameter (Compare)|
+|*allocator_type* |The fourth template parameter (Alloc)|
+|*reference* | allocator_type::reference|
+|*const_reference* | allocator_type::const_reference|
+|*pointer* | allocator_type::pointer|
+|*const_pointer* | allocator_type::const_pointer|
+|*iterator* | a bidirectional iterator to value_type|
+|*const_iterator*	| a bidirectional iterator to const value_type|
+|*reverse_iterator* | reverse_iterator<iterator>|
+|*const_reverse_iterator* | reverse_iterator<const_iterator>|
+|*difference_type* | a signed integral type, identical to: iterator_traits<iterator>::difference_type|
+|*size_type* | an unsigned integral type that can represent any non-negative value of difference_type|
 
 | Member Classes | Definition |
 |------------------|------------|
@@ -681,16 +681,16 @@ std::map is a **sorted associative container** that contains key-value pairs wit
 | *swap* | swaps content |
 | *clear* | clears content |
 | **Observers:**|  |
-| **key_comp** |Return key comparison object|
-|**value_comp**|Return value comparison object|
+| *key_comp* |Return key comparison object|
+|*value_comp*|Return value comparison object|
 | **Operations:**|  |
-|**find**|Get iterator to element|
-|**count**|Count elements with a specific key|
-|**lower_bound**|Return iterator to lower bound|
-|**upper_bound**|Return iterator to upper bound|
-|**equal_range**|Get range of equal elements|
+|*find*|Get iterator to element|
+|*count*|Count elements with a specific key|
+|*lower_bound*|Return iterator to lower bound|
+|*upper_bound*|Return iterator to upper bound|
+|*equal_range*|Get range of equal elements|
 | **Allocator:** | |
-|**get_allocator** | Get allocator|
+|*get_allocator* | Get allocator|
 
 ## std::pair_C++98
 
@@ -704,23 +704,23 @@ Pairs are a particular case of [tuple](https://www.cplusplus.com/reference/tuple
 
 | Member types| Definition|
 |------------------|------------|
-|**first_type** |The first template parameter (T1)|
-|**second_type** |The second template parameter (T2)|
+|*first_type* |The first template parameter (T1)|
+|*second_type* |The second template parameter (T2)|
 
 | Member variable| Definition|
 |------------------|------------|
-|**first** |The first value in the pair|
-|**second** |The second value in the pair|
+|*first* |The first value in the pair|
+|*second* |The second value in the pair|
 
 | Public Member Functions | |
 |------------------|------------|
-| **(constructor)** | Construct pair |
-| **pair::operator=** | Assign content |
-| **pair::swap** | Swap content |
+| *(constructor)* | Construct pair |
+| *pair::operator=* | Assign content |
+| *pair::swap* | Swap content |
 
 |Non-member function overloads | |
 |------------------|------------|
-|**relational operators**|Relational operators for pair (function template)|
+|*relational operators*|Relational operators for pair (function template)|
 
 ## Red-black_tree
 
