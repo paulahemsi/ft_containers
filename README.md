@@ -733,6 +733,13 @@ When the tree is modified, the new tree is rearranged and "repainted" to restore
 
 The `black depth` of a node is defined as the number of black nodes **from the root to that node** (i.e. the number of black ancestors). The `black height` of a red–black tree is the number of black nodes **in any path from the root to the leaves**, which, by requirement 4, is **constant** (alternatively, it could be defined as the black depth of any leaf node).
 
+In addition to the requirements imposed on a binary search tree the following must be satisfied by a red–black tree:
+
+* Each node is either red or black.
+* All NIL nodes (figure 1) are considered black.
+* A red node does not have a red child.
+* Every path from a given node to any of its descendant NIL nodes goes through the same number of black nodes.
+
 [Red-black three visualization](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html)
 
 ![red-black-tree](https://user-images.githubusercontent.com/63563271/156001637-d9b2a4da-0431-44f7-be29-a4ad14a7c5b7.gif)
