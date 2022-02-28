@@ -26,8 +26,8 @@ This project is about implementing the various container types of the C++ standa
 * [Map](#Map)
     * [Map in C++98](#Map_in_C++98)
     * [std::pair C++98](#std::pair_C++98)
-    * [Red-black tree](#Red-black_tree)
-        *[Sentinel node](#Sentinel_node)
+* [Red-black tree](#Red-black_tree)
+    *[Sentinel node](#Sentinel_node)
 * [Value type C++98](#Value_type_C++98)
 
 # Vector
@@ -723,7 +723,7 @@ Pairs are a particular case of [tuple](https://www.cplusplus.com/reference/tuple
 |------------------|------------|
 |*relational operators*|Relational operators for pair (function template)|
 
-## Red-black_tree
+# Red-black_tree
 
 [From Wikipedia](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)
 
@@ -733,18 +733,22 @@ When the tree is modified, the new tree is rearranged and "repainted" to restore
 
 The `black depth` of a node is defined as the number of black nodes **from the root to that node** (i.e. the number of black ancestors). The `black height` of a red–black tree is the number of black nodes **in any path from the root to the leaves**, which, by requirement 4, is **constant** (alternatively, it could be defined as the black depth of any leaf node).
 
-In addition to the requirements imposed on a binary search tree the following must be satisfied by a red–black tree:
+In addition to the **requirements** imposed on a binary search tree the following **must be satisfied** by a red–black tree:
 
 * Each node is either red or black.
 * All NIL nodes (figure 1) are considered black.
 * A red node does not have a red child.
 * Every path from a given node to any of its descendant NIL nodes goes through the same number of black nodes.
 
+The `read-only operations`, such as search or tree traversal, **do not** affect any of the requirements. On the other hand, the `modifying operations` **insert** and **delete** easily maintain requirements 1 and 2, but with respect to the other requirements some *extra effort has to be taken*, in order to avoid the introduction of a violation of requirement 3, called a `red-violation`, or of requirement 4, called a `black-violation`.
+
+The requirements enforce a critical property of red–black trees: **the path from the root to the farthest leaf is no more than twice as long as the path from the root to the nearest leaf**. The result is that the tree is `height-balanced`. Since operations such as `inserting`, `deleting`, and `finding` values require worst-case time proportional to the height of the tree, this upper bound on the height allows red–black trees to be efficient in the worst case, namely logarithmic in the number n of entries, which is not the case for ordinary binary search trees.
+
 [Red-black three visualization](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html)
 
 ![red-black-tree](https://user-images.githubusercontent.com/63563271/156001637-d9b2a4da-0431-44f7-be29-a4ad14a7c5b7.gif)
 
-### Sentinel_node
+## Sentinel_node
 
 In order to save a marginal amount of execution time, these (possibly many) NIL leaves may be implemented as pointers to one unique (and black) sentinel node
 
