@@ -15,6 +15,9 @@ echo -e "\n${V_GREEN} ----------making ft version----------\n${RESET}"
 make
 
 echo -e "\n${V_GREEN} ----------executing and comparing----------\n${RESET}"
+
+mkdir -p ${LOGSDIR}
+
 ./original > ${LOGSDIR}std.txt 2> ${LOGSDIR}exceptions.txt
 ./ft.out > ${LOGSDIR}ft.txt 2>> ${LOGSDIR}exceptions.txt
 
