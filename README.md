@@ -732,3 +732,31 @@ When the tree is modified, the new tree is rearranged and "repainted" to restore
 
 [Red-black three visualization](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html)
 
+# Value_type_C++98
+
+```cpp
+std::map<Key,T,Compare,Allocator>::value_compare
+```
+```cpp
+class value_compare;
+```
+
+`std::map::value_compare` is a function object that compares objects of type `std::map::value_type` (key-value pairs) by comparing of the first components of the pairs.
+
+| Member Type | Definition |
+|------------------|------------|
+| result_type | bool |
+|first_argument_type | value_type|
+|second_argument_type | value_type|
+
+These member types are obtained via publicly inheriting std::binary_function<value_type, value_type, bool>
+
+| Protected member objects | Definition |
+|--------------------------|-------------|
+| Compare comp | the stored comparator (protected member object)|
+
+|Member functions| Definition|
+|---------------|-------------|
+|(constructor) | constructs a new value_compare object (protected member function)|
+|operator() | compares two values of type value_type (public member function)|
+
