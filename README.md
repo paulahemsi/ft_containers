@@ -24,6 +24,10 @@ This project is about implementing the various container types of the C++ standa
     * [is_integral](#is_integral)
 * [Clock](#clock)
 * [Map](#Map)
+    * [Map in C++98](#Map_in_C++98)
+    * [std::pair C++98](#std::pair_C++98)
+    * [Red-black tree](#Red-black_tree)
+* [Value type C++98](#Value_type_C++98)
 
 # Vector
 
@@ -618,58 +622,17 @@ clock_t is a type defined in <ctime> as an alias of a fundamental arithmetic typ
 
 # Map
 
+```c++
+template<
+    class Key,
+    class T,
+    class Compare = std::less<Key>,
+    class Allocator = std::allocator<std::pair<const Key, T> >
+> class map;
+```
 
-## Map_in_C++98
+std::map is a **sorted associative container** that contains key-value pairs with unique keys. Keys are sorted by using the comparison function Compare. Search, removal, and insertion operations have logarithmic complexity. Maps are usually implemented as *red-black trees*.
 
-| Member Type | Definition |
-|------------------|------------|
-| key_type | The first template parameter (Key) |
-|mapped_type | The second template parameter (T) |
-|value_type| pair<const key_type,mapped_type>|
-|key_compare | The third template parameter (Compare)|
-|value_compare | Nested function class to compare elements|
-|allocator_type |The fourth template parameter (Alloc)|
-|reference | allocator_type::reference|
-|const_reference | allocator_type::const_reference|
-|pointer | allocator_type::pointer|
-|const_pointer | allocator_type::const_pointer|
-|iterator | a bidirectional iterator to value_type|
-|const_iterator	| a bidirectional iterator to const value_type|
-|reverse_iterator | reverse_iterator<iterator>|
-|const_reverse_iterator | reverse_iterator<const_iterator>|
-|difference_type | a signed integral type, identical to: iterator_traits<iterator>::difference_type|
-|size_type | an unsigned integral type that can represent any non-negative value of difference_type|
+> Everywhere the standard library uses the Compare requirements, uniqueness is determined by using the equivalence relation. In imprecise terms, two objects a and b are considered equivalent (not unique) if neither compares less than the other: !comp(a, b) && !comp(b, a).
 
-| Public Member Functions | |
-|------------------|------------|
-| *constructor* | |
-| *destructor* | |
-| *operator=*        |Copy container content|
-| **Iterators:**|  |
-| *begin* | returns an iterator to the beginning |
-| *end* | returns an iterator to the end |
-| *rbegin* | returns a reverse iterator to the beginning |
-| *rend* | returns a reverse iterator to the end |
-| **Capacity:**|  |
-| *empty* | checks whether the container is empty |
-| *size* | return container size |
-| *max_size* | return maximum size |
-| **Element access:**|  |
-|*operator[]*|	access element|
-| **Modifiers:**|  |
-| *insert* | insert elements |
-| *erase* | erase elements |
-| *swap* | swaps content |
-| *clear* | clears content |
-| **Observers:**|  |
-|key_comp |Return key comparison object|
-|value_comp|Return value comparison object|
-| **Operations:**|  |
-|find|Get iterator to element|
-|count|Count elements with a specific key|
-|lower_bound|Return iterator to lower bound|
-|upper_bound|Return iterator to upper bound|
-|equal_range|Get range of equal elements|
-| **Allocator:** | |
-|get_allocator | Get allocator|
 
