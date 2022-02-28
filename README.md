@@ -692,3 +692,32 @@ std::map is a **sorted associative container** that contains key-value pairs wit
 | **Allocator:** | |
 |**get_allocator** | Get allocator|
 
+## std::pair_C++98
+
+```cpp
+template <class T1, class T2> struct pair;
+```
+
+This class couples together a pair of values, which may be of different types (T1 and T2). The individual values can be accessed through its public members first and second.
+
+Pairs are a particular case of [tuple](https://www.cplusplus.com/reference/tuple/tuple/)(C++11).
+
+| Member types| Definition|
+|------------------|------------|
+|**first_type** |The first template parameter (T1)|
+|**second_type** |The second template parameter (T2)|
+
+| Member variable| Definition|
+|------------------|------------|
+|**first** |The first value in the pair|
+|**second** |The second value in the pair|
+
+| Public Member Functions | |
+|------------------|------------|
+| **(constructor)** | Construct pair |
+| **pair::operator=** | Assign content |
+| **pair::swap** | Swap content |
+
+|Non-member function overloads | |
+|------------------|------------|
+|**relational operators**|Relational operators for pair (function template)|
