@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/24 21:43:50 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/28 16:15:52 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,15 @@
 # define TESTS_HPP
 
 # include <iostream>
-# include <vector>
-# include "Vector.hpp"
+
+#ifdef STD_VERSION
+	#define VERSION "STD_VERSION"
+	#define ft std
+	#include <vector>
+#else
+	#define VERSION "FT_VERSION"
+	#include "Vector.hpp"
+#endif
 
 # define CYAN			"\e[0;36m"
 # define L_GRAY			"\e[0;38;5;245m"

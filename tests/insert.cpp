@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insert.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 21:02:19 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/22 21:02:30 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/02/28 16:14:18 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void test_insert(void)
 	integers.insert(integers.begin() + 3, 10, 1111);
 	displayVector(integers);
 
-	std::vector<int> vector_to_insert;
+	ft::vector<int> vector_to_insert;
 	vector_to_insert.push_back(1);
 	vector_to_insert.push_back(2);
 	vector_to_insert.push_back(3);
