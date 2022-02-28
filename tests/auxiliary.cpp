@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   auxiliary.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:57:55 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/25 10:30:43 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:17:58 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ void print_subheading(std::string subheading)
 
 static int random_number(void)
 {
-    return std::rand()%1000;
+    return rand()%1000;
 }
 
 ft::vector<int>	create_vector_of_random_integers(int size, int seed)
 {
     ft::vector<int>    vector(size);
 
-    std::srand(seed);
+    srand(seed);
     std::generate (vector.begin(), vector.end(), random_number);
     return vector;
 }

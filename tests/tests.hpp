@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/28 17:11:10 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:16:34 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define TESTS_HPP
 
 # include <iostream>
+# include <stdlib.h>
+# include <algorithm>
 
 #ifdef STD_VERSION
 	#define VERSION "STD_VERSION"
