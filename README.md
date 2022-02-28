@@ -635,4 +635,60 @@ std::map is a **sorted associative container** that contains key-value pairs wit
 
 > Everywhere the standard library uses the Compare requirements, uniqueness is determined by using the equivalence relation. In imprecise terms, two objects a and b are considered equivalent (not unique) if neither compares less than the other: !comp(a, b) && !comp(b, a).
 
+## Map_in_C++98
+
+| Member Type | Definition |
+|------------------|------------|
+| key_type | The first template parameter (Key) |
+|mapped_type | The second template parameter (T) |
+|value_type| pair<const key_type,mapped_type>|
+|key_compare | The third template parameter (Compare)|
+|allocator_type |The fourth template parameter (Alloc)|
+|reference | allocator_type::reference|
+|const_reference | allocator_type::const_reference|
+|pointer | allocator_type::pointer|
+|const_pointer | allocator_type::const_pointer|
+|iterator | a bidirectional iterator to value_type|
+|const_iterator	| a bidirectional iterator to const value_type|
+|reverse_iterator | reverse_iterator<iterator>|
+|const_reverse_iterator | reverse_iterator<const_iterator>|
+|difference_type | a signed integral type, identical to: iterator_traits<iterator>::difference_type|
+|size_type | an unsigned integral type that can represent any non-negative value of difference_type|
+
+| Member Classes | Definition |
+|------------------|------------|
+|value_compare | Nested function class to comapre objects of type value_type|
+
+| Public Member Functions | |
+|------------------|------------|
+| *constructor* | |
+| *destructor* | |
+| *operator=*        |Copy container content|
+| **Iterators:**|  |
+| *begin* | returns an iterator to the beginning |
+| *end* | returns an iterator to the end |
+| *rbegin* | returns a reverse iterator to the beginning |
+| *rend* | returns a reverse iterator to the end |
+| **Capacity:**|  |
+| *empty* | checks whether the container is empty |
+| *size* | return container size |
+| *max_size* | return maximum size |
+| **Element access:**|  |
+|*operator[]*|	access element|
+| **Modifiers:**|  |
+| *insert* | insert elements |
+| *erase* | erase elements |
+| *swap* | swaps content |
+| *clear* | clears content |
+| **Observers:**|  |
+| **key_comp** |Return key comparison object|
+|**value_comp**|Return value comparison object|
+| **Operations:**|  |
+|**find**|Get iterator to element|
+|**count**|Count elements with a specific key|
+|**lower_bound**|Return iterator to lower bound|
+|**upper_bound**|Return iterator to upper bound|
+|**equal_range**|Get range of equal elements|
+| **Allocator:** | |
+|**get_allocator** | Get allocator|
 
