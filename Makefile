@@ -6,7 +6,7 @@
 #    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/27 12:59:30 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/02/28 20:08:23 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,10 @@ CFLAGS	+= -std=c++98
 
 STD_VERSION := -D STD_VERSION
 
-RM		:= rm -rf
+RM		:=	rm -rf
+TESTER	:=	bash tester.sh
 
+LOGSDIR		:=	./logs/
 TESTDIR		:=	./tests/
 
 VECTORTESTDIR	:=	member_functions/\
@@ -104,6 +106,9 @@ $(FT_OBJDIR):
 
 all:		$(NAME)
 
+test:
+		$(TESTER)
+
 clean:
 			$(RM) $(OBJDIR)
 			$(RM) $(FT_OBJDIR)
@@ -111,7 +116,8 @@ clean:
 fclean:		clean
 			$(RM) $(NAME)
 			$(RM) $(ORGINAL)
+			$(RM) $(LOGSDIR)
 
 re:			fclean all
 
-PHONY:		all clean fclean re
+PHONY:		all clean fclean re test
