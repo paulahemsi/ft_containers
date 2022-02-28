@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:37:45 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/25 10:44:48 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:37:59 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,6 @@ static void	iterator_when_change_value(void)
 	vector[0] = vector[2];
 	std::cout << L_GRAY << "*iterator: " << RESET << *iterator << "\t"
 				<< L_GRAY << "iterator: " << RESET << &iterator << std::endl;
-}
-
-template<typename T>
-static void x(void)
-{
-	iterators_of_same_vector<T>();
-	iterators_of_differents_vector<T>();
-	iterator_when_change_value<T>();
 }
 
 #endif
