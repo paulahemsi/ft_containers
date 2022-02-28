@@ -27,6 +27,7 @@ This project is about implementing the various container types of the C++ standa
     * [Map in C++98](#Map_in_C++98)
     * [std::pair C++98](#std::pair_C++98)
     * [Red-black tree](#Red-black_tree)
+        *[Sentinel node](#Sentinel_node)
 * [Value type C++98](#Value_type_C++98)
 
 # Vector
@@ -734,7 +735,50 @@ When the tree is modified, the new tree is rearranged and "repainted" to restore
 
 ![red-black-tree](https://user-images.githubusercontent.com/63563271/156001637-d9b2a4da-0431-44f7-be29-a4ad14a7c5b7.gif)
 
-	
+### Sentinel_node
+
+In order to save a marginal amount of execution time, these (possibly many) NIL leaves may be implemented as pointers to one unique (and black) sentinel node
+
+The globally available pointer sentinel to the single deliberately prepared data structure Sentinel = *sentinel is used to indicate the absence of a child, instead of lots of null pointers
+
+```cpp
+// global variable
+bst_node Sentinel, *sentinel = &Sentinel;
+// global initialization
+Sentinel.child[0] = Sentinel.child[1] = sentinel;
+
+BST->root = sentinel;                 // before the first insertion (not shown)
+```
+
+Note that the pointer sentinel has always to represent every leaf of the tree. This has to be maintained by the insert and delete functions. It is, however, about the same effort as when using a NULL pointer.
+
+```cpp
+struct bst_node *SearchWithSentinelnode(struct bst *bst, int search_key) {
+    struct bst_node *node;
+    // Prepare the “node” Sentinel for the search:
+    sentinel->key = search_key;
+ 
+    for (node = bst->root;;) {
+        if (search_key == node->key)
+            break;
+        if search_key < node->key:
+            node = node->child[0];    // go left
+        else
+            node = node->child[1];    // go right
+    }
+ 
+    // Post-processing:
+    if (node != sentinel)
+        return node;                  // found
+    // search_key is not contained in the tree:
+    return NULL;
+}
+```
+
+* With the use of SearchWithSentinelnode searching loses the R/O property. This means that in applications with concurrency it has to be protected by a mutex, an effort which normally exceeds the savings of the sentinel.
+* SearchWithSentinelnode does not support the tolerance of duplicates.
+* There has to be exactly one “node” to be used as sentinel, but there may be extremely many pointers to it.
+
 # Value_type_C++98
 
 ```cpp
