@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/28 17:42:22 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/28 18:49:02 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -434,9 +434,9 @@ namespace ft
 	template <class T, class Alloc>
 	bool operator == (const vector<T,Alloc>& lhs, const vector<T,Alloc>& rhs)
 	{
-		if (lhs.size() < rhs.size())
-			return (ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
-		return (ft::equal(rhs.begin(), rhs.end(), lhs.begin()));
+		if (lhs.size() != rhs.size())
+			return (false);
+		return (ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
 	}
 
 	template <class T, class Alloc>
