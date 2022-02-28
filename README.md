@@ -721,3 +721,14 @@ Pairs are a particular case of [tuple](https://www.cplusplus.com/reference/tuple
 |Non-member function overloads | |
 |------------------|------------|
 |**relational operators**|Relational operators for pair (function template)|
+
+## Red-black_tree
+
+[From Wikipedia](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)
+
+In computer science, a red–black tree is a kind of [self-balancing binary search tree](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree). Each node stores an extra bit representing "color" ("red" or "black"), used to ensure that the tree remains balanced during insertions and deletions
+
+When the tree is modified, the new tree is rearranged and "repainted" to restore the coloring properties that constrain how unbalanced the tree can become in the worst case. The properties are designed such that this rearranging and recoloring can be performed efficiently.
+
+[Red-black three visualization](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html)
+
