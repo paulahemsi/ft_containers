@@ -731,6 +731,8 @@ In computer science, a red–black tree is a kind of [self-balancing binary sear
 
 When the tree is modified, the new tree is rearranged and "repainted" to restore the coloring properties that constrain how unbalanced the tree can become in the worst case. The properties are designed such that this rearranging and recoloring can be performed efficiently.
 
+The `black depth` of a node is defined as the number of black nodes **from the root to that node** (i.e. the number of black ancestors). The `black height` of a red–black tree is the number of black nodes **in any path from the root to the leaves**, which, by requirement 4, is **constant** (alternatively, it could be defined as the black depth of any leaf node).
+
 [Red-black three visualization](https://www.cs.usfca.edu/~galles/visualization/RedBlack.html)
 
 ![red-black-tree](https://user-images.githubusercontent.com/63563271/156001637-d9b2a4da-0431-44f7-be29-a4ad14a7c5b7.gif)
