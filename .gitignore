@@ -34,3 +34,6 @@ original
 
 #vscode
 .vscode
+
+#log
+logs/
