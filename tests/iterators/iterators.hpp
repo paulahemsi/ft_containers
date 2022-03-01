@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iterators.cpp                                      :+:      :+:    :+:   */
+/*   iterators.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 19:40:06 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/28 21:22:20 by lfrasson         ###   ########.fr       */
+/*   Created: 2022/02/25 10:37:45 by lfrasson          #+#    #+#             */
+/*   Updated: 2022/02/28 21:29:41 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iterators.hpp"
+#ifndef ITERATORS_HPP
+# define ITERATORS_HPP
 
-void test_iterators(void)
-{
-	print_title("ITERATORS");
-	iterate_through_vector();
-	iterate_through_vector_changing_values();
-	iterators_of_same_vector<ft::vector<int>::iterator>();
-	iterators_of_differents_vector<ft::vector<int>::iterator>();
-	iterator_when_change_value<ft::vector<int>::iterator>();
-}
+#include "tests.hpp"
+#include "iterators.tpp"
+
+void iterate_through_vector_changing_values(void);
+void iterate_through_vector(void);
+
+#endif
