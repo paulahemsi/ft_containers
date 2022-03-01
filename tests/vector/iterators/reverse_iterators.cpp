@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:44:11 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/25 10:56:25 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/02/28 21:50:28 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,9 @@ static void	reverse_iterator_when_change_value(void)
 void test_reverse_iterators(void)
 {
 	print_title("REVERSE ITERATORS");
+	reverse_iterate_through_vector();
+	reverse_iterate_through_vector_changing_values();
 	reverse_iterators_of_same_vector();
 	reverse_iterators_of_differents_vector();
 	reverse_iterator_when_change_value();
-	
-	// ft::vector<int>::reverse_iterator rend = integers.rend();
-	// while (reverse_iteratorIntegers1 <= rend)
-	// {
-	// 	std::cout << *reverse_iteratorIntegers1 << std::endl;
-	// 	reverse_iteratorIntegers1++;
-	// }
 }
