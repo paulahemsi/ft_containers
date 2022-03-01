@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/28 22:29:50 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/01 10:13:41 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ HEADER	:=	tests.hpp\
 			comparison.hpp\
 			swap.tpp\
 			iterators.hpp\
+			reverse_iterators.tpp\
 			iterators.tpp
 
 CONTAINERSDIR	:=	./containers/
