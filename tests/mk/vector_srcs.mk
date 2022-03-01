@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 18:39:11 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/19 20:19:34 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/19 20:25:35 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRC			+=	ft_main.cpp\
 HEADER		+=	tests.hpp\
 				comparison.hpp\
 				swap.tpp\
-				iterators.hpp
+				iterators.tpp
 
 INCLUDES	+= $(addprefix -I, $(TEST_DIR))
 
