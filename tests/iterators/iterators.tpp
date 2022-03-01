@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iterators.hpp                                      :+:      :+:    :+:   */
+/*   iterators.tpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:37:45 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/28 17:37:59 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/02/28 21:12:58 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITERATORS_HPP
-# define ITERATORS_HPP
+#ifndef ITERATORS_TPP
+# define ITERATORS_TPP
 
 #include "tests.hpp"
 

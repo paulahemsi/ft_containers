@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/02/28 22:22:51 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/02/28 22:24:47 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ SRC	:=	ft_main.cpp\
 HEADER	:=	tests.hpp\
 			comparison.hpp\
 			swap.tpp\
-			iterators.hpp
+			iterators.tpp
 
 CONTAINERSDIR	:=	./containers/
 CONTAINERS		:=	Vector.hpp
