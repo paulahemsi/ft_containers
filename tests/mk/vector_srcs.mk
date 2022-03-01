@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 18:39:11 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/19 20:35:12 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/19 20:44:14 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ HEADER		+=	tests.hpp\
 				comparison.hpp\
 				swap.tpp\
 				iterators.hpp\
+				reverse_iterators.tpp\
 				iterators.tpp
 
 INCLUDES	+= $(addprefix -I, $(TEST_DIR))
