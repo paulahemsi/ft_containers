@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/26 10:49:06 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:42:22 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,8 @@ namespace ft
 					this->_reAlloc(other._size);
 				for(size_type i = 0; i < other._size; i++)
 					this->_allocator.construct(&this->_element[i], other._element[i]);
+				if(this->_size < other._size)
+					this->_size = other._size;
 				return (*this);
 			}
 
