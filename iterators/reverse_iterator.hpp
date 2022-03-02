@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 14:27:04 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/28 17:41:02 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/03/02 16:39:40 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,25 +128,25 @@ namespace ft {
 	template<class Iterator>
 	bool operator<(const reverse_iterator<Iterator>& lhs, const reverse_iterator<Iterator>& rhs)
 	{
-		return lhs.base() < rhs.base();
+		return lhs.base() > rhs.base();
 	}
 
 	template<class Iterator>
 	bool operator<=(const reverse_iterator<Iterator>& lhs, const reverse_iterator<Iterator>& rhs)
 	{
-		return lhs.base() <= rhs.base();
+		return lhs.base() >= rhs.base();
 	}
 
 	template<class Iterator>
 	bool operator>(const reverse_iterator<Iterator>& lhs, const reverse_iterator<Iterator>& rhs)
 	{
-		return lhs.base() > rhs.base();
+		return lhs.base() < rhs.base();
 	}
 
 	template<class Iterator>
 	bool operator>=(const reverse_iterator<Iterator>& lhs, const reverse_iterator<Iterator>& rhs)
 	{
-		return lhs.base() >= rhs.base();
+		return lhs.base() <= rhs.base();
 	}
 
 	//advances the iterator
