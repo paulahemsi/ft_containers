@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:37:45 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/02 16:46:57 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/03/02 19:10:44 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define ITERATORS_TPP
 
 #include "iterators.hpp"
+
+void	getBegin(ft::vector<int>& vector, ft::vector<int>::iterator& iterator);
+void	getBegin(ft::vector<int>& vector, ft::vector<int>::const_iterator& iterator);
+void	getBegin(ft::vector<int>& vector, ft::vector<int>::reverse_iterator& iterator);
+void	getBegin(ft::vector<int>& vector, ft::vector<int>::const_reverse_iterator& iterator);
+void	change_value(ft::vector<int>& vector, int index1, int index2);
 
 template<typename T>
 static void print_iterator(std::string name, T iterator)
@@ -45,8 +51,11 @@ static void	compare_iterators_of_same_vector(void)
 	ft::vector<int> vector = create_vector_of_random_integers(8, 200);
 	displayVector(vector);
 
-	T iterator1 = vector.begin();
-	T iterator2 = vector.begin();
+	T iterator1;
+	T iterator2;
+	
+	getBegin(vector, iterator1);
+	getBegin(vector, iterator2);
 	print_iterators_content<T>(iterator1, iterator2);
 	compare_iterators<T>(&iterator1, &iterator2);
 }
@@ -61,28 +70,31 @@ static void	compare_iterators_of_different_vector(void)
 	ft::vector<int> vector2 = create_vector_of_random_integers(8, 200);
 	displayVector(vector1);
 	displayVector(vector2);
-	T iterator1 = vector1.begin();
-	T iterator2 = vector2.begin();
+	T iterator1;
+	T iterator2;
+	
+	getBegin(vector1, iterator1);
+	getBegin(vector2, iterator2);
 	print_iterators_content<T>(iterator1, iterator2);
 	compare_iterators<T>(&iterator1, &iterator2);
 }
 
 template<typename T>
-static void	compare_iterator_when_change_element_value(void)
+static void	compare_iterator_when_change_element_value(int index1, int index2)
 {
 	print_subheading("Iterators when change element value");
 	print_instructions("vector1.push_back(number) x 8");
 	ft::vector<int> vector = create_vector_of_random_integers(8, 200);
 	displayVector(vector);
 
-	T iterator = vector.begin();
+	T iterator;
+	getBegin(vector, iterator);
 	T* address1 = &iterator; 
 
 	print_iterator("iterator", iterator);
 	print_iterator("(iterator+2)", iterator + 2);
-	
-	print_instructions("vector[0] = vector[2];");
-	vector[0] = vector[2];
+
+	change_value(vector, index1, index2);
 	
 	T* address2 = &iterator; 
 	
