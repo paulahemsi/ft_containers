@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:37:45 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/01 10:05:51 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/03/02 19:07:23 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include "tests.hpp"
 #include "iterators.tpp"
-#include "reverse_iterators.tpp"
 
 void iterate_through_vector_changing_values(void);
 void iterate_through_vector(void);
