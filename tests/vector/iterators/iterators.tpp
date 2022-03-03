@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:37:45 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/02 19:10:44 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/03/02 21:50:19 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define ITERATORS_TPP
 
 #include "iterators.hpp"
-
-void	getBegin(ft::vector<int>& vector, ft::vector<int>::iterator& iterator);
-void	getBegin(ft::vector<int>& vector, ft::vector<int>::const_iterator& iterator);
-void	getBegin(ft::vector<int>& vector, ft::vector<int>::reverse_iterator& iterator);
-void	getBegin(ft::vector<int>& vector, ft::vector<int>::const_reverse_iterator& iterator);
-void	change_value(ft::vector<int>& vector, int index1, int index2);
 
 template<typename T>
 static void print_iterator(std::string name, T iterator)
@@ -100,6 +94,49 @@ static void	compare_iterator_when_change_element_value(int index1, int index2)
 	
 	print_iterator("iterator", iterator);
 	compare_iterators<T>(address1, address2);
+}
+
+template<typename T>
+static void	iterate_vector_printing(ft::vector<int>& vector)
+{
+	T	it;
+	T	end;
+
+	getBegin(vector, it);
+	getEnd(vector, end);
+	for (; it != end; ++it)
+		std::cout << ' ' << *it;
+	std::cout << std::endl;
+}
+
+template<typename T>
+void iterate_through_vector(void)
+{
+	print_subheading("Iterate through vector");
+	ft::vector<int> vector = create_vector_of_random_integers(8, 200);
+	iterate_vector_printing<T>(vector);
+}
+
+template<typename T>
+static void	iterate_vector_changing_value(ft::vector<int>& vector)
+{
+	T	it;
+	T	end;
+
+	getBegin(vector, it);
+	getEnd(vector, end);
+	int i = 0;
+	for (; it != end; ++it)
+		*it *= i++;
+}
+
+template<typename T>
+void iterate_through_vector_changing_values(void)
+{
+	print_subheading("Iterate through vector changing values");
+	ft::vector<int> vector = create_vector_of_random_integers(8, 200);
+	iterate_vector_changing_value<T>(vector);
+	iterate_vector_printing<T>(vector);
 }
 
 #endif
