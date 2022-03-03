@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/03/02 21:08:09 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/02 21:41:47 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ SRC	:=	ft_main.cpp\
 		auxiliary.cpp\
 		iterators.cpp\
 		aux_iterators.cpp\
-		aux_reverse_iterators.cpp\
 		out_of_bounds.cpp\
 		relational_operators.cpp\
 		empty.cpp\

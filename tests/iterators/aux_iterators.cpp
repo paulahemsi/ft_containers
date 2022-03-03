@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 21:28:44 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/02 21:41:13 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/03/03 16:48:01 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,12 @@ void	change_value(ft::vector<int>& vector, int index1, int index2)
 	instruction.append("];");
 	print_instructions(instruction);
 	vector[index1] = vector[index2];
+}
+
+ft::vector<int>	create_and_display_vector(void)
+{
+	print_instructions("vector1.push_back(number) x 8");
+	ft::vector<int> vector = create_vector_of_random_integers(8, 200);
+	displayVector(vector);
+	return vector;
 }
