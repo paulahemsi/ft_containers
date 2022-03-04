@@ -6,14 +6,14 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/28 18:49:02 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/04 19:40:40 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <exception>
-#include "type_traits.hpp"
+#include "type_traits.tpp"
 #include "random_access_iterator.hpp"
 #include "reverse_iterator.hpp"
 #include "lexicographical_compare.tpp"

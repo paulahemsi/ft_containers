@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 17:27:40 by lfrasson          #+#    #+#              #
-#    Updated: 2022/03/04 21:47:40 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/04 23:21:20 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
