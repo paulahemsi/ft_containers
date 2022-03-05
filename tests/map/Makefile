@@ -6,7 +6,7 @@
 #    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/03/04 23:30:46 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/03/05 20:23:35 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SUB_DIR	:=
 #SUB_DIR	:=	$(addprefix $(TEST_DIR), $(SUB_DIR))
 
 SRC	:=	main.cpp\
-		pair.cpp
+		pair.cpp\
+		auxiliary.cpp
 
 HEADER	:=	
 
