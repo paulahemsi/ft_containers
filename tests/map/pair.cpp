@@ -6,56 +6,81 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:00:06 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/03/05 18:29:44 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/05 20:41:38 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pair.tpp"
+#include "tests.hpp"
 
 #include <string>
 #include <iostream>
 
-int test_pair(void)
+static void print_pair(ft::pair<std::string,double> pair)
 {
-  ft::pair <std::string,double> product1;
-  ft::pair <std::string,double> product2 ("tomatoes",2.30);
-  ft::pair <std::string,double> product3 (product2);
+  std::cout << "The price of " << pair.first << " is $" << pair.second << '\n';
+}
+
+static void compare_pairs(ft::pair<std::string,double> pair1, ft::pair<std::string,double> pair2)
+{
+  print_instructions("Pair1:");
+  print_pair(pair1);
+  print_instructions("Pair2:");
+  print_pair(pair2);
+  std::cout << "Pair1 == Pair2: " << (pair1 == pair2) << std::endl;
+  std::cout << "Pair1 != Pair2: " << (pair1 != pair2) << std::endl;
+  std::cout << "Pair1 > Pair2: " << (pair1 > pair2) << std::endl;
+  std::cout << "Pair1 >= Pair2: " << (pair1 >= pair2) << std::endl;
+  std::cout << "Pair1 < Pair2: " << (pair1 < pair2) << std::endl;
+  std::cout << "Pair1 <= Pair2: " << (pair1 <= pair2) << std::endl;
+}
+
+static void test_assignment_operator(ft::pair<std::string,double>& pair1)
+{
+  print_subheading(" = ");
+  print_instructions("ft::pair <std::string,double> pair2(\"wine\", 49.90);");
+  ft::pair <std::string,double> pairTemp("wine", 49.90);
+  print_instructions("pair1 = pairTemp;");
+  pair1 = pairTemp;
+  print_pair(pair1);
+}
+
+static void test_comparsions(ft::pair<std::string,double> pair1, ft::pair<std::string,double> pair2)
+{
+  print_subheading("comparation");
+  compare_pairs(pair1, pair2);
+
+  print_instructions("pair1 = pair2;");
+  pair1 = pair2;
+  compare_pairs(pair1, pair2);
+
+  print_instructions("pair1.second = 2.33;");
+  pair1.second = 2.33;
+  compare_pairs(pair1, pair2);
+
+  print_instructions("pair1.second = pair2.second;");
+  pair1.second = pair2.second;
+  print_instructions("pair1.first = \"tom\";");
+  pair1.first = "tom";
+  compare_pairs(pair1, pair2);
+}
+
+void test_pair(void)
+{
+  print_title("PAIR");
+
+  print_subheading("constructors");
+
+  print_instructions("ft::pair <std::string,double> pair1");
+  ft::pair <std::string,double> pair1;
+  print_pair(pair1);
+  print_instructions("ft::pair <std::string,double> pair2(\"tomatoes\", 2.30);");
+  ft::pair <std::string,double> pair2("tomatoes", 2.30);
+  print_pair(pair2);
+  print_instructions("ft::pair <std::string,double> pair3 (pair2);");
+  ft::pair <std::string,double> pair3 (pair2);
+  print_pair(pair3);
 
   //product1 = std::make_pair(std::string("lightbulbs"),0.99);   // using make_pair (move)
-  std::cout << "P2 == P3: " << (product2 == product3) << std::endl;
-  std::cout << "P2 != P3: " << (product2 != product3) << std::endl;
-  std::cout << "P2 > P3: " << (product2 > product3) << std::endl;
-  std::cout << "P2 >= P3: " << (product2 >= product3) << std::endl;
-  std::cout << "P2 < P3: " << (product2 < product3) << std::endl;
-  std::cout << "P2 <= P3: " << (product2 <= product3) << std::endl;
-
-  product2.second = 39.90;
-  std::cout << "P2 == P3: " << (product2 == product3) << std::endl;
-  std::cout << "P2 != P3: " << (product2 != product3) << std::endl;
-  std::cout << "P2 > P3: " << (product2 > product3) << std::endl;
-  std::cout << "P2 >= P3: " << (product2 >= product3) << std::endl;
-  std::cout << "P2 < P3: " << (product2 < product3) << std::endl;
-  std::cout << "P2 <= P3: " << (product2 <= product3) << std::endl;
-
-  product2.first = "shoes";
-  std::cout << "P2 == P3: " << (product2 == product3) << std::endl;
-  std::cout << "P2 != P3: " << (product2 != product3) << std::endl;
-  std::cout << "P2 > P3: " << (product2 > product3) << std::endl;
-  std::cout << "P2 >= P3: " << (product2 >= product3) << std::endl;
-  std::cout << "P2 < P3: " << (product2 < product3) << std::endl;
-  std::cout << "P2 <= P3: " << (product2 <= product3) << std::endl;  
-
-  ft::pair <std::string,double> product4;
-  product4 = product2;
-
-  std::cout << "P1: The price of " << product1.first << " is $" << product1.second << '\n';
-  std::cout << "P2: The price of " << product2.first << " is $" << product2.second << '\n';
-  std::cout << "P3: The price of " << product3.first << " is $" << product3.second << '\n';
-  std::cout << "P4: The price of " << product4.first << " is $" << product4.second << '\n';
-
-  std::cout << "P1 == P2: " << (product1 == product2) << std::endl;
-  std::cout << "P2 == P3: " << (product2 == product3) << std::endl;
-  std::cout << "P3 == P4: " << (product3 == product4) << std::endl;
-  std::cout << "P2 == P4: " << (product2 == product4) << std::endl;
-  return 0;
+  test_assignment_operator(pair1);
+  test_comparsions(pair1, pair2);
 }
