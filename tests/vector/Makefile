@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/03/04 21:11:18 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/04 21:32:28 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ STD_VERSION := -D STD_VERSION
 
 RM		:=	rm -rf
 
-ROOT		:=	../
+ROOT		:=	../../
 
 TESTDIR		:=	./
 
@@ -55,16 +55,16 @@ HEADER	:=	tests.hpp\
 			comparison.hpp\
 			swap.tpp
 
-CONTAINERSDIR	:=	../containers/
+CONTAINERSDIR	:=	$(ROOT)containers/
 CONTAINERS		:=	Vector.hpp
 
-ITERATORSDIR	:=	../iterators/
+ITERATORSDIR	:=	$(ROOT)iterators/
 ITERATORS		:=	bidirectional_iterator.hpp\
 					random_access_iterator.hpp\
 					iterators_traits.hpp\
 					reverse_iterator.hpp
 
-AUXTEMPLATESDIR	:=	../aux_templates/
+AUXTEMPLATESDIR	:=	$(ROOT)aux_templates/
 AUXTEMPLATES	:=	lexicographical_compare.tpp\
 				type_traits.hpp 
 

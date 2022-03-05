@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 17:27:40 by lfrasson          #+#    #+#              #
-#    Updated: 2022/03/04 21:11:14 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/04 21:43:10 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LOGS_DIR	:=	./logs/
 
 TESTS_DIR	:=	./tests/
 
-VECTOR_TEST_DIR	:=	$(TESTS_DIR).
+VECTOR_TEST_DIR	:=	$(TESTS_DIR)vector
 
 vector_test:
 		make -C $(VECTOR_TEST_DIR)
