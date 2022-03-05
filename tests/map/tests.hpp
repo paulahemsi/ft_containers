@@ -6,20 +6,22 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/04 23:30:24 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/05 18:22:49 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TESTS_HPP
 # define TESTS_HPP
 
+#include <iostream>
+
 #ifdef STD_VERSION
 	#define VERSION "STD_VERSION"
 	#define ft std
-	#include <vector>
+	#include <utility>
 #else
 	#define VERSION "FT_VERSION"
-	#include "Vector.hpp"
+	#include "pair.tpp"
 #endif
 
 # define CYAN			"\e[0;36m"
