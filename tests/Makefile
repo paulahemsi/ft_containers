@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/03/04 18:03:27 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/04 21:11:18 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,5 +115,8 @@ fclean:		clean
 			$(RM) $(ORGINAL)
 
 re:			fclean all
+
+test:
+		make test -C $(ROOT)
 
 PHONY:		all clean fclean re test
