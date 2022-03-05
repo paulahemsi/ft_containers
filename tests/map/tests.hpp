@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/05 18:22:49 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/05 20:31:50 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@
 # define YELLOW			"\e[0;33m"
 # define RESET			"\e[0m"
 
-int test_pair(void);
+void test_pair(void);
+
+/*
+* Auxiliary
+*/
+void print_instructions(std::string instruction);
+void print_title(std::string title);
+void print_subheading(std::string subheading);
 
 #endif
