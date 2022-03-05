@@ -6,33 +6,33 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 17:27:40 by lfrasson          #+#    #+#              #
-#    Updated: 2022/03/04 17:44:50 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/04 21:11:14 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 RM		:=	rm -rf
 TESTER	:=	bash tester.sh
 
-LOGSDIR	:=	./logs/
+LOGS_DIR	:=	./logs/
 
-TESTDIR	:=	./tests/
+TESTS_DIR	:=	./tests/
 
-VECTORDIR	:=	$(TESTDIR).
+VECTOR_TEST_DIR	:=	$(TESTS_DIR).
 
-vector:
-		make -C $(VECTORDIR)
+vector_test:
+		make -C $(VECTOR_TEST_DIR)
 
-all: vector
+all: vector_test
 
 test:
 		$(TESTER)
 clean:
-		make clean -C $(VECTORDIR)
+		make clean -C $(VECTOR_TEST_DIR)
 
 fclean:	
-		make fclean -C $(VECTORDIR)
-		$(RM) $(LOGSDIR)
+		make fclean -C $(VECTOR_TEST_DIR)
+		$(RM) $(LOGS_DIR)
 
 re:		fclean all
 
-PHONY:	all clean fclean re vector test
+PHONY:	all clean fclean re vector_test test
