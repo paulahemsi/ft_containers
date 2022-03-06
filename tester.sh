@@ -5,7 +5,7 @@ V_GREEN="\e[0;38;5;82m"
 P_GREEN="\e[0;38;5;23m"
 
 LOGSDIR=./logs/
-VECTORDIR=./tests/
+VECTORDIR=./tests/vector/
 
 echo -e "\n${V_GREEN} ----------making std version----------\n${RESET}"
 
