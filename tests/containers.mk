@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 16:41:12 by lfrasson          #+#    #+#              #
-#    Updated: 2022/03/06 16:41:17 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/06 17:55:57 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,3 +27,5 @@ AUX_TEMPLATES		:=	lexicographical_compare.tpp\
 
 TEMPLATES_DIR	:= $(CONTAINERS_DIR) $(ITERATORS_DIR) $(AUX_TEMPLATES_DIR) 
 TEMPLATES		:= $(CONTAINERS) $(ITERATORS) $(AUX_TEMPLATES)
+
+VPATH	:=	$(TEMPLATES_DIR)

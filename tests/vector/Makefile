@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/03/06 16:46:44 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/06 18:58:42 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,42 +22,8 @@ STD_VERSION := -D STD_VERSION
 
 RM		:=	rm -rf
 
-TEST_DIR	:=	./
-
-SUB_DIR	:=	member_functions/\
-			non-member_functions/
-SUB_DIR	:=	$(addprefix $(TEST_DIR), $(SUB_DIR))
-
-SRC	:=	ft_main.cpp\
-		constructors.cpp\
-		simple_assignment_operator.cpp\
-		auxiliary.cpp\
-		iterators.cpp\
-		out_of_bounds.cpp\
-		relational_operators.cpp\
-		empty.cpp\
-		assign.cpp\
-		clear.cpp\
-		data.cpp\
-		erase.cpp\
-		insert.cpp\
-		swap.cpp\
-		resize.cpp\
-		reserve.cpp\
-		get_allocator.cpp\
-		element_access.cpp\
-		push_back.cpp\
-		pop_back.cpp
-
-HEADER	:=	tests.hpp\
-			comparison.hpp\
-			swap.tpp
-
 include ../containers.mk
-
-VPATH	:=	$(TEST_DIR)\
-			$(TEMPLATES_DIR)\
-			$(SUB_DIR)
+include srcs.mk
 
 OBJ_DIR		:= ./objs/
 FT_OBJ_DIR	:= ./ft_objs/
@@ -71,6 +37,8 @@ $(OBJ_DIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
 
 $(FT_OBJ_DIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
 					$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+all:		$(NAME)
 
 $(NAME):	$(FT_OBJS) 
 			$(CC) $(CFLAGS) $^ -o $@ 
@@ -87,8 +55,6 @@ $(OBJ_DIR):
 
 $(FT_OBJ_DIR):
 			mkdir $(FT_OBJ_DIR)
-
-all:		$(NAME)
 
 clean:
 			$(RM) $(OBJ_DIR)
