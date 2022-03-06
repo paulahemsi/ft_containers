@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/03/04 22:14:20 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/05 20:23:35 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,9 @@ TEST_DIR	:=	./
 SUB_DIR	:=	
 #SUB_DIR	:=	$(addprefix $(TEST_DIR), $(SUB_DIR))
 
-SRC	:=	main.cpp
+SRC	:=	main.cpp\
+		pair.cpp\
+		auxiliary.cpp
 
 HEADER	:=	
 
@@ -44,7 +46,7 @@ ITERATORS		:=	bidirectional_iterator.hpp\
 
 AUX_TEMPLATES_DIR	:=	$(ROOT)aux_templates/
 AUX_TEMPLATES		:=	lexicographical_compare.tpp\
-						type_traits.hpp 
+						type_traits.tpp 
 
 TEMPLATES_DIR	:= $(CONTAINERS_DIR) $(ITERATORS_DIR) $(AUX_TEMPLATES_DIR) 
 TEMPLATES		:= $(CONTAINERS) $(ITERATORS) $(AUX_TEMPLATES)
