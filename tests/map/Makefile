@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/03/06 17:00:35 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/06 19:03:23 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,22 +22,8 @@ STD_VERSION := -D STD_VERSION
 
 RM		:=	rm -rf
 
-TEST_DIR	:=	./
-
-SUB_DIR	:=	
-#SUB_DIR	:=	$(addprefix $(TEST_DIR), $(SUB_DIR))
-
-SRC	:=	main.cpp\
-		pair.cpp\
-		auxiliary.cpp
-
-HEADER	:=	
-
 include ../containers.mk
-
-VPATH	:=	$(TEST_DIR)\
-			$(TEMPLATES_DIR)\
-			$(SUB_DIR)
+include srcs.mk
 
 OBJ_DIR		:= ./objs/
 FT_OBJ_DIR	:= ./ft_objs/
