@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/03/05 20:23:35 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/03/06 15:46:04 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,6 +97,6 @@ fclean:		clean
 re:			fclean all
 
 test:
-		make map_test -C $(ROOT)
+		make map_script -C $(ROOT)
 
 PHONY:		all clean fclean re test

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 17:27:40 by lfrasson          #+#    #+#              #
-#    Updated: 2022/03/04 23:21:20 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/03/06 15:44:05 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,16 +20,20 @@ TESTS_DIR	:=	./tests/
 VECTOR_TEST_DIR	:=	$(TESTS_DIR)vector
 MAP_TEST_DIR	:=	$(TESTS_DIR)map
 
+all:	vector_test map_test
+
 vector_test:
 		make -C $(VECTOR_TEST_DIR)
 
 map_test:
 		make -C $(MAP_TEST_DIR)
 
-all:	vector_test map_test
+vector_script:
+		$(TESTER) vector
 
-test:
-		$(TESTER)
+map_script:
+		$(TESTER) map
+
 clean:
 		make clean -C $(VECTOR_TEST_DIR)
 		make clean -C $(MAP_TEST_DIR)
