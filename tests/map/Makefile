@@ -6,12 +6,14 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/03/06 23:26:55 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/06 23:46:28 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include ../containers.mk
-include srcs.mk
+MK_DIR	:=	../mk/
+
+include $(MK_DIR)containers.mk
+include $(MK_DIR)map_srcs.mk
 
 NAME	:= ft.out
 ORGINAL	:= original
