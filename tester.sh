@@ -32,7 +32,7 @@ if [ "$(eval uname)" == "Darwin" ]; then
     DIFF=diff
     V_GREEN="\033[32m"
 else
-    DIFF=diff --collor
+    DIFF="diff --color"
 fi
 
 LOGSDIR=./logs/
