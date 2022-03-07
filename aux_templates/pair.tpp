@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:43:14 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/03/06 21:47:25 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/06 22:27:19 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ namespace ft
 	{
 		return (!(lhs < rhs));
 	}
-	template< class T1, class T2 >
-	ft::pair<T1,T2> make_pair( T1 t, T2 u )
+	template <class T1, class T2>
+	pair<T1,T2> make_pair (T1 x, T2 y)
 	{
-		
+		return (pair<T1, T2>(x, y));
 	}
 }
