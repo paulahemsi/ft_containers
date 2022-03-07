@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:43:14 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/03/05 18:13:02 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/06 21:47:25 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,10 @@ namespace ft
 	bool operator>=(const ft::pair<T1,T2>& lhs, const ft::pair<T1,T2>& rhs)
 	{
 		return (!(lhs < rhs));
+	}
+	template< class T1, class T2 >
+	ft::pair<T1,T2> make_pair( T1 t, T2 u )
+	{
+		
 	}
 }
