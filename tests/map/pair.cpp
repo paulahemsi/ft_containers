@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:00:06 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/03/05 20:41:38 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/06 22:41:21 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include <string>
 #include <iostream>
 
-static void print_pair(ft::pair<std::string,double> pair)
+template <class Pair>
+static void print_pair(Pair pair)
 {
   std::cout << "The price of " << pair.first << " is $" << pair.second << '\n';
 }
@@ -64,6 +65,18 @@ static void test_comparsions(ft::pair<std::string,double> pair1, ft::pair<std::s
   compare_pairs(pair1, pair2);
 }
 
+static void test_make_pair(void)
+{
+  print_subheading("make_pair");
+
+  print_instructions("ft::pair <std::string,double> pair1");
+  ft::pair <std::string,double> pair1;
+  print_pair(pair1);
+  print_instructions("pair1 = ft::make_pair(std::string(\"lightbulbs\"),0.99);");
+  pair1 = ft::make_pair(std::string("lightbulbs"),0.99);
+  print_pair(pair1);
+}
+
 void test_pair(void)
 {
   print_title("PAIR");
@@ -80,7 +93,7 @@ void test_pair(void)
   ft::pair <std::string,double> pair3 (pair2);
   print_pair(pair3);
 
-  //product1 = std::make_pair(std::string("lightbulbs"),0.99);   // using make_pair (move)
   test_assignment_operator(pair1);
   test_comparsions(pair1, pair2);
+  test_make_pair();
 }
