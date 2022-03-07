@@ -6,9 +6,14 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/03/06 15:45:26 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/06 23:36:36 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+MK_DIR	:=	../mk/
+
+include $(MK_DIR)containers.mk
+include $(MK_DIR)vector_srcs.mk
 
 NAME	:= ft.out
 ORGINAL	:= original
@@ -22,71 +27,18 @@ STD_VERSION := -D STD_VERSION
 
 RM		:=	rm -rf
 
-ROOT		:=	../../
-
-TEST_DIR	:=	./
-
-SUB_DIR	:=	member_functions/\
-			non-member_functions/
-SUB_DIR	:=	$(addprefix $(TEST_DIR), $(SUB_DIR))
-
-SRC	:=	ft_main.cpp\
-		constructors.cpp\
-		simple_assignment_operator.cpp\
-		auxiliary.cpp\
-		iterators.cpp\
-		out_of_bounds.cpp\
-		relational_operators.cpp\
-		empty.cpp\
-		assign.cpp\
-		clear.cpp\
-		data.cpp\
-		erase.cpp\
-		insert.cpp\
-		swap.cpp\
-		resize.cpp\
-		reserve.cpp\
-		get_allocator.cpp\
-		element_access.cpp\
-		push_back.cpp\
-		pop_back.cpp
-
-HEADER	:=	tests.hpp\
-			comparison.hpp\
-			swap.tpp
-
-CONTAINERS_DIR	:=	$(ROOT)containers/
-CONTAINERS		:=	Vector.hpp
-
-ITERATORS_DIR	:=	$(ROOT)iterators/
-ITERATORS		:=	bidirectional_iterator.hpp\
-					random_access_iterator.hpp\
-					iterators_traits.hpp\
-					reverse_iterator.hpp
-
-AUX_TEMPLATES_DIR	:=	$(ROOT)aux_templates/
-AUX_TEMPLATES		:=	lexicographical_compare.tpp\
-						type_traits.tpp 
-
-TEMPLATES_DIR	:= $(CONTAINERS_DIR) $(ITERATORS_DIR) $(AUX_TEMPLATES_DIR) 
-TEMPLATES		:= $(CONTAINERS) $(ITERATORS) $(AUX_TEMPLATES)
-
-VPATH	:=	$(TEST_DIR)\
-			$(TEMPLATES_DIR)\
-			$(SUB_DIR)
-
 OBJ_DIR		:= ./objs/
 FT_OBJ_DIR	:= ./ft_objs/
 OBJS		:= $(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 FT_OBJS		:= $(addprefix $(FT_OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
-
-INCLUDES	:= $(addprefix -I, $(TEMPLATES_DIR) $(TEST_DIR))
 
 $(OBJ_DIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
 				$(CC) $(STD_VERSION) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(FT_OBJ_DIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
 					$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+all:		$(NAME)
 
 $(NAME):	$(FT_OBJS) 
 			$(CC) $(CFLAGS) $^ -o $@ 
@@ -103,8 +55,6 @@ $(OBJ_DIR):
 
 $(FT_OBJ_DIR):
 			mkdir $(FT_OBJ_DIR)
-
-all:		$(NAME)
 
 clean:
 			$(RM) $(OBJ_DIR)

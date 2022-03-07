@@ -6,9 +6,14 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/03/06 15:46:04 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/06 23:46:28 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+MK_DIR	:=	../mk/
+
+include $(MK_DIR)containers.mk
+include $(MK_DIR)map_srcs.mk
 
 NAME	:= ft.out
 ORGINAL	:= original
@@ -22,45 +27,10 @@ STD_VERSION := -D STD_VERSION
 
 RM		:=	rm -rf
 
-ROOT		:=	../../
-
-TEST_DIR	:=	./
-
-SUB_DIR	:=	
-#SUB_DIR	:=	$(addprefix $(TEST_DIR), $(SUB_DIR))
-
-SRC	:=	main.cpp\
-		pair.cpp\
-		auxiliary.cpp
-
-HEADER	:=	
-
-CONTAINERS_DIR	:=	$(ROOT)containers/
-CONTAINERS		:=	Vector.hpp
-
-ITERATORS_DIR	:=	$(ROOT)iterators/
-ITERATORS		:=	bidirectional_iterator.hpp\
-					random_access_iterator.hpp\
-					iterators_traits.hpp\
-					reverse_iterator.hpp
-
-AUX_TEMPLATES_DIR	:=	$(ROOT)aux_templates/
-AUX_TEMPLATES		:=	lexicographical_compare.tpp\
-						type_traits.tpp 
-
-TEMPLATES_DIR	:= $(CONTAINERS_DIR) $(ITERATORS_DIR) $(AUX_TEMPLATES_DIR) 
-TEMPLATES		:= $(CONTAINERS) $(ITERATORS) $(AUX_TEMPLATES)
-
-VPATH	:=	$(TEST_DIR)\
-			$(TEMPLATES_DIR)\
-			$(SUB_DIR)
-
 OBJ_DIR		:= ./objs/
 FT_OBJ_DIR	:= ./ft_objs/
 OBJS		:= $(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 FT_OBJS		:= $(addprefix $(FT_OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
-
-INCLUDES	:= $(addprefix -I, $(TEMPLATES_DIR) $(TEST_DIR))
 
 $(OBJ_DIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
 				$(CC) $(STD_VERSION) $(CFLAGS) $(INCLUDES) -c $< -o $@

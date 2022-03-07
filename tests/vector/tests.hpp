@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/28 17:16:34 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/06 19:45:51 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <stdlib.h>
 # include <algorithm>
+# include "auxiliary.hpp"
 
 #ifdef STD_VERSION
 	#define VERSION "STD_VERSION"
@@ -25,11 +26,6 @@
 	#define VERSION "FT_VERSION"
 	#include "Vector.hpp"
 #endif
-
-# define CYAN			"\e[0;36m"
-# define L_GRAY			"\e[0;38;5;245m"
-# define YELLOW			"\e[0;33m"
-# define RESET			"\e[0m"
 
 template <typename T>
 void displayVector(const ft::vector<T>& vector_)
@@ -42,9 +38,6 @@ void displayVector(const ft::vector<T>& vector_)
 	std::cout << std::endl << RESET << std::endl;
 }
 
-void print_instructions(std::string instruction);
-void print_title(std::string title);
-void print_subheading(std::string subheading);
 ft::vector<int>	create_vector_of_random_integers(int size, int seed);
 
 void test_constructors(void);
