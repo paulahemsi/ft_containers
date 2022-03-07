@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.hpp                                          :+:      :+:    :+:   */
+/*   auxiliary.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/06 19:21:51 by lfrasson         ###   ########.fr       */
+/*   Created: 2022/03/06 19:19:03 by lfrasson          #+#    #+#             */
+/*   Updated: 2022/03/06 19:20:00 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_HPP
-# define TESTS_HPP
+#ifndef AUXILIARY_HPP
+# define AUXILIARY_HPP
 
-#include <iostream>
-#include "auxiliary.hpp"
+# include <iostream>
 
-#ifdef STD_VERSION
-	#define VERSION "STD_VERSION"
-	#define ft std
-	#include <utility>
-#else
-	#define VERSION "FT_VERSION"
-	#include "pair.tpp"
-#endif
+# define CYAN			"\e[0;36m"
+# define L_GRAY			"\e[0;38;5;245m"
+# define YELLOW			"\e[0;33m"
+# define RESET			"\e[0m"
 
-void test_pair(void);
+void print_instructions(std::string instruction);
+void print_title(std::string title);
+void print_subheading(std::string subheading);
 
 #endif

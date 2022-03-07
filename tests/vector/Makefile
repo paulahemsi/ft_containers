@@ -6,9 +6,12 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/03/06 18:58:42 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/06 23:18:52 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+include ../containers.mk
+include srcs.mk
 
 NAME	:= ft.out
 ORGINAL	:= original
@@ -22,15 +25,10 @@ STD_VERSION := -D STD_VERSION
 
 RM		:=	rm -rf
 
-include ../containers.mk
-include srcs.mk
-
 OBJ_DIR		:= ./objs/
 FT_OBJ_DIR	:= ./ft_objs/
 OBJS		:= $(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 FT_OBJS		:= $(addprefix $(FT_OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
-
-INCLUDES	:= $(addprefix -I, $(TEMPLATES_DIR) $(TEST_DIR))
 
 $(OBJ_DIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
 				$(CC) $(STD_VERSION) $(CFLAGS) $(INCLUDES) -c $< -o $@

@@ -1,28 +1,22 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    srcs.mk                                            :+:      :+:    :+:    #
+#    auxiliary.mk                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 18:39:11 by lfrasson          #+#    #+#              #
-#    Updated: 2022/03/06 19:38:32 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/06 19:43:59 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include ../auxiliary.mk
+DIR			:=	../auxiliary/
 
-TEST_DIR	:=	./
+SRC			+=	auxiliary.cpp
 
-# SUB_DIR	:=	
-# SUB_DIR	:=	$(addprefix $(TEST_DIR), $(SUB_DIR))
+HEADER		+=	auxiliary.hpp	
 
-SRC			+=	main.cpp\
-				pair.cpp
+INCLUDES	+=	$(addprefix -I, $(DIR))
 
-# HEADER	+=	
-
-INCLUDES	+= $(addprefix -I, $(TEST_DIR))
-
-VPATH		+=	$(TEST_DIR)\
-				$(SUB_DIR)
+vpath 		auxiliary.cpp $(DIR)
+vpath 		auxiliary.hpp $(DIR)
