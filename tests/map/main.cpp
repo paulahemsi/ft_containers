@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/05 20:13:51 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/06 22:43:31 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(void)
 {
-	std::cout << VERSION << std::endl;
+	print_title(VERSION);
 	std::cout.setf(std::ios::boolalpha);
 	test_pair();
 }
