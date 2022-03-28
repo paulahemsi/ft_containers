@@ -6,9 +6,12 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/03/04 19:40:40 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/27 22:38:22 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef VECTOR_HPP
+#define VECTOR_HPP
 
 #include <iostream>
 #include <string>
@@ -472,3 +475,4 @@ namespace ft
 	}
 }
 
+#endif
