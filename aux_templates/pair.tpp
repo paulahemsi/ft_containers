@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   pair.tpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:43:14 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/03/06 22:27:19 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/29 20:55:35 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef PAIR_TPP
+#define PAIR_TPP
 
 /*
 * This class couples together a pair of values, which may be of different types (T1 and T2). 
@@ -88,3 +91,5 @@ namespace ft
 		return (pair<T1, T2>(x, y));
 	}
 }
+
+#endif
