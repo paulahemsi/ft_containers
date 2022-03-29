@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    containers.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 16:41:12 by lfrasson          #+#    #+#              #
-#    Updated: 2022/03/06 19:40:44 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/28 22:21:06 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ ITERATORS		:=	bidirectional_iterator.hpp\
 
 AUX_TEMPLATES_DIR	:=	$(ROOT)aux_templates/
 AUX_TEMPLATES		:=	lexicographical_compare.tpp\
-						type_traits.tpp 
+						type_traits.tpp\
+						pair.tpp
 
 TEMPLATES_DIR	:= $(CONTAINERS_DIR) $(ITERATORS_DIR) $(AUX_TEMPLATES_DIR) 
 TEMPLATES		:= $(CONTAINERS) $(ITERATORS) $(AUX_TEMPLATES)
