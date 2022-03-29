@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:59 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/03/28 22:10:54 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/03/28 22:31:48 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 namespace ft {
 	
 	template <typename T>
-	class bidirectional_iterator
+	class map_iterator
 	{
 		private:
 			pointer	_pointer;
@@ -27,9 +27,9 @@ namespace ft {
 			//canonical
 			map_iterator(): _pointer(NULL) {};
 			explicit map_iterator(pointer ptr): _pointer(ptr) {}
-			map_iterator(const random_access_iterator& instance) {*this = instance;}
+			map_iterator(const map_iterator& instance) {*this = instance;}
 			~map_iterator() {};
-			map_iterator& operator=(const random_access_iterator& right_hand_side)
+			map_iterator& operator=(const map_iterator& right_hand_side)
 			{
 				this->_pointer = right_hand_side._pointer;
 				return *this;
