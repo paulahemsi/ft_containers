@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:59 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/03/28 22:31:48 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/29 20:43:25 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,18 @@ namespace ft {
 	template <typename T>
 	class map_iterator
 	{
+		public:
+
+			typedef	map_iterator<T>					iterator;
+			typedef T								value_type;
+			typedef T*								pointer;
+			typedef T&								reference;
+			typedef std::ptrdiff_t					difference_type;
+		
 		private:
 			pointer	_pointer;
 			
 		public:
-			typedef	map_iterator<T>	iterator;
 		
 			//canonical
 			map_iterator(): _pointer(NULL) {};
