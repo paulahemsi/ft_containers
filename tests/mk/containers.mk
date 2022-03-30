@@ -3,20 +3,21 @@
 #                                                         :::      ::::::::    #
 #    containers.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 16:41:12 by lfrasson          #+#    #+#              #
-#    Updated: 2022/03/28 22:21:06 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/03/29 20:39:01 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ROOT		:=	../../
 
 CONTAINERS_DIR	:=	$(ROOT)containers/
-CONTAINERS		:=	Vector.hpp
+CONTAINERS		:=	Vector.hpp\
+					Map.hpp
 
 ITERATORS_DIR	:=	$(ROOT)iterators/
-ITERATORS		:=	bidirectional_iterator.hpp\
+ITERATORS		:=	map_iterator.hpp\
 					random_access_iterator.hpp\
 					iterators_traits.hpp\
 					reverse_iterator.hpp
