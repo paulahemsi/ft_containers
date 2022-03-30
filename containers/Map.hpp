@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/29 21:33:58 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/03/29 22:19:33 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <functional>
-#include "btree.tpp"
+#include "rb_tree.hpp"
 #include "pair.tpp"
 #include "map_iterator.hpp"
 
@@ -66,8 +66,16 @@ namespace ft
 			{
 				*this = other;	
 			}
+			
+			ft::pair<iterator,bool> insert (const value_type& val)
+			{
+				btree_insert_data(&_root, val, _compare);
+			}
 
+			iterator insert (iterator position, const value_type& val);
 
+			template <class InputIterator>
+			void insert (InputIterator first, InputIterator last);
 
     };
 }
