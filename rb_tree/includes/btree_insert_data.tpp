@@ -121,7 +121,7 @@ void	update_root(ft::btree<T> **root)
 }
 
 template <typename T>
-void btree_insert_data(ft::btree<T> **root, T *new_item, bool (*compare)(T *, T *))
+void btree_insert_data(ft::btree<T> **root, const T *new_item, bool (*compare)(T *, T *))
 {
 	if (*root == NULL)
 	{
