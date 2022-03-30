@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/29 21:01:55 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/03/29 21:33:58 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <functional>
+#include "btree.tpp"
 #include "pair.tpp"
 #include "map_iterator.hpp"
 
@@ -44,14 +45,16 @@ namespace ft
             // typedef ft::reverse_iterator<const_iterator>                const_reverse_iterator;
         
 		private:
-			key_compare		_compare;
-			allocator_type	_allocator;
+			key_compare					_compare;
+			allocator_type				_allocator;
+			ft::btree<value_type>		*_root;
 		
 		public:
             explicit map (const key_compare& comp = key_compare(),
                           const allocator_type& alloc = allocator_type()):
 			_compare(comp),
-			_allocator(alloc) {}
+			_allocator(alloc),
+			_root(NULL) {}
 			
 			template <class InputIterator>
   			map (InputIterator first,
