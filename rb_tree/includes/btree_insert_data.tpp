@@ -96,9 +96,11 @@ void check_rules(ft::btree<T1, T2> *node)
 		grandma = btree_left_rotate(grandma);
 }
 
-template< class T1, class T2 >
-void btree_insert_data_recursive(ft::btree<T1, T2> **root, ft::btree<T1, T2> *parent, const ft::pair<T1,T2> *new_pair, bool (*compare)(const T1 &, const T1 &))
+template< class T1, class T2, class Compare>
+void btree_insert_data_recursive(ft::btree<T1, T2> **root, ft::btree<T1, T2> *parent, const ft::pair<T1,T2> *new_pair)
 {
+	Compare compare;
+
 	if (*root == NULL)
 	{
 		*root = new ft::btree<T1, T2>(new_pair);
@@ -107,9 +109,9 @@ void btree_insert_data_recursive(ft::btree<T1, T2> **root, ft::btree<T1, T2> *pa
 		return ;
 	}
 	if (compare(new_pair->first, (*root)->item->first))
-		btree_insert_data_recursive(&(*root)->right, *root, new_pair, compare);
+		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->right, *root, new_pair);
 	else
-		btree_insert_data_recursive(&(*root)->left, *root, new_pair, compare);
+		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->left, *root, new_pair);
 }
 
 template< class T1, class T2 >
@@ -120,18 +122,20 @@ void	update_root(ft::btree<T1, T2> **root)
 	*root = get_root(*root);
 }
 
-template< class T1, class T2 >
-void btree_insert_data(ft::btree<T1, T2> **root, const ft::pair<T1,T2> *new_pair, bool (*compare)(const T1 &, const T1 &))
+template< class T1, class T2, class Compare>
+void btree_insert_data(ft::btree<T1, T2> **root, const ft::pair<T1,T2> *new_pair)
 {
+	Compare compare;
+
 	if (*root == NULL)
 	{
 		*root = new ft::btree<T1, T2>(new_pair, BLACK);
 		return ;
 	}
 	if (compare(new_pair->first, (*root)->item->first))
-		btree_insert_data_recursive(&(*root)->right, *root, new_pair, compare);
+		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->right, *root, new_pair);
 	else
-		btree_insert_data_recursive(&(*root)->left, *root, new_pair, compare);
+		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->left, *root, new_pair);
 	update_root(root);
 }
 
