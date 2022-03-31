@@ -109,9 +109,9 @@ void btree_insert_data_recursive(ft::btree<T1, T2> **root, ft::btree<T1, T2> *pa
 		return ;
 	}
 	if (compare(new_pair->first, (*root)->item->first))
-		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->right, *root, new_pair);
-	else
 		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->left, *root, new_pair);
+	else
+		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->right, *root, new_pair);
 }
 
 template< class T1, class T2 >
@@ -133,9 +133,9 @@ void btree_insert_data(ft::btree<T1, T2> **root, const ft::pair<T1,T2> *new_pair
 		return ;
 	}
 	if (compare(new_pair->first, (*root)->item->first))
-		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->right, *root, new_pair);
-	else
 		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->left, *root, new_pair);
+	else
+		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->right, *root, new_pair);
 	update_root(root);
 }
 

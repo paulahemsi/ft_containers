@@ -74,7 +74,7 @@ bool is_last_node(ft::btree<T1, T2> *node)
 template <class T1, class T2>
 const ft::pair<T1, T2> * btree_delete(ft::btree<T1, T2> **root, T1 data_ref)
 {
-	ft::btree<T1, T2> * node_to_delete = btree_search_node(*root, data_ref, &compare);
+	ft::btree<T1, T2> * node_to_delete = btree_search_node<T1, T2, std::less<T1> >(*root, data_ref);
 	if (!node_to_delete)
 		return (NULL);
 	const ft::pair<T1, T2> * item_to_return = node_to_delete->item;

@@ -13,7 +13,6 @@
 
 #include "btree.tpp"
 
-#include "compare.tpp"
 #include "print_item.tpp"
 
 #include "btree_right_rotate.tpp"

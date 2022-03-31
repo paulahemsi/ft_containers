@@ -94,14 +94,14 @@ int main(void)
 	{
 		std::cout << "insert " << i << std::endl;
 		ft::pair<int, int> * my_pair1 = new ft::pair<int, int>(i, i);
-		btree_insert_data(&root, my_pair1, &compare);
+		btree_insert_data<int, int, std::less<int> >(&root, my_pair1);
 		btree_apply_by_level(root, print_rb_node_infos);
 	}
 	for (int i = 0; i < 10; i++)
 	{
 		std::cout << "insert " << i << std::endl;
 		ft::pair<int, int> * my_pair2 = new ft::pair<int, int>(i, i);
-		btree_insert_data(&root, my_pair2, &compare);
+		btree_insert_data<int, int, std::less<int> >(&root, my_pair2);
 		btree_apply_by_level(root, print_rb_node_infos);
 	}
 
@@ -115,17 +115,17 @@ int main(void)
 	std::cout << "\n---SEARCH---\n" << std::endl;
 	for (int i = 10; i < 20; i++)
 	{
-		const ft::pair<int, int>	*pair = btree_search_item(root, i, &compare);
+		const ft::pair<int, int>	*pair = btree_search_item<int, int, std::less<int> >(root, i);
 		std::cout << "key: " << pair->first << "value: " << pair->second << " " << std::endl;
 	}
 	for (int i = 0; i < 10; i++)
 	{
-		const ft::pair<int, int>	*pair = btree_search_item(root, i, &compare);
+		const ft::pair<int, int>	*pair = btree_search_item<int, int, std::less<int> >(root, i);
 		std::cout << "key: " << pair->first << "value: " << pair->second << " " << std::endl;
 	}
 	for (int i = 99; i < 111; i++)
 	{
-		const ft::pair<int, int>	*pair = btree_search_item(root, i, &compare);
+		const ft::pair<int, int>	*pair = btree_search_item<int, int, std::less<int> >(root, i);
 		if (pair == NULL)
 			std::cout << i << " NOT IN TREE" << std::endl;
 		else
