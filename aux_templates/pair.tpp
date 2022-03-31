@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pair.tpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:43:14 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/03/29 20:55:35 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/03/30 21:46:13 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ namespace ft
 		return (!(lhs < rhs));
 	}
 	template <class T1, class T2>
-	pair<T1,T2> make_pair (T1 x, T2 y)
+	ft::pair<T1,T2> make_pair (T1 x, T2 y)
 	{
-		return (pair<T1, T2>(x, y));
+		return (ft::pair<T1, T2>(x, y));
 	}
 }
 
