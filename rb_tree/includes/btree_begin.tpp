@@ -7,17 +7,17 @@
 template <class T1, class T2>
 ft::btree<T1, T2> * find_begin(ft::btree<T1, T2> *root)
 {
-    if (!root->left)
-        return (root);
-    return (find_begin(root->left));
+	if (!root->left)
+		return (root);
+	return (find_begin(root->left));
 }
 
 template <class T1, class T2>
 ft::btree<T1, T2> * btree_begin(ft::btree<T1, T2> *root)
 {
-    if (!root)
-        return (NULL);
-    return (find_begin(root)); 
+	if (!root)
+		return (NULL);
+	return (find_begin(root));
 }
 
 #endif
