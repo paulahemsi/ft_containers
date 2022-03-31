@@ -12,6 +12,7 @@
 #include "btree.tpp"
 #include "btree_insert_data.tpp"
 #include "btree_begin.tpp"
+#include "btree_end.tpp"
 
 // #include "compare.tpp"
 // #include "print_item.tpp"

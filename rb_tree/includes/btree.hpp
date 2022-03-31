@@ -31,5 +31,6 @@
 #include "btree_apply_by_level.tpp"
 
 #include "btree_begin.tpp"
+#include "btree_end.tpp"
 
 #endif
