@@ -3,9 +3,9 @@
 #define COMPARE_TPP
 
 template <typename T>
-bool compare(T item1, T item2)
+bool compare(const T &item1, const T &item2)
 {
-	if (*item1 > *item2)
+	if (item1 > item2)
 		return true;
 	return false;
 }

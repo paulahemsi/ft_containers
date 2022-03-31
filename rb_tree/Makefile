@@ -32,12 +32,15 @@ HEADER			:=	$(INCLUDES_DIR)btree.tpp\
 					$(INCLUDES)btree_left_rotate.tpp\
 					$(INCLUDES)btree_rotate_aux.tpp\
 					$(INCLUDES_DIR)compare.tpp\
-					$(INCLUDES_DIR)print_item.tpp
+					$(INCLUDES_DIR)print_item.tpp\
+					../aux_templates/pair.tpp
 
 INCLUDES		:= $(addprefix -I, $(INCLUDES_DIR))
+INCLUDES		+= -I ../aux_templates/
 
 $(OBJS_DIR)%.o:	$(TESTS_DIR)%.cpp
 				$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+				echo $(INCLUDES)
 
 all:			$(NAME)
 

@@ -3,8 +3,12 @@
 #define RB_TREE_HPP
 
 #include <iostream>
+
+#include "pair.tpp"
+
 #include "btree.tpp"
 #include "btree_insert_data.tpp"
+
 
 // #include "compare.tpp"
 // #include "print_item.tpp"

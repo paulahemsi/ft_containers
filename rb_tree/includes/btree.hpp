@@ -8,6 +8,9 @@
 # define BOLD			"\e[1m"
 
 #include <iostream>
+
+#include "pair.tpp"
+
 #include "btree.tpp"
 
 #include "compare.tpp"

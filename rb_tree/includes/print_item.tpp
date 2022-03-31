@@ -3,15 +3,10 @@
 #define PRINT_ITEM_TPP
 
 #include <iostream>
+#include "btree.hpp"
 
-template <typename T>
-void print_item(T *item)
-{
-	std::cout << *item << ' ' << *item << std::endl;
-}
-
-template <typename T>
-void print_rb_node_infos(ft::btree<T> *node, int level, bool is_first)
+template <class T1, class T2>
+void print_rb_node_infos(ft::btree<T1, T2> *node, int level, bool is_first)
 {
 	(void) is_first;
 	std::cout << RESET;
@@ -23,10 +18,10 @@ void print_rb_node_infos(ft::btree<T> *node, int level, bool is_first)
 			std::cout << BOLD;
 		else
 			std::cout << C_RED;
-		std::cout << *node->item << RESET << " (level " << level << ")";
+		std::cout << "key:" << node->item->first << " value: " << node->item->second << RESET << " (level " << level << ")";
 		std::cout << CYAN;
 		if(node->parent)
-			std::cout << " [parent " << *node->parent->item << "]";
+			std::cout << " [parent " << "key:" << node->parent->item->first << " value: " << node->parent->item->second << "]";
 		std::cout << std::endl;
 	}
 }

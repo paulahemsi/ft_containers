@@ -4,8 +4,8 @@
 
 #include "btree.tpp"
 
-template <typename T>
-void btree_apply_suffix(ft::btree<T> *root, void (*applyf)(T *))
+template <class T1, class T2>
+void btree_apply_suffix(ft::btree<T1, T2> *root, void (*applyf)(ft::pair<T1, T2> *))
 {
     if (!root)
         return;
