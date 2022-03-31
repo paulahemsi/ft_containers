@@ -20,6 +20,27 @@ void print_level(ft::btree<T1, T2> *root, int expected)
 	std::cout << "level expected: " << expected << "\tlevel count: " << level << std::endl;
 }
 
+template< class T1, class T2 >
+void print_begin(ft::btree<T1, T2> *root)
+{
+	std::cout << "\n---BEGIN---\n" << std::endl;
+	const ft::btree<int, int>	*begin = btree_begin(root);
+	if (begin)
+		std::cout << "key: " << begin->item->first << " value: " << begin->item->second << " " << std::endl;
+	else
+		std::cout << "sorry, there's no tree :( " << std::endl;
+}
+
+template< class T1, class T2 >
+void print_end(ft::btree<T1, T2> *root)
+{
+	std::cout << "\n---END---\n" << std::endl;
+	const ft::btree<int, int>	*end = btree_end(root);
+	if (end)
+		std::cout << "key: " << end->item->first << " value: " << end->item->second << " " << std::endl  << std::endl;
+	else
+		std::cout << "sorry, there's no tree :( " << std::endl;
+}
 
 // void	test2(void)
 // {
@@ -105,9 +126,9 @@ int main(void)
 		btree_apply_by_level(root, print_rb_node_infos);
 	}
 
-	std::cout << "\n---BEGIN---\n" << std::endl;
-	const ft::btree<int, int>	*begin = btree_begin(root);
-	std::cout << "key: " << begin->item->first << "value: " << begin->item->second << " " << std::endl;
+	print_begin(root);
+	print_end(root);
+	
 	// std::cout << "\n---INFIX---\n" << std::endl;
 	// btree_apply_infix(root, print_item);
 	// std::cout << "\n---PREFIX---\n" << std::endl;
@@ -144,46 +165,42 @@ int main(void)
 	std::cout << "\n---DELETE---\n" << std::endl;
 	for (int i = 10; i < 15; i++)
 	{
-		std::cout << "delete " << i << std::endl;
+		std::cout << CYAN << "delete " << i << RESET << std::endl;
 		delete (btree_delete(&root, i));
 		btree_apply_by_level(root, print_rb_node_infos);
 
-		std::cout << "\n---BEGIN---\n" << std::endl;
-		const ft::btree<int, int>	*begin = btree_begin(root);
-		std::cout << "key: " << begin->item->first << "value: " << begin->item->second << " " << std::endl;
+		print_begin(root);
+		print_end(root);
+
 	}
 	for (int i = 15; i < 20; i++)
 	{
-		std::cout << "delete " << i << std::endl;
+		std::cout << CYAN << "delete " << i << RESET << std::endl;
 		delete (btree_delete(&root, i));
 		btree_apply_by_level(root, print_rb_node_infos);
 	
-		std::cout << "\n---BEGIN---\n" << std::endl;
-		const ft::btree<int, int>	*begin = btree_begin(root);
-		std::cout << "key: " << begin->item->first << "value: " << begin->item->second << " " << std::endl;
+		print_begin(root);
+		print_end(root);
+
 	}
 	for (int i = 0; i < 5; i++)
 	{
-		std::cout << "delete " << i << std::endl;
+		std::cout << CYAN << "delete " << i << RESET << std::endl;
 		delete (btree_delete(&root, i));
 		btree_apply_by_level(root, print_rb_node_infos);
 	
-		std::cout << "\n---BEGIN---\n" << std::endl;
-		const ft::btree<int, int>	*begin = btree_begin(root);
-		std::cout << "key: " << begin->item->first << "value: " << begin->item->second << " " << std::endl;
+		print_begin(root);
+		print_end(root);
+
 	}
 	for (int i = 5; i < 10; i++)
 	{
-		std::cout << "delete " << i << std::endl;
+		std::cout << CYAN << "delete " << i << RESET << std::endl;
 		delete (btree_delete(&root, i));
 		btree_apply_by_level(root, print_rb_node_infos);
 	
-		std::cout << "\n---BEGIN---\n" << std::endl;
-		const ft::btree<int, int>	*begin = btree_begin(root);
-		if (begin)
-			std::cout << "key: " << begin->item->first << "value: " << begin->item->second << " " << std::endl;
-		else
-			std::cout << "sorry, there's no tree :( " << std::endl;
+		print_begin(root);
+		print_end(root);
 	}
 	
 //btree_delete_tree(root);
