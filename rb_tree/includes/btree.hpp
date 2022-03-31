@@ -30,4 +30,6 @@
 #include "btree_apply_suffix.tpp"
 #include "btree_apply_by_level.tpp"
 
+#include "btree_begin.tpp"
+
 #endif

@@ -11,6 +11,7 @@
 
 #include "btree.tpp"
 #include "btree_insert_data.tpp"
+#include "btree_begin.tpp"
 
 // #include "compare.tpp"
 // #include "print_item.tpp"
