@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bidirectional_iterator.hpp                         :+:      :+:    :+:   */
+/*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:59 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/01/06 20:02:16 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/29 20:43:25 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BIDIRECTIONAL_ITERATOR
-#define BIDIRECTIONAL_ITERATOR
+#ifndef MAP_ITERATOR
+#define MAP_ITERATOR
 
 namespace ft {
 	
 	template <typename T>
-	class bidirectional_iterator
+	class map_iterator
 	{
+		public:
+
+			typedef	map_iterator<T>					iterator;
+			typedef T								value_type;
+			typedef T*								pointer;
+			typedef T&								reference;
+			typedef std::ptrdiff_t					difference_type;
+		
 		private:
 			pointer	_pointer;
 			
 		public:
-			typedef	random_access_iterator<T>	iterator;
 		
 			//canonical
-			random_access_iterator(): _pointer(NULL) {};
-			explicit random_access_iterator(pointer ptr): _pointer(ptr) {}
-			random_access_iterator(const random_access_iterator& instance) {*this = instance;}
-			~random_access_iterator() {};
-			random_access_iterator& operator=(const random_access_iterator& right_hand_side)
+			map_iterator(): _pointer(NULL) {};
+			explicit map_iterator(pointer ptr): _pointer(ptr) {}
+			map_iterator(const map_iterator& instance) {*this = instance;}
+			~map_iterator() {};
+			map_iterator& operator=(const map_iterator& right_hand_side)
 			{
 				this->_pointer = right_hand_side._pointer;
 				return *this;

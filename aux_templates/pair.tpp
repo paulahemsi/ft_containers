@@ -6,9 +6,12 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:43:14 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/03/06 22:27:19 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/30 21:46:13 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef PAIR_TPP
+#define PAIR_TPP
 
 /*
 * This class couples together a pair of values, which may be of different types (T1 and T2). 
@@ -83,8 +86,10 @@ namespace ft
 		return (!(lhs < rhs));
 	}
 	template <class T1, class T2>
-	pair<T1,T2> make_pair (T1 x, T2 y)
+	ft::pair<T1,T2> make_pair (T1 x, T2 y)
 	{
-		return (pair<T1, T2>(x, y));
+		return (ft::pair<T1, T2>(x, y));
 	}
 }
+
+#endif

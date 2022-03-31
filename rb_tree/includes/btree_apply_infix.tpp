@@ -5,14 +5,14 @@
 
 #include "btree.tpp"
 
-template <typename T>
-void btree_apply_infix(ft::btree<T> *root, void (*applyf)(T *))
+template <class T1, class T2>
+void btree_apply_infix(ft::btree<T1, T2> *root, void (*applyf)(const ft::pair<T1, T2> *))
 {
 	if (!root)
-        return;
-    btree_apply_infix(root->left, applyf);
-    applyf(root->item);
-    btree_apply_infix(root->right, applyf);
+		return;
+	btree_apply_infix(root->left, applyf);
+	applyf(root->item);
+	btree_apply_infix(root->right, applyf);
 }
 
 #endif

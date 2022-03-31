@@ -2,132 +2,134 @@
 #include "btree.hpp"
 
 
-template<typename T>
-void print_level(T* element, int current_level, int is_first)
+template< class T1, class T2 >
+void print_level(ft::pair<T1, T2>* pair, int current_level, int is_first)
 {
 	if (is_first)
-		std::cout << std::endl << "level " << current_level << ": " << *element;
+		std::cout << std::endl << "level " << current_level << ": " << "key: " << *pair->first;
 	else
-		std::cout << " | " << *element;
+		std::cout << " | " << "key: " << *pair->first;
 }
 
-template<typename T>
-void print_level(ft::btree<T> *root, int expected)
+template< class T1, class T2 >
+void print_level(ft::btree<T1, T2> *root, int expected)
 {
 	int level;
 	
-	level = btree_level_count<int>(root);
+	level = btree_level_count<T1, T2>(root);
 	std::cout << "level expected: " << expected << "\tlevel count: " << level << std::endl;
 }
 
 
-void	test2(void)
-{
-	ft::btree<int>	*root = NULL;
+// void	test2(void)
+// {
+// 	ft::btree<int, int>	*root = NULL;
 	
-	std::cout << "insert " << 10 << std::endl;
-	btree_insert_data(&root, new int(10), &compare);
-	btree_apply_by_level(root, print_rb_node_infos);
-	std::cout << "insert " << 5 << std::endl;
-	btree_insert_data(&root, new int(5), &compare);
-	btree_apply_by_level(root, print_rb_node_infos);
-	std::cout << "insert " << 7 << std::endl;
-	btree_insert_data(&root, new int(7), &compare);
-	btree_apply_by_level(root, print_rb_node_infos);
-	std::cout << "insert " << 20 << std::endl;
-	btree_insert_data(&root, new int(20), &compare);
-	btree_apply_by_level(root, print_rb_node_infos);
-	std::cout << "insert " << 25 << std::endl;
-	btree_insert_data(&root, new int(25), &compare);
-	btree_apply_by_level(root, print_rb_node_infos);
-	std::cout << "insert " << 21 << std::endl;
-	btree_insert_data(&root, new int(21), &compare);
-	btree_apply_by_level(root, print_rb_node_infos);
-	std::cout << "insert " << 30 << std::endl;
-	btree_insert_data(&root, new int(30), &compare);
-	btree_apply_by_level(root, print_rb_node_infos);
-	std::cout << "insert " << 15 << std::endl;
-	btree_insert_data(&root, new int(15), &compare);
-	btree_apply_by_level(root, print_rb_node_infos);
-	std::cout << "insert " << 12 << std::endl;
-	btree_insert_data(&root, new int(12), &compare);
-	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "insert " << 10 << std::endl;
+// 	btree_insert_data(&root, &ft::make_pair(10, 10), &compare);
+// 	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "insert " << 5 << std::endl;
+// 	btree_insert_data(&root, &ft::make_pair(5, 5), &compare);
+// 	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "insert " << 7 << std::endl;
+// 	btree_insert_data(&root, &ft::make_pair(7, 7), &compare);
+// 	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "insert " << 20 << std::endl;
+// 	btree_insert_data(&root, &ft::make_pair(20, 20), &compare);
+// 	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "insert " << 25 << std::endl;
+// 	btree_insert_data(&root, &ft::make_pair(25, 25), &compare);
+// 	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "insert " << 21 << std::endl;
+// 	btree_insert_data(&root, &ft::make_pair(21, 21), &compare);
+// 	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "insert " << 30 << std::endl;
+// 	btree_insert_data(&root, &ft::make_pair(30, 30), &compare);
+// 	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "insert " << 15 << std::endl;
+// 	btree_insert_data(&root, &ft::make_pair(15, 15), &compare);
+// 	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "insert " << 12 << std::endl;
+// 	btree_insert_data(&root, &ft::make_pair(12, 12), &compare);
+// 	btree_apply_by_level(root, print_rb_node_infos);
 	
-	std::cout << "\n---DELETE 21---\n" << std::endl;
-	delete (btree_delete(&root,21));
+// 	std::cout << "\n---DELETE 21---\n" << std::endl;
+// 	delete (btree_delete(&root,21));
 
-	std::cout << "\n---NODE, LEVEL AND PARENT---\n" << std::endl;
-	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "\n---NODE, LEVEL AND PARENT---\n" << std::endl;
+// 	btree_apply_by_level(root, print_rb_node_infos);
 	
-	std::cout << "\n---DELETE 15---\n" << std::endl;
-	delete (btree_delete(&root,15));
+// 	std::cout << "\n---DELETE 15---\n" << std::endl;
+// 	delete (btree_delete(&root,15));
 
-	std::cout << "\n---NODE, LEVEL AND PARENT---\n" << std::endl;
-	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "\n---NODE, LEVEL AND PARENT---\n" << std::endl;
+// 	btree_apply_by_level(root, print_rb_node_infos);
 	
-	std::cout << "\n---DELETE 20---\n" << std::endl;
-	delete (btree_delete(&root,20));
+// 	std::cout << "\n---DELETE 20---\n" << std::endl;
+// 	delete (btree_delete(&root,20));
 
-	std::cout << "\n---NODE, LEVEL AND PARENT---\n" << std::endl;
-	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "\n---NODE, LEVEL AND PARENT---\n" << std::endl;
+// 	btree_apply_by_level(root, print_rb_node_infos);
 	
-	std::cout << "\n---RIGHT ROTATE---\n" << std::endl;
-	btree_right_rotate(btree_search_node(root, 07, &compare));
+// 	std::cout << "\n---RIGHT ROTATE---\n" << std::endl;
+// 	btree_right_rotate(btree_search_node(root, 07, &compare));
 
-	std::cout << "\n---NODE, LEVEL AND PARENT---\n" << std::endl;
-	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "\n---NODE, LEVEL AND PARENT---\n" << std::endl;
+// 	btree_apply_by_level(root, print_rb_node_infos);
 	
-	std::cout << "\n---LEFT ROTATE---\n" << std::endl;
-	btree_left_rotate(btree_search_node(root, 25, &compare));
+// 	std::cout << "\n---LEFT ROTATE---\n" << std::endl;
+// 	btree_left_rotate(btree_search_node(root, 25, &compare));
 
-	std::cout << "\n---NODE, LEVEL AND PARENT---\n" << std::endl;
-	btree_apply_by_level(root, print_rb_node_infos);
+// 	std::cout << "\n---NODE, LEVEL AND PARENT---\n" << std::endl;
+// 	btree_apply_by_level(root, print_rb_node_infos);
 	
-	btree_delete_tree(root);
-}
+// 	btree_delete_tree(root);
+// }
 
 
 int main(void)
 {
-	ft::btree<int> *root = NULL;
+	ft::btree<int, int> *root = NULL;
 	for (int i = 10; i < 20; i++)
 	{
 		std::cout << "insert " << i << std::endl;
-		btree_insert_data(&root, new int(i), &compare);
+		ft::pair<int, int> * my_pair1 = new ft::pair<int, int>(i, i);
+		btree_insert_data(&root, my_pair1, &compare);
 		btree_apply_by_level(root, print_rb_node_infos);
 	}
 	for (int i = 0; i < 10; i++)
 	{
 		std::cout << "insert " << i << std::endl;
-		btree_insert_data(&root, new int(i), &compare);
+		ft::pair<int, int> * my_pair2 = new ft::pair<int, int>(i, i);
+		btree_insert_data(&root, my_pair2, &compare);
 		btree_apply_by_level(root, print_rb_node_infos);
 	}
 
-	std::cout << "\n---INFIX---\n" << std::endl;
-	btree_apply_infix(root, print_item);
-	std::cout << "\n---PREFIX---\n" << std::endl;
-	btree_apply_prefix(root, print_item);
-	std::cout << "\n---SUFFIX---\n" << std::endl;
-	btree_apply_suffix(root, print_item);
+	// std::cout << "\n---INFIX---\n" << std::endl;
+	// btree_apply_infix(root, print_item);
+	// std::cout << "\n---PREFIX---\n" << std::endl;
+	// btree_apply_prefix(root, print_item);
+	// std::cout << "\n---SUFFIX---\n" << std::endl;
+	// btree_apply_suffix(root, print_item);
 
 	std::cout << "\n---SEARCH---\n" << std::endl;
 	for (int i = 10; i < 20; i++)
 	{
-		int * number = btree_search_item(root, i, &compare);
-		std::cout << *number << " " << number << std::endl;
+		const ft::pair<int, int>	*pair = btree_search_item(root, i, &compare);
+		std::cout << "key: " << pair->first << "value: " << pair->second << " " << std::endl;
 	}
 	for (int i = 0; i < 10; i++)
 	{
-		int * number = btree_search_item(root, i, &compare);
-		std::cout << *number << " " << number << std::endl;
+		const ft::pair<int, int>	*pair = btree_search_item(root, i, &compare);
+		std::cout << "key: " << pair->first << "value: " << pair->second << " " << std::endl;
 	}
 	for (int i = 99; i < 111; i++)
 	{
-		int * number = btree_search_item(root, i, &compare);
-		if (number == NULL)
+		const ft::pair<int, int>	*pair = btree_search_item(root, i, &compare);
+		if (pair == NULL)
 			std::cout << i << " NOT IN TREE" << std::endl;
 		else
-			std::cout << *number << " " << number << std::endl;
+			std::cout << "key: " << pair->first << "value: " << pair->second << " " << std::endl;
 	}
 
 	std::cout << "\n---TREE BY LEVEL---\n" << std::endl;
@@ -163,5 +165,5 @@ int main(void)
 	}
 	
 //btree_delete_tree(root);
-	test2();
+	// test2();
 }

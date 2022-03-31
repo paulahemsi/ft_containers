@@ -4,22 +4,24 @@
 
 #include "btree.tpp"
 
-template <typename T>
-static T max_depth(T left_depth, T right_depth)
+template <class T1, class T2>
+size_t max_depth(size_t left_depth, size_t right_depth, ft::btree<T1, T2> *root)
 {
+	root++;
+	root--;
 	if (left_depth > right_depth)
 		return (left_depth);
 	return (right_depth);
 }
 
-template <typename T>
-int btree_level_count(ft::btree<T> *root)
+template <class T1, class T2>
+size_t btree_level_count(ft::btree<T1, T2> *root)
 {
 	if (!root || (!root->left && !root->right))
 		return (0);
-	int left_level = btree_level_count(root->left);
-    int right_level = btree_level_count(root->right);
-    return (1 + max_depth(left_level, right_level));
+	size_t left_level = btree_level_count(root->left);
+	size_t right_level = btree_level_count(root->right);
+	return (1 + max_depth(left_level, right_level, root));
 }
 
 #endif

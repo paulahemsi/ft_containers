@@ -6,8 +6,8 @@
 #include "btree.hpp"
 #include <queue>
 
-template <typename T>
-void print_node_and_parent(ft::btree<T> *node, int level, bool is_first)
+template <class T1, class T2>
+void print_node_and_parent(ft::btree<T1, T2> *node, int level, bool is_first)
 {
 	(void) is_first;
 	std::cout << RESET;
@@ -15,16 +15,16 @@ void print_node_and_parent(ft::btree<T> *node, int level, bool is_first)
 		std::cout << std::endl;
 	else
 	{
-		std::cout << *node->item << " (level " << level << ")";
+		std::cout << "key: "<< node->item->first << " value: " << node->item->second << " (level " << level << ")";
 		std::cout << CYAN;
 		if(node->parent)
-			std::cout << " [parent " << *node->parent->item << "]";
+			std::cout << " [parent " << "key: "<< node->parent->item->first << " value: " << node->parent->item->second << "]";
 		std::cout << std::endl;
 	}
 }
 
-template <typename T>
-void print_node_infos(ft::btree<T> *node, int level, bool is_first)
+template <class T1, class T2>
+void print_node_infos(ft::btree<T1, T2> *node, int level, bool is_first)
 {
 	if (is_first)
 		std::cout << CYAN;
@@ -33,11 +33,11 @@ void print_node_infos(ft::btree<T> *node, int level, bool is_first)
 	if(!node->item)
 		std::cout << std::endl;
 	else
-		std::cout << *node->item << "(" << level << ")" << std::endl;
+		std::cout << "key: "<< node->item->first << " value: " << node->item->second << "(" << level << ")" << std::endl;
 }
 
-template <typename T>
-void add_children_to_queue(std::queue<ft::btree<T> *> &leaf_queue, ft::btree<T> * node)
+template <class T1, class T2>
+void add_children_to_queue(std::queue<ft::btree<T1, T2> *> &leaf_queue, ft::btree<T1, T2> * node)
 {
 	if(node->left)
 		leaf_queue.push(node->left);
@@ -45,16 +45,16 @@ void add_children_to_queue(std::queue<ft::btree<T> *> &leaf_queue, ft::btree<T> 
 		leaf_queue.push(node->right);
 }
 
-template <typename T>
-void set_new_level(std::queue<ft::btree<T> *> &leaf_queue, int &current_level, bool &is_first)
+template <class T1, class T2>
+void set_new_level(std::queue<ft::btree<T1, T2> *> &leaf_queue, int &current_level, bool &is_first)
 {
 	is_first = true;
 	current_level++;
-	leaf_queue.push(new ft::btree<int>());
+	leaf_queue.push(new ft::btree<T1, T2>());
 }
 
-template <typename T>
-bool is_last_node(std::queue<ft::btree<T> *> &leaf_queue, int &current_level, bool &is_first, ft::btree<T> *node)
+template <class T1, class T2>
+bool is_last_node(std::queue<ft::btree<T1, T2> *> &leaf_queue, int &current_level, bool &is_first, ft::btree<T1, T2> *node)
 {
 	if (node->item)
 		return (false);
@@ -64,19 +64,19 @@ bool is_last_node(std::queue<ft::btree<T> *> &leaf_queue, int &current_level, bo
 	return (false);
 }
 
-template <typename T>
-void btree_apply_by_level(ft::btree<T> *root, void (*applyf)(ft::btree<T> *node, int current_level, bool is_first))
+template <class T1, class T2>
+void btree_apply_by_level(ft::btree<T1, T2> *root, void (*applyf)(ft::btree<T1, T2> *node, int current_level, bool is_first))
 {
 	if (!root)
 		return ;
 	bool is_first = true;
 	int current_level = 0;
 
-	std::queue<ft::btree<T> *> leaf_queue;
+	std::queue<ft::btree<T1, T2> *> leaf_queue;
 	leaf_queue.push(root);
-	leaf_queue.push(new ft::btree<int>());
+	leaf_queue.push(new ft::btree<T1, T2>());
 
-	ft::btree<T> *node = NULL;
+	ft::btree<T1, T2> *node = NULL;
 	while(true)
 	{
 		node = leaf_queue.front();

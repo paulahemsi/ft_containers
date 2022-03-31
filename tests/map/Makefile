@@ -6,13 +6,14 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/04 18:38:38 by phemsi-a          #+#    #+#              #
-#    Updated: 2022/03/06 23:46:28 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/03/29 21:22:22 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MK_DIR	:=	../mk/
 
 include $(MK_DIR)containers.mk
+include $(MK_DIR)rb_tree.mk
 include $(MK_DIR)map_srcs.mk
 
 NAME	:= ft.out
