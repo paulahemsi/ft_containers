@@ -105,6 +105,9 @@ int main(void)
 		btree_apply_by_level(root, print_rb_node_infos);
 	}
 
+	std::cout << "\n---BEGIN---\n" << std::endl;
+	const ft::btree<int, int>	*begin = btree_begin(root);
+	std::cout << "key: " << begin->item->first << "value: " << begin->item->second << " " << std::endl;
 	// std::cout << "\n---INFIX---\n" << std::endl;
 	// btree_apply_infix(root, print_item);
 	// std::cout << "\n---PREFIX---\n" << std::endl;
@@ -144,24 +147,43 @@ int main(void)
 		std::cout << "delete " << i << std::endl;
 		delete (btree_delete(&root, i));
 		btree_apply_by_level(root, print_rb_node_infos);
+
+		std::cout << "\n---BEGIN---\n" << std::endl;
+		const ft::btree<int, int>	*begin = btree_begin(root);
+		std::cout << "key: " << begin->item->first << "value: " << begin->item->second << " " << std::endl;
 	}
 	for (int i = 15; i < 20; i++)
 	{
 		std::cout << "delete " << i << std::endl;
 		delete (btree_delete(&root, i));
 		btree_apply_by_level(root, print_rb_node_infos);
+	
+		std::cout << "\n---BEGIN---\n" << std::endl;
+		const ft::btree<int, int>	*begin = btree_begin(root);
+		std::cout << "key: " << begin->item->first << "value: " << begin->item->second << " " << std::endl;
 	}
 	for (int i = 0; i < 5; i++)
 	{
 		std::cout << "delete " << i << std::endl;
 		delete (btree_delete(&root, i));
 		btree_apply_by_level(root, print_rb_node_infos);
+	
+		std::cout << "\n---BEGIN---\n" << std::endl;
+		const ft::btree<int, int>	*begin = btree_begin(root);
+		std::cout << "key: " << begin->item->first << "value: " << begin->item->second << " " << std::endl;
 	}
 	for (int i = 5; i < 10; i++)
 	{
 		std::cout << "delete " << i << std::endl;
 		delete (btree_delete(&root, i));
 		btree_apply_by_level(root, print_rb_node_infos);
+	
+		std::cout << "\n---BEGIN---\n" << std::endl;
+		const ft::btree<int, int>	*begin = btree_begin(root);
+		if (begin)
+			std::cout << "key: " << begin->item->first << "value: " << begin->item->second << " " << std::endl;
+		else
+			std::cout << "sorry, there's no tree :( " << std::endl;
 	}
 	
 //btree_delete_tree(root);
