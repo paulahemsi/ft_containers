@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/29 22:19:33 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/03/30 22:45:54 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ namespace ft
             // typedef ft::reverse_iterator<const_iterator>                const_reverse_iterator;
         
 		private:
-			key_compare					_compare;
-			allocator_type				_allocator;
-			ft::btree<value_type>		*_root;
-		
+			key_compare							_compare;
+			allocator_type						_allocator;
+			ft::btree<const key_type, mapped_type>	*_root;
+
 		public:
             explicit map (const key_compare& comp = key_compare(),
                           const allocator_type& alloc = allocator_type()):
@@ -67,9 +67,17 @@ namespace ft
 				*this = other;	
 			}
 			
-			ft::pair<iterator,bool> insert (const value_type& val)
+			key_compare key_comp(void) const
 			{
-				btree_insert_data(&_root, val, _compare);
+				return (_compare);
+			}
+			
+			ft::pair<int, bool> insert (const value_type& val) //! ITERATOR E BOOL
+			{
+				(void)val;
+				ft::pair<int, int> my_return(1, true);
+				btree_insert_data<const key_type, mapped_type, key_compare>(&_root, &val);
+				return my_return;
 			}
 
 			iterator insert (iterator position, const value_type& val);
