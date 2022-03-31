@@ -6,9 +6,11 @@
 
 #include "pair.tpp"
 
+#include "btree_right_rotate.tpp"
+#include "btree_left_rotate.tpp"
+
 #include "btree.tpp"
 #include "btree_insert_data.tpp"
-
 
 // #include "compare.tpp"
 // #include "print_item.tpp"
