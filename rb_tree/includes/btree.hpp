@@ -13,7 +13,6 @@
 
 #include "btree.tpp"
 
-#include "compare.tpp"
 #include "print_item.tpp"
 
 #include "btree_right_rotate.tpp"
@@ -30,5 +29,12 @@
 #include "btree_apply_infix.tpp"
 #include "btree_apply_suffix.tpp"
 #include "btree_apply_by_level.tpp"
+
+#include "btree_begin.tpp"
+#include "btree_end.tpp"
+#include "btree_next.tpp"
+#include "btree_previous.tpp"
+
+#include "btree_auxiliary.tpp"
 
 #endif

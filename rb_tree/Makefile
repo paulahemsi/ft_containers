@@ -28,11 +28,16 @@ HEADER			:=	$(INCLUDES_DIR)btree.tpp\
 					$(INCLUDES_DIR)btree_level_count.tpp\
 					$(INCLUDES_DIR)btree_delete.tpp\
 					$(INCLUDES_DIR)btree_delete_tree.tpp\
-					$(INCLUDES)btree_right_rotate.tpp\
-					$(INCLUDES)btree_left_rotate.tpp\
-					$(INCLUDES)btree_rotate_aux.tpp\
+					$(INCLUDES_DIR)btree_right_rotate.tpp\
+					$(INCLUDES_DIR)btree_left_rotate.tpp\
+					$(INCLUDES_DIR)btree_rotate_aux.tpp\
 					$(INCLUDES_DIR)compare.tpp\
 					$(INCLUDES_DIR)print_item.tpp\
+					$(INCLUDES_DIR)btree_begin.tpp\
+					$(INCLUDES_DIR)btree_end.tpp\
+					$(INCLUDES_DIR)btree_auxiliary.tpp\
+					$(INCLUDES_DIR)btree_next.tpp\
+					$(INCLUDES_DIR)btree_previous.tpp\
 					../aux_templates/pair.tpp
 
 INCLUDES		:= $(addprefix -I, $(INCLUDES_DIR))

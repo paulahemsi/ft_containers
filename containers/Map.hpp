@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/30 22:45:54 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/31 20:09:21 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,14 @@ namespace ft
 			{
 				return (_compare);
 			}
+			
+			iterator begin(void)
+			{
+				
+				//return iterator()
+			}
+			
+			const_iterator begin() const;
 			
 			ft::pair<int, bool> insert (const value_type& val) //! ITERATOR E BOOL
 			{
