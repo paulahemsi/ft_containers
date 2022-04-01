@@ -14,28 +14,12 @@ bool is_leaf(ft::btree<T1, T2> *node)
 }
 
 template <class T1, class T2>
-ft::btree<T1, T2> * find_successor(ft::btree<T1, T2> *node)
-{
-	if (!node->left)
-		return (node);
-	return (find_successor(node->left));
-}
-
-template <class T1, class T2>
-ft::btree<T1, T2> * find_predecessor(ft::btree<T1, T2> *node)
-{
-	if (!node->right)
-		return (node);
-	return (find_predecessor(node->right));
-}
-
-template <class T1, class T2>
 ft::btree<T1, T2> * find_neighbor(ft::btree<T1, T2> *node)
 {
 	if (node->left)
-		return (find_predecessor(node->left));
+		return (find_predecessor_below(node->left));
 	else
-		return (find_successor(node->right));
+		return (find_successor_below(node->right));
 }
 
 template <class T1, class T2>
@@ -68,7 +52,7 @@ void btree_delete_recursive(ft::btree<T1, T2> *node_to_delete)
 template <class T1, class T2>
 bool is_last_node(ft::btree<T1, T2> *node)
 {
-	return (is_tree_root(node) && is_leaf(node));
+	return (is_root(node) && is_leaf(node));
 }
 
 template <class T1, class T2>
