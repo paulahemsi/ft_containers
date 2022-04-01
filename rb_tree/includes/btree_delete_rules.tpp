@@ -119,7 +119,7 @@ void	red_sibling_case(ft::btree<T1, T2> *double_black_node)
 template <class T1, class T2>
 void deal_double_black(ft::btree<T1, T2> *double_black_node)
 {
-	if (is_tree_root(double_black_node))
+	if (is_root(double_black_node))
 		return (remove_double_black(double_black_node));
 	if (sibling_is_red(double_black_node))
 		red_sibling_case(double_black_node);
