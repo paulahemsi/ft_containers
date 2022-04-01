@@ -37,6 +37,7 @@ HEADER			:=	$(INCLUDES_DIR)btree.tpp\
 					$(INCLUDES_DIR)btree_end.tpp\
 					$(INCLUDES_DIR)btree_auxiliary.tpp\
 					$(INCLUDES_DIR)btree_next.tpp\
+					$(INCLUDES_DIR)btree_previous.tpp\
 					../aux_templates/pair.tpp
 
 INCLUDES		:= $(addprefix -I, $(INCLUDES_DIR))
