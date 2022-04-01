@@ -42,4 +42,24 @@ bool is_left_child(const ft::btree<T1, T2> *parent, const ft::btree<T1, T2> *nod
 	return (parent->left == node);
 }
 
+template< class T1, class T2 >
+bool is_right_child(const ft::btree<T1, T2> *parent, const ft::btree<T1, T2> *node)
+{
+	return (parent->right == node);
+}
+
+template <class T1, class T2>
+bool is_leaf(const ft::btree<T1, T2> *node)
+{
+	if (node->left || node->right)
+		return (false);
+	return (true);
+}
+
+template <class T1, class T2>
+bool is_last_node(const ft::btree<T1, T2> *node)
+{
+	return (is_root(node) && is_leaf(node));
+}
+
 #endif
