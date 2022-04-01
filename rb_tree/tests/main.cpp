@@ -21,14 +21,28 @@ void print_level(ft::btree<T1, T2> *root, int expected)
 }
 
 template< class T1, class T2 >
-void print_begin(ft::btree<T1, T2> *root)
+const ft::btree<T1, T2> * print_begin(ft::btree<T1, T2> *root)
 {
 	std::cout << "\n---BEGIN---\n" << std::endl;
 	const ft::btree<int, int>	*begin = btree_begin(root);
 	if (begin)
+	{
 		std::cout << "key: " << begin->item->first << " value: " << begin->item->second << " " << std::endl;
+		return (begin);
+	}
+	std::cout << "sorry, there's no tree :( " << std::endl;
+	return (NULL);
+}
+
+template< class T1, class T2 >
+void print_next(const ft::btree<T1, T2> *root)
+{
+	std::cout << "\n---NEXT---\n" << std::endl;
+	const ft::btree<int, int>	*next = btree_next(root);
+	if (next)
+		std::cout << "key: " << next->item->first << " value: " << next->item->second << " " << std::endl;
 	else
-		std::cout << "sorry, there's no tree :( " << std::endl;
+		std::cout << "sorry, there's no next :( " << std::endl;
 }
 
 template< class T1, class T2 >
@@ -125,8 +139,7 @@ int main(void)
 		btree_insert_data<int, int, std::less<int> >(&root, my_pair2);
 		btree_apply_by_level(root, print_rb_node_infos);
 	}
-
-	print_begin(root);
+	print_next(print_begin(root));
 	print_end(root);
 	
 	// std::cout << "\n---INFIX---\n" << std::endl;
@@ -169,7 +182,7 @@ int main(void)
 		delete (btree_delete(&root, i));
 		btree_apply_by_level(root, print_rb_node_infos);
 
-		print_begin(root);
+		print_next(print_begin(root));
 		print_end(root);
 
 	}
@@ -179,7 +192,7 @@ int main(void)
 		delete (btree_delete(&root, i));
 		btree_apply_by_level(root, print_rb_node_infos);
 	
-		print_begin(root);
+		print_next(print_begin(root));
 		print_end(root);
 
 	}
@@ -189,7 +202,7 @@ int main(void)
 		delete (btree_delete(&root, i));
 		btree_apply_by_level(root, print_rb_node_infos);
 	
-		print_begin(root);
+		print_next(print_begin(root));
 		print_end(root);
 
 	}
@@ -199,7 +212,7 @@ int main(void)
 		delete (btree_delete(&root, i));
 		btree_apply_by_level(root, print_rb_node_infos);
 	
-		print_begin(root);
+		print_next(print_begin(root));
 		print_end(root);
 	}
 	
