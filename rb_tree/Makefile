@@ -17,42 +17,42 @@ TESTS			:=	$(TESTS_DIR)main.cpp
 
 OBJS			:=	$(addprefix $(OBJS_DIR), $(notdir $(TESTS:.cpp=.o)))
 
-HEADER			:=	$(INCLUDES_DIR)btree.tpp\
-					$(INCLUDES_DIR)btree.hpp\
-					$(INCLUDES_DIR)btree_create_note.tpp\
-					$(INCLUDES_DIR)btree_insert_data.tpp\
-					$(INCLUDES_DIR)btree_apply_prefix.tpp\
-					$(INCLUDES_DIR)btree_apply_infix.tpp\
-					$(INCLUDES_DIR)btree_apply_suffix.tpp\
-					$(INCLUDES_DIR)btree_search_item.tpp\
-					$(INCLUDES_DIR)btree_level_count.tpp\
-					$(INCLUDES_DIR)btree_delete.tpp\
-					$(INCLUDES_DIR)btree_delete_tree.tpp\
-					$(INCLUDES_DIR)btree_right_rotate.tpp\
-					$(INCLUDES_DIR)btree_left_rotate.tpp\
-					$(INCLUDES_DIR)btree_rotate_aux.tpp\
-					$(INCLUDES_DIR)compare.tpp\
-					$(INCLUDES_DIR)print_item.tpp\
-					$(INCLUDES_DIR)btree_begin.tpp\
-					$(INCLUDES_DIR)btree_end.tpp\
-					$(INCLUDES_DIR)btree_auxiliary.tpp\
-					$(INCLUDES_DIR)btree_next.tpp\
-					$(INCLUDES_DIR)btree_previous.tpp\
-					../aux_templates/pair.tpp
+HEADER			:=	btree.tpp\
+					btree.hpp\
+					btree_insert_data.tpp\
+					btree_apply_prefix.tpp\
+					btree_apply_infix.tpp\
+					btree_apply_suffix.tpp\
+					btree_search_item.tpp\
+					btree_level_count.tpp\
+					btree_delete.tpp\
+					btree_delete_tree.tpp\
+					btree_right_rotate.tpp\
+					btree_left_rotate.tpp\
+					btree_rotate_aux.tpp\
+					print_item.tpp\
+					btree_begin.tpp\
+					btree_end.tpp\
+					btree_auxiliary.tpp\
+					btree_next.tpp\
+					btree_previous.tpp\
+
+INCLUDES_DIR	+=	../aux_templates/
+HEADER			+=	pair.tpp
+
+VPATH			:=	$(INCLUDES_DIR)
 
 INCLUDES		:= $(addprefix -I, $(INCLUDES_DIR))
-INCLUDES		+= -I ../aux_templates/
 
 $(OBJS_DIR)%.o:	$(TESTS_DIR)%.cpp
 				$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-				echo $(INCLUDES)
 
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
 				$(CC) $(CFLAGS) $^ -o $@
 
-$(OBJS):		| $(OBJS_DIR)
+$(OBJS):		$(HEADER) | $(OBJS_DIR)
 
 $(OBJS_DIR):
 				mkdir $(OBJS_DIR)
