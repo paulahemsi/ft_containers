@@ -13,7 +13,8 @@
 #include "btree_insert_data.tpp"
 #include "btree_begin.tpp"
 #include "btree_end.tpp"
-
+#include "btree_auxiliary.tpp"
+#include "btree_next.tpp"
 // #include "compare.tpp"
 // #include "print_item.tpp"
 

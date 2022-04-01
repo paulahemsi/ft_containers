@@ -32,5 +32,8 @@
 
 #include "btree_begin.tpp"
 #include "btree_end.tpp"
+#include "btree_next.tpp"
+
+#include "btree_auxiliary.tpp"
 
 #endif
