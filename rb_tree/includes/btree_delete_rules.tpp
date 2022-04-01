@@ -2,7 +2,7 @@
 #ifndef BTREE_DELETE_RULES_TPP
 #define BTREE_DELETE_RULES_TPP
 
-#include "btree.hpp"
+#include "btree.tpp"
 
 template <class T1, class T2>
 void deal_double_black(ft::btree<T1, T2> *double_black_node);

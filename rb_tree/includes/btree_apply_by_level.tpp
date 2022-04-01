@@ -3,7 +3,6 @@
 #define BTREE_APPLY_BY_LEVEL_TPP
 
 #include "btree.tpp"
-#include "btree.hpp"
 #include <queue>
 
 template <class T1, class T2>

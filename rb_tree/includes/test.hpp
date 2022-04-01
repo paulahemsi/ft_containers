@@ -10,13 +10,7 @@
 #include <iostream>
 
 #include "pair.tpp"
-
-#include "btree.tpp"
-
 #include "print_item.tpp"
-
-#include "btree_right_rotate.tpp"
-#include "btree_left_rotate.tpp"
 
 #include "btree_insert_data.tpp"
 #include "btree_search_item.tpp"
@@ -34,7 +28,5 @@
 #include "btree_end.tpp"
 #include "btree_next.tpp"
 #include "btree_previous.tpp"
-
-#include "btree_auxiliary.tpp"
 
 #endif

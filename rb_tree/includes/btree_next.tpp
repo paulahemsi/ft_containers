@@ -1,7 +1,7 @@
 #ifndef BTREE_NEXT_TPP
 #define BTREE_NEXT_TPP
 
-#include "btree.hpp"
+#include "btree.tpp"
 
 template <class T1, class T2>
 ft::btree<T1, T2> * find_successor_above(const ft::btree<T1, T2> *node)

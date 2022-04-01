@@ -1,6 +1,6 @@
 
-#include "btree.hpp"
-
+#include "btree.tpp"
+#include "test.hpp"
 
 template< class T1, class T2 >
 void print_level(ft::pair<T1, T2>* pair, int current_level, int is_first)

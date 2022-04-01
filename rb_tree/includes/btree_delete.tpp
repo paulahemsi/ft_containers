@@ -2,7 +2,7 @@
 #ifndef BTREE_DELETE_TPP
 #define BTREE_DELETE_TPP
 
-#include "btree.hpp"
+#include "btree.tpp"
 #include "btree_delete_rules.tpp"
 
 template <class T1, class T2>

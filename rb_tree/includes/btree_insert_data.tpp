@@ -2,7 +2,10 @@
 #ifndef BTREE_INSERT_DATA_TPP
 #define BTREE_INSERT_DATA_TPP
 
-#include "rb_tree.hpp"
+#include "btree.tpp"
+#include "btree_auxiliary.tpp"
+#include "btree_right_rotate.tpp"
+#include "btree_left_rotate.tpp"
 
 template< class T1, class T2 >
 ft::btree<T1, T2> * get_sibling(ft::btree<T1, T2> *node)

@@ -3,7 +3,12 @@
 #define PRINT_ITEM_TPP
 
 #include <iostream>
-#include "btree.hpp"
+#include "btree.tpp"
+
+# define CYAN			"\e[0;36m"
+# define C_RED			"\e[0;31m"
+# define RESET			"\e[0m"
+# define BOLD			"\e[1m"
 
 template <class T1, class T2>
 void print_rb_node_infos(ft::btree<T1, T2> *node, int level, bool is_first)

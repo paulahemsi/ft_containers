@@ -2,7 +2,7 @@
 #ifndef BTREE_BEGIN_TPP
 #define BTREE_BEGIN_TPP
 
-#include "btree.hpp"
+#include "btree.tpp"
 
 template <class T1, class T2>
 ft::btree<T1, T2> * find_begin(ft::btree<T1, T2> *root)
