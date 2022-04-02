@@ -2,8 +2,8 @@
 #include "btree.tpp"
 #include "test.hpp"
 
-template< class T1, class T2 >
-void print_level(ft::pair<T1, T2>* pair, int current_level, int is_first)
+template< class T>
+void print_level(T* pair, int current_level, int is_first)
 {
 	if (is_first)
 		std::cout << std::endl << "level " << current_level << ": " << "key: " << *pair->first;
@@ -11,20 +11,20 @@ void print_level(ft::pair<T1, T2>* pair, int current_level, int is_first)
 		std::cout << " | " << "key: " << *pair->first;
 }
 
-template< class T1, class T2 >
-void print_level(ft::btree<T1, T2> *root, int expected)
+template< class T>
+void print_level(ft::btree<T> *root, int expected)
 {
 	int level;
 	
-	level = btree_level_count<T1, T2>(root);
+	level = btree_level_count<T>(root);
 	std::cout << "level expected: " << expected << "\tlevel count: " << level << std::endl;
 }
 
-template< class T1, class T2 >
-const ft::btree<T1, T2> * print_begin(ft::btree<T1, T2> *root)
+template< class T>
+const ft::btree<T> * print_begin(ft::btree<T> *root)
 {
 	std::cout << "\n---BEGIN---\n" << std::endl;
-	const ft::btree<int, int>	*begin = btree_begin(root);
+	const ft::btree<ft::pair<int, int> >	*begin = btree_begin(root);
 	if (begin)
 	{
 		std::cout << "key: " << begin->item->first << " value: " << begin->item->second << " " << std::endl;
@@ -34,11 +34,11 @@ const ft::btree<T1, T2> * print_begin(ft::btree<T1, T2> *root)
 	return (NULL);
 }
 
-template< class T1, class T2 >
-const ft::btree<T1, T2> * print_end(ft::btree<T1, T2> *root)
+template< class T>
+const ft::btree<T> * print_end(ft::btree<T> *root)
 {
 	std::cout << "\n---END---\n" << std::endl;
-	const ft::btree<int, int>	*end = btree_end(root);
+	const ft::btree<ft::pair<int, int> >	*end = btree_end(root);
 	if (end)
 	{
 		std::cout << "key: " << end->item->first << " value: " << end->item->second << " " << std::endl  << std::endl;
@@ -48,44 +48,54 @@ const ft::btree<T1, T2> * print_end(ft::btree<T1, T2> *root)
 	return (NULL);
 }
 
-template< class T1, class T2 >
-void print_next(const ft::btree<T1, T2> *root)
+template< class T>
+void print_next(const ft::btree<T> *root)
 {
 	std::cout << "\n---NEXT---\n" << std::endl;
-	const ft::btree<int, int>	*next = btree_next(root);
+	const ft::btree<ft::pair<int, int> >	*next = btree_next(root);
 	if (next)
 		std::cout << "key: " << next->item->first << " value: " << next->item->second << " " << std::endl;
 	else
 		std::cout << "sorry, there's no next :( " << std::endl;
 }
 
-template< class T1, class T2 >
-void print_previous(const ft::btree<T1, T2> *root)
+template< class T>
+void print_previous(const ft::btree<T> *root)
 {
 	std::cout << "\n---PREVIOUS---\n" << std::endl;
-	const ft::btree<int, int>	*previous = btree_previous(root);
+	const ft::btree<ft::pair<int, int> >	*previous = btree_previous(root);
 	if (previous)
 		std::cout << "key: " << previous->item->first << " value: " << previous->item->second << " " << std::endl;
 	else
 		std::cout << "sorry, there's no previous :( " << std::endl;
 }
 
+int	compare_pair(const ft::pair<int, int> *pair1, const ft::pair<int, int> *pair2)
+{
+	std::less<int> compare;
+
+	if (pair1->first == pair2->first)
+		return (0);
+	if (compare(pair1->first, pair2->first))
+		return (-1);
+	return (1);
+}
 
 int main(void)
 {
-	ft::btree<int, int> *root = NULL;
+	ft::btree<ft::pair<int, int> > *root = NULL;
 	for (int i = 10; i < 20; i++)
 	{
 		std::cout << "insert " << i << std::endl;
 		ft::pair<int, int> * my_pair1 = new ft::pair<int, int>(i, i);
-		btree_insert_data<int, int, std::less<int> >(&root, my_pair1);
+		btree_insert_data(&root, my_pair1, &compare_pair);
 		btree_apply_by_level(root, print_rb_node_infos);
 	}
 	for (int i = 0; i < 10; i++)
 	{
 		std::cout << "insert " << i << std::endl;
 		ft::pair<int, int> * my_pair2 = new ft::pair<int, int>(i, i);
-		btree_insert_data<int, int, std::less<int> >(&root, my_pair2);
+		btree_insert_data(&root, my_pair2, &compare_pair);
 		btree_apply_by_level(root, print_rb_node_infos);
 	}
 	print_next(print_begin(root));
@@ -94,17 +104,17 @@ int main(void)
 	std::cout << "\n---SEARCH---\n" << std::endl;
 	for (int i = 10; i < 20; i++)
 	{
-		const ft::pair<int, int>	*pair = btree_search_item<int, int, std::less<int> >(root, i);
+		const ft::pair<int, int>	*pair = btree_search_item(root, ft::pair<int, int>(i, i), &compare_pair);
 		std::cout << "key: " << pair->first << "value: " << pair->second << " " << std::endl;
 	}
 	for (int i = 0; i < 10; i++)
 	{
-		const ft::pair<int, int>	*pair = btree_search_item<int, int, std::less<int> >(root, i);
+		const ft::pair<int, int>	*pair = btree_search_item(root, ft::pair<int, int>(i, i), &compare_pair);
 		std::cout << "key: " << pair->first << "value: " << pair->second << " " << std::endl;
 	}
 	for (int i = 99; i < 111; i++)
 	{
-		const ft::pair<int, int>	*pair = btree_search_item<int, int, std::less<int> >(root, i);
+		const ft::pair<int, int>	*pair = btree_search_item(root, ft::pair<int, int>(i, i), &compare_pair);
 		if (pair == NULL)
 			std::cout << i << " NOT IN TREE" << std::endl;
 		else
@@ -121,7 +131,7 @@ int main(void)
 	for (int i = 10; i < 15; i++)
 	{
 		std::cout << CYAN << "delete " << i << RESET << std::endl;
-		delete (btree_delete(&root, i));
+		delete (btree_delete(&root, ft::pair<int, int>(i, i), &compare_pair));
 		btree_apply_by_level(root, print_rb_node_infos);
 
 		print_next(print_begin(root));
@@ -131,7 +141,7 @@ int main(void)
 	for (int i = 15; i < 20; i++)
 	{
 		std::cout << CYAN << "delete " << i << RESET << std::endl;
-		delete (btree_delete(&root, i));
+		delete (btree_delete(&root, ft::pair<int, int>(i, i), &compare_pair));
 		btree_apply_by_level(root, print_rb_node_infos);
 	
 		print_next(print_begin(root));
@@ -141,7 +151,7 @@ int main(void)
 	for (int i = 0; i < 5; i++)
 	{
 		std::cout << CYAN << "delete " << i << RESET << std::endl;
-		delete (btree_delete(&root, i));
+		delete (btree_delete(&root, ft::pair<int, int>(i, i), &compare_pair));
 		btree_apply_by_level(root, print_rb_node_infos);
 	
 		print_next(print_begin(root));
@@ -151,7 +161,7 @@ int main(void)
 	for (int i = 5; i < 10; i++)
 	{
 		std::cout << CYAN << "delete " << i << RESET << std::endl;
-		delete (btree_delete(&root, i));
+		delete (btree_delete(&root, ft::pair<int, int>(i, i), &compare_pair));
 		btree_apply_by_level(root, print_rb_node_infos);
 	
 		print_next(print_begin(root));

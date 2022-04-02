@@ -4,16 +4,16 @@
 
 #include "btree.tpp"
 
-template <class T1, class T2>
-ft::btree<T1, T2> * find_begin(ft::btree<T1, T2> *root)
+template <class T>
+ft::btree<T> * find_begin(ft::btree<T> *root)
 {
 	if (!root->left)
 		return (root);
 	return (find_begin(root->left));
 }
 
-template <class T1, class T2>
-ft::btree<T1, T2> * btree_begin(ft::btree<T1, T2> *root)
+template <class T>
+ft::btree<T> * btree_begin(ft::btree<T> *root)
 {
 	if (!root)
 		return (NULL);

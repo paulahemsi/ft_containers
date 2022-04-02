@@ -3,16 +3,16 @@
 
 #include "btree.tpp"
 
-template <class T1, class T2>
-ft::btree<T1, T2> * find_successor_above(const ft::btree<T1, T2> *node)
+template <class T>
+ft::btree<T> * find_successor_above(const ft::btree<T> *node)
 {
 	if(is_left_child(node->parent, node))
 		return (node->parent);
 	return (find_successor_above(node->parent));
 }
 
-template <class T1, class T2>
-ft::btree<T1, T2> * btree_next(const ft::btree<T1, T2> *node)
+template <class T>
+ft::btree<T> * btree_next(const ft::btree<T> *node)
 {
 	if ((!node) || (is_last_node(node)))
 		return (NULL);

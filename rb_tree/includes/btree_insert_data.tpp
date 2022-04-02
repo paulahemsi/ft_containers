@@ -7,18 +7,18 @@
 #include "btree_right_rotate.tpp"
 #include "btree_left_rotate.tpp"
 
-template< class T1, class T2 >
-ft::btree<T1, T2> * get_sibling(ft::btree<T1, T2> *node)
+template<class T>
+ft::btree<T> * get_sibling(ft::btree<T> *node)
 {
 	if (is_left_child(node->parent, node))
 		return node->parent->right;
 	return node->parent->left;
 }
 
-template< class T1, class T2 >
-bool sibling_is_red(ft::btree<T1, T2> *node)
+template<class T>
+bool sibling_is_red(ft::btree<T> *node)
 {
-	ft::btree<T1, T2> *sibling = get_sibling(node);
+	ft::btree<T> *sibling = get_sibling(node);
 
 	if (!sibling)
 		return (false);
@@ -27,24 +27,24 @@ bool sibling_is_red(ft::btree<T1, T2> *node)
 	return (false);
 }
 
-template< class T1, class T2 >
-void recolor(ft::btree<T1, T2> *node)
+template<class T>
+void recolor(ft::btree<T> *node)
 {
 	node->color = !node->color;
 }
 
-template< class T1, class T2 >
-void recolor_node_and_sibling(ft::btree<T1, T2> *node)
+template<class T>
+void recolor_node_and_sibling(ft::btree<T> *node)
 {
 	recolor(node);
 	recolor(get_sibling(node));
 }
 
-template< class T1, class T2 >
-void check_rules(ft::btree<T1, T2> *node)
+template<class T>
+void check_rules(ft::btree<T> *node)
 {
-	ft::btree<T1, T2> *parent = node->parent;
-	ft::btree<T1, T2> *grandma = parent->parent;
+	ft::btree<T> *parent = node->parent;
+	ft::btree<T> *grandma = parent->parent;
 
 	if (parent->color == BLACK)
 		return ;
@@ -71,46 +71,48 @@ void check_rules(ft::btree<T1, T2> *node)
 		grandma = btree_left_rotate(grandma);
 }
 
-template< class T1, class T2, class Compare>
-void btree_insert_data_recursive(ft::btree<T1, T2> **root, ft::btree<T1, T2> *parent, const ft::pair<T1,T2> *new_pair)
+template<class T>
+void btree_insert_data_recursive(ft::btree<T> **root, ft::btree<T> *parent, const T *item, int (*compare)(const T*, const T*))
 {
-	Compare compare;
-
 	if (*root == NULL)
 	{
-		*root = new ft::btree<T1, T2>(new_pair);
+		*root = new ft::btree<T>(item);
 		(*root)->parent = parent;
 		check_rules(*root);
 		return ;
 	}
-	if (compare(new_pair->first, (*root)->item->first))
-		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->left, *root, new_pair);
+	int compare_itens = compare(item, (*root)->item);
+	if (compare_itens == 1)
+		btree_insert_data_recursive<T>(&(*root)->right, *root, item, compare);
+	else if (compare_itens == -1)
+		btree_insert_data_recursive<T>(&(*root)->left, *root, item, compare);
 	else
-		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->right, *root, new_pair);
+		return ;
 }
 
-template< class T1, class T2 >
-void	update_root(ft::btree<T1, T2> **root)
+template<class T>
+void	update_root(ft::btree<T> **root)
 {
 	if (is_root(*root))
 		return ;
 	*root = get_root(*root);
 }
 
-template< class T1, class T2, class Compare>
-void btree_insert_data(ft::btree<T1, T2> **root, const ft::pair<T1,T2> *new_pair)
+template<class T>
+void btree_insert_data(ft::btree<T> **root, const T *item, int (*compare)(const T*, const T*))
 {
-	Compare compare;
-
 	if (*root == NULL)
 	{
-		*root = new ft::btree<T1, T2>(new_pair, BLACK);
+		*root = new ft::btree<T>(item, BLACK);
 		return ;
 	}
-	if (compare(new_pair->first, (*root)->item->first))
-		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->left, *root, new_pair);
+	int compare_itens = compare(item, (*root)->item);
+	if (compare_itens == 1)
+		btree_insert_data_recursive<T>(&(*root)->right, *root, item, compare);
+	else if (compare_itens == -1)
+		btree_insert_data_recursive<T>(&(*root)->left, *root, item, compare);
 	else
-		btree_insert_data_recursive<T1, T2, Compare>(&(*root)->right, *root, new_pair);
+		return ;
 	update_root(root);
 }
 

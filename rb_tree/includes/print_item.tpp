@@ -10,8 +10,8 @@
 # define RESET			"\e[0m"
 # define BOLD			"\e[1m"
 
-template <class T1, class T2>
-void print_rb_node_infos(ft::btree<T1, T2> *node, int level, bool is_first)
+template <class T>
+void print_rb_node_infos(ft::btree<T> *node, int level, bool is_first)
 {
 	(void) is_first;
 	std::cout << RESET;
