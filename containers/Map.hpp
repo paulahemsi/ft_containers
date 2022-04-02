@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/31 20:09:21 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/01 20:10:01 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ namespace ft
 			typedef typename allocator_type::const_reference			const_reference;
             typedef typename Alloc::pointer								pointer;
             typedef typename Alloc::const_pointer						const_pointer;
-            typedef ft::map_iterator< ft::map<key_type, mapped_type> >  iterator;
-            typedef ft::map_iterator< ft::map<key_type, mapped_type> >  const_iterator;
+            typedef ft::map_iterator<value_type>						iterator;
+            typedef ft::map_iterator<value_type>						const_iterator;
             // typedef ft::reverse_iterator<iterator>                      reverse_iterator;
             // typedef ft::reverse_iterator<const_iterator>                const_reverse_iterator;
         
 		private:
-			key_compare							_compare;
-			allocator_type						_allocator;
+			key_compare								_compare;
+			allocator_type							_allocator;
 			ft::btree<const key_type, mapped_type>	*_root;
 
 		public:
@@ -74,12 +74,20 @@ namespace ft
 			
 			iterator begin(void)
 			{
-				
-				//return iterator()
+				return iterator(btree_begin(_root));
 			}
 			
-			const_iterator begin() const;
+			const_iterator begin(void) const
+			{
+				return iterator(btree_begin(_root));
+			}
 			
+			bool	my_compare(value_type pair1, value_type pair2)
+			{
+				Compare compare;
+				return compare(pair1->first, pair2->first);
+			}
+
 			ft::pair<int, bool> insert (const value_type& val) //! ITERATOR E BOOL
 			{
 				(void)val;
