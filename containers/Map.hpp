@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/01 23:36:32 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/03 12:27:33 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,16 @@ namespace ft
 				return iterator(btree_begin(_root));
 			}
 			
+			iterator end(void)
+			{
+				return iterator(btree_end(_root));
+			}
+			
+			const_iterator end(void) const
+			{
+				return iterator(btree_end(_root));
+			}
+
 			ft::pair<int, bool> insert (const value_type& val) //! ITERATOR E BOOL
 			{
 				ft::pair<int, int> my_return(1, true);
