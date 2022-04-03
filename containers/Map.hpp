@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/03 12:27:33 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/03 19:47:16 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "rb_tree.hpp"
 #include "pair.tpp"
 #include "map_iterator.hpp"
+#include "reverse_iterator.hpp"
 
 template<class T, class T2>
 int	_compare_value_type(const T *pair1, const T *pair2)
@@ -52,8 +53,8 @@ namespace ft
             typedef typename Alloc::const_pointer						const_pointer;
             typedef ft::map_iterator<value_type>						iterator;
             typedef ft::map_iterator<value_type>						const_iterator;
-            // typedef ft::reverse_iterator<iterator>                      reverse_iterator;
-            // typedef ft::reverse_iterator<const_iterator>                const_reverse_iterator;
+            typedef ft::reverse_iterator<iterator>						reverse_iterator;
+            typedef ft::reverse_iterator<const_iterator>				const_reverse_iterator;
         
 		private:
 			key_compare				_compare;
@@ -110,6 +111,16 @@ namespace ft
 			const_iterator end(void) const
 			{
 				return iterator(btree_end(_root));
+			}
+
+			reverse_iterator rbegin(void) const
+			{
+				return reverse_iterator(this->end());
+			}
+
+			reverse_iterator rend(void)
+			{
+				return reverse_iterator(this->begin());
 			}
 
 			ft::pair<int, bool> insert (const value_type& val) //! ITERATOR E BOOL
