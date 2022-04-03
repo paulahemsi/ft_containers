@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:59 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/03 12:30:25 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/03 13:17:06 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ namespace ft {
 
 			typedef	map_iterator<T>	iterator;
 			typedef T				value_type;
-			typedef T*				pointer;
-			typedef T&				reference;
+			typedef const T*		pointer; //CONST?
+			typedef const T&		reference; //CONST?
 			typedef ft::btree<T>*	node_pointer;
 			typedef ft::btree<T>&	node_reference;
 			typedef std::ptrdiff_t	difference_type;
