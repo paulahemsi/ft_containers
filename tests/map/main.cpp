@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/03 12:11:21 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/03 18:15:49 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,12 @@ static void	test_iterators(void)
 	
 	ft::map<int, int> map = create_map_of_random_integers(8, 200);
 	
-	for (ft::map<int, int>::iterator it = map.begin(); it != map.end(); ++it) {
+	ft::map<int, int>::iterator it;
+
+	for (it = map.begin(); it != map.end(); ++it) {
  	   std::cout << it->first << ", " << it->second << '\n';
 	}
+ 	std::cout << it->first << ", " << it->second << '\n';
 }
 
 int main(void)
