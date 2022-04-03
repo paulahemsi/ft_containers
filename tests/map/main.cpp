@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/01 23:29:09 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/01 23:37:45 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void test_constructors(void)
 
 
 	my_map.insert(my_pair);
-	
+	my_map.begin();
 	
 }
 
