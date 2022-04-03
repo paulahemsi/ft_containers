@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:59 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/03 10:01:31 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/03 11:44:52 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,40 +49,40 @@ namespace ft {
 			//relational operators overload
 			bool operator==(const iterator& right_hand_side)
 			{
-				return this->_node_pointer == right_hand_side._pointer;
+				return this->_node_pointer == right_hand_side._node_pointer;
 			}
 			bool operator!=(const iterator& right_hand_side)
 			{
-				return this->_node_pointer != right_hand_side._pointer;
+				return this->_node_pointer != right_hand_side._node_pointer;
 			}
 
 			//increment and decrement
 			iterator& operator++(void)
 			{
-				this->_node_pointer++;
+				this->_node_pointer = btree_next(this->_node_pointer);
 				return (*this);
 			}
 			iterator& operator--(void)
 			{
-				this->_node_pointer--;
+				this->_node_pointer = btree_previous(this->_node_pointer);
 				return (*this);
 			}
 			iterator operator++(int)
 			{
 				iterator copy(*this);
-				this->_node_pointer++;
+				this->_node_pointer = btree_next(this->_node_pointer);
 				return (copy);
 			}
 			iterator operator--(int)
 			{
 				iterator copy(*this);
-				this->_node_pointer--;
+				this->_node_pointer = btree_previous(this->_node_pointer);
 				return (copy);
 			}
 
 			//dereference operator
-			reference	operator*(void) const {return *(this->_node_pointer);}
-			pointer		operator->(void) {retrun (this->_node_pointer);}
+			reference	operator*(void) const {return *(this->_node_pointer->item);}
+			pointer		operator->(void) {retrun (this->_node_pointer->item);}
 	};
 }
 
