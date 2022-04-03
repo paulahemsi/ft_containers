@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:59 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/03 11:44:52 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/03 12:30:25 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,14 @@ namespace ft {
 			}
 
 			//dereference operator
-			reference	operator*(void) const {return *(this->_node_pointer->item);}
-			pointer		operator->(void) {retrun (this->_node_pointer->item);}
+			reference	operator*(void) const
+			{
+				return *(this->_node_pointer->item);
+			}
+			pointer		operator->(void)
+			{
+				return (this->_node_pointer->item);
+			}
 	};
 }
 
