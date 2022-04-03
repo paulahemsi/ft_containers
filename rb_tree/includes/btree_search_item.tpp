@@ -4,34 +4,32 @@
 
 #include "btree.tpp"
 
-template< class T1, class T2, class Compare>
-const ft::pair<T1, T2> *btree_search_item(ft::btree<T1, T2> *root, T1 data_ref)
+template<class T>
+const T *btree_search_item(ft::btree<T> *root, const T data_ref, int (*compare)(const T*, const T*))
 {
-	Compare compare;
-	
 	if (root == NULL)
 		return (NULL);
-	if (root->item->first == data_ref)
-		return (root->item);
-	if (compare(data_ref, root->item->first))
-		return (btree_search_item<T1, T2, std::less<T1> >(root->left, data_ref));
+	int compare_data_ref_and_item = compare(&data_ref, root->item);
+	if (compare_data_ref_and_item == 1)
+		return (btree_search_item<T>(root->right, data_ref, compare));
+	else if (compare_data_ref_and_item == -1)
+		return (btree_search_item<T>(root->left, data_ref, compare));
 	else
-		return (btree_search_item<T1, T2, std::less<T1> >(root->right, data_ref));
+		return (root->item);
 }
 
-template< class T1, class T2, class Compare>
-ft::btree<T1, T2> *btree_search_node(ft::btree<T1, T2> *root, T1 data_ref)
+template<class T>
+ft::btree<T> *btree_search_node(ft::btree<T> *root, const T data_ref, int (*compare)(const T*, const T*))
 {
-	Compare compare;
-	
 	if (root == NULL)
 		return (NULL);
-	if (root->item->first == data_ref)
-		return (root);
-	if (compare(data_ref, root->item->first))
-		return (btree_search_node<T1, T2, std::less<T1> >(root->left, data_ref));
+	int compare_data_ref_and_item = compare(&data_ref, root->item);
+	if (compare_data_ref_and_item == 1)
+		return (btree_search_node<T>(root->right, data_ref, compare));
+	else if (compare_data_ref_and_item == -1)
+		return (btree_search_node<T>(root->left, data_ref, compare));
 	else
-		return (btree_search_node<T1, T2, std::less<T1> >(root->right, data_ref));
+		return (root);
 }
 
 #endif

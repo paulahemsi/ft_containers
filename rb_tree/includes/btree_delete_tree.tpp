@@ -4,8 +4,8 @@
 
 #include "btree.tpp"
 
-template <class T1, class T2>
-void btree_delete_tree(ft::btree<T1, T2> *root)
+template <class T>
+void btree_delete_tree(ft::btree<T> *root)
 {
 	if (root == NULL)
 		return ;

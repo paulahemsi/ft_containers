@@ -5,8 +5,8 @@
 
 #include "btree.tpp"
 
-template <class T1, class T2>
-void btree_apply_infix(ft::btree<T1, T2> *root, void (*applyf)(const ft::pair<T1, T2> *))
+template <class T>
+void btree_apply_infix(ft::btree<T> *root, void (*applyf)(const T*))
 {
 	if (!root)
 		return;

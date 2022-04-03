@@ -4,8 +4,8 @@
 
 #include "btree.tpp"
 
-template <class T1, class T2>
-size_t max_depth(size_t left_depth, size_t right_depth, ft::btree<T1, T2> *root)
+template <class T>
+size_t max_depth(size_t left_depth, size_t right_depth, ft::btree<T> *root)
 {
 	root++;
 	root--;
@@ -14,8 +14,8 @@ size_t max_depth(size_t left_depth, size_t right_depth, ft::btree<T1, T2> *root)
 	return (right_depth);
 }
 
-template <class T1, class T2>
-size_t btree_level_count(ft::btree<T1, T2> *root)
+template <class T>
+size_t btree_level_count(ft::btree<T> *root)
 {
 	if (!root || (!root->left && !root->right))
 		return (0);
