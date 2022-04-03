@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:57:55 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/03 17:25:17 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/03 17:30:48 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ ft::map<int, int>	create_map_of_random_integers(int size, int seed)
     for (int i = 0; i < size; i++)
     {
         int random = random_number();
+        std::cout << "include " << random << ", " << random << " to map" << std::endl;
         const ft::pair<const int, int>	*pair = new ft::pair<const int, int>(random, random);
 	    map.insert(*pair);
     }
