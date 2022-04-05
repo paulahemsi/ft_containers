@@ -39,6 +39,16 @@ ft::btree<T> * get_root(ft::btree<T> *node)
 }
 
 template <class T>
+const ft::btree<T> * get_root(const ft::btree<T> *node)
+{
+	const ft::btree<T> *tmp = node;
+
+	while (tmp->parent)
+		tmp = tmp->parent;
+	return (tmp);
+}
+
+template <class T>
 bool is_root(const ft::btree<T> *node)
 {
 	return (node->parent == NULL);

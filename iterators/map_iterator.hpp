@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:59 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/03 13:17:06 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/03 19:31:42 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define MAP_ITERATOR
 
 #include "rb_tree.hpp"
+#include "iterators_traits.hpp"
 
 namespace ft {
 	
@@ -22,13 +23,14 @@ namespace ft {
 	{
 		public:
 
-			typedef	map_iterator<T>	iterator;
-			typedef T				value_type;
-			typedef const T*		pointer; //CONST?
-			typedef const T&		reference; //CONST?
-			typedef ft::btree<T>*	node_pointer;
-			typedef ft::btree<T>&	node_reference;
-			typedef std::ptrdiff_t	difference_type;
+			typedef	map_iterator<T>					iterator;
+			typedef std::bidirectional_iterator_tag	iterator_category;
+			typedef T								value_type;
+			typedef const T*						pointer; //CONST?
+			typedef const T&						reference; //CONST?
+			typedef ft::btree<T>*					node_pointer;
+			typedef ft::btree<T>&					node_reference;
+			typedef std::ptrdiff_t					difference_type;
 		
 		private:
 			node_pointer	_node_pointer;

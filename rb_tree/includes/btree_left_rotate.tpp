@@ -3,6 +3,7 @@
 #define BTREE_LEFT_ROTATE_TPP
 
 #include "btree.tpp"
+#include "btree_auxiliary.tpp"
 #include "btree_rotate_aux.tpp"
 
 

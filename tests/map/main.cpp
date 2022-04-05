@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/03 12:11:21 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:53:24 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,18 @@ static void	test_iterators(void)
 	
 	ft::map<int, int> map = create_map_of_random_integers(8, 200);
 	
-	for (ft::map<int, int>::iterator it = map.begin(); it != map.end(); ++it) {
+	print_subheading("bidirectional");
+	ft::map<int, int>::iterator it;
+
+	for (it = map.begin(); it != map.end(); ++it) {
  	   std::cout << it->first << ", " << it->second << '\n';
+	}
+
+	print_subheading("reverse");
+	ft::map<int, int>::reverse_iterator	reverse_it;
+	
+	for (reverse_it = map.rbegin(); reverse_it != map.rend(); ++reverse_it) {
+ 	std::cout << reverse_it->first << ", " << reverse_it->second << '\n';
 	}
 }
 
