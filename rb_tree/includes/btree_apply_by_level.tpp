@@ -38,9 +38,9 @@ void print_node_infos(ft::btree<T> *node, int level, bool is_first)
 template <class T>
 void add_children_to_queue(std::queue<ft::btree<T> *> &leaf_queue, ft::btree<T> * node)
 {
-	if(node->left)
+	if(!is_nil(node->left))
 		leaf_queue.push(node->left);
-	if(node->right)
+	if(!is_nil(node->right))
 		leaf_queue.push(node->right);
 }
 
@@ -73,7 +73,7 @@ void btree_apply_by_level(ft::btree<T> *root, void (*applyf)(ft::btree<T> *node,
 
 	std::queue<ft::btree<T> *> leaf_queue;
 	leaf_queue.push(root);
-	leaf_queue.push(new ft::btree<T>());
+	leaf_queue.push(new ft::btree<T>(NULL));
 
 	ft::btree<T> *node = NULL;
 	while(true)
@@ -84,13 +84,13 @@ void btree_apply_by_level(ft::btree<T> *root, void (*applyf)(ft::btree<T> *node,
 		is_first = false;
 		if (is_last_node(leaf_queue, current_level, is_first, node))
 			break;
-		else
+		else if (!is_nil(node))
 			add_children_to_queue(leaf_queue, node);
-		if (!node->item)
+		if (!node->item && node->color == RED)
 			delete node;
 	}
-	if (!node->item)
-			delete node;
+	if (!node->item && node->color == RED)
+		delete node;
 }
 
 #endif

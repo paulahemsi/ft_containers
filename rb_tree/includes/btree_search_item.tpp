@@ -7,7 +7,7 @@
 template<class T>
 const T *btree_search_item(ft::btree<T> *root, const T data_ref, int (*compare)(const T*, const T*))
 {
-	if (root == NULL)
+	if (!root || is_nil(root))
 		return (NULL);
 	int compare_data_ref_and_item = compare(&data_ref, root->item);
 	if (compare_data_ref_and_item == 1)
@@ -21,7 +21,7 @@ const T *btree_search_item(ft::btree<T> *root, const T data_ref, int (*compare)(
 template<class T>
 ft::btree<T> *btree_search_node(ft::btree<T> *root, const T data_ref, int (*compare)(const T*, const T*))
 {
-	if (root == NULL)
+	if (!root || is_nil(root))
 		return (NULL);
 	int compare_data_ref_and_item = compare(&data_ref, root->item);
 	if (compare_data_ref_and_item == 1)

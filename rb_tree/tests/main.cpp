@@ -39,13 +39,13 @@ const ft::btree<T> * print_end(ft::btree<T> *root)
 {
 	std::cout << "\n---END---\n" << std::endl;
 	const ft::btree<ft::pair<int, int> >	*end = btree_end(root);
-	if (end)
-	{
-		std::cout << "key: " << end->item->first << " value: " << end->item->second << " " << std::endl  << std::endl;
+	// if (end)
+	// {
+	// 	std::cout << "key: " << end->item->first << " value: " << end->item->second << " " << std::endl  << std::endl;
 		return (end);
-	}
-	std::cout << "sorry, there's no tree :( " << std::endl;
-	return (NULL);
+	// }
+	// std::cout << "sorry, there's no tree :( " << std::endl;
+	// return (NULL);
 }
 
 template< class T>
@@ -53,7 +53,7 @@ void print_next(const ft::btree<T> *root)
 {
 	std::cout << "\n---NEXT---\n" << std::endl;
 	const ft::btree<ft::pair<int, int> >	*next = btree_next(root);
-	if (next)
+	if (next && !is_nil(next))
 		std::cout << "key: " << next->item->first << " value: " << next->item->second << " " << std::endl;
 	else
 		std::cout << "sorry, there's no next :( " << std::endl;
@@ -64,7 +64,7 @@ void print_previous(const ft::btree<T> *root)
 {
 	std::cout << "\n---PREVIOUS---\n" << std::endl;
 	const ft::btree<ft::pair<int, int> >	*previous = btree_previous(root);
-	if (previous)
+	if (previous && !is_nil(previous))
 		std::cout << "key: " << previous->item->first << " value: " << previous->item->second << " " << std::endl;
 	else
 		std::cout << "sorry, there's no previous :( " << std::endl;

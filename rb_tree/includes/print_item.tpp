@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "btree.tpp"
+#include "btree_auxiliary.tpp"
 
 # define CYAN			"\e[0;36m"
 # define C_RED			"\e[0;31m"

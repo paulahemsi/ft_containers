@@ -8,7 +8,7 @@
 template <class T>
 void btree_apply_infix(ft::btree<T> *root, void (*applyf)(const T*))
 {
-	if (!root)
+	if (!root || is_nil(root))
 		return;
 	btree_apply_infix(root->left, applyf);
 	applyf(root->item);

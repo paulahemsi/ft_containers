@@ -5,9 +5,17 @@
 #include "btree.tpp"
 
 template <class T>
+bool is_nil(const ft::btree<T> *node)
+{
+	if (!node->item && !node->left && !node->right)
+		return (true);
+	return (false);
+}
+
+template <class T>
 ft::btree<T> * find_successor_below(ft::btree<T> *node)
 {
-	if (!node->left)
+	if (is_nil(node->left))
 		return (node);
 	return (find_successor_below(node->left));
 }
@@ -15,7 +23,7 @@ ft::btree<T> * find_successor_below(ft::btree<T> *node)
 template <class T>
 ft::btree<T> * find_predecessor_below(ft::btree<T> *node)
 {
-	if (!node->right)
+	if (is_nil(node->right))
 		return (node);
 	return (find_predecessor_below(node->right));
 }
@@ -51,9 +59,9 @@ bool is_right_child(const ft::btree<T> *parent, const ft::btree<T> *node)
 template <class T>
 bool is_leaf(const ft::btree<T> *node)
 {
-	if (node->left || node->right)
-		return (false);
-	return (true);
+	if (is_nil(node->left) && is_nil(node->right))
+		return (true);
+	return (false);
 }
 
 template <class T>
