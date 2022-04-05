@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/03 19:33:27 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/05 19:53:24 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void	test_iterators(void)
 	for (it = map.begin(); it != map.end(); ++it) {
  	   std::cout << it->first << ", " << it->second << '\n';
 	}
- 	std::cout << it->first << ", " << it->second << '\n';
 
 	print_subheading("reverse");
 	ft::map<int, int>::reverse_iterator	reverse_it;
@@ -45,7 +44,6 @@ static void	test_iterators(void)
 	for (reverse_it = map.rbegin(); reverse_it != map.rend(); ++reverse_it) {
  	std::cout << reverse_it->first << ", " << reverse_it->second << '\n';
 	}
- 	std::cout << reverse_it->first << ", " << reverse_it->second << '\n';
 }
 
 int main(void)

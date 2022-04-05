@@ -4,6 +4,22 @@
 #include "btree.tpp"
 
 template <class T>
+const ft::btree<T> * find_end(const ft::btree<T> *root)
+{
+	if (is_nil(root->right))
+		return (root->right);
+	return (find_end(root->right));
+}
+
+template <class T>
+const ft::btree<T> * btree_end(const ft::btree<T> *root)
+{
+	if (!root)
+		return (NULL);
+	return (find_end(root)); 
+}
+
+template <class T>
 ft::btree<T> * find_end(ft::btree<T> *root)
 {
 	if (is_nil(root->right))
@@ -18,6 +34,5 @@ ft::btree<T> * btree_end(ft::btree<T> *root)
 		return (NULL);
 	return (find_end(root)); 
 }
-
 
 #endif
