@@ -16,10 +16,10 @@ ft::btree<T> * btree_previous(const ft::btree<T> *node)
 {
 	if ((!node) || (is_root(node)))
 		return (NULL);
-	if (node->left)
-		return (find_predecessor_below(node->left));
-	else
+	if (is_nil(node) || is_nil(node->left))
 		return (find_predecessor_above(node));
+	else
+		return (find_predecessor_below(node->left));
 }
 
 #endif

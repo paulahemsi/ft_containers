@@ -19,6 +19,7 @@ OBJS			:=	$(addprefix $(OBJS_DIR), $(notdir $(TESTS:.cpp=.o)))
 
 HEADER			:=	btree.tpp\
 					test.hpp\
+					btree_create_node.tpp\
 					btree_insert_data.tpp\
 					btree_apply_prefix.tpp\
 					btree_apply_infix.tpp\

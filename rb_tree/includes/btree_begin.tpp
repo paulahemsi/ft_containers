@@ -7,7 +7,7 @@
 template <class T>
 ft::btree<T> * find_begin(ft::btree<T> *root)
 {
-	if (!root->left)
+	if (is_nil(root->left))
 		return (root);
 	return (find_begin(root->left));
 }
