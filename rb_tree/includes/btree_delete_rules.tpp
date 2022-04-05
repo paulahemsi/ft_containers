@@ -42,19 +42,15 @@ void do_same_side_rotation(ft::btree<T> *node_to_compare, ft::btree<T> *node_to_
 }
 
 template <class T>
-bool is_black_or_null(ft::btree<T> *node)
+bool is_black_node(ft::btree<T> *node)
 {
-	if (node == NULL)
-		return (true);
-	if (node->color == BLACK)
-		return (true);
-	return (false);
+	return (node->color == BLACK);
 }
 
 template <class T>
 bool is_red_node(ft::btree<T> *node)
 {
-	return (!is_black_or_null(node));
+	return (node->color == RED);
 }
 
 template <class T>
@@ -86,7 +82,7 @@ void	black_sibling_case(ft::btree<T> *double_black_node)
 		do_same_side_rotation(double_black_node, parent);
 		remove_double_black(double_black_node);
 	}
-	else if (is_black_or_null(get_same_direction_niece(double_black_node, sibling)))
+	else if (is_black_node(get_same_direction_niece(double_black_node, sibling)))
 	{
 		double_black_node->color = BLACK;
 		sibling->color = RED;

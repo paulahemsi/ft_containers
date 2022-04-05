@@ -7,7 +7,7 @@
 template <class T>
 void btree_apply_prefix(ft::btree<T> *root, void (*applyf)(T*))
 {
-	if (!root)
+	if (!root || is_nil(root))
         return;
     applyf(root->item);
     btree_apply_prefix(root->left, applyf);

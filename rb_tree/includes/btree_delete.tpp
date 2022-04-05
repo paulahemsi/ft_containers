@@ -3,12 +3,13 @@
 #define BTREE_DELETE_TPP
 
 #include "btree.tpp"
+#include "btree_create_node.tpp"
 #include "btree_delete_rules.tpp"
 
 template <class T>
 ft::btree<T> * find_neighbor(ft::btree<T> *node)
 {
-	if (node->left)
+	if (!is_nil(node->left))
 		return (find_predecessor_below(node->left));
 	else
 		return (find_successor_below(node->right));
@@ -21,14 +22,22 @@ void replace_content(ft::btree<T> *node, ft::btree<T> *node_to_replace)
 }
 
 template <class T>
+void	delete_leaf(ft::btree<T> *leaf)
+{
+	delete leaf->right;
+	delete leaf->left;
+	delete leaf;
+}
+
+template <class T>
 void delete_node(ft::btree<T> *node)
 {
 	check_delete_rules(node);
 	if (is_left_child(node->parent, node))
-		node->parent->left = NULL;
+		node->parent->left = create_nil_node<T>();
 	else
-		node->parent->right = NULL;
-	delete node;
+		node->parent->right = create_nil_node<T>();
+	delete_leaf(node);
 }
 
 template <class T>
@@ -50,7 +59,7 @@ const T * btree_delete(ft::btree<T> **root, T data_ref, int (*compare)(const T*,
 	const T * item_to_return = node_to_delete->item;
 	if (is_last_node(node_to_delete))
 	{
-		delete node_to_delete;
+		delete_leaf(node_to_delete);
 		*root = NULL;
 	}
 	else

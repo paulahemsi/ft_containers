@@ -6,8 +6,8 @@
 template <class T>
 ft::btree<T> * find_end(ft::btree<T> *root)
 {
-	if (!root->right)
-		return (root);
+	if (is_nil(root->right))
+		return (root->right);
 	return (find_end(root->right));
 }
 

@@ -3,6 +3,7 @@
 #define BTREE_INSERT_DATA_TPP
 
 #include "btree.tpp"
+#include "btree_create_node.tpp"
 #include "btree_auxiliary.tpp"
 #include "btree_right_rotate.tpp"
 #include "btree_left_rotate.tpp"
@@ -20,7 +21,7 @@ bool sibling_is_red(ft::btree<T> *node)
 {
 	ft::btree<T> *sibling = get_sibling(node);
 
-	if (!sibling)
+	if (is_nil(sibling))
 		return (false);
 	if (sibling->color == RED)
 		return (true);
@@ -56,7 +57,7 @@ void check_rules(ft::btree<T> *node)
 		recolor(grandma);
 		return check_rules(grandma);
 	}
-	if (is_left_child(grandma, parent) != is_left_child (parent, node))
+	if (is_left_child(grandma, parent) != is_left_child(parent, node))
 	{
 		if (is_left_child(parent, node))
 			parent = btree_right_rotate(parent);
@@ -74,9 +75,10 @@ void check_rules(ft::btree<T> *node)
 template<class T>
 void btree_insert_data_recursive(ft::btree<T> **root, ft::btree<T> *parent, const T *item, int (*compare)(const T*, const T*))
 {
-	if (*root == NULL)
+	if (is_nil(*root))
 	{
-		*root = new ft::btree<T>(item);
+		delete *root;
+		*root = btree_create_node(item);
 		(*root)->parent = parent;
 		check_rules(*root);
 		return ;
@@ -103,7 +105,7 @@ void btree_insert_data(ft::btree<T> **root, const T *item, int (*compare)(const 
 {
 	if (*root == NULL)
 	{
-		*root = new ft::btree<T>(item, BLACK);
+		*root = btree_create_root(item);
 		return ;
 	}
 	int compare_itens = compare(item, (*root)->item);

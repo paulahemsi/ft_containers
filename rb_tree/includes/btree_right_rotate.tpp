@@ -27,7 +27,7 @@ void update_new_root_rr(ft::btree<T> *old_root, ft::btree<T> *new_root, ft::btre
 template <class T>
 ft::btree<T> * btree_right_rotate(ft::btree<T> *old_root)
 {
-	if (!old_root->left)
+	if (is_nil(old_root->left))
 		return (NULL);
 
 	ft::btree<T> *parent = old_root->parent;
