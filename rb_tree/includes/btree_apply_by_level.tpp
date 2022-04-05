@@ -84,7 +84,7 @@ void btree_apply_by_level(ft::btree<T> *root, void (*applyf)(ft::btree<T> *node,
 		is_first = false;
 		if (is_last_node(leaf_queue, current_level, is_first, node))
 			break;
-		else
+		else if (!is_nil(node))
 			add_children_to_queue(leaf_queue, node);
 		if (!node->item && node->color == RED)
 			delete node;

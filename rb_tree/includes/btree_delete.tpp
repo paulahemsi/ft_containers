@@ -34,9 +34,9 @@ void delete_node(ft::btree<T> *node)
 {
 	check_delete_rules(node);
 	if (is_left_child(node->parent, node))
-		node->parent->left = create_nil_node<T>();
+		node->parent->left = create_nil_node(node->parent);
 	else
-		node->parent->right = create_nil_node<T>();
+		node->parent->right = create_nil_node(node->parent);
 	delete_leaf(node);
 }
 

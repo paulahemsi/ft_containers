@@ -16,10 +16,10 @@ ft::btree<T> * btree_next(const ft::btree<T> *node)
 {
 	if ((!node) || (is_last_node(node)))
 		return (NULL);
-	if (node->right)
-		return (find_successor_below(node->right));
-	else
+	if (is_nil(node) || is_nil(node->right))
 		return (find_successor_above(node));
+	else
+		return (find_successor_below(node->right));
 }
 
 #endif
