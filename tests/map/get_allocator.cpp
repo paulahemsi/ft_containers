@@ -6,14 +6,14 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:59:36 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/06 20:08:34 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:21:39 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "tests.hpp"
 
-int test_get_allocator(void)
+void test_get_allocator(void)
 {
 	print_title("GET ALLOCATOR");
 
