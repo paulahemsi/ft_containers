@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_allocator.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:59:36 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/06 20:21:39 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:41:37 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ void test_get_allocator(void)
 
 	my_map.get_allocator().deallocate(my_pair, 5);
 
-
-	return 0;
+	return ;
 }

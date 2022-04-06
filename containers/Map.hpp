@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 19:57:07 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:38:40 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,14 @@ namespace ft
 				return reverse_iterator(this->begin());
 			}
 
-			ft::pair<int, bool> insert (const value_type& val) //! ITERATOR E BOOL
+			ft::pair<iterator, bool> insert (const value_type& val)
 			{
-				ft::pair<int, int> my_return(1, true);
+				iterator it = this->find(val.first);
+				if (it != this->end())
+					return (ft::make_pair(it, false));
 				btree_insert_data(&_root, &val, &_compare_value_type<value_type, Compare>);
-				return my_return;
+				it = this->find(val.first);
+				return (ft::make_pair(it, true));
 			}
 
 			iterator insert (iterator position, const value_type& val);
