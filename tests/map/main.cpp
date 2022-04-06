@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/05 19:53:24 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/06 19:10:18 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ int main(void)
 	test_pair();
 	test_constructors();
 	test_iterators();
+	test_find();
 }

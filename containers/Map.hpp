@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/03 19:47:16 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/05 22:11:02 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,23 @@ namespace ft
 			template <class InputIterator>
 			void insert (InputIterator first, InputIterator last);
 
+			iterator find (const key_type& k)
+			{
+				ft::btree<value_type> *k_node;
+				k_node = btree_search_node<value_type>(_root, ft::make_pair(k, mapped_type()), &_compare_value_type<value_type, Compare>);
+				if (k_node)
+					return iterator(k_node);
+				return iterator(btree_end(_root));
+			}
+
+			const_iterator find (const key_type& k) const
+			{
+				ft::btree<value_type> *k_node;
+				k_node = btree_search_node(_root, ft::make_pair(k, mapped_type()), &_compare_value_type<value_type, Compare>);
+				if (k_node)
+					return const_iterator(k_node);
+				return const_iterator(btree_end(_root));
+			}
     };
 }
 
