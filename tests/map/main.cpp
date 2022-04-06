@@ -6,11 +6,13 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 19:01:11 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/06 19:08:23 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.hpp"
+
+# define ORANGE	"\e[0;38;5;166m"
 
 static void test_constructors(void)
 {
@@ -49,9 +51,9 @@ static void	test_iterators(void)
 static void print_found(ft::map<float, float>::iterator it, ft::map<float, float>::iterator end)
 {
 	if (it != end)
-		std::cout << "Found: key " << it->first << " value " << it->second << std::endl;
+		std::cout << CYAN << "Found: key " << it->first << " value " << it->second << RESET << std::endl;
 	else 
-		std::cout << "not found" << std::endl;
+		std::cout << ORANGE << "not found" << RESET << std::endl;
 }
 
 static void test_find(void)
@@ -60,6 +62,7 @@ static void test_find(void)
 
 	ft::map<float, float> map_to_test = create_map_of_floats(7);
 
+	std::cout << std::endl;
 	ft::map<float, float>::iterator end = map_to_test.end();
 	for (float i = 4; i < 9; i++)
 	{
