@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 18:48:47 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/06 18:53:32 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,6 @@ static void print_found(ft::map<float, float>::iterator it, ft::map<float, float
 	else 
 		std::cout << "not found" << std::endl;
 }
-
-
-ft::map<float, float>	create_map_of_floats(int size)
-{
-    ft::map<float, float>    map;
-
-    size++;
-    for (float i = 1; i < size; i++)
-    {
-        float float_to_insert = i/10 * i;
-        std::cout << "include " << float_to_insert << ", " << float_to_insert << " to map" << std::endl;
-        const ft::pair<const float, float>	*pair = new ft::pair<const float, float>(float_to_insert, float_to_insert);
-        map.insert(*pair);
-    }
-    return map;
-}
-
 
 static void test_find(void)
 {
