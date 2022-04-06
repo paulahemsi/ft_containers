@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 19:10:18 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/06 20:00:58 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ int main(void)
 	test_constructors();
 	test_iterators();
 	test_find();
+	test_get_allocator();
 }
