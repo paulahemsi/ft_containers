@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/05 22:11:02 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/06 19:57:07 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,8 @@ namespace ft
 					return const_iterator(k_node);
 				return const_iterator(btree_end(_root));
 			}
+
+			allocator_type get_allocator() const { return (this->_allocator);}
     };
 }
 
