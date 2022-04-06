@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 18:53:32 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/06 19:01:11 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,16 @@ static void test_find(void)
 		float number_to_find = i / 10 * i;
 		std::cout << "number to find: " << number_to_find << std::endl;
 		ft::map<float, float>::iterator found = map_to_test.find((number_to_find));
+		print_found(found, end);
+	}
+
+	print_title("CONST FIND");
+
+	for (float i = 0; i < 4; i++)
+	{
+		float number_to_find = i / 10 * i;
+		std::cout << "number to find: " << number_to_find << std::endl;
+		ft::map<float, float>::const_iterator found = map_to_test.find((number_to_find));
 		print_found(found, end);
 	}
 }
