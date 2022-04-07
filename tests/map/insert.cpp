@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insert.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:01:21 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 20:17:01 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/06 22:07:26 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ static void print(ft::pair<ft::map<int, int>::iterator, bool> insert_return)
 				<< RESET << std::endl;
 }
 
-static void insert(ft::map<int, int> &map, ft::pair<const int, int> *pair)
+static void insert(ft::map<int, int> &map, ft::pair<const int, int> pair)
 {
 	ft::pair<ft::map<int, int>::iterator, bool>	insert_return;
 	
 	std::cout << "insert pair ("
-				<< pair->first << ", "
-				<< pair->second << ") to map"
+				<< pair.first << ", "
+				<< pair.second << ") to map"
 				<< std::endl;
-	insert_return = map.insert(*pair);
+	insert_return = map.insert(pair);
 	print(insert_return);	
 }
 
@@ -47,8 +47,8 @@ void	test_insert(void)
 	
 	ft::map<int, int>	map;
 
-	insert(map, new ft::pair<const int, int>(1, 111));	
-	insert(map, new ft::pair<const int, int>(2, 222));	
-	insert(map, new ft::pair<const int, int>(1, 1));	
-	insert(map, new ft::pair<const int, int>(2, 2));	
+	insert(map, ft::make_pair(1, 1110));
+	insert(map, ft::make_pair(2, 222));	
+	insert(map, ft::make_pair(1, 1));	
+	insert(map, ft::make_pair(2, 2));	
 }
