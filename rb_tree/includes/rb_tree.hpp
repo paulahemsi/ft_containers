@@ -17,6 +17,7 @@
 #include "btree_next.tpp"
 #include "btree_previous.tpp"
 #include "btree_search_item.tpp"
+#include "btree_delete_tree.tpp"
 
 // #include "compare.tpp"
 // #include "print_item.tpp"
