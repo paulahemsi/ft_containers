@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 22:10:14 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/06 22:44:49 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,8 +163,17 @@ namespace ft
 				return const_iterator(btree_end(_root));
 			}
 
+			void erase (iterator position)
+			{
+				btree_delete<value_type>(&_root, *position, &_compare_value_type<value_type, Compare>);
+			}
+
+			size_type erase (const key_type& key);
+
+			void erase (iterator first, iterator last);
+
 			allocator_type get_allocator() const { return (this->_allocator);}
-    };
+	};
 }
 
 #endif
