@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 22:58:10 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/06 23:06:20 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,8 @@ namespace ft
 			void erase (iterator position)
 			{
 				value_type *pair_erased = btree_delete<value_type>(&_root, *position, &_compare_value_type<value_type, Compare>);
-				this->_allocator.deallocate(pair_erased, 1);
+				if (pair_erased)
+					this->_allocator.deallocate(pair_erased, 1);
 			}
 
 			size_type erase (const key_type& key);
