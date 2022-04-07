@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 21:43:15 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/06 22:10:14 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ namespace ft
 			map (const map& other)
 			{
 				*this = other;	
+			}
+			
+			~map (void)
+			{
+				btree_delete_tree(this->_root);
 			}
 			
 			key_compare key_comp(void) const

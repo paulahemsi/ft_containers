@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:57:55 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 18:57:10 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/06 21:59:59 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ ft::map<int, int>	create_map_of_random_integers(int size, int seed)
     {
         int random = random_number();
         std::cout << "include " << random << ", " << random << " to map" << std::endl;
-        const ft::pair<const int, int>	*pair = new ft::pair<const int, int>(random, random);
-	    map.insert(*pair);
+        const ft::pair<const int, int>	pair(random, random);
+	    map.insert(pair);
     }
     return map;
 }
@@ -52,8 +52,8 @@ ft::map<float, float>	create_map_of_floats(int size)
     {
         float float_to_insert = i/10 * i;
         std::cout << "include " << float_to_insert << ", " << float_to_insert << " to map" << std::endl;
-        const ft::pair<const float, float>	*pair = new ft::pair<const float, float>(float_to_insert, float_to_insert);
-        map.insert(*pair);
+        const ft::pair<const float, float>	pair(float_to_insert, float_to_insert);
+        map.insert(pair);
     }
     return map;
 }
