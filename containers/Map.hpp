@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 20:38:40 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/06 21:43:15 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,10 @@ namespace ft
 				iterator it = this->find(val.first);
 				if (it != this->end())
 					return (ft::make_pair(it, false));
-				btree_insert_data(&_root, &val, &_compare_value_type<value_type, Compare>);
-				it = this->find(val.first);
+				value_type *new_pair = this->_allocator.allocate(1);
+				this->_allocator.construct(new_pair, val);
+				btree_insert_data(&_root, new_pair, &_compare_value_type<value_type, Compare>);
+				it = this->find(new_pair->first);
 				return (ft::make_pair(it, true));
 			}
 
