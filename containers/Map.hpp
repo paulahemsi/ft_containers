@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 23:42:24 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/07 21:48:43 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,9 +181,16 @@ namespace ft
 
 			void erase (iterator first, iterator last)
 			{
-				first--;
+				iterator temp;
+				key_type next_key;
+
 				while (first != last)
-					this->erase(first++);
+				{
+					temp = first;
+					next_key = (++temp)->first;
+					this->erase(first);
+					first = find(next_key);
+				}
 			}
 
 			allocator_type get_allocator() const { return (this->_allocator);}
