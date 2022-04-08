@@ -20,11 +20,11 @@ namespace ft
 		struct btree	*right;
 		struct btree	*parent;
 		t_color			color;
-		const T			*item;
+		T				*item;
 
 		btree(void): left(NULL), right(NULL), parent(NULL), color(BLACK), item(NULL) {}
-		btree(const T *new_item): left(NULL), right(NULL), parent(NULL), color(RED), item(new_item) {}
-		btree(const T *new_item, bool is_black): left(NULL), right(NULL), parent(NULL), color(is_black), item(new_item) {}
+		btree(T *new_item): left(NULL), right(NULL), parent(NULL), color(RED), item(new_item) {}
+		btree(T *new_item, bool is_black): left(NULL), right(NULL), parent(NULL), color(is_black), item(new_item) {}
 		~btree(void) {}
 	};
 };
