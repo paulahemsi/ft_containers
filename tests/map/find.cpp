@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   find.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:09:47 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/06 20:23:08 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/06 22:36:48 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.hpp"
 
-static void print_found(ft::map<float, float>::const_iterator it, ft::map<float, float>::const_iterator end)
+void print_found(ft::map<float, float>::const_iterator it, ft::map<float, float>::const_iterator end)
 {
 	if (it != end)
 		std::cout << CYAN << "Found: key " << it->first << " value " << it->second << RESET << std::endl;

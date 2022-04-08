@@ -8,7 +8,7 @@ template <class T>
 bool is_begin(const ft::btree<T> *node)
 {
 	const ft::btree<T> *root = get_root(node);
-	return (btree_begin(root)->parent == node);
+	return (btree_begin(root) == node);
 }
 
 template <class T>
