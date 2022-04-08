@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 22:28:36 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/06 23:42:38 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/07 22:53:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ void test_erase(void)
 
 	print_subheading("erase iterators range");
 	print_instructions("erase from 2.5 to 6.4 -not included");
-	map.erase(map.find(2.5), map.find(6.4));
+	map.erase(map.begin(), map.find(6.4));
+	print_instructions("find 0.9?");
+	print_found(map.find(0.9), map.end());
+	print_instructions("find 1.6?");
+	print_found(map.find(1.6), map.end());
 	print_instructions("find 2.5?");
 	print_found(map.find(2.5), map.end());
 	print_instructions("find 3.6?");
@@ -47,4 +51,7 @@ void test_erase(void)
 	print_found(map.find(4.9), map.end());
 	print_instructions("find 6.4?");
 	print_found(map.find(6.4), map.end());
+	//*float imprecision as key (same as original version):
+	print_instructions("find 8.1?");
+	print_found(map.find(8.1), map.end());
 }
