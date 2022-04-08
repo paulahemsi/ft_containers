@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/07 22:55:54 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/08 18:26:47 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ namespace ft
             typedef ft::reverse_iterator<const_iterator>				const_reverse_iterator;
         
 		private:
+			size_type				_size;
 			key_compare				_compare;
 			allocator_type			_allocator;
 			ft::btree<value_type>	*_root;
@@ -73,6 +74,7 @@ namespace ft
 		public:
             explicit map (const key_compare& comp = key_compare(),
                           const allocator_type& alloc = allocator_type()):
+			_size(0),
 			_compare(comp),
 			_allocator(alloc),
 			_root(NULL) {}
@@ -128,6 +130,11 @@ namespace ft
 				return reverse_iterator(this->begin());
 			}
 
+			size_type size(void) const
+			{
+				return (this->_size);
+			}
+
 			ft::pair<iterator, bool> insert (const value_type& val)
 			{
 				iterator it = this->find(val.first);
@@ -137,6 +144,7 @@ namespace ft
 				this->_allocator.construct(new_pair, val);
 				btree_insert_data(&_root, new_pair, &_compare_value_type<value_type, Compare>);
 				it = this->find(new_pair->first);
+				this->_size++;
 				return (ft::make_pair(it, true));
 			}
 
@@ -166,8 +174,8 @@ namespace ft
 			void erase (iterator position)
 			{
 				value_type *pair_erased = btree_delete<value_type>(&_root, *position, &_compare_value_type<value_type, Compare>);
-				if (pair_erased)
-					this->_allocator.deallocate(pair_erased, 1);
+				this->_allocator.deallocate(pair_erased, 1);
+				this->_size--;
 			}
 
 			size_type erase (const key_type& key)
@@ -176,6 +184,7 @@ namespace ft
 				if (!pair_erased)
 					return (0);
 				this->_allocator.deallocate(pair_erased, 1);
+				this->_size--;
 				return (1);
 			}
 

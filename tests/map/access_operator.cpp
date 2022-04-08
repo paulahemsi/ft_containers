@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:40:33 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/07 22:40:22 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/08 15:04:54 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	test_access_element_operator(void)
 	std::cout << "mymap['c'] is " << map['c'] << '\n';
 	std::cout << "mymap['d'] is " << map['d'] << '\n';
 
-	// std::cout << "mymap now contains " << map.size() << " elements.\n";
+	std::cout << "mymap now contains " << map.size() << " elements.\n";
 }
