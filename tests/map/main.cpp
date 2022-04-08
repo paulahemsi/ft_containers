@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/07 22:58:35 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/08 17:48:15 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ int main(void)
 	test_insert();
 	test_erase();
 	test_access_element_operator();
+	test_size();
 }
