@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 22:37:14 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/07 22:58:14 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void test_find(void);
 void test_get_allocator(void);
 void test_insert(void);
 void test_erase(void);
+void test_access_element_operator(void);
 ft::map<int, int>		create_map_of_random_integers(int size, int seed);
 ft::map<float, float>	create_map_of_floats(int size);
 void print_found(ft::map<float, float>::const_iterator it, ft::map<float, float>::const_iterator end);
