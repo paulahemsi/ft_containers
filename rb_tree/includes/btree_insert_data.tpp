@@ -73,7 +73,7 @@ void check_rules(ft::btree<T> *node)
 }
 
 template<class T>
-void btree_insert_data_recursive(ft::btree<T> **root, ft::btree<T> *parent, const T *item, int (*compare)(const T*, const T*))
+void btree_insert_data_recursive(ft::btree<T> **root, ft::btree<T> *parent, T *item, int (*compare)(const T*, const T*))
 {
 	if (is_nil(*root))
 	{
@@ -101,7 +101,7 @@ void	update_root(ft::btree<T> **root)
 }
 
 template<class T>
-void btree_insert_data(ft::btree<T> **root, const T *item, int (*compare)(const T*, const T*))
+void btree_insert_data(ft::btree<T> **root, T *item, int (*compare)(const T*, const T*))
 {
 	if (*root == NULL)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:59 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/03 19:31:42 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/07 22:35:51 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ namespace ft {
 			typedef	map_iterator<T>					iterator;
 			typedef std::bidirectional_iterator_tag	iterator_category;
 			typedef T								value_type;
-			typedef const T*						pointer; //CONST?
-			typedef const T&						reference; //CONST?
+			typedef T*								pointer;
+			typedef T&								reference;
 			typedef ft::btree<T>*					node_pointer;
 			typedef ft::btree<T>&					node_reference;
 			typedef std::ptrdiff_t					difference_type;

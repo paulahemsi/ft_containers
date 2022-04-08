@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/07 21:48:43 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/07 22:55:54 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,7 +194,17 @@ namespace ft
 			}
 
 			allocator_type get_allocator() const { return (this->_allocator);}
-	};
+
+			mapped_type& operator[] (const key_type& key)
+			{
+				iterator					value_iterator;
+				ft::pair<iterator, bool>	insert_return;
+
+				insert_return = insert(ft::make_pair(key, mapped_type()));
+				value_iterator = insert_return.first;
+				return (value_iterator->second);
+			}
+    };
 }
 
 #endif
