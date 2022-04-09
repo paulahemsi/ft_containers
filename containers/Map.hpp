@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/08 21:52:45 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/08 22:04:06 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,6 +250,38 @@ namespace ft
 						node = btree_next(node);
 					else
 						return const_iterator(node);
+				}
+				return (const_iterator(end_node));
+			}
+			
+			iterator upper_bound (const key_type& key)
+			{
+				ft::btree<value_type> *end_node = btree_end(this->_root);
+				ft::btree<value_type> *node = btree_begin(this->_root);
+				value_type boundary_pair = ft::make_pair(key, mapped_type());
+
+				while(node != end_node)
+				{
+					if (_compare_value_type<value_type, key_compare>(&boundary_pair, node->item) == -1)
+						return iterator(node);
+					else
+						node = btree_next(node);
+				}
+				return (iterator(end_node));
+			}
+
+			const_iterator upper_bound (const key_type& key) const
+			{
+				ft::btree<value_type> *end_node = btree_end(this->_root);
+				ft::btree<value_type> *node = btree_begin(this->_root);
+				value_type boundary_pair = ft::make_pair(key, mapped_type());
+
+				while(node != end_node)
+				{
+					if (_compare_value_type<value_type, key_compare>(&boundary_pair, node->item) == -1)
+						return const_iterator(node);
+					else
+						node = btree_next(node);
 				}
 				return (const_iterator(end_node));
 			}
