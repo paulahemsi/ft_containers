@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    map_srcs.mk                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 18:39:11 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/08 17:45:16 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/08 21:54:50 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRC			+=	main.cpp\
 				insert.cpp\
 				erase.cpp\
 				access_operator.cpp\
-				size.cpp
+				size.cpp\
+				lower_bound.cpp\
 
 # HEADER	+=	
 
