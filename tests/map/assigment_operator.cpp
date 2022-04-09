@@ -30,7 +30,7 @@ void test_assigment_operator(void)
 	
 	print_instructions("second_map = first_map");
 	print_instructions("print second_map");
-	print_map(first_map);
+	print_map(second_map);
 
 	print_instructions("first_map = ft::map<char,int>();");
 	print_instructions("print first_map");

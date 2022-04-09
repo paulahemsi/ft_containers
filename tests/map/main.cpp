@@ -13,19 +13,6 @@
 #include "tests.hpp"
 #include <time.h>
 
-static void test_constructors(void)
-{
-	print_title("CONSTRUCTORS");
-	
-	ft::map<int, int>	my_map;
-	const ft::pair<const int, int>	my_pair =  ft::make_pair(1, 1);
-
-
-	my_map.insert(my_pair);
-	my_map.begin();
-	
-}
-
 static void	test_iterators(void)
 {
 	print_title("ITERATORS");
@@ -133,6 +120,7 @@ int main(void)
 	test_lower_bound();
 	test_upper_bound();
 	test_equal_range();
+	test_assigment_operator();
 
 	end = clock();
 	elapsed_time = end - start;
