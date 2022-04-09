@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/08 21:58:51 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/08 22:36:30 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,5 @@ int main(void)
 	test_size();
 	test_lower_bound();
 	test_upper_bound();
+	test_count();
 }
