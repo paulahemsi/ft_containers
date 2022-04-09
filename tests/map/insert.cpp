@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:01:21 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/06 22:07:26 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/09 18:26:02 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,19 @@ static void insert(void)
 		std::cout << " with a value of " << ret.first->second << '\n';
 	}
 	
-	// print_title("INSERT WITH HINT POSITION");
-	// // second insert function version (with hint position):
-	// ft::map<char,int>::iterator it = mymap.begin();
-	// mymap.insert (it, ft::pair<char,int>('b',300));  // max efficiency inserting
-	// mymap.insert (it, ft::pair<char,int>('c',400));  // no max efficiency inserting
+	print_title("INSERT WITH HINT POSITION");
+	// second insert function version (with hint position):
+	ft::map<char,int>::iterator it = mymap.begin();
+	mymap.insert (it, ft::pair<char,int>('b',300));  // max efficiency inserting
+	mymap.insert (it, ft::pair<char,int>('c',400));  // no max efficiency inserting
 	
 	print_title("INSERT WITH RANGE");
 	
 	// third insert function version (range insertion):
 	ft::map<char,int> anothermap;
-	anothermap.insert(mymap.begin(),mymap.find('z'));
-	// anothermap.insert(mymap.begin(),mymap.find('c'));
+	// anothermap.insert(mymap.begin(),mymap.find('z'));
+	anothermap.insert(mymap.begin(),mymap.find('c'));
 	
-	ft::map<char,int>::iterator it;
 	// showing contents:
 	std::cout << "mymap contains:\n";
 	for (it=mymap.begin(); it!=mymap.end(); ++it)

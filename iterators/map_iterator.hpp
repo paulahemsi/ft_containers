@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:24:59 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/07 22:35:51 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/09 18:10:21 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ namespace ft {
 			{
 				this->_node_pointer = right_hand_side._node_pointer;
 				return *this;
+			}
+
+			node_pointer get_node(void)
+			{
+				return (this->_node_pointer);
 			}
 
 			//relational operators overload

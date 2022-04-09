@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/09 17:47:36 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/09 18:32:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@
 
 template<class T, class T2>
 int	_compare_value_type(const T *pair1, const T *pair2)
+{
+	T2 _compare;
+	if (pair1->first == pair2->first)
+		return (0);
+	if (_compare(pair1->first, pair2->first))
+		return (-1);
+	return (1);
+}
+
+template<class T, class T2>
+int	_compare_value_type(T *pair1, const T *pair2)
 {
 	T2 _compare;
 	if (pair1->first == pair2->first)
@@ -168,7 +179,14 @@ namespace ft
 				return (ft::make_pair(it, true));
 			}
 
-			iterator insert (iterator position, const value_type& val);
+			iterator insert (iterator position, const value_type& val)
+			{
+				ft::btree<value_type> * position_node = position.get_node();
+				ft::btree<value_type> ** position_node_address = &position_node;
+				if (_compare_value_type<value_type, key_compare>(&(*position), &val) == -1)
+					return (iterator(btree_insert_data(position_node_address, val, &_compare_value_type<value_type, Compare>)));
+				return (this->insert(val).first);
+			}
 
 			template <class InputIterator>
 			void insert (InputIterator first, InputIterator last)
