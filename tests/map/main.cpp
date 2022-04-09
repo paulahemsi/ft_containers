@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/09 17:33:41 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/09 17:46:03 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,17 @@ static void	test_iterators(void)
 	print_subheading("bidirectional");
 	ft::map<int, int>::iterator it;
 
-	for (it = map.begin(); it != map.end(); ++it) {
- 	   std::cout << it->first << ", " << it->second << '\n';
+	for (it = map.begin(); it != map.end(); ++it)
+	{
+		std::cout << it->first << ", " << it->second << '\n';
 	}
 
 	print_subheading("reverse");
 	ft::map<int, int>::reverse_iterator	reverse_it;
 	
-	for (reverse_it = map.rbegin(); reverse_it != map.rend(); ++reverse_it) {
- 	std::cout << reverse_it->first << ", " << reverse_it->second << '\n';
+	for (reverse_it = map.rbegin(); reverse_it != map.rend(); ++reverse_it)
+	{
+		std::cout << reverse_it->first << ", " << reverse_it->second << '\n';
 	}
 	
 
@@ -127,6 +129,7 @@ int main(void)
 	test_erase();
 	test_access_element_operator();
 	test_size();
+	test_count();
 	test_lower_bound();
 	test_upper_bound();
 	test_equal_range();
@@ -135,5 +138,6 @@ int main(void)
 	elapsed_time = end - start;
 	print_title(VERSION);
 	std::cout << "Test duration:" << static_cast<float>(elapsed_time) / CLOCKS_PER_SEC << std::endl;
-	test_count();
+
+	return (0);
 }

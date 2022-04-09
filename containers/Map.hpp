@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/09 17:33:28 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/09 17:47:36 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,14 +288,15 @@ namespace ft
 			{
 				return (ft::make_pair(this->lower_bound(key), this->upper_bound(key)));
 			}
-	};
+
 			size_type count (const key_type& key) const
 			{
 				if (btree_search_node<value_type>(_root, ft::make_pair(key, mapped_type()), &_compare_value_type<value_type, Compare>))
 					return (1);
 				return (0);
 			}
-    };
-}
+	};
+};
+
 
 #endif
