@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/08 17:48:15 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/08 19:02:34 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,68 @@ static void	test_iterators(void)
 	for (reverse_it = map.rbegin(); reverse_it != map.rend(); ++reverse_it) {
  	std::cout << reverse_it->first << ", " << reverse_it->second << '\n';
 	}
+	
+
+	// ft::map<int, int>::iterator test = map.begin();
+	// std::cout << "BEGIN: ";
+	// std::cout << test->first << std::endl;
+	// test--;
+	// std::cout << "--: ";
+	// std::cout << test->first << std::endl;
+	// test++;
+	// std::cout << "++: ";
+	// std::cout << test->first << std::endl;
+
+	// test = map.begin();
+	// std::cout << "BEGIN: ";
+	// std::cout << test->first << std::endl;
+	// test++;
+	// std::cout << "++: ";
+	// std::cout << test->first << std::endl;
+	// test--;
+	// std::cout << "--: ";
+	// std::cout << test->first << std::endl;
+
+	// ft::map<int, int>::iterator test_end = map.end();
+	// std::cout << "END: ";
+	// std::cout << test_end->first << std::endl;
+	// test_end--;
+	// std::cout << "--: ";
+	// std::cout << test_end->first << std::endl;
+	// test_end++;
+	// std::cout << "++: ";
+	// std::cout << test_end->first << std::endl;
+
+	// ft::map<int, int>::reverse_iterator test_rend = map.rend();
+	// std::cout << "REND: ";
+	// std::cout << test_rend->first << std::endl;
+	// test_rend--;
+	// std::cout << "--: ";
+	// std::cout << test_rend->first << std::endl;
+	// test_rend++;
+	// std::cout << "++: ";
+	// std::cout << test_rend->first << std::endl;
+	
+	// ft::map<int, int>::reverse_iterator test_rbegin = map.rbegin();
+	// std::cout << "RBEGIN: ";
+	// std::cout << test_rbegin->first << std::endl;
+	// test_rbegin--;
+	// std::cout << "--: ";
+	// std::cout << test_rbegin->first << std::endl;
+	// test_rbegin++;
+	// std::cout << "++: ";
+	// std::cout << test_rbegin->first << std::endl;
+	
+	// test_rbegin = map.rbegin();
+	// std::cout << "RBEGIN: ";
+	// std::cout << test_rbegin->first << std::endl;
+	// test_rbegin++;
+	// std::cout << "++: ";
+	// std::cout << test_rbegin->first << std::endl;
+	// test_rbegin--;
+	// std::cout << "--: ";
+	// std::cout << test_rbegin->first << std::endl;
+	
 }
 
 int main(void)
