@@ -6,7 +6,7 @@
 #    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 18:39:11 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/08 22:36:52 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/04/09 17:34:27 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC			+=	main.cpp\
 				size.cpp\
 				lower_bound.cpp\
 				upper_bound.cpp\
+				equal_range.cpp\
 				count.cpp
 
 # HEADER	+=	
