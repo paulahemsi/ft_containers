@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/08 22:04:06 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/08 22:08:29 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,15 +213,7 @@ namespace ft
 				value_iterator = insert_return.first;
 				return (value_iterator->second);
 			}
-// int	_compare_value_type(const T *pair1, const T *pair2)
-// {
-// 	T2 _compare;
-// 	if (pair1->first == pair2->first)
-// 		return (0);
-// 	if (_compare(pair1->first, pair2->first))
-// 		return (-1);
-// 	return (1);
-// }
+
 			iterator lower_bound (const key_type& key)
 			{
 				ft::btree<value_type> *end_node = btree_end(this->_root);
