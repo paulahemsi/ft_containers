@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/08 21:56:38 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/09 15:35:19 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void test_access_element_operator(void);
 void test_size(void);
 void test_lower_bound(void);
 void test_upper_bound(void);
+void test_equal_range(void);
 ft::map<int, int>		create_map_of_random_integers(int size, int seed);
 ft::map<float, float>	create_map_of_floats(int size);
 void print_found(ft::map<float, float>::const_iterator it, ft::map<float, float>::const_iterator end);
