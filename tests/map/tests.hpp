@@ -37,8 +37,19 @@ void test_lower_bound(void);
 void test_upper_bound(void);
 void test_equal_range(void);
 void test_count(void);
+void test_constructors(void);
+void test_assigment_operator(void);
 ft::map<int, int>		create_map_of_random_integers(int size, int seed);
 ft::map<float, float>	create_map_of_floats(int size);
 void print_found(ft::map<float, float>::const_iterator it, ft::map<float, float>::const_iterator end);
 
+template<class key, class value>
+void print_map( const ft::map<key, value> &map)
+{
+	typename ft::map<key, value>::const_iterator	it;
+
+	for (it = map.begin(); it != map.end(); ++it) {
+ 	   std::cout << it->first << ", " << it->second << '\n';
+	}
+}
 #endif

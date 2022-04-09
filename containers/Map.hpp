@@ -83,9 +83,20 @@ namespace ft
   			map (InputIterator first,
 			  	 InputIterator last,
        			 const key_compare& comp = key_compare(),
-       			 const allocator_type& alloc = allocator_type());
+				 const allocator_type& alloc = allocator_type()):
+			_size(0),
+			_compare(comp),
+			_allocator(alloc),
+			_root(NULL)
+			{
+				this->insert(first, last);
+			}
 			
-			map (const map& other)
+			map (const map& other):
+			_size(0),
+			_compare(other.key_comp()),
+			_allocator(other.get_allocator()),
+			_root(NULL)
 			{
 				*this = other;	
 			}
@@ -94,7 +105,16 @@ namespace ft
 			{
 				btree_delete_tree(this->_root);
 			}
-			
+
+			map& operator= (const map& other)
+			{
+				btree_delete_tree(this->_root);
+				this->_size = 0;
+				this->_root = NULL;
+				this->insert(other.begin(), other.end());
+				return (*this);
+			}
+
 			key_compare key_comp(void) const
 			{
 				return (_compare);
@@ -151,7 +171,11 @@ namespace ft
 			iterator insert (iterator position, const value_type& val);
 
 			template <class InputIterator>
-			void insert (InputIterator first, InputIterator last);
+			void insert (InputIterator first, InputIterator last)
+			{
+				while (first != last)
+					this->insert(*first++);
+			}
 
 			iterator find (const key_type& k)
 			{
