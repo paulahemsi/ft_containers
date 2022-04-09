@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/08 22:08:29 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/09 15:34:08 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,7 +277,18 @@ namespace ft
 				}
 				return (const_iterator(end_node));
 			}
-    };
+
+			//The function returns a pair, whose member pair::first is the lower bound of the range (the same as lower_bound), and pair::second is the upper bound (the same as upper_bound).
+			ft::pair<const_iterator,const_iterator> equal_range (const key_type& key) const
+			{
+				return (ft::make_pair(this->lower_bound(key), this->upper_bound(key)));
+			}
+
+			ft::pair<iterator,iterator> equal_range (const key_type& key)
+			{
+				return (ft::make_pair(this->lower_bound(key), this->upper_bound(key)));
+			}
+	};
 }
 
 #endif
