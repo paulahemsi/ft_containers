@@ -31,7 +31,9 @@ SRC			+=	main.cpp\
 				lower_bound.cpp\
 				upper_bound.cpp\
 				equal_range.cpp\
-				count.cpp
+				count.cpp\
+				constructors.cpp\
+				assigment_operator.cpp
 
 # HEADER	+=	
 
