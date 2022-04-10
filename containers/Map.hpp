@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/10 19:30:30 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/10 19:40:26 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,13 @@ namespace ft
 			bool _position_precedes_val(iterator position, const value_type& val)
 			{
 				return (this->upper_bound(val.first)-- == position);
+			}
+
+			value_type * _allocate_pair(const value_type& val)
+			{
+				value_type *new_pair = this->_allocator.allocate(1);
+				this->_allocator.construct(new_pair, val);
+				return (new_pair);
 			}
 			// int	_compare_value_type(const value_type *pair1, const value_type *pair2)
 			// {
@@ -175,9 +182,7 @@ namespace ft
 				iterator it = this->find(val.first);
 				if (it != this->end())
 					return (ft::make_pair(it, false));
-				value_type *new_pair = this->_allocator.allocate(1);
-				this->_allocator.construct(new_pair, val);
-				btree_insert_data(&_root, new_pair, &_compare_value_type<value_type, Compare>);
+				btree_insert_data(&_root, _allocate_pair(val), &_compare_value_type<value_type, Compare>);
 				it = this->find(new_pair->first);
 				this->_size++;
 				return (ft::make_pair(it, true));
@@ -185,18 +190,11 @@ namespace ft
 			
 			iterator insert (iterator position, const value_type& val)
 			{
-				value_type *new_pair = this->_allocator.allocate(1);
-				this->_allocator.construct(new_pair, val);
-				ft::btree<value_type> * position_node = position.get_node();
-				ft::btree<value_type> ** position_node_address = &position_node;
-				if (_position_precedes_val(position, val))
-				{
-					ft::btree<value_type> *inserted_node = btree_insert_data<value_type>(position_node_address, new_pair, &_compare_value_type<value_type, Compare>);
-					update_root(&(this->_root));
-					return (iterator(inserted_node));
-				}
-				ft::pair<iterator, bool> return_it = this->insert(val);
-				return (return_it.first);
+				if (!_position_precedes_val(position, val))
+					return (this->insert(val).first);
+				ft::btree<value_type> *inserted_node = btree_insert_data<value_type>(&(position.get_node()), _allocate_pair(val), &_compare_value_type<value_type, Compare>);
+				update_root(&(this->_root));
+				return (iterator(inserted_node));
 			}
 
 			template <class InputIterator>
