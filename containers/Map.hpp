@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/09 18:32:01 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/10 11:37:21 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,10 +181,11 @@ namespace ft
 
 			iterator insert (iterator position, const value_type& val)
 			{
+				value_type *new_pair = this->_allocator.allocate(1);
 				ft::btree<value_type> * position_node = position.get_node();
 				ft::btree<value_type> ** position_node_address = &position_node;
 				if (_compare_value_type<value_type, key_compare>(&(*position), &val) == -1)
-					return (iterator(btree_insert_data(position_node_address, val, &_compare_value_type<value_type, Compare>)));
+					return (iterator(btree_insert_data<value_type>(position_node_address, new_pair, &_compare_value_type<value_type, Compare>)));
 				return (this->insert(val).first);
 			}
 
