@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/10 19:48:41 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/10 20:03:32 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,7 @@ namespace ft
 				if (it != this->end())
 					return (ft::make_pair(it, false));
 				btree_insert_data(&_root, _allocate_pair(val), &_compare_value_type<value_type, Compare>);
-				it = this->find(new_pair->first);
+				it = this->find(val.first);
 				this->_size++;
 				return (ft::make_pair(it, true));
 			}
@@ -195,7 +195,8 @@ namespace ft
 					return (it);
 				if (!_position_precedes_val(position, val))
 					return (this->insert(val).first);
-				ft::btree<value_type> *inserted_node = btree_insert_data<value_type>(&(position.get_node()), _allocate_pair(val), &_compare_value_type<value_type, Compare>);
+				ft::btree<value_type> *position_node = position.get_node();
+				ft::btree<value_type> *inserted_node = btree_insert_data<value_type>(&position_node, _allocate_pair(val), &_compare_value_type<value_type, Compare>);
 				update_root(&(this->_root));
 				this->_size++;
 				return (iterator(inserted_node));
