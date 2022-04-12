@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/11 21:38:59 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/12 19:06:10 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,14 +130,12 @@ namespace ft
 			
 			~map (void)
 			{
-				btree_delete_tree(this->_root);
+				this->clear();
 			}
 
 			map& operator= (const map& other)
 			{
-				btree_delete_tree(this->_root);
-				this->_size = 0;
-				this->_root = NULL;
+				this->clear();
 				this->insert(other.begin(), other.end());
 				return (*this);
 			}
@@ -258,15 +256,18 @@ namespace ft
 
 			void erase (iterator first, iterator last)
 			{
-				iterator temp;
-				key_type next_key;
+				iterator	temp;
+				value_type	*next_item;
 
 				while (first != last)
 				{
 					temp = first;
-					next_key = (++temp)->first;
+					next_item = &(*(++temp));
 					this->erase(first);
-					first = find(next_key);
+					if (next_item)
+						first = find(next_item->first);
+					else
+						first = last;
 				}
 			}
 
@@ -367,6 +368,12 @@ namespace ft
 			value_compare	value_comp(void) const
 			{
 				return (value_compare(_compare));
+			}
+
+			void clear(void)
+			{
+				this->erase(this->begin(), this->end());
+				this->_root = NULL;
 			}
 	};
 };
