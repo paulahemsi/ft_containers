@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/10 20:14:06 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/12 19:06:10 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,6 @@
 
 template<class T, class T2>
 int	_compare_value_type(const T *pair1, const T *pair2)
-{
-	T2 _compare;
-	if (pair1->first == pair2->first)
-		return (0);
-	if (_compare(pair1->first, pair2->first))
-		return (-1);
-	return (1);
-}
-
-template<class T, class T2>
-int	_compare_value_type(T *pair1, const T *pair2)
 {
 	T2 _compare;
 	if (pair1->first == pair2->first)
@@ -66,7 +55,23 @@ namespace ft
             typedef ft::map_iterator<value_type>						const_iterator;
             typedef ft::reverse_iterator<iterator>						reverse_iterator;
             typedef ft::reverse_iterator<const_iterator>				const_reverse_iterator;
-        
+
+			class value_compare
+			{   // in C++98, it is required to inherit binary_function<value_type,value_type,bool>
+				friend class map;
+
+				protected:
+				Compare comp;
+				value_compare (Compare c) : comp(c) {}  // constructed with map's comparison object
+
+				public:
+
+				bool operator() (const value_type& x, const value_type& y) const
+				{
+					return comp(x.first, y.first);
+				}
+			};
+
 		private:
 			size_type				_size;
 			key_compare				_compare;
@@ -125,14 +130,12 @@ namespace ft
 			
 			~map (void)
 			{
-				btree_delete_tree(this->_root);
+				this->clear();
 			}
 
 			map& operator= (const map& other)
 			{
-				btree_delete_tree(this->_root);
-				this->_size = 0;
-				this->_root = NULL;
+				this->clear();
 				this->insert(other.begin(), other.end());
 				return (*this);
 			}
@@ -253,15 +256,18 @@ namespace ft
 
 			void erase (iterator first, iterator last)
 			{
-				iterator temp;
-				key_type next_key;
+				iterator	temp;
+				value_type	*next_item;
 
 				while (first != last)
 				{
 					temp = first;
-					next_key = (++temp)->first;
+					next_item = &(*(++temp));
 					this->erase(first);
-					first = find(next_key);
+					if (next_item)
+						first = find(next_item->first);
+					else
+						first = last;
 				}
 			}
 
@@ -357,6 +363,17 @@ namespace ft
 				if (btree_search_node<value_type>(_root, ft::make_pair(key, mapped_type()), &_compare_value_type<value_type, Compare>))
 					return (1);
 				return (0);
+			}
+
+			value_compare	value_comp(void) const
+			{
+				return (value_compare(_compare));
+			}
+
+			void clear(void)
+			{
+				this->erase(this->begin(), this->end());
+				this->_root = NULL;
 			}
 	};
 };

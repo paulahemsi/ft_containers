@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    map_srcs.mk                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 18:39:11 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/11 19:40:14 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/04/11 21:34:41 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRC			+=	main.cpp\
 				count.cpp\
 				constructors.cpp\
 				assigment_operator.cpp\
-				empty.cpp
+				empty.cpp\
+				value_comp.cpp
 
 # HEADER	+=	
 

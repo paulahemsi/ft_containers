@@ -9,13 +9,11 @@ const T *btree_search_item(ft::btree<T> *root, const T data_ref, int (*compare)(
 {
 	if (!root || is_nil(root))
 		return (NULL);
-	int compare_data_ref_and_item = compare(&data_ref, root->item);
-	if (compare_data_ref_and_item == 1)
-		return (btree_search_item<T>(root->right, data_ref, compare));
-	else if (compare_data_ref_and_item == -1)
-		return (btree_search_item<T>(root->left, data_ref, compare));
-	else
+	if (data_ref.first == root->item->first)
 		return (root->item);
+	if (compare(&data_ref, root->item) == 1)
+		return (btree_search_item<T>(root->right, data_ref, compare));
+	return (btree_search_item<T>(root->left, data_ref, compare));
 }
 
 template<class T>
@@ -23,13 +21,11 @@ ft::btree<T> *btree_search_node(ft::btree<T> *root, const T data_ref, int (*comp
 {
 	if (!root || is_nil(root))
 		return (NULL);
-	int compare_data_ref_and_item = compare(&data_ref, root->item);
-	if (compare_data_ref_and_item == 1)
-		return (btree_search_node<T>(root->right, data_ref, compare));
-	else if (compare_data_ref_and_item == -1)
-		return (btree_search_node<T>(root->left, data_ref, compare));
-	else
+	if (data_ref.first == root->item->first)
 		return (root);
+	if (compare(&data_ref, root->item) == 1)
+		return (btree_search_node<T>(root->right, data_ref, compare));
+	return (btree_search_node<T>(root->left, data_ref, compare));
 }
 
 #endif
