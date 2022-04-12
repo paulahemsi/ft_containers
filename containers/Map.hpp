@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/11 21:12:36 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/11 21:38:59 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,6 @@
 
 template<class T, class T2>
 int	_compare_value_type(const T *pair1, const T *pair2)
-{
-	T2 _compare;
-	if (pair1->first == pair2->first)
-		return (0);
-	if (_compare(pair1->first, pair2->first))
-		return (-1);
-	return (1);
-}
-
-template<class T, class T2>
-int	_compare_value_type(T *pair1, const T *pair2)
 {
 	T2 _compare;
 	if (pair1->first == pair2->first)
@@ -205,7 +194,7 @@ namespace ft
 				iterator it = this->find(val.first);
 				if (it != this->end())
 					return (ft::make_pair(it, false));
-				btree_insert_data(&_root, _allocate_pair(val), value_compare);
+				btree_insert_data(&_root, _allocate_pair(val), &_compare_value_type<value_type, Compare>);
 				it = this->find(val.first);
 				this->_size++;
 				return (ft::make_pair(it, true));
@@ -373,6 +362,11 @@ namespace ft
 				if (btree_search_node<value_type>(_root, ft::make_pair(key, mapped_type()), &_compare_value_type<value_type, Compare>))
 					return (1);
 				return (0);
+			}
+
+			value_compare	value_comp(void) const
+			{
+				return (value_compare(_compare));
 			}
 	};
 };

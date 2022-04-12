@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/10 20:14:47 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/11 21:35:24 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int main(void)
 	test_equal_range();
 	test_assigment_operator();
 	test_empty();
+	test_value_comp();
 
 	end = clock();
 	elapsed_time = end - start;
