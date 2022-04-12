@@ -29,6 +29,7 @@ This project is about implementing the various container types of the C++ standa
 * [Red-black tree](#Red-black_tree)
     *[Sentinel node](#Sentinel_node)
 * [Value type C++98](#Value_type_C++98)
+* [Allocator Rebind](#Allocator_Rebind)
 
 # Vector
 
@@ -820,3 +821,48 @@ These member types are obtained via publicly inheriting std::binary_function<val
 |(constructor) | constructs a new value_compare object (protected member function)|
 |operator() | compares two values of type value_type (public member function)|
 
+# Allocator_Rebind
+
+From [this](https://stackoverflow.com/questions/14148756/what-does-template-rebind-do) stackoverflow thread:
+
+> rebind is defined as a structure member of the allocator class; this structure defines a member other that is defined as an instance of the allocator specialized for a different argument type (the other member defines an allocator class that can creates a different type of objects)
+
+```cpp
+ template<typename _Tp>
+    class new_allocator
+    {
+    public:
+      ...
+      template<typename _Tp1>
+        struct rebind
+        { typedef new_allocator<_Tp1> other; };
+```
+
+```cpp
+typedef typename _Alloc::template rebind<_Ty>::other _Alty;
+```
+
+The _Alloc template is used to obtain objects of some type. The container may have an internal need to allocate objects of a different type. For example, when you have a std::list<T, A>, the allocator A is meant to allocate objects of type T but the std::list<T, A> actually needs to allocate objects of some node type. Calling the node type _Ty, the std::list<T, A> needs to get hold of an allocator for _Ty objects which is using the allocation mechanism provided by A. Using
+
+```cpp
+typename _A::template rebind<_Ty>::other
+```
+
+specifies the corresponding type. Now, there are a few syntactic annoyances in this declaration:
+
+Since rebind is a member template of _A and _A is a template argument, the rebind becomes a dependent name. To indicate that a dependent name is a template, it needs to be prefixed by template. Without the template keyword the < would be considered to be the less-than operator.
+The name other also depends on a template argument, i.e., it is also a dependent name. To indicate that a dependent name is a type, the typename keyword is needed.
+
+---
+
+For example, given an allocator object al of type A, you can allocate an object of type _Other with the expression:
+
+```cpp
+A::rebind<Other>::other(al).allocate(1, (Other *)0)
+```
+
+Or, you can name its pointer type by writing the type:
+
+```cpp
+A::rebind<Other>::other::pointer
+```
