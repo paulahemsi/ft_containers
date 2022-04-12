@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/10 20:14:06 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/11 21:12:36 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,23 @@ namespace ft
             typedef ft::map_iterator<value_type>						const_iterator;
             typedef ft::reverse_iterator<iterator>						reverse_iterator;
             typedef ft::reverse_iterator<const_iterator>				const_reverse_iterator;
-        
+
+			class value_compare
+			{   // in C++98, it is required to inherit binary_function<value_type,value_type,bool>
+				friend class map;
+
+				protected:
+				Compare comp;
+				value_compare (Compare c) : comp(c) {}  // constructed with map's comparison object
+
+				public:
+
+				bool operator() (const value_type& x, const value_type& y) const
+				{
+					return comp(x.first, y.first);
+				}
+			};
+
 		private:
 			size_type				_size;
 			key_compare				_compare;
@@ -189,7 +205,7 @@ namespace ft
 				iterator it = this->find(val.first);
 				if (it != this->end())
 					return (ft::make_pair(it, false));
-				btree_insert_data(&_root, _allocate_pair(val), &_compare_value_type<value_type, Compare>);
+				btree_insert_data(&_root, _allocate_pair(val), value_compare);
 				it = this->find(val.first);
 				this->_size++;
 				return (ft::make_pair(it, true));
