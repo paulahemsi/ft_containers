@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/12 21:08:38 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/12 21:27:29 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -382,6 +382,21 @@ namespace ft
 				this->erase(this->begin(), this->end());
 				this->_root = NULL;
 			}
+
+			void swap (map& other)
+			{
+				ft::btree<value_type>	*root_tmp;
+				size_t					size_tmp;
+
+				root_tmp = other._root;
+				other._root = this->_root;
+				this->_root = root_tmp;
+
+				size_tmp = other._size;
+				other._size = this->_size;
+				this->_size = size_tmp;
+			}
+
 	};
 };
 
