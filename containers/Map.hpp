@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/12 19:06:10 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/12 21:08:38 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,29 @@ int	_compare_value_type(const T *pair1, const T *pair2)
 
 namespace ft
 {
-    template<class Key,
-             class T,
-             class Compare = std::less<Key>,
-             class Alloc = std::allocator<ft::pair<const Key,T> > >
-    class map
-    {
-        public:
-			typedef Key 											    key_type;
-			typedef T												    mapped_type;
-			typedef ft::pair<const key_type, mapped_type>	            value_type;
-            typedef std::size_t                                         size_type;
-            typedef std::ptrdiff_t                                      difference_type;
-            typedef Compare                                             key_compare;
-            typedef Alloc												allocator_type;
-			typedef typename allocator_type::reference					reference;
-			typedef typename allocator_type::const_reference			const_reference;
-            typedef typename Alloc::pointer								pointer;
-            typedef typename Alloc::const_pointer						const_pointer;
-            typedef ft::map_iterator<value_type>						iterator;
-            typedef ft::map_iterator<value_type>						const_iterator;
-            typedef ft::reverse_iterator<iterator>						reverse_iterator;
-            typedef ft::reverse_iterator<const_iterator>				const_reverse_iterator;
+	template<class Key,
+			class T,
+			class Compare = std::less<Key>,
+			class Alloc = std::allocator<ft::pair<const Key,T> > >
+	class map
+	{
+		public:
+			typedef Key 																key_type;
+			typedef T																	mapped_type;
+			typedef ft::pair<const key_type, mapped_type>								value_type;
+			typedef std::size_t															size_type;
+			typedef std::ptrdiff_t														difference_type;
+			typedef Compare																key_compare;
+			typedef Alloc																allocator_type;
+			typedef typename allocator_type::reference									reference;
+			typedef typename allocator_type::const_reference							const_reference;
+			typedef typename Alloc::pointer												pointer;
+			typedef typename Alloc::const_pointer										const_pointer;
+			typedef ft::map_iterator<value_type>										iterator;
+			typedef ft::map_iterator<value_type>										const_iterator;
+			typedef ft::reverse_iterator<iterator>										reverse_iterator;
+			typedef ft::reverse_iterator<const_iterator>								const_reverse_iterator;
+			typedef typename Alloc::template rebind< ft::btree<value_type> >::other		node_allocator_type;
 
 			class value_compare
 			{   // in C++98, it is required to inherit binary_function<value_type,value_type,bool>
@@ -76,6 +77,7 @@ namespace ft
 			size_type				_size;
 			key_compare				_compare;
 			allocator_type			_allocator;
+			allocator_type			_node_allocator;
 			ft::btree<value_type>	*_root;
 
 			bool _position_precedes_val(iterator position, const value_type& val)
@@ -368,6 +370,11 @@ namespace ft
 			value_compare	value_comp(void) const
 			{
 				return (value_compare(_compare));
+			}
+
+			size_type max_size(void) const
+			{
+				return (_node_allocator.max_size());
 			}
 
 			void clear(void)
