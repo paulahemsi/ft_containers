@@ -70,15 +70,11 @@ void print_previous(const ft::btree<T> *root)
 		std::cout << "sorry, there's no previous :( " << std::endl;
 }
 
-int	compare_pair(const ft::pair<int, int> *pair1, const ft::pair<int, int> *pair2)
+template<class T>
+bool	compare_pair(const T *pair1, const T *pair2)
 {
 	std::less<int> compare;
-
-	if (pair1->first == pair2->first)
-		return (0);
-	if (compare(pair1->first, pair2->first))
-		return (-1);
-	return (1);
+	return (compare(pair1->first, pair2->first));
 }
 
 int main(void)

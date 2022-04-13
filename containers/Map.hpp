@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/13 19:28:02 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:31:46 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,11 @@
 #include "map_iterator.hpp"
 #include "reverse_iterator.hpp"
 
-template<class T, class T2>
-int	_compare_value_type(const T *pair1, const T *pair2)
+template<class T, class Compare>
+bool	_compare_value_type(const T *pair1, const T *pair2)
 {
-	T2 _compare;
-	if (pair1->first == pair2->first)
-		return (0);
-	if (_compare(pair1->first, pair2->first))
-		return (-1);
-	return (1);
+	Compare _compare;
+	return (_compare(pair1->first, pair2->first));
 }
 
 namespace ft
