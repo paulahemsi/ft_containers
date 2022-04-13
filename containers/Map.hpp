@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/12 21:27:29 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:28:02 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,7 +293,7 @@ namespace ft
 
 				while(node != end_node)
 				{
-					if (_compare_value_type<value_type, key_compare>(&boundary_pair, node->item) == 1)
+					if (this->value_comp()(*node->item, boundary_pair))
 						node = btree_next(node);
 					else
 						return iterator(node);
@@ -309,7 +309,7 @@ namespace ft
 
 				while(node != end_node)
 				{
-					if (_compare_value_type<value_type, key_compare>(&boundary_pair, node->item) == 1)
+					if (this->value_comp()(*node->item, boundary_pair))
 						node = btree_next(node);
 					else
 						return const_iterator(node);
@@ -325,7 +325,7 @@ namespace ft
 
 				while(node != end_node)
 				{
-					if (_compare_value_type<value_type, key_compare>(&boundary_pair, node->item) == -1)
+					if (this->value_comp()(boundary_pair, *node->item))
 						return iterator(node);
 					else
 						node = btree_next(node);
@@ -341,7 +341,7 @@ namespace ft
 
 				while(node != end_node)
 				{
-					if (_compare_value_type<value_type, key_compare>(&boundary_pair, node->item) == -1)
+					if (this->value_comp()(boundary_pair, *node->item))
 						return const_iterator(node);
 					else
 						node = btree_next(node);
