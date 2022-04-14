@@ -50,8 +50,8 @@ void btree_delete_recursive(ft::btree<T> *node_to_delete)
 	return (btree_delete_recursive(node_to_replace));
 }
 
-template <class T>
-T * btree_delete(ft::btree<T> **root, T data_ref, bool (*compare)(const T*, const T*))
+template <class T, class Compare>
+T * btree_delete(ft::btree<T> **root, T data_ref, Compare compare)
 {
 	ft::btree<T> * node_to_delete = btree_search_node<T>(*root, data_ref, compare);
 	if (!node_to_delete)
