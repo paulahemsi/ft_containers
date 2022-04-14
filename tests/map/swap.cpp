@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 19:55:56 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/13 21:00:08 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/13 21:06:21 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,29 @@ void	test_swap(void)
 		bar['b']=22;
 		bar['c']=33;
 
+		std::cout << "foo -> size " << foo.size() << " -> contains:" << std::endl;
+		print_map(foo);
+		std::cout << "bar -> size " << bar.size() << " -> contains:" << std::endl;
+		print_map(bar);
+
+		ft::map<char, int>::iterator it1 = foo.begin()++;
+		ft::map<char, int>::iterator it2 = bar.begin()++;
+
+		std::cout << "it1: " << it1->first << ", " << it1->second << std::endl;
+		std::cout << "it2: " << it2->first << ", " << it2->second << std::endl;
+		std::cout << std::endl;
+
+		print_instructions("swap(foo,bar);");
+
 		swap(foo,bar);
 
-		std::cout << "foo contains:\n";
-		for (ft::map<char,int>::iterator it=foo.begin(); it!=foo.end(); ++it)
-		std::cout << it->first << " => " << it->second << '\n';
-
-		std::cout << "bar contains:\n";
-		for (ft::map<char,int>::iterator it=bar.begin(); it!=bar.end(); ++it)
-		std::cout << it->first << " => " << it->second << '\n';
-
+		std::cout << "foo -> size " << foo.size() << " -> contains:" << std::endl;
+		print_map(foo);
+		std::cout << "bar -> size " << bar.size() << " -> contains:" << std::endl;
+		print_map(bar);
+		
+		std::cout << "it1: " << it1->first << ", " << it1->second << std::endl;
+		std::cout << "it2: " << it2->first << ", " << it2->second << std::endl;
+		std::cout << std::endl;
 	}
 }
