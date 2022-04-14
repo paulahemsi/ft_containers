@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/13 20:57:37 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/13 21:03:30 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -397,11 +397,12 @@ namespace ft
 				this->_size = size_tmp;
 			}
 	};
+
 	template <class Key, class T, class Compare, class Alloc>
 	void swap (map<Key,T,Compare,Alloc>& x, map<Key,T,Compare,Alloc>& y)
-		{
-			x.swap(y);
-		}
+	{
+		x.swap(y);
+	}
 };
 
 
