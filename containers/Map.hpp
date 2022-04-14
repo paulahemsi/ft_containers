@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/12 21:27:29 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/13 21:11:43 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,6 @@
 #include "pair.tpp"
 #include "map_iterator.hpp"
 #include "reverse_iterator.hpp"
-
-template<class T, class T2>
-int	_compare_value_type(const T *pair1, const T *pair2)
-{
-	T2 _compare;
-	if (pair1->first == pair2->first)
-		return (0);
-	if (_compare(pair1->first, pair2->first))
-		return (-1);
-	return (1);
-}
 
 namespace ft
 {
@@ -91,14 +80,6 @@ namespace ft
 				this->_allocator.construct(new_pair, val);
 				return (new_pair);
 			}
-			// int	_compare_value_type(const value_type *pair1, const value_type *pair2)
-			// {
-			// 	if (pair1->first == pair2->first)
-			// 		return (0);
-			// 	if (_compare(pair1->first, pair2->first))
-			// 		return (-1);
-			// 	return (1);
-			// }
 
 		public:
             explicit map (const key_compare& comp = key_compare(),
@@ -194,7 +175,7 @@ namespace ft
 				iterator it = this->find(val.first);
 				if (it != this->end())
 					return (ft::make_pair(it, false));
-				btree_insert_data(&_root, _allocate_pair(val), &_compare_value_type<value_type, Compare>);
+				btree_insert_data(&_root, _allocate_pair(val), this->_compare);
 				it = this->find(val.first);
 				this->_size++;
 				return (ft::make_pair(it, true));
@@ -208,7 +189,7 @@ namespace ft
 				if (!_position_precedes_val(position, val))
 					return (this->insert(val).first);
 				ft::btree<value_type> *position_node = position.get_node();
-				ft::btree<value_type> *inserted_node = btree_insert_data<value_type>(&position_node, _allocate_pair(val), &_compare_value_type<value_type, Compare>);
+				ft::btree<value_type> *inserted_node = btree_insert_data<value_type>(&position_node, _allocate_pair(val), this->_compare);
 				update_root(&(this->_root));
 				this->_size++;
 				return (iterator(inserted_node));
@@ -224,7 +205,7 @@ namespace ft
 			iterator find (const key_type& k)
 			{
 				ft::btree<value_type> *k_node;
-				k_node = btree_search_node<value_type>(_root, ft::make_pair(k, mapped_type()), &_compare_value_type<value_type, Compare>);
+				k_node = btree_search_node<value_type>(_root, ft::make_pair(k, mapped_type()), this->_compare);
 				if (k_node)
 					return iterator(k_node);
 				return iterator(btree_end(_root));
@@ -233,7 +214,7 @@ namespace ft
 			const_iterator find (const key_type& k) const
 			{
 				ft::btree<value_type> *k_node;
-				k_node = btree_search_node(_root, ft::make_pair(k, mapped_type()), &_compare_value_type<value_type, Compare>);
+				k_node = btree_search_node(_root, ft::make_pair(k, mapped_type()), this->_compare);
 				if (k_node)
 					return const_iterator(k_node);
 				return const_iterator(btree_end(_root));
@@ -241,14 +222,14 @@ namespace ft
 
 			void erase (iterator position)
 			{
-				value_type *pair_erased = btree_delete<value_type>(&_root, *position, &_compare_value_type<value_type, Compare>);
+				value_type *pair_erased = btree_delete<value_type>(&_root, *position, this->_compare);
 				this->_allocator.deallocate(pair_erased, 1);
 				this->_size--;
 			}
 
 			size_type erase (const key_type& key)
 			{
-				value_type *pair_erased = btree_delete<value_type>(&_root, ft::make_pair(key, mapped_type()), &_compare_value_type<value_type, Compare>);
+				value_type *pair_erased = btree_delete<value_type>(&_root, ft::make_pair(key, mapped_type()), this->_compare);
 				if (!pair_erased)
 					return (0);
 				this->_allocator.deallocate(pair_erased, 1);
@@ -293,7 +274,7 @@ namespace ft
 
 				while(node != end_node)
 				{
-					if (_compare_value_type<value_type, key_compare>(&boundary_pair, node->item) == 1)
+					if (this->value_comp()(*node->item, boundary_pair))
 						node = btree_next(node);
 					else
 						return iterator(node);
@@ -309,7 +290,7 @@ namespace ft
 
 				while(node != end_node)
 				{
-					if (_compare_value_type<value_type, key_compare>(&boundary_pair, node->item) == 1)
+					if (this->value_comp()(*node->item, boundary_pair))
 						node = btree_next(node);
 					else
 						return const_iterator(node);
@@ -325,7 +306,7 @@ namespace ft
 
 				while(node != end_node)
 				{
-					if (_compare_value_type<value_type, key_compare>(&boundary_pair, node->item) == -1)
+					if (this->value_comp()(boundary_pair, *node->item))
 						return iterator(node);
 					else
 						node = btree_next(node);
@@ -341,7 +322,7 @@ namespace ft
 
 				while(node != end_node)
 				{
-					if (_compare_value_type<value_type, key_compare>(&boundary_pair, node->item) == -1)
+					if (this->value_comp()(boundary_pair, *node->item))
 						return const_iterator(node);
 					else
 						node = btree_next(node);
@@ -362,7 +343,7 @@ namespace ft
 
 			size_type count (const key_type& key) const
 			{
-				if (btree_search_node<value_type>(_root, ft::make_pair(key, mapped_type()), &_compare_value_type<value_type, Compare>))
+				if (btree_search_node<value_type>(_root, ft::make_pair(key, mapped_type()), this->_compare))
 					return (1);
 				return (0);
 			}

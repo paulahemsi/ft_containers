@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   equal_range.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:34:45 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/09 16:02:37 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/13 19:22:06 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void test_equal_range(void)
 
 	ft::map<char,int> mymap;
 
-	print_instructions("mymap['a']=10;\nmymap['b']=20;\nmymap['c']=30;);\n");
+	print_instructions("mymap['a'] = 10;\nmymap['b'] = 20;\nmymap['c'] = 30;\n");
 
-	mymap['a']=10;
-	mymap['b']=20;
-	mymap['c']=30;
+	mymap['a'] = 10;
+	mymap['b'] = 20;
+	mymap['c'] = 30;
 
 	ft::pair<ft::map<char,int>::iterator,ft::map<char,int>::iterator> ret;
 	ret = mymap.equal_range('b');
