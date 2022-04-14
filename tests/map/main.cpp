@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/12 21:27:59 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/14 18:40:13 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ int main(void)
 	test_value_comp();
 	max_size();
 	test_swap();
+	test_equality_operator();
 
 	end = clock();
 	elapsed_time = end - start;

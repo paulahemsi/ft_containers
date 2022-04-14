@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/13 21:11:43 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/14 20:50:53 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "pair.tpp"
 #include "map_iterator.hpp"
 #include "reverse_iterator.hpp"
+#include "lexicographical_compare.tpp"
 
 namespace ft
 {
@@ -383,6 +384,22 @@ namespace ft
 	void swap (map<Key,T,Compare,Alloc>& x, map<Key,T,Compare,Alloc>& y)
 	{
 		x.swap(y);
+	}
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool operator== (const map<Key, T, Compare, Alloc> &lhs,
+					 const map<Key, T, Compare, Alloc> &rhs)
+	{
+		if (lhs.size() != rhs.size())
+			return (false);
+		return (ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
+	}
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool operator!= (const map<Key, T, Compare, Alloc> &lhs,
+					 const map<Key, T, Compare, Alloc> &rhs)
+	{
+		return (!(lhs == rhs));
 	}
 };
 
