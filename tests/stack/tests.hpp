@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:40:17 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/15 11:53:38 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@
 void test_canonical_form(void);
 void test_size(void);
 void test_pop(void);
+void test_push(void);
 
 #endif

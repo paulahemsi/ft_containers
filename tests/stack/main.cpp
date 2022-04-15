@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:38:22 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/15 11:54:24 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(void)
 	test_canonical_form();
 	test_size();
 	test_pop();
+	test_push();
 
 	end = clock();
 	elapsed_time = end - start;
