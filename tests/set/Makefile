@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/15 15:13:44 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/15 15:14:11 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/15 15:27:24 by phemsi-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MK_DIR	:=	../mk/
 
 include $(MK_DIR)containers.mk
+include $(MK_DIR)rb_tree.mk
 include $(MK_DIR)set_srcs.mk
 
 NAME	:= ft.out
