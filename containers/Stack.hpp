@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:25:37 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 12:05:05 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/15 12:14:37 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ namespace ft
 			const_reference top(void) const
 			{
 				return (this->_container.back());
+			}
+			
+			bool empty() const
+			{
+				return (this->_container.empty());
 			}
 	};
 }
