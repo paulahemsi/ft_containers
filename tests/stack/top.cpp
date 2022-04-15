@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   top.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 12:01:19 by phemsi-a         ###   ########.fr       */
+/*   Created: 2022/04/15 12:00:23 by phemsi-a          #+#    #+#             */
+/*   Updated: 2022/04/15 12:11:24 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.hpp"
-#include <time.h>
 
-int main(void)
+void reportStackSize(const ft::stack<int>& s)
 {
-	clock_t start;
-	clock_t end;
-	clock_t elapsed_time;
+	std::cout << s.size() << " elements on stack\n";
+}
+ 
+void reportStackTop(const ft::stack<int>& s)
+{
+	std::cout << "Top element: " << s.top() << '\n';
+}
 
-	start = clock();
+void test_top(void)
+{
+	print_title("TOP");
 
-	std::cout.setf(std::ios::boolalpha);
+	ft::stack<int> s;
+	s.push(2);
+	s.push(6);
+	s.push(51);
 
-	test_canonical_form();
-	test_size();
-	test_pop();
-	test_push();
-	test_top();
+	reportStackSize(s);
+	reportStackTop(s);
 
-	end = clock();
-	elapsed_time = end - start;
-	print_title(VERSION);
-	std::cout << "Test duration:" << static_cast<float>(elapsed_time) / CLOCKS_PER_SEC << std::endl;
+	reportStackSize(s);
+	s.pop();
 
-	return (0);
+	reportStackSize(s);
+	reportStackTop(s);
 }
