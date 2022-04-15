@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:25:37 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:04:13 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/15 11:10:51 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,17 @@ namespace ft
 			typedef	Container::reference		reference
 			typedef	Container::const_reference	const_reference
 
-			explicit stack( const Container& cont = Container() );
+			explicit stack( const Container& cont = Container() ): _container(cont) {}
 
-			stack( const stack& other )
-			{
-				
+			stack( const stack& other ): _container(other._container) {}
+
+			~stack() {}
+
+			stack& operator=( const stack& other )
+			{ 
+				_container = other._container;
+				return (*this);
 			}
-
-			~stack();
-
-			stack& operator=( const stack& other );
 	};
 }
 
