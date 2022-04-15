@@ -73,7 +73,7 @@ void check_rules(ft::btree<T> *node)
 }
 
 template<class T, class Compare>
-ft::btree<T>* btree_insert_data_recursive(ft::btree<T> **root, ft::btree<T> *parent, T *item, Compare compare)
+void	btree_insert_data_recursive(ft::btree<T> **root, ft::btree<T> *parent, T *item, Compare compare)
 {
 	if (is_nil(*root))
 	{
@@ -81,10 +81,10 @@ ft::btree<T>* btree_insert_data_recursive(ft::btree<T> **root, ft::btree<T> *par
 		*root = btree_create_node(item);
 		(*root)->parent = parent;
 		check_rules(*root);
-		return (*root);
+		return ;
 	}
 	if (item->first == (*root)->item->first)
-		return (*root);
+		return ;
 	if (compare(item->first, (*root)->item->first))
 		return (btree_insert_data_recursive<T>(&(*root)->left, *root, item, compare));
 	return (btree_insert_data_recursive<T>(&(*root)->right, *root, item, compare));
@@ -99,22 +99,20 @@ void	update_root(ft::btree<T> **root)
 }
 
 template<class T, class Compare>
-ft::btree<T>* btree_insert_data(ft::btree<T> **root, T *item, Compare compare)
+void	btree_insert_data(ft::btree<T> **root, T *item, Compare compare)
 {
-	ft::btree<T>* inserted_node = NULL;
 	if (*root == NULL)
 	{
 		*root = btree_create_root(item);
-		return (*root);
+		return ;
 	}
 	if (item->first == (*root)->item->first)
-		return (*root);
+		return ;
 	if (compare(item->first, (*root)->item->first))
-		inserted_node = btree_insert_data_recursive<T>(&(*root)->left, *root, item, compare);
+		btree_insert_data_recursive<T>(&(*root)->left, *root, item, compare);
 	else
-		inserted_node = btree_insert_data_recursive<T>(&(*root)->right, *root, item, compare);
+		btree_insert_data_recursive<T>(&(*root)->right, *root, item, compare);
 	update_root(root);
-	return (inserted_node);
 }
 
 #endif
