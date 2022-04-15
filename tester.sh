@@ -26,6 +26,8 @@ elif [ ${ARG} == "map" ]; then
     DIR=./tests/map/
 elif [ ${ARG} == "stack" ]; then
     DIR=./tests/stack/
+elif [ ${ARG} == "set" ]; then
+    DIR=./tests/set/
 else
 	echo -e "\""$1"\" is not a valid argument."
     usage
