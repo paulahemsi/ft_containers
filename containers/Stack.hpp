@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:25:37 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:32:27 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/15 11:40:47 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ namespace ft
 			size_type size(void) const
 			{
 				return (this->_container.size());
+			}
+
+			void push (const value_type& val)
+			{
+				this->_container.push_back(val);
 			}
 	};
 }

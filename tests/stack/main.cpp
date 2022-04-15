@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:30:34 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/15 11:46:09 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main(void)
 
 	test_canonical_form();
 	test_size();
+	test_push();
 
 	end = clock();
 	elapsed_time = end - start;

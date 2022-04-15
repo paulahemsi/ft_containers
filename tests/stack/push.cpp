@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   size.cpp                                           :+:      :+:    :+:   */
+/*   push.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 11:10:30 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:41:51 by lfrasson         ###   ########.fr       */
+/*   Created: 2022/04/15 11:41:14 by lfrasson          #+#    #+#             */
+/*   Updated: 2022/04/15 11:48:27 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.hpp"
 
-void	test_size(void)
+void	test_push(void)
 {
-	print_title("SIZE");
+	print_title("PUSH");
 	
-	ft::stack<int>	my_stack;
-	
-    std::cout << "Initially, my_stack.size(): " << my_stack.size() << std::endl;
-	
-	for (int i = 0; i < 5; i++)
-		my_stack.push(i);
-    std::cout << "After adding elements, my_stack.size(): " << my_stack.size() << std::endl;
+	ft::stack<int> mystack;
 
-	// my_stack.pop();
-    // std::cout << "After pop an element, my_stack.size(): " << my_stack.size() << std::endl;
+	for (int i = 0; i < 5; ++i)
+		mystack.push(i);
+	
+	std::cout << "After adding elements, mystack.size(): " << mystack.size() << std::endl;	
+	std::cout << "Popping out elements...";
+	// while (!mystack.empty())
+	// {
+	// 	std::cout << ' ' << mystack.top();
+	// 	mystack.pop();
+	// }
+	// std::cout << std::endl;	
 }
