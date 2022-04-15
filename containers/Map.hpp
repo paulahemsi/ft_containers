@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/14 21:02:52 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/15 14:31:50 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,10 +190,11 @@ namespace ft
 				if (!_position_precedes_val(position, val))
 					return (this->insert(val).first);
 				ft::btree<value_type> *position_node = position.get_node();
-				ft::btree<value_type> *inserted_node = btree_insert_data<value_type>(&position_node, _allocate_pair(val), this->_compare);
+				btree_insert_data<value_type>(&position_node, _allocate_pair(val), this->_compare);
 				update_root(&(this->_root));
+				it = this->find(val.first);
 				this->_size++;
-				return (iterator(inserted_node));
+				return (it);
 			}
 
 			template <class InputIterator>
@@ -206,7 +207,7 @@ namespace ft
 			iterator find (const key_type& k)
 			{
 				ft::btree<value_type> *k_node;
-				k_node = btree_search_node<value_type>(_root, ft::make_pair(k, mapped_type()), this->_compare);
+				k_node = btree_search_node<value_type>(_root, ft::make_pair(k, mapped_type()), value_compare(this->_compare));
 				if (k_node)
 					return iterator(k_node);
 				return iterator(btree_end(_root));
@@ -215,7 +216,7 @@ namespace ft
 			const_iterator find (const key_type& k) const
 			{
 				ft::btree<value_type> *k_node;
-				k_node = btree_search_node(_root, ft::make_pair(k, mapped_type()), this->_compare);
+				k_node = btree_search_node(_root, ft::make_pair(k, mapped_type()), value_compare(this->_compare));
 				if (k_node)
 					return const_iterator(k_node);
 				return const_iterator(btree_end(_root));
@@ -223,14 +224,14 @@ namespace ft
 
 			void erase (iterator position)
 			{
-				value_type *pair_erased = btree_delete<value_type>(&_root, *position, this->_compare);
+				value_type *pair_erased = btree_delete<value_type>(&_root, *position, value_compare(this->_compare));
 				this->_allocator.deallocate(pair_erased, 1);
 				this->_size--;
 			}
 
 			size_type erase (const key_type& key)
 			{
-				value_type *pair_erased = btree_delete<value_type>(&_root, ft::make_pair(key, mapped_type()), this->_compare);
+				value_type *pair_erased = btree_delete<value_type>(&_root, ft::make_pair(key, mapped_type()), value_compare(this->_compare));
 				if (!pair_erased)
 					return (0);
 				this->_allocator.deallocate(pair_erased, 1);
@@ -344,7 +345,7 @@ namespace ft
 
 			size_type count (const key_type& key) const
 			{
-				if (btree_search_node<value_type>(_root, ft::make_pair(key, mapped_type()), this->_compare))
+				if (btree_search_node<value_type>(_root, ft::make_pair(key, mapped_type()), value_compare(this->_compare)))
 					return (1);
 				return (0);
 			}
