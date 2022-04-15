@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/14 21:03:39 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:05:37 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void max_size(void);
 void test_swap(void);
 void test_equality_operator(void);
 void test_iterators(void);
+void less_than_comparison(void);
 ft::map<int, int>		create_map_of_random_integers(int size, int seed);
 ft::map<float, float>	create_map_of_floats(int size);
 void print_found(ft::map<float, float>::const_iterator it, ft::map<float, float>::const_iterator end);

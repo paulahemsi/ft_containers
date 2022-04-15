@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   equal_range.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:34:45 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/13 19:22:06 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:47:10 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void test_equal_range(void)
 	print_title("int - int");
 
 	ft::pair<ft::map<int,int>::iterator,ft::map<int,int>::iterator> ret_int;
-	ft::map<int, int> map = create_map_of_random_integers(400, 1);
+	ft::map<int, int> map = create_map_of_random_integers(40000, 1);
 	ret_int = map.equal_range(977);
 
 	print_subheading("lower bound points to: ");
