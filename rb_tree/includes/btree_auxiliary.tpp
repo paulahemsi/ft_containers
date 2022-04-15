@@ -4,6 +4,16 @@
 
 #include "btree.tpp"
 
+template<class T, class Compare>
+bool	is_equal(const T &item1, const T &item2, Compare compare)
+{
+	if (compare(item1, item2))
+		return (false);
+	if (compare(item2, item1))
+		return (false);
+	return (true);
+}
+
 template <class T>
 bool is_nil(const ft::btree<T> *node)
 {

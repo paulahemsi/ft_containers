@@ -33,7 +33,7 @@
 original
 
 #vscode
-.vscode
+.vscode/
 
 #log
 logs/
