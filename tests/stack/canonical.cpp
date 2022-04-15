@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.hpp                                          :+:      :+:    :+:   */
+/*   canonical.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:14:40 by phemsi-a         ###   ########.fr       */
+/*   Created: 2022/04/15 11:13:58 by phemsi-a          #+#    #+#             */
+/*   Updated: 2022/04/15 11:18:05 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_HPP
-# define TESTS_HPP
+#include "tests.hpp"
+#include <deque>
 
-#include <iostream>
-#include "Stack.hpp"
-#include "auxiliary.hpp"
+void test_canonical_form(void)
+{
+	print_title("CANONICAL FORM");
 
-#ifdef STD_VERSION
-	#define VERSION "STD_VERSION"
-	#define ft std
-	#include <stack>
-#else
-	#define VERSION "FT_VERSION"
-	#include "pair.tpp"
-#endif
-
-void test_canonical_form(void);
-
-#endif
+	ft::stack<int> c1;
+	ft::stack<int> c2(c1);
+	ft::stack<int, std::deque<int> > c3;
+	ft::stack<int, std::deque<int> > c4;
+	c4 = c3;
+}
