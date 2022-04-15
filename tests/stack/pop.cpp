@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   pop.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:38:22 by phemsi-a         ###   ########.fr       */
+/*   Created: 2022/04/15 11:38:27 by phemsi-a          #+#    #+#             */
+/*   Updated: 2022/04/15 11:39:56 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.hpp"
-#include <time.h>
 
-int main(void)
+void test_pop(void)
 {
-	clock_t start;
-	clock_t end;
-	clock_t elapsed_time;
+	print_title("POP");
 
-	start = clock();
+	ft::stack<int> stack;
+	// stack.push(4);
+	// stack.push(5);
+	// stack.push(6);
+	// stack.push(7);
+	
+	// stack.pop();
+	// stack.pop();
+	// stack.pop();
+	// stack.pop();
 
-	std::cout.setf(std::ios::boolalpha);
-
-	test_canonical_form();
-	test_size();
-	test_pop();
-
-	end = clock();
-	elapsed_time = end - start;
-	print_title(VERSION);
-	std::cout << "Test duration:" << static_cast<float>(elapsed_time) / CLOCKS_PER_SEC << std::endl;
-
-	return (0);
 }
