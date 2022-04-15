@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:25:37 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 12:14:37 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/15 12:39:24 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,49 @@ namespace ft
 			{
 				return (this->_container.empty());
 			}
+
+			bool operator == (const value_type & other)
+			{
+				return (this->_container == other->_container);
+			}
+
+			bool operator < (const value_type & other)
+			{
+				return (this->_container < other->_container);
+			}
 	};
+	
+	template<class T, class Container > bool operator == (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs)
+	{
+		return (lhs == rhs);
+	} 
+	
+	template<class T, class Container > bool operator != (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs)
+	{
+		return (!(lhs == rhs));
+	}
+	
+	template<class T, class Container > bool operator < (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs)
+	{
+		return (lhs < rhs);
+	}
+	
+	template<class T, class Container > bool operator <= (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs)
+	{
+		return ((lhs < rhs) || (lhs == rhs));
+	}
+	
+	template<class T, class Container > bool operator > (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs)
+	{
+		if (lhs == rhs)
+			return (false);
+		return (!(lhs < rhs));
+	}
+	
+	template<class T, class Container > bool operator >= (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs)
+	{
+		return ((lhs > rhs) || (lhs == rhs));
+	}
 }
 
 #endif
