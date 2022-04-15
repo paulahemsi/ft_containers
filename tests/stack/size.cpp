@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   size.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:30:34 by lfrasson         ###   ########.fr       */
+/*   Created: 2022/04/15 11:10:30 by lfrasson          #+#    #+#             */
+/*   Updated: 2022/04/15 11:32:13 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.hpp"
-#include <time.h>
 
-int main(void)
+void	test_size(void)
 {
-	clock_t start;
-	clock_t end;
-	clock_t elapsed_time;
+	print_title("SIZE");
+	
+	ft::stack<int>	my_stack;
+	
+    std::cout << "Initially, my_stack.size(): " << my_stack.size() << std::endl;
+	
+	// for (int i = 0; i < 5; i++)
+	// 	my_stack.push(i);
+    // std::cout << "After adding elements, my_stack.size(): " << my_stack.size() << std::endl;
 
-	start = clock();
-
-	std::cout.setf(std::ios::boolalpha);
-
-	test_canonical_form();
-	test_size();
-
-	end = clock();
-	elapsed_time = end - start;
-	print_title(VERSION);
-	std::cout << "Test duration:" << static_cast<float>(elapsed_time) / CLOCKS_PER_SEC << std::endl;
-
-	return (0);
+	// my_stack.pop();
+    // std::cout << "After pop an element, my_stack.size(): " << my_stack.size() << std::endl;
 }

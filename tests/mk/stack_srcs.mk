@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    stack_srcs.mk                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 22:30:30 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/15 11:21:16 by phemsi-a         ###   ########.fr        #
+#    Updated: 2022/04/15 11:31:07 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ include $(MK_DIR)auxiliary.mk
 TEST_DIR	:=	./
 
 SRC			+=	main.cpp\
-				canonical.cpp
+				canonical.cpp\
+				size.cpp
 
 INCLUDES	+=	$(addprefix -I, $(TEST_DIR))
 
