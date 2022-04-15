@@ -70,10 +70,24 @@ void print_previous(const ft::btree<T> *root)
 		std::cout << "sorry, there's no previous :( " << std::endl;
 }
 
+template< class T>
+class value_compare
+{
+	friend class map;
+
+	public:
+	std::less<int> comp;
+	value_compare (void) : comp(std::less<int>()) {}
+
+	bool operator() (const T& x, const T& y) const
+	{
+		return comp(x.first, y.first);
+	}
+};
 
 int main(void)
 {
-	std::less<int> compare;
+	value_compare<ft::pair<int, int> > compare;
 	
 	ft::btree<ft::pair<int, int> > *root = NULL;
 	for (int i = 10; i < 20; i++)
