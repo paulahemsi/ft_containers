@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 21:42:07 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/26 11:04:56 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:39:11 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ namespace ft
 				return (true);
 			++first1; ++first2;
 		}
+		if (first2 != last2)
+			return (true);
 		return (false);
 	}
 
