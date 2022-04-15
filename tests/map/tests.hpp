@@ -44,6 +44,7 @@ void test_value_comp(void);
 void max_size(void);
 void test_swap(void);
 void test_equality_operator(void);
+void test_iterators(void);
 void less_than_comparison(void);
 ft::map<int, int>		create_map_of_random_integers(int size, int seed);
 ft::map<float, float>	create_map_of_floats(int size);

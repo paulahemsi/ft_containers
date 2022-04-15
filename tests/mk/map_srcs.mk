@@ -39,6 +39,7 @@ SRC			+=	main.cpp\
 				max_size.cpp\
 				swap.cpp\
 				equality_operator.cpp\
+				iterator.cpp\
 				less-than_comparison.cpp
 
 # HEADER	+=	
