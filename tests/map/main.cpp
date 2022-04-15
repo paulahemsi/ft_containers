@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/14 18:40:13 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:47:22 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	test_iterators(void)
 {
 	print_title("ITERATORS");
 	
-	ft::map<int, int> map = create_map_of_random_integers(8, 200);
+	ft::map<int, int> map = create_map_of_random_integers(80000, 200);
 	
 	print_subheading("bidirectional");
 	ft::map<int, int>::iterator it;
@@ -126,6 +126,7 @@ int main(void)
 	max_size();
 	test_swap();
 	test_equality_operator();
+	less_than_comparison();
 
 	end = clock();
 	elapsed_time = end - start;
