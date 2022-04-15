@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 22:30:30 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/15 12:02:45 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/15 12:41:35 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,10 @@ SRC			+=	main.cpp\
 				size.cpp\
 				pop.cpp\
 				push.cpp\
-				empty.cpp
+				top.cpp\
+				empty.cpp\
+				equality_operator.cpp\
+				less-than_comparison.cpp
 
 INCLUDES	+=	$(addprefix -I, $(TEST_DIR))
 
