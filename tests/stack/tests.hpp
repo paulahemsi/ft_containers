@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:21:09 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/15 11:30:52 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 	#include "pair.tpp"
 #endif
 
-void	test_size(void);
+void test_canonical_form(void);
+void test_size(void);
 
 #endif
