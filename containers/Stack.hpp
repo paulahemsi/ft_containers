@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:25:37 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:19:40 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/15 11:32:27 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ namespace ft
 			typedef	typename Container::reference		reference;
 			typedef	typename Container::const_reference	const_reference;
 
-		private:
+		protected:
 			container_type						_container;
 			
 		public:
