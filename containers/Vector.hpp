@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/03/27 22:38:22 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/15 12:10:47 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,11 @@ namespace ft
 			}
 
 			reference	back(void)
+			{
+				return (this->_element[this->_size - 1]);
+			}
+
+			const_reference	back(void) const
 			{
 				return (this->_element[this->_size - 1]);
 			}
