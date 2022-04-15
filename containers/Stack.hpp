@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:25:37 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:54:33 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/15 12:05:05 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,16 @@ namespace ft
 			void push (const value_type& val)
 			{
 				this->_container.push_back(val);
+			}
+			
+			reference top(void)
+			{
+				return (this->_container.back());
+			}
+			
+			const_reference top(void) const
+			{
+				return (this->_container.back());
 			}
 	};
 }
