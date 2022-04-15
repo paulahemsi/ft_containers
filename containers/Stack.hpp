@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Stack.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:25:37 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:54:33 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/15 12:04:01 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ namespace ft
 			void push (const value_type& val)
 			{
 				this->_container.push_back(val);
+			}
+
+			bool empty() const
+			{
+				return (this->_container.empty());
 			}
 	};
 }
