@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 22:30:30 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/14 22:34:31 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/15 11:22:21 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,12 @@ include $(MK_DIR)auxiliary.mk
 
 TEST_DIR	:=	./
 
-SRC			+=	main.cpp
+SRC			+=	main.cpp\
+				size.cpp
 
 INCLUDES	+=	$(addprefix -I, $(TEST_DIR))
 
-HEADER		+=	tests.hpp		
+HEADER		+=	tests.hpp
 
 VPATH		+=	$(TEST_DIR)\
 				$(SUB_DIR)
