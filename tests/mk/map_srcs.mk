@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 18:39:11 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/14 19:31:22 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/14 21:04:24 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRC			+=	main.cpp\
 				value_comp.cpp\
 				max_size.cpp\
 				swap.cpp\
-				equality_operator.cpp
+				equality_operator.cpp\
+				iterator.cpp
 
 # HEADER	+=	
 

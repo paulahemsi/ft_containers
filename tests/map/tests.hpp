@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/14 18:39:43 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:03:39 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void test_value_comp(void);
 void max_size(void);
 void test_swap(void);
 void test_equality_operator(void);
+void test_iterators(void);
 ft::map<int, int>		create_map_of_random_integers(int size, int seed);
 ft::map<float, float>	create_map_of_floats(int size);
 void print_found(ft::map<float, float>::const_iterator it, ft::map<float, float>::const_iterator end);
