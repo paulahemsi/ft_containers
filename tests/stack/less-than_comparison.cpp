@@ -3,10 +3,6 @@
 template <typename T>
 void comparison(ft::stack<T> &foo, ft::stack<T> &bar)
 {
-	print_instructions("foo:");
-	print_map(foo);
-	print_instructions("bar:");
-	print_map(bar);
 	if (foo< bar)
 		std::cout << "foo is less than bar\n";
 	if (foo> bar)
