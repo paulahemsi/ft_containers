@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   empty.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 11:56:31 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 12:02:15 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/15 12:16:45 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	test_empty(void)
 
 	while (!mystack.empty())
 	{
-		// sum += mystack.top();
+		sum += mystack.top();
 		mystack.pop();
 	}
 	

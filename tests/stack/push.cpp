@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 11:41:14 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 12:04:40 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/15 12:16:31 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	test_push(void)
 	std::cout << "Popping out elements...";
 	while (!mystack.empty())
 	{
-		// std::cout << ' ' << mystack.top();
+		std::cout << ' ' << mystack.top();
 		mystack.pop();
 	}
 	std::cout << std::endl;	
