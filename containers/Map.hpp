@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/14 20:50:53 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/14 21:02:52 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -400,6 +400,36 @@ namespace ft
 					 const map<Key, T, Compare, Alloc> &rhs)
 	{
 		return (!(lhs == rhs));
+	}
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool operator<  ( const map<Key,T,Compare,Alloc>& lhs,
+					const map<Key,T,Compare,Alloc>& rhs )
+	{
+		return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
+	}
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool operator<= ( const map<Key,T,Compare,Alloc>& lhs,
+					const map<Key,T,Compare,Alloc>& rhs )
+	{
+		return ((lhs < rhs) || (lhs == rhs));
+	}
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool operator>  ( const map<Key,T,Compare,Alloc>& lhs,
+					const map<Key,T,Compare,Alloc>& rhs )
+	{
+		if (lhs == rhs)
+			return (false);
+		return (!(lhs < rhs));
+	}
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool operator>= ( const map<Key,T,Compare,Alloc>& lhs,
+					const map<Key,T,Compare,Alloc>& rhs )
+	{
+		return ((lhs > rhs) || (lhs == rhs));
 	}
 };
 
