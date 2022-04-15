@@ -1,33 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   empty.cpp                                          :+:      :+:    :+:   */
+/*   top.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 11:56:31 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 12:16:45 by phemsi-a         ###   ########.fr       */
+/*   Created: 2022/04/15 12:00:23 by phemsi-a          #+#    #+#             */
+/*   Updated: 2022/04/15 12:11:24 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tests.hpp"
 
-void	test_empty(void)
+void reportStackSize(const ft::stack<int>& s)
 {
-	print_title("EMPTY");
+	std::cout << s.size() << " elements on stack\n";
+}
+ 
+void reportStackTop(const ft::stack<int>& s)
+{
+	std::cout << "Top element: " << s.top() << '\n';
+}
 
-	ft::stack<int> mystack;
+void test_top(void)
+{
+	print_title("TOP");
 
-	int sum(0);
+	ft::stack<int> s;
+	s.push(2);
+	s.push(6);
+	s.push(51);
 
-	for (int i = 1; i <= 10; i++)
-		mystack.push(i);
+	reportStackSize(s);
+	reportStackTop(s);
 
-	while (!mystack.empty())
-	{
-		sum += mystack.top();
-		mystack.pop();
-	}
-	
-	std::cout << "total: " << sum << std::endl;
+	reportStackSize(s);
+	s.pop();
+
+	reportStackSize(s);
+	reportStackTop(s);
 }
