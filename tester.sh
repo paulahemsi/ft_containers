@@ -11,6 +11,7 @@ usage()
 	echo -e "usage:"
 	echo -e "bash tester.sh vector"
 	echo -e "bash tester.sh map"
+	echo -e "bash tester.sh stack"
 	exit
 }
 
@@ -23,6 +24,8 @@ if [ ${ARG} == "vector" ]; then
     DIR=./tests/vector/
 elif [ ${ARG} == "map" ]; then
     DIR=./tests/map/
+elif [ ${ARG} == "stack" ]; then
+    DIR=./tests/stack/
 else
 	echo -e "\""$1"\" is not a valid argument."
     usage
