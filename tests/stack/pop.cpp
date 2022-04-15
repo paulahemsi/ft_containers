@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.hpp                                          :+:      :+:    :+:   */
+/*   pop.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:53:38 by phemsi-a         ###   ########.fr       */
+/*   Created: 2022/04/15 11:38:27 by phemsi-a          #+#    #+#             */
+/*   Updated: 2022/04/15 11:55:27 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TESTS_HPP
-# define TESTS_HPP
+#include "tests.hpp"
 
-#include <iostream>
-#include "Stack.hpp"
-#include "auxiliary.hpp"
+void test_pop(void)
+{
+	print_title("POP");
 
-#ifdef STD_VERSION
-	#define VERSION "STD_VERSION"
-	#define ft std
-	#include <stack>
-#else
-	#define VERSION "FT_VERSION"
-	#include "pair.tpp"
-#endif
+	ft::stack<int> stack;
+	stack.push(4);
+	stack.push(5);
+	stack.push(6);
+	stack.push(7);
+	
+	stack.pop();
+	stack.pop();
+	stack.pop();
+	stack.pop();
 
-void test_canonical_form(void);
-void test_size(void);
-void test_pop(void);
-void test_push(void);
-
-#endif
+}

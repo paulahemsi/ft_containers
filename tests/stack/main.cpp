@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 22:16:02 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 11:46:09 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/15 11:54:24 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main(void)
 
 	test_canonical_form();
 	test_size();
+	test_pop();
 	test_push();
 
 	end = clock();
