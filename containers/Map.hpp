@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 14:31:50 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/15 14:44:16 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ namespace ft
 				iterator it = this->find(val.first);
 				if (it != this->end())
 					return (ft::make_pair(it, false));
-				btree_insert_data(&_root, _allocate_pair(val), this->_compare);
+				btree_insert_data(&_root, _allocate_pair(val), value_compare(this->_compare));
 				it = this->find(val.first);
 				this->_size++;
 				return (ft::make_pair(it, true));
@@ -190,7 +190,7 @@ namespace ft
 				if (!_position_precedes_val(position, val))
 					return (this->insert(val).first);
 				ft::btree<value_type> *position_node = position.get_node();
-				btree_insert_data<value_type>(&position_node, _allocate_pair(val), this->_compare);
+				btree_insert_data<value_type>(&position_node, _allocate_pair(val), value_compare(this->_compare));
 				update_root(&(this->_root));
 				it = this->find(val.first);
 				this->_size++;

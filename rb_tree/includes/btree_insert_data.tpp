@@ -83,9 +83,9 @@ void	btree_insert_data_recursive(ft::btree<T> **root, ft::btree<T> *parent, T *i
 		check_rules(*root);
 		return ;
 	}
-	if (item->first == (*root)->item->first)
+	if (is_equal(*item, *((*root)->item), compare))
 		return ;
-	if (compare(item->first, (*root)->item->first))
+	if (compare(*item, *((*root)->item)))
 		return (btree_insert_data_recursive<T>(&(*root)->left, *root, item, compare));
 	return (btree_insert_data_recursive<T>(&(*root)->right, *root, item, compare));
 }
@@ -106,9 +106,9 @@ void	btree_insert_data(ft::btree<T> **root, T *item, Compare compare)
 		*root = btree_create_root(item);
 		return ;
 	}
-	if (item->first == (*root)->item->first)
+	if (is_equal(*item, *((*root)->item), compare))
 		return ;
-	if (compare(item->first, (*root)->item->first))
+	if (compare(*item, *((*root)->item)))
 		btree_insert_data_recursive<T>(&(*root)->left, *root, item, compare);
 	else
 		btree_insert_data_recursive<T>(&(*root)->right, *root, item, compare);
