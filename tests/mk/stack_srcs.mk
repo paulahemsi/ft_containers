@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/14 22:30:30 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/15 11:31:07 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/15 11:45:47 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ TEST_DIR	:=	./
 
 SRC			+=	main.cpp\
 				canonical.cpp\
-				size.cpp
+				size.cpp\
+				push.cpp
 
 INCLUDES	+=	$(addprefix -I, $(TEST_DIR))
 
