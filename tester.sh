@@ -58,3 +58,5 @@ ${DIR}original > ${LOGSDIR}std.txt 2> ${LOGSDIR}exceptions.txt
 ${DIR}ft.out > ${LOGSDIR}ft.txt 2>> ${LOGSDIR}exceptions.txt
 
 ${DIFF} ${LOGSDIR}std.txt ${LOGSDIR}ft.txt
+
+exit 0

@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/04 17:27:40 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/15 15:12:53 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/18 20:55:58 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ stack_test:
 
 set_test:
 		make -C $(SET_TEST_DIR)
+
+test: vector_script map_script stack_script set_script
 
 vector_script:
 		$(TESTER) vector
