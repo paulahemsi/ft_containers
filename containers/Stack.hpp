@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Stack.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:25:37 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 13:08:24 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/18 22:02:14 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,57 +35,57 @@ namespace ft
 			friend bool operator < (const ft::stack<T2, Container2> & lhs, const ft::stack<T2, Container2> & rhs);
 
 		protected:
-			container_type						_container;
+			container_type						c;
 			
 		public:
 
-			explicit stack( const Container& cont = Container() ): _container(cont) {}
+			explicit stack( const Container& cont = Container() ): c(cont) {}
 
-			stack( const stack& other ): _container(other._container) {}
+			stack( const stack& other ): c(other.c) {}
 
 			~stack() {}
 
 			stack& operator=( const stack& other )
 			{ 
-				_container = other._container;
+				c = other.c;
 				return (*this);
 			}
 			
 			size_type size(void) const
 			{
-				return (this->_container.size());
+				return (this->c.size());
 			}
 
 			void pop(void)
 			{
-				this->_container.pop_back();
+				this->c.pop_back();
 			}
 
 			void push (const value_type& val)
 			{
-				this->_container.push_back(val);
+				this->c.push_back(val);
 			}
 			
 			reference top(void)
 			{
-				return (this->_container.back());
+				return (this->c.back());
 			}
 			
 			const_reference top(void) const
 			{
-				return (this->_container.back());
+				return (this->c.back());
 			}
 			
 			bool empty() const
 			{
-				return (this->_container.empty());
+				return (this->c.empty());
 			}
 	};
 	
 	template<class T, class Container >
 	bool operator == (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs)
 	{
-		return (lhs._container == rhs._container);
+		return (lhs.c == rhs.c);
 	} 
 	
 	template<class T, class Container > bool operator != (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs)
@@ -95,7 +95,7 @@ namespace ft
 	
 	template<class T, class Container > bool operator < (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs)
 	{
-		return (lhs._container < rhs._container);
+		return (lhs.c < rhs.c);
 	}
 	
 	template<class T, class Container > bool operator <= (const ft::stack<T,Container>& lhs, const ft::stack<T,Container>& rhs)
