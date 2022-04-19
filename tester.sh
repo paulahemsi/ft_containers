@@ -3,6 +3,7 @@
 RESET="\033[0m"
 BOLD="\033[1m"
 RED="\033[0;31m"
+CYAN="\033[0;36m"
 V_GREEN="\e[0;38;5;82m"
 P_GREEN="\e[0;38;5;23m"
 
@@ -12,6 +13,7 @@ usage()
 	echo -e "bash tester.sh vector"
 	echo -e "bash tester.sh map"
 	echo -e "bash tester.sh stack"
+	echo -e "bash tester.sh set"
 	exit
 }
 
@@ -28,6 +30,8 @@ elif [ ${ARG} == "stack" ]; then
     DIR=./tests/stack/
 elif [ ${ARG} == "set" ]; then
     DIR=./tests/set/
+elif [ ${ARG} == "intra" ]; then
+    DIR=./tests/intra/
 else
 	echo -e "\""$1"\" is not a valid argument."
     usage
@@ -41,6 +45,7 @@ else
 fi
 
 LOGSDIR=./logs/
+echo -e "\n${CYAN} ********************** ${ARG} ******************\n${RESET}"
 
 echo -e "\n${V_GREEN} ----------making std version----------\n${RESET}"
 
@@ -54,8 +59,8 @@ echo -e "\n${V_GREEN} ----------executing and comparing----------\n${RESET}"
 
 mkdir -p ${LOGSDIR}
 
-${DIR}original > ${LOGSDIR}std.txt 2> ${LOGSDIR}exceptions.txt
-${DIR}ft.out > ${LOGSDIR}ft.txt 2>> ${LOGSDIR}exceptions.txt
+${DIR}original 33 > ${LOGSDIR}std.txt 2> ${LOGSDIR}exceptions.txt
+${DIR}ft.out 33 > ${LOGSDIR}ft.txt 2>> ${LOGSDIR}exceptions.txt
 
 ${DIFF} ${LOGSDIR}std.txt ${LOGSDIR}ft.txt
 

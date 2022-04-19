@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/18 21:04:02 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/18 21:33:31 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/18 22:48:19 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,6 @@ fclean:		clean
 re:			fclean all
 
 test:
-		make map_script -C $(ROOT)
+		make intra_script -C $(ROOT)
 
 PHONY:		all clean fclean re test
