@@ -96,14 +96,14 @@ int main(void)
 		std::cout << "insert " << i << std::endl;
 		ft::pair<int, int> * my_pair1 = new ft::pair<int, int>(i, i);
 		btree_insert_data(&root, my_pair1, compare, node_alloc);
-		btree_apply_by_level(root, print_rb_node_infos);
+		btree_apply_by_level(root, print_rb_node_infos, node_alloc);
 	}
 	for (int i = 0; i < 10; i++)
 	{
 		std::cout << "insert " << i << std::endl;
 		ft::pair<int, int> * my_pair2 = new ft::pair<int, int>(i, i);
 		btree_insert_data(&root, my_pair2, compare, node_alloc);
-		btree_apply_by_level(root, print_rb_node_infos);
+		btree_apply_by_level(root, print_rb_node_infos, node_alloc);
 	}
 	print_next(print_begin(root));
 	print_previous(print_end(root));
@@ -129,17 +129,17 @@ int main(void)
 	}
 
 	std::cout << "\n---TREE BY LEVEL---\n" << std::endl;
-	btree_apply_by_level(root, print_node_infos);
+	btree_apply_by_level(root, print_node_infos, node_alloc);
 
 	std::cout << "\n---NODE AND PARENT---\n" << std::endl;
-	btree_apply_by_level(root, print_node_and_parent);
+	btree_apply_by_level(root, print_node_and_parent, node_alloc);
 
 	std::cout << "\n---DELETE---\n" << std::endl;
 	for (int i = 10; i < 15; i++)
 	{
 		std::cout << CYAN << "delete " << i << RESET << std::endl;
 		delete (btree_delete(&root, ft::pair<int, int>(i, i), compare, node_alloc));
-		btree_apply_by_level(root, print_rb_node_infos);
+		btree_apply_by_level(root, print_rb_node_infos, node_alloc);
 
 		print_next(print_begin(root));
 		print_previous(print_end(root));
@@ -149,7 +149,7 @@ int main(void)
 	{
 		std::cout << CYAN << "delete " << i << RESET << std::endl;
 		delete (btree_delete(&root, ft::pair<int, int>(i, i), compare, node_alloc));
-		btree_apply_by_level(root, print_rb_node_infos);
+		btree_apply_by_level(root, print_rb_node_infos, node_alloc);
 	
 		print_next(print_begin(root));
 		print_previous(print_end(root));
@@ -159,7 +159,7 @@ int main(void)
 	{
 		std::cout << CYAN << "delete " << i << RESET << std::endl;
 		delete (btree_delete(&root, ft::pair<int, int>(i, i), compare, node_alloc));
-		btree_apply_by_level(root, print_rb_node_infos);
+		btree_apply_by_level(root, print_rb_node_infos, node_alloc);
 	
 		print_next(print_begin(root));
 		print_previous(print_end(root));
@@ -169,7 +169,7 @@ int main(void)
 	{
 		std::cout << CYAN << "delete " << i << RESET << std::endl;
 		delete (btree_delete(&root, ft::pair<int, int>(i, i), compare, node_alloc));
-		btree_apply_by_level(root, print_rb_node_infos);
+		btree_apply_by_level(root, print_rb_node_infos, node_alloc);
 	
 		print_next(print_begin(root));
 		print_previous(print_end(root));
