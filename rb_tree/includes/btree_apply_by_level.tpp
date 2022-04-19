@@ -44,27 +44,29 @@ void add_children_to_queue(std::queue<ft::btree<T> *> &leaf_queue, ft::btree<T> 
 		leaf_queue.push(node->right);
 }
 
-template <class T>
-void set_new_level(std::queue<ft::btree<T> *> &leaf_queue, int &current_level, bool &is_first)
+template <class T, class Alloc>
+void set_new_level(std::queue<ft::btree<T> *> &leaf_queue, int &current_level, bool &is_first, Alloc alloc)
 {
 	is_first = true;
 	current_level++;
-	leaf_queue.push(new ft::btree<T>());
+	ft::btree<T> *new_level_node = alloc.allocate(1);
+	alloc.construct(new_level_node, ft::btree<T>());
+	leaf_queue.push(new_level_node);
 }
 
-template <class T>
-bool is_last_node(std::queue<ft::btree<T> *> &leaf_queue, int &current_level, bool &is_first, ft::btree<T> *node)
+template <class T, class Alloc>
+bool is_last_node(std::queue<ft::btree<T> *> &leaf_queue, int &current_level, bool &is_first, ft::btree<T> *node, Alloc alloc)
 {
 	if (node->item)
 		return (false);
 	if (leaf_queue.empty())
 		return (true);
-	set_new_level(leaf_queue, current_level, is_first);
+	set_new_level(leaf_queue, current_level, is_first, alloc);
 	return (false);
 }
 
-template <class T>
-void btree_apply_by_level(ft::btree<T> *root, void (*applyf)(ft::btree<T> *node, int current_level, bool is_first))
+template <class T, class Alloc>
+void btree_apply_by_level(ft::btree<T> *root, void (*applyf)(ft::btree<T> *node, int current_level, bool is_first), Alloc alloc)
 {
 	if (!root)
 		return ;
@@ -82,15 +84,15 @@ void btree_apply_by_level(ft::btree<T> *root, void (*applyf)(ft::btree<T> *node,
 		leaf_queue.pop();
 		applyf(node, current_level, is_first);
 		is_first = false;
-		if (is_last_node(leaf_queue, current_level, is_first, node))
+		if (is_last_node(leaf_queue, current_level, is_first, node, alloc))
 			break;
 		else if (!is_nil(node))
 			add_children_to_queue(leaf_queue, node);
-		if (!node->item && node->color == RED)
-			delete node;
+		if (!node->item)
+			alloc.deallocate(node, 1);
 	}
-	if (!node->item && node->color == RED)
-		delete node;
+	if (!node->item)
+		alloc.deallocate(node, 1);
 }
 
 #endif

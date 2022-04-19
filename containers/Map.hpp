@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Map.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 14:44:16 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/18 21:26:17 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ namespace ft
 			size_type				_size;
 			key_compare				_compare;
 			allocator_type			_allocator;
-			allocator_type			_node_allocator;
+			node_allocator_type		_node_allocator;
 			ft::btree<value_type>	*_root;
 
 			bool _position_precedes_val(iterator position, const value_type& val)
@@ -88,6 +88,7 @@ namespace ft
 			_size(0),
 			_compare(comp),
 			_allocator(alloc),
+			_node_allocator(node_allocator_type()),
 			_root(NULL) {}
 			
 			template <class InputIterator>
@@ -98,6 +99,7 @@ namespace ft
 			_size(0),
 			_compare(comp),
 			_allocator(alloc),
+			_node_allocator(node_allocator_type()),
 			_root(NULL)
 			{
 				this->insert(first, last);
@@ -107,6 +109,7 @@ namespace ft
 			_size(0),
 			_compare(other.key_comp()),
 			_allocator(other.get_allocator()),
+			_node_allocator(node_allocator_type()),
 			_root(NULL)
 			{
 				*this = other;	
@@ -176,7 +179,7 @@ namespace ft
 				iterator it = this->find(val.first);
 				if (it != this->end())
 					return (ft::make_pair(it, false));
-				btree_insert_data(&_root, _allocate_pair(val), value_compare(this->_compare));
+				btree_insert_data(&_root, _allocate_pair(val), value_compare(this->_compare), _node_allocator);
 				it = this->find(val.first);
 				this->_size++;
 				return (ft::make_pair(it, true));
@@ -190,7 +193,7 @@ namespace ft
 				if (!_position_precedes_val(position, val))
 					return (this->insert(val).first);
 				ft::btree<value_type> *position_node = position.get_node();
-				btree_insert_data<value_type>(&position_node, _allocate_pair(val), value_compare(this->_compare));
+				btree_insert_data<value_type>(&position_node, _allocate_pair(val), value_compare(this->_compare), _node_allocator);
 				update_root(&(this->_root));
 				it = this->find(val.first);
 				this->_size++;
@@ -224,14 +227,14 @@ namespace ft
 
 			void erase (iterator position)
 			{
-				value_type *pair_erased = btree_delete<value_type>(&_root, *position, value_compare(this->_compare));
+				value_type *pair_erased = btree_delete<value_type>(&_root, *position, value_compare(this->_compare), _node_allocator);
 				this->_allocator.deallocate(pair_erased, 1);
 				this->_size--;
 			}
 
 			size_type erase (const key_type& key)
 			{
-				value_type *pair_erased = btree_delete<value_type>(&_root, ft::make_pair(key, mapped_type()), value_compare(this->_compare));
+				value_type *pair_erased = btree_delete<value_type>(&_root, ft::make_pair(key, mapped_type()), value_compare(this->_compare), _node_allocator);
 				if (!pair_erased)
 					return (0);
 				this->_allocator.deallocate(pair_erased, 1);

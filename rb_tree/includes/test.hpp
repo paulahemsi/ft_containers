@@ -14,7 +14,6 @@
 
 #include "btree_insert_data.tpp"
 #include "btree_search_item.tpp"
-#include "btree_delete_tree.tpp"
 #include "btree_delete.tpp"
 
 #include "btree_level_count.tpp"

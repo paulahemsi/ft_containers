@@ -27,7 +27,6 @@ HEADER			:=	btree.tpp\
 					btree_search_item.tpp\
 					btree_level_count.tpp\
 					btree_delete.tpp\
-					btree_delete_tree.tpp\
 					btree_right_rotate.tpp\
 					btree_left_rotate.tpp\
 					btree_rotate_aux.tpp\
