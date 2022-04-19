@@ -6,19 +6,21 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 21:02:07 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/18 22:38:35 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/18 23:08:35 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <deque>
-#if 1 //CREATE A REAL STL EXAMPLE
+#ifdef STD_VERSION
+	#define VERSION "STD_VERSION"
 	#include <map>
 	#include <stack>
 	#include <vector>
 	namespace ft = std;
 #else
+	#define VERSION "FT_VERSION"
 	#include <Map.hpp>
 	#include <Stack.hpp>
 	#include <Vector.hpp>
@@ -75,6 +77,11 @@ int main(int argc, char** argv) {
 	ft::stack<Buffer, std::deque<Buffer> > stack_deq_buffer;
 	ft::map<int, int> map_int;
 
+	clock_t start;
+	clock_t end;
+	clock_t elapsed_time;
+
+	start = clock();
 	print_title(" VECTOR OF BUFFER ");
 	print_instructions("Push values...");
 	for (int i = 0; i < COUNT; i++)
@@ -105,6 +112,12 @@ int main(int argc, char** argv) {
 		std::cout << "OK!! Exception raised =) " <<std::endl;
 	}
 	
+	end = clock();
+	elapsed_time = end - start;
+	print_title(VERSION);
+	std::cout << "Test duration:" << static_cast<float>(elapsed_time) / CLOCKS_PER_SEC << std::endl;
+	start = clock();
+
 	print_title(" MAP OF (int, int) ");
 	print_instructions("Insert pairs...");
 	for (int i = 0; i < COUNT; ++i)
@@ -138,5 +151,11 @@ int main(int argc, char** argv) {
 	for (MutantStack<char>::iterator it = iterable_stack.begin(); it != iterable_stack.end(); it++)
 		std::cout << *it;
 	std::cout << std::endl;
+
+	end = clock();
+	elapsed_time = end - start;
+	print_title(VERSION);
+	std::cout << "Test duration:" << static_cast<float>(elapsed_time) / CLOCKS_PER_SEC << std::endl;
+
 	return (0);
 }
