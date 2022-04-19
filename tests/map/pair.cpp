@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 21:00:06 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/03/06 22:41:21 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 template <class Pair>
 static void print_pair(Pair pair)
 {
-  std::cout << "The price of " << pair.first << " is $" << pair.second << '\n';
+  std::cout << "The price of " << pair.first << " is $" << pair.second << std::endl;
 }
 
 static void compare_pairs(ft::pair<std::string,double> pair1, ft::pair<std::string,double> pair2)

@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:34:45 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/14 21:47:10 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void test_equal_range(void)
 	ret = mymap.equal_range('b');
 
 	print_subheading("lower bound points to: ");
-	std::cout << ret.first->first << " => " << ret.first->second << '\n';
+	std::cout << ret.first->first << " => " << ret.first->second << std::endl;
 
 	print_subheading("upper bound points to: ");
-	std::cout << ret.second->first << " => " << ret.second->second << '\n';
+	std::cout << ret.second->first << " => " << ret.second->second << std::endl;
 
 	print_title("int - int");
 
@@ -41,17 +41,17 @@ void test_equal_range(void)
 	ret_int = map.equal_range(977);
 
 	print_subheading("lower bound points to: ");
-	std::cout << ret_int.first->first << " => " << ret_int.first->second << '\n';
+	std::cout << ret_int.first->first << " => " << ret_int.first->second << std::endl;
 
 	print_subheading("upper bound points to: ");
-	std::cout << ret_int.second->first << " => " << ret_int.second->second << '\n';
+	std::cout << ret_int.second->first << " => " << ret_int.second->second << std::endl;
 
 	ret_int = map.equal_range(500);
 
 	print_subheading("lower bound points to: ");
-	std::cout << ret_int.first->first << " => " << ret_int.first->second << '\n';
+	std::cout << ret_int.first->first << " => " << ret_int.first->second << std::endl;
 
 	print_subheading("upper bound points to: ");
-	std::cout << ret_int.second->first << " => " << ret_int.second->second << '\n';
+	std::cout << ret_int.second->first << " => " << ret_int.second->second << std::endl;
 
 }

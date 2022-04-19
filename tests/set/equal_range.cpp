@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 15:34:45 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/15 16:43:58 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void test_equal_range(void)
 	ret = myset.equal_range('b');
 
 	print_subheading("lower bound points to: ");
-	std::cout << *(ret.first) << '\n';
+	std::cout << *(ret.first) << std::endl;
 
 	print_subheading("upper bound points to: ");
-	std::cout << *(ret.second) << '\n';
+	std::cout << *(ret.second) << std::endl;
 
 	print_title("int - int");
 
@@ -41,17 +41,17 @@ void test_equal_range(void)
 	ret_int = set.equal_range(977);
 
 	print_subheading("lower bound points to: ");
-	std::cout << *(ret_int.first) << '\n';
+	std::cout << *(ret_int.first) << std::endl;
 
 	print_subheading("upper bound points to: ");
-	std::cout << *(ret_int.second) << '\n';
+	std::cout << *(ret_int.second) << std::endl;
 
 	ret_int = set.equal_range(500);
 
 	print_subheading("lower bound points to: ");
-	std::cout << *(ret_int.first) << '\n';
+	std::cout << *(ret_int.first) << std::endl;
 
 	print_subheading("upper bound points to: ");
-	std::cout << *(ret_int.second) << '\n';
+	std::cout << *(ret_int.second) << std::endl;
 
 }

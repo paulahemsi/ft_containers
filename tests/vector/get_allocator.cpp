@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_allocator.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 21:28:38 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/22 21:28:51 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void test_get_allocator(void)
 	std::cout << "The allocated array contains:";
 	for (size_t i = 0; i < 5; i++)
 		std::cout << ' ' << pointer[i];
-	std::cout << '\n';
+	std::cout << std::endl;
 
 	// destroy and deallocate:
 	for (size_t i = 0; i < 5; i++)

@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 22:02:50 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 16:11:33 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void test_assigment_operator(void)
 	print_instructions("print first_set");
 	first_set = ft::set<char>();
 
-	std::cout << "Size of first: " << first_set.size() << '\n';
-	std::cout << "Size of second: " << second_set.size() << '\n';
+	std::cout << "Size of first: " << first_set.size() << std::endl;
+	std::cout << "Size of second: " << second_set.size() << std::endl;
 }

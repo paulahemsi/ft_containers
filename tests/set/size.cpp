@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 17:36:23 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 17:09:16 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	test_size(void)
 	myset.insert('a');
 	myset.insert('b');
 	myset.insert('c');
-	std::cout << "myset.size() is " << myset.size() << '\n';
+	std::cout << "myset.size() is " << myset.size() << std::endl;
 
 	myset.erase('x');
-	std::cout << "myset.size() is " << myset.size() << '\n';
+	std::cout << "myset.size() is " << myset.size() << std::endl;
 
 	myset.erase('b');
-	std::cout << "myset.size() is " << myset.size() << '\n';
+	std::cout << "myset.size() is " << myset.size() << std::endl;
 }

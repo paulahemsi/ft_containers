@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iterator.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 21:01:35 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/14 21:49:07 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	test_iterators(void)
 
 	for (it = map.begin(); it != map.end(); ++it)
 	{
-		std::cout << it->first << ", " << it->second << '\n';
+		std::cout << it->first << ", " << it->second << std::endl;
 	}
 
 	print_subheading("const bidirectional");
@@ -31,7 +31,7 @@ void	test_iterators(void)
 
 	for (it = map.begin(); it != map.end(); ++it)
 	{
-		std::cout << it->first << ", " << it->second << '\n';
+		std::cout << it->first << ", " << it->second << std::endl;
 	}
 	
 	print_subheading("reverse");
@@ -39,7 +39,7 @@ void	test_iterators(void)
 	
 	for (reverse_it = map.rbegin(); reverse_it != map.rend(); ++reverse_it)
 	{
-		std::cout << reverse_it->first << ", " << reverse_it->second << '\n';
+		std::cout << reverse_it->first << ", " << reverse_it->second << std::endl;
 	}
 	
 	print_subheading("const reverse");
@@ -47,6 +47,6 @@ void	test_iterators(void)
 	
 	for (reverse_it = map.rbegin(); reverse_it != map.rend(); ++reverse_it)
 	{
-		std::cout << reverse_it->first << ", " << reverse_it->second << '\n';
+		std::cout << reverse_it->first << ", " << reverse_it->second << std::endl;
 	}
 }

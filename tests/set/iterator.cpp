@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 21:01:35 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 17:02:40 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	test_iterators(void)
 
 	for (it = set.begin(); it != set.end(); ++it)
 	{
-		std::cout << *it << '\n';
+		std::cout << *it << std::endl;
 	}
 
 	print_subheading("const bidirectional");
@@ -31,7 +31,7 @@ void	test_iterators(void)
 
 	for (it = set.begin(); it != set.end(); ++it)
 	{
-		std::cout << *it << '\n';
+		std::cout << *it << std::endl;
 	}
 	
 	print_subheading("reverse");
@@ -39,7 +39,7 @@ void	test_iterators(void)
 	
 	for (reverse_it = set.rbegin(); reverse_it != set.rend(); ++reverse_it)
 	{
-		std::cout << *reverse_it << '\n';
+		std::cout << *reverse_it << std::endl;
 	}
 	
 	print_subheading("const reverse");
@@ -47,6 +47,6 @@ void	test_iterators(void)
 	
 	for (reverse_it = set.rbegin(); reverse_it != set.rend(); ++reverse_it)
 	{
-		std::cout << *reverse_it << '\n';
+		std::cout << *reverse_it << std::endl;
 	}
 }

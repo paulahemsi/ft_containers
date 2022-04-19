@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:31:19 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 17:16:19 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	test_value_comp(void)
 		std::cout << ' ' << *it;
 	} while ( mycomp(*(++it),highest) );
 
-	std::cout << '\n';
+	std::cout << std::endl;
 }
