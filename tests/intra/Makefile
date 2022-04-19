@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/18 21:04:02 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/18 21:07:33 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/18 21:33:31 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,7 @@ MK_DIR	:=	../mk/
 
 include $(MK_DIR)containers.mk
 include $(MK_DIR)rb_tree.mk
-
-SRC		+=	main.cpp
+include $(MK_DIR)intra_srcs.mk
 
 NAME	:= ft.out
 ORGINAL	:= original
