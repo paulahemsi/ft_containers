@@ -3,12 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   lexicographical_compare.tpp                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 21:42:07 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/14 21:39:11 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/18 22:00:52 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef LEXIXOGRAPHICAL_COMPARE_TPP
+#define LEXIXOGRAPHICAL_COMPARE_TPP
 
 #include <iostream>
 
@@ -54,3 +57,5 @@ namespace ft
 		return true;
 	}
 }
+
+#endif
