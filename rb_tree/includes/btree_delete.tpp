@@ -29,29 +29,29 @@ void	delete_leaf(ft::btree<T> *leaf)
 	delete leaf;
 }
 
-template <class T>
-void delete_node(ft::btree<T> *node)
+template <class T, class Alloc>
+void delete_node(ft::btree<T> *node, Alloc alloc)
 {
 	check_delete_rules(node);
 	if (is_left_child(node->parent, node))
-		node->parent->left = create_nil_node(node->parent);
+		node->parent->left = create_nil_node(node->parent, alloc);
 	else
-		node->parent->right = create_nil_node(node->parent);
+		node->parent->right = create_nil_node(node->parent, alloc);
 	delete_leaf(node);
 }
 
-template <class T>
-void btree_delete_recursive(ft::btree<T> *node_to_delete)
+template <class T, class Alloc>
+void btree_delete_recursive(ft::btree<T> *node_to_delete, Alloc alloc)
 {
 	if (is_leaf(node_to_delete))
-		return (delete_node(node_to_delete));
+		return (delete_node(node_to_delete, alloc));
 	ft::btree<T> * node_to_replace = find_neighbor(node_to_delete);
 	replace_content(node_to_delete, node_to_replace);
-	return (btree_delete_recursive(node_to_replace));
+	return (btree_delete_recursive(node_to_replace, alloc));
 }
 
-template <class T, class Compare>
-T * btree_delete(ft::btree<T> **root, T data_ref, Compare compare)
+template <class T, class Compare, class Alloc>
+T * btree_delete(ft::btree<T> **root, T data_ref, Compare compare, Alloc alloc)
 {
 	ft::btree<T> * node_to_delete = btree_search_node<T>(*root, data_ref, compare);
 	if (!node_to_delete)
@@ -64,7 +64,7 @@ T * btree_delete(ft::btree<T> **root, T data_ref, Compare compare)
 	}
 	else
 	{
-		btree_delete_recursive(node_to_delete);
+		btree_delete_recursive(node_to_delete, alloc);
 		update_root(root);
 	}
 	return (const_cast<T *>(item_to_return));

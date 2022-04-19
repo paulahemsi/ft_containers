@@ -72,13 +72,13 @@ void check_rules(ft::btree<T> *node)
 		grandma = btree_left_rotate(grandma);
 }
 
-template<class T, class Compare>
-void	btree_insert_data_recursive(ft::btree<T> **root, ft::btree<T> *parent, T *item, Compare compare)
+template<class T, class Compare, class Alloc>
+void	btree_insert_data_recursive(ft::btree<T> **root, ft::btree<T> *parent, T *item, Compare compare, Alloc alloc)
 {
 	if (is_nil(*root))
 	{
 		delete *root;
-		*root = btree_create_node(item);
+		*root = btree_create_node(item, alloc);
 		(*root)->parent = parent;
 		check_rules(*root);
 		return ;
@@ -86,8 +86,8 @@ void	btree_insert_data_recursive(ft::btree<T> **root, ft::btree<T> *parent, T *i
 	if (is_equal(*item, *((*root)->item), compare))
 		return ;
 	if (compare(*item, *((*root)->item)))
-		return (btree_insert_data_recursive<T>(&(*root)->left, *root, item, compare));
-	return (btree_insert_data_recursive<T>(&(*root)->right, *root, item, compare));
+		return (btree_insert_data_recursive<T>(&(*root)->left, *root, item, compare, alloc));
+	return (btree_insert_data_recursive<T>(&(*root)->right, *root, item, compare, alloc));
 }
 
 template<class T>
@@ -98,20 +98,20 @@ void	update_root(ft::btree<T> **root)
 	*root = get_root(*root);
 }
 
-template<class T, class Compare>
-void	btree_insert_data(ft::btree<T> **root, T *item, Compare compare)
+template<class T, class Compare, class Alloc>
+void	btree_insert_data(ft::btree<T> **root, T *item, Compare compare, Alloc alloc)
 {
 	if (*root == NULL)
 	{
-		*root = btree_create_root(item);
+		*root = btree_create_root(item, alloc);
 		return ;
 	}
 	if (is_equal(*item, *((*root)->item), compare))
 		return ;
 	if (compare(*item, *((*root)->item)))
-		btree_insert_data_recursive<T>(&(*root)->left, *root, item, compare);
+		btree_insert_data_recursive<T>(&(*root)->left, *root, item, compare, alloc);
 	else
-		btree_insert_data_recursive<T>(&(*root)->right, *root, item, compare);
+		btree_insert_data_recursive<T>(&(*root)->right, *root, item, compare, alloc);
 	update_root(root);
 }
 
