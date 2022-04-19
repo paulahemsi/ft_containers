@@ -21,12 +21,12 @@ void replace_content(ft::btree<T> *node, ft::btree<T> *node_to_replace)
 	node->item = node_to_replace->item;
 }
 
-template <class T>
-void	delete_leaf(ft::btree<T> *leaf)
+template <class T, class Alloc>
+void	delete_leaf(ft::btree<T> *leaf, Alloc alloc)
 {
-	delete leaf->right;
-	delete leaf->left;
-	delete leaf;
+	alloc.deallocate(leaf->right, 1);
+	alloc.deallocate(leaf->left, 1);
+	alloc.deallocate(leaf, 1);
 }
 
 template <class T, class Alloc>
@@ -37,7 +37,7 @@ void delete_node(ft::btree<T> *node, Alloc alloc)
 		node->parent->left = create_nil_node(node->parent, alloc);
 	else
 		node->parent->right = create_nil_node(node->parent, alloc);
-	delete_leaf(node);
+	delete_leaf(node, alloc);
 }
 
 template <class T, class Alloc>
@@ -59,7 +59,7 @@ T * btree_delete(ft::btree<T> **root, T data_ref, Compare compare, Alloc alloc)
 	const T * item_to_return = node_to_delete->item;
 	if (is_last_node(node_to_delete))
 	{
-		delete_leaf(node_to_delete);
+		delete_leaf(node_to_delete, alloc);
 		*root = NULL;
 	}
 	else

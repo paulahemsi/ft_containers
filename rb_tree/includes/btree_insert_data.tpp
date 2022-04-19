@@ -77,7 +77,7 @@ void	btree_insert_data_recursive(ft::btree<T> **root, ft::btree<T> *parent, T *i
 {
 	if (is_nil(*root))
 	{
-		delete *root;
+		alloc.deallocate(*root, 1);
 		*root = btree_create_node(item, alloc);
 		(*root)->parent = parent;
 		check_rules(*root);
