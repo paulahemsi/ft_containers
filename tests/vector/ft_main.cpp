@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_main.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/28 16:09:24 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/03/01 10:25:26 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ int main(void)
 	std::cout.setf(std::ios::boolalpha);
 	test_constructors();
 	test_simple_assignment_operator();
+	test_iterators();
+	test_const_iterators();
+	test_reverse_iterators();
+	test_const_reverse_iterators();
 	test_empty();
 	test_pop_back(test_push_back());
 	test_out_of_bounds();
 	test_assign();
 	test_at_front_back_and_dereference();
-	test_iterators();
-	test_const_iterators();
-	test_reverse_iterators();
 	test_data();
 	test_clear();
 	test_erase();

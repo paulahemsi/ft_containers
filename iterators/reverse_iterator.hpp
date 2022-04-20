@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_iterator.hpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 14:27:04 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/06 20:26:45 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:41:02 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ namespace ft {
 		reference	operator*(void) const
 		{
 			iterator_type temp = this->_current;
-			return *(--temp);
+			return *(temp);
 		}
 
 		pointer		operator->(void) const

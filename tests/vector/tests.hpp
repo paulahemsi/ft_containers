@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/06 19:45:51 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:53:04 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void test_simple_assignment_operator(void);
 void test_iterators(void);
 void test_const_iterators(void);
 void test_reverse_iterators(void);
+void test_const_reverse_iterators(void);
 void test_out_of_bounds(void);
 void test_relational_operators(void);
 void test_empty(void);
