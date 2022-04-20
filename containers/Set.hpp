@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 15:07:36 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/15 16:47:49 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:12:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,7 @@ namespace ft
 				iterator it = this->find(val);
 				if (it != this->end())
 					return (ft::make_pair(it, false));
-				btree_insert_data(&_root, _allocate_value(val), this->_compare);
+				btree_insert_data(&_root, _allocate_value(val), this->_compare, std::allocator<ft::btree<value_type> >() );
 				it = this->find(val);
 				this->_size++;
 				return (ft::make_pair(it, true));
@@ -196,7 +196,7 @@ namespace ft
 				if (!_position_precedes_val(position, val))
 					return (this->insert(val).first);
 				ft::btree<value_type> *position_node = position.get_node();
-				btree_insert_data<value_type>(&position_node, _allocate_value(val), this->_compare);
+				btree_insert_data<value_type>(&position_node, _allocate_value(val), this->_compare, std::allocator<ft::btree<value_type> >() );
 				update_root(&(this->_root));
 				it = this->find(val);
 				this->_size++;
@@ -212,14 +212,14 @@ namespace ft
 
 			void erase (iterator position)
 			{
-				value_type *value_erased = btree_delete<value_type>(&_root, *position, this->_compare);
+				value_type *value_erased = btree_delete<value_type>(&_root, *position, this->_compare, std::allocator<ft::btree<value_type> >() );
 				this->_allocator.deallocate(value_erased, 1);
 				this->_size--;
 			}
 
 			size_type erase (const Key& key)
 			{
-				value_type *value_erased = btree_delete<value_type>(&_root, key, this->_compare);
+				value_type *value_erased = btree_delete<value_type>(&_root, key, this->_compare, std::allocator<ft::btree<value_type> >() );
 				if (!value_erased)
 					return (0);
 				this->_allocator.deallocate(value_erased, 1);
