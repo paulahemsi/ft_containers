@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assigment_operator.cpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 22:02:50 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/08 22:22:35 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void test_assigment_operator(void)
 	print_instructions("print first_map");
 	first_map = ft::map<char,int>();  // and first is now empty
 
-	std::cout << "Size of first: " << first_map.size() << '\n';
-	std::cout << "Size of second: " << second_map.size() << '\n';
+	std::cout << "Size of first: " << first_map.size() << std::endl;
+	std::cout << "Size of second: " << second_map.size() << std::endl;
 }

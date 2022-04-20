@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   access_operator.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:40:33 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/08 15:04:54 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	test_access_element_operator(void)
 	map['b']="another element";
 	map['c']=map['b'];
 
-	std::cout << "mymap['a'] is " << map['a'] << '\n';
-	std::cout << "mymap['b'] is " << map['b'] << '\n';
-	std::cout << "mymap['c'] is " << map['c'] << '\n';
-	std::cout << "mymap['d'] is " << map['d'] << '\n';
+	std::cout << "mymap['a'] is " << map['a'] << std::endl;
+	std::cout << "mymap['b'] is " << map['b'] << std::endl;
+	std::cout << "mymap['c'] is " << map['c'] << std::endl;
+	std::cout << "mymap['d'] is " << map['d'] << std::endl;
 
 	std::cout << "mymap now contains " << map.size() << " elements.\n";
 }

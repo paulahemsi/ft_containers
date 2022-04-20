@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:01:21 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 17:01:26 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void insert(void)
 	if (ret.second==false)
 	{
 		std::cout << "element 'z' already existed";
-		std::cout << " with a value of " << *(ret.first) << '\n';
+		std::cout << " with a value of " << *(ret.first) << std::endl;
 	}
 	
 	print_title("INSERT WITH HINT POSITION");
@@ -76,7 +76,7 @@ static void insert(void)
 
 	std::cout << "myset contains:\n";
 	for (it=myset.begin(); it!=myset.end(); ++it)
-    	std::cout << *it << '\n';
+    	std::cout << *it << std::endl;
 
 	print_title("INSERT WITH RANGE");
 	
@@ -87,11 +87,11 @@ static void insert(void)
 	// showing contents:
 	std::cout << "myset contains:\n";
 	for (it = myset.begin(); it != myset.end(); ++it)
-    	std::cout << *it << '\n';
+    	std::cout << *it << std::endl;
 
 	std::cout << "anotherset contains:\n";
 	for (it = anotherset.begin(); it != anotherset.end(); ++it)
-    	std::cout << *it << '\n';
+    	std::cout << *it << std::endl;
 }
 
 void	test_insert(void)

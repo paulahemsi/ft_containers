@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:01:21 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/10 19:33:19 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,16 @@ static void insert(void)
 	
 	// first insert function version (single parameter):
 	mymap.insert ( ft::pair<char,int>('a',100) );
+	std::cout << "insert pair ('a',100) to map" << std::endl;
 	mymap.insert ( ft::pair<char,int>('z',200) );
+	std::cout << "insert pair ('z',200) to map" << std::endl;
 	
 	ft::pair<ft::map<char,int>::iterator,bool> ret;
 	ret = mymap.insert ( ft::pair<char,int>('z',500) );
-	if (ret.second==false)
+	if (ret.second == false)
 	{
-		std::cout << "element 'z' already existed";
-		std::cout << " with a value of " << ret.first->second << '\n';
+		std::cout << ORANGE << "Fail inserting ('z',500) because element 'z' already existed";
+		std::cout << " with a value of " << ret.first->second << RESET << std::endl;
 	}
 	
 	print_title("INSERT WITH HINT POSITION");
@@ -77,7 +79,7 @@ static void insert(void)
 
 	std::cout << "mymap contains:\n";
 	for (it=mymap.begin(); it!=mymap.end(); ++it)
-    	std::cout << it->first << " => " << it->second << '\n';
+    	std::cout << it->first << " => " << it->second << std::endl;
 
 	print_title("INSERT WITH RANGE");
 	
@@ -88,11 +90,11 @@ static void insert(void)
 	// showing contents:
 	std::cout << "mymap contains:\n";
 	for (it=mymap.begin(); it!=mymap.end(); ++it)
-    	std::cout << it->first << " => " << it->second << '\n';
+    	std::cout << it->first << " => " << it->second << std::endl;
 
 	std::cout << "anothermap contains:\n";
 	for (it=anothermap.begin(); it!=anothermap.end(); ++it)
-    	std::cout << it->first << " => " << it->second << '\n';
+    	std::cout << it->first << " => " << it->second << std::endl;
 }
 
 void	test_insert(void)

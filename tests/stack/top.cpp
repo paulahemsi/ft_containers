@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 12:00:23 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/18 22:49:13 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void reportStackSize(Container & container)
 template <class Container>
 void reportStackTop(Container & container)
 {
-	std::cout << "Top element: " << container.top() << '\n';
+	std::cout << "Top element: " << container.top() << std::endl;
 }
 
 template <class Container>

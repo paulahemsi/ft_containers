@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   value_comp.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:31:19 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/11 21:36:31 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void	test_value_comp(void)
 	ft::map<char, int>::iterator it = mymap.begin();
 
 	do {
-		std::cout << it->first << " => " << it->second << '\n';
+		std::cout << it->first << " => " << it->second << std::endl;
 	} while ( mymap.value_comp()(*it++, highest) );
 }
