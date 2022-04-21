@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 21:02:19 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/28 16:14:18 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/21 13:53:27 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,26 @@ void test_insert(void)
 	displayVector(integers);
 	print_instructions("integers.push_back(number) x 8");
 	integers.push_back(50);
+	displayVector(integers);
+	
 	integers.push_back(1);
+	displayVector(integers);
+	
 	integers.push_back(987);
+	displayVector(integers);
+	
 	integers.push_back(1001);
+	displayVector(integers);
+	
 	integers.push_back(50);
+	displayVector(integers);
+	
 	integers.push_back(1);
+	displayVector(integers);
+	
 	integers.push_back(987);
+	displayVector(integers);
+	
 	integers.push_back(1001);
 	displayVector(integers);
 	print_instructions("integers.insert(integers.end() - 3, 777);");
@@ -42,8 +56,8 @@ void test_insert(void)
 	print_instructions("integers.insert(integers.begin() + 1, 3, 777);");
 	integers.insert(integers.begin() + 1, 3, 777);
 	displayVector(integers);
-	print_instructions("integers.insert(integers.begin() + 3, 10, 1111);");
-	integers.insert(integers.begin() + 3, 10, 1111);
+	print_instructions("integers.insert(integers.begin() + 3, 20, 1111);");
+	integers.insert(integers.begin() + 3, 20, 1111);
 	displayVector(integers);
 
 	ft::vector<int> vector_to_insert;

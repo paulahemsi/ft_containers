@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_assignment_operator.cpp                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 20:34:52 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/23 11:46:31 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/21 15:07:44 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,14 @@ static void test_with_vector_of_integers(void)
 	int_vector.push_back(4);
 	int_vector.push_back(5);
 	displayVector(int_vector);
-	std::cout << L_GRAY << "int_vector2 = int_vector;" << RESET << std::endl;
-	int_vector2 = int_vector;
-	std::cout << "int_vector2: " << std::endl;
+	print_instructions("ft::vector<int> int_vector_copy = int_vector;");
+	ft::vector<int> int_vector_copy(int_vector);
+	displayVector(int_vector_copy);
+	std::cout << L_GRAY << "int_vector = int_vector2;" << RESET << std::endl;
+	int_vector = int_vector2;
+	std::cout << "int_vector: " << std::endl;
+	displayVector(int_vector);
+	int_vector2 = int_vector_copy;
 	displayVector(int_vector2);
 }
 

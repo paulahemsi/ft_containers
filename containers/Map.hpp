@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/18 21:26:17 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/21 13:13:27 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,12 +154,12 @@ namespace ft
 
 			reverse_iterator rbegin(void) const
 			{
-				return reverse_iterator(this->end());
+				return reverse_iterator(--this->end());
 			}
 
 			reverse_iterator rend(void)
 			{
-				return reverse_iterator(this->begin());
+				return reverse_iterator(--this->begin());
 			}
 
 			size_type size(void) const
