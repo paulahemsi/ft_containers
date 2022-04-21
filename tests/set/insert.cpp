@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:01:21 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/21 12:19:42 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ static void insert(void)
 	
 	// first insert function version (single parameter):
 	myset.insert(100);
+	ft::set<int>::iterator iter = myset.begin();
+	std::cout << "\niterator: " << *iter << std::endl;
 	myset.insert(200);
 	
 	ft::pair<ft::set<int>::iterator,bool> ret;
@@ -67,12 +69,14 @@ static void insert(void)
 		std::cout << "element 'z' already existed";
 		std::cout << " with a value of " << *(ret.first) << std::endl;
 	}
+	std::cout << "\niterator: " << *iter << std::endl;
 	
 	print_title("INSERT WITH HINT POSITION");
 	// second insert function version (with hint position):
 	ft::set<int>::iterator it = myset.begin();
 	myset.insert (it, 300);  // max efficiency inserting
 	myset.insert (it, 400);  // no max efficiency inserting
+	std::cout << "\niterator: " << *iter << std::endl;
 
 	std::cout << "myset contains:\n";
 	for (it=myset.begin(); it!=myset.end(); ++it)
@@ -92,6 +96,7 @@ static void insert(void)
 	std::cout << "anotherset contains:\n";
 	for (it = anotherset.begin(); it != anotherset.end(); ++it)
     	std::cout << *it << std::endl;
+	std::cout << "\niterator: " << *iter << std::endl;
 }
 
 void	test_insert(void)

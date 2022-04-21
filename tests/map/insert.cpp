@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 19:01:21 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/21 12:17:51 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,13 @@ static void insert(void)
 	// first insert function version (single parameter):
 	mymap.insert ( ft::pair<char,int>('a',100) );
 	std::cout << "insert pair ('a',100) to map" << std::endl;
+	
+	ft::map<char, int>::iterator iter = mymap.begin();
+	std::cout << "\niterator: " << iter->first << std::endl;
+	
 	mymap.insert ( ft::pair<char,int>('z',200) );
 	std::cout << "insert pair ('z',200) to map" << std::endl;
+	
 	
 	ft::pair<ft::map<char,int>::iterator,bool> ret;
 	ret = mymap.insert ( ft::pair<char,int>('z',500) );
@@ -70,12 +75,14 @@ static void insert(void)
 		std::cout << ORANGE << "Fail inserting ('z',500) because element 'z' already existed";
 		std::cout << " with a value of " << ret.first->second << RESET << std::endl;
 	}
+	std::cout << "\niterator: " << iter->first << std::endl;
 	
 	print_title("INSERT WITH HINT POSITION");
 	// second insert function version (with hint position):
 	ft::map<char,int>::iterator it = mymap.begin();
 	mymap.insert (it, ft::pair<char,int>('b',300));  // max efficiency inserting
 	mymap.insert (it, ft::pair<char,int>('c',400));  // no max efficiency inserting
+	std::cout << "\niterator: " << iter->first << std::endl;
 
 	std::cout << "mymap contains:\n";
 	for (it=mymap.begin(); it!=mymap.end(); ++it)
@@ -95,6 +102,7 @@ static void insert(void)
 	std::cout << "anothermap contains:\n";
 	for (it=anothermap.begin(); it!=anothermap.end(); ++it)
     	std::cout << it->first << " => " << it->second << std::endl;
+	std::cout << "\niterator: " << iter->first << std::endl;
 }
 
 void	test_insert(void)
