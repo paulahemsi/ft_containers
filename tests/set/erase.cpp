@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 22:28:36 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/15 16:49:18 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/21 12:09:15 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void test_erase(void)
 	print_title("ERASE");
 
 	ft::set<float> set = create_set_of_floats(9);
+	ft::set<float>::reverse_iterator it = set.rbegin();
 
+	std::cout << "iterator: " << *it << std::endl;
 	print_subheading("erase with iterator");
 	print_instructions("find 0.1?");
 	print_found(set.find(0.1), set.end());
@@ -25,6 +27,7 @@ void test_erase(void)
 	set.erase(set.find(0.1));
 	print_instructions("find 0.1?");
 	print_found(set.find(0.1), set.end());
+	std::cout << "iterator: " << *it << std::endl;
 
 	print_subheading("erase with key");
 	print_instructions("find 0.4?");
@@ -35,6 +38,7 @@ void test_erase(void)
 	print_found(set.find(0.4), set.end());
 	print_instructions("try to erase 0.4 again");
 	std::cout << set.erase(0.4) << " element was erased" << std::endl;
+	std::cout << "iterator: " << *it << std::endl;
 
 	print_subheading("erase iterators range");
 	print_instructions("erase from 2.5 to 6.4 -not included");
@@ -51,7 +55,6 @@ void test_erase(void)
 	print_found(set.find(4.9), set.end());
 	print_instructions("find 6.4?");
 	print_found(set.find(6.4), set.end());
-	//*float imprecision as key (same as original version):
-	print_instructions("find 8.1?");
-	print_found(set.find(8.1), set.end());
+	std::cout << "iterator: " << *it << std::endl;
+
 }
