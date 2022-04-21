@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/21 15:55:12 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/21 17:57:44 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,28 @@ namespace ft
 				if (newCapacity < this->_capacity)
 					return ;
 				newBlock = this->_allocator.allocate(newCapacity);
-				// if (newCapacity < this->_size)
-				// 	this->_size = newCapacity;
 				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&newBlock[i], this->_element[i]);
 				this->_allocator.deallocate(this->_element, this->_capacity);
 				this->_element = newBlock;
 				this->_capacity = newCapacity;
 			}
-			
+
+			void	_smart_reAlloc(size_type newCapacity)
+			{
+				if (newCapacity <= this->_capacity)
+					return ;
+				if (this->_size == 0)
+					this->_reAlloc(1);
+				else if(newCapacity > (this->_size * 2))
+					this->_reAlloc(newCapacity);
+				else
+					this->_reAlloc(this->_size * 2);
+			}
+
 			void _open_space(size_type n, size_type index_to_insert)
 			{
-				this->_reAlloc(this->_size + n);
+				this->_smart_reAlloc(this->_size + n);
 				for (size_type i = this->_size + n - 1; i > (index_to_insert + n - 1); i--)
 					this->_allocator.construct(&this->_element[i], this->_element[i - n]);
 			}
@@ -232,16 +242,7 @@ namespace ft
 
 			void push_back(const value_type& value)
 			{
-				if (this->_size == this->_capacity)
-				{
-					if (this->_capacity == 0)
-					{
-						this->_capacity = 1;
-						this->_reAlloc(this->_capacity);
-					}
-					else
-						this->_reAlloc(this->_capacity * 2);
-				}
+				this->_smart_reAlloc(this->_size + 1);
 				this->_allocator.construct(&this->_element[this->_size], value);
 				this->_size++;
 			}
