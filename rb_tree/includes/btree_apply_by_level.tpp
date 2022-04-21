@@ -3,7 +3,7 @@
 #define BTREE_APPLY_BY_LEVEL_TPP
 
 #include "btree.tpp"
-#include <queue>
+#include "queue.tpp"
 
 template <class T>
 void print_node_and_parent(ft::btree<T> *node, int level, bool is_first)
@@ -36,30 +36,30 @@ void print_node_infos(ft::btree<T> *node, int level, bool is_first)
 }
 
 template <class T>
-void add_children_to_queue(std::queue<ft::btree<T> *> &leaf_queue, ft::btree<T> * node)
+void add_children_to_queue(queue< ft::btree<T> > **leaf_queue, ft::btree<T> * node)
 {
 	if(!is_nil(node->left))
-		leaf_queue.push(node->left);
+		queue_push(leaf_queue, queue_create_node(node->left));
 	if(!is_nil(node->right))
-		leaf_queue.push(node->right);
+		queue_push(leaf_queue, queue_create_node(node->right));
 }
 
 template <class T, class Alloc>
-void set_new_level(std::queue<ft::btree<T> *> &leaf_queue, int &current_level, bool &is_first, Alloc alloc)
+void set_new_level(queue< ft::btree<T> > **leaf_queue, int &current_level, bool &is_first, Alloc alloc)
 {
 	is_first = true;
 	current_level++;
 	ft::btree<T> *new_level_node = alloc.allocate(1);
 	alloc.construct(new_level_node, ft::btree<T>());
-	leaf_queue.push(new_level_node);
+	queue_push(leaf_queue, queue_create_node(new_level_node));
 }
 
 template <class T, class Alloc>
-bool is_last_node(std::queue<ft::btree<T> *> &leaf_queue, int &current_level, bool &is_first, ft::btree<T> *node, Alloc alloc)
+bool is_last_node(queue< ft::btree<T> > **leaf_queue, int &current_level, bool &is_first, ft::btree<T> *node, Alloc alloc)
 {
 	if (node->item)
 		return (false);
-	if (leaf_queue.empty())
+	if (*leaf_queue == NULL)
 		return (true);
 	set_new_level(leaf_queue, current_level, is_first, alloc);
 	return (false);
@@ -73,21 +73,23 @@ void btree_apply_by_level(ft::btree<T> *root, void (*applyf)(ft::btree<T> *node,
 	bool is_first = true;
 	int current_level = 0;
 
-	std::queue<ft::btree<T> *> leaf_queue;
-	leaf_queue.push(root);
-	leaf_queue.push(new ft::btree<T>(NULL));
+    queue< ft::btree<T> > *leaf_queue = NULL;
+    queue_push(&leaf_queue, queue_create_node(root));
+
+	ft::btree<T> *new_level_node = alloc.allocate(1);
+	alloc.construct(new_level_node, ft::btree<T>());
+	queue_push(&leaf_queue, queue_create_node(new_level_node));
 
 	ft::btree<T> *node = NULL;
 	while(true)
 	{
-		node = leaf_queue.front();
-		leaf_queue.pop();
+		node = queue_pop(&leaf_queue);
 		applyf(node, current_level, is_first);
 		is_first = false;
-		if (is_last_node(leaf_queue, current_level, is_first, node, alloc))
+		if (is_last_node(&leaf_queue, current_level, is_first, node, alloc))
 			break;
 		else if (!is_nil(node))
-			add_children_to_queue(leaf_queue, node);
+			add_children_to_queue(&leaf_queue, node);
 		if (!node->item)
 			alloc.deallocate(node, 1);
 	}
