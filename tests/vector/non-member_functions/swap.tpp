@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 12:50:35 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/02/27 12:58:57 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/21 11:33:38 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,4 @@ static void fill_vectors(T content1, T content2, ft::vector<T>& vector1, ft::vec
 		vector2.push_back(content2);
 	}
 	vector2.push_back((content2));
-	display_vectors(vector1, vector2);
 }
