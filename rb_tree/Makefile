@@ -24,6 +24,7 @@ HEADER			:=	btree.tpp\
 					btree_apply_prefix.tpp\
 					btree_apply_infix.tpp\
 					btree_apply_suffix.tpp\
+					btree_apply_by_level.tpp\
 					btree_search_item.tpp\
 					btree_level_count.tpp\
 					btree_delete.tpp\
@@ -36,6 +37,7 @@ HEADER			:=	btree.tpp\
 					btree_auxiliary.tpp\
 					btree_next.tpp\
 					btree_previous.tpp\
+					queue.tpp
 
 INCLUDES_DIR	+=	../aux_templates/
 HEADER			+=	pair.tpp
