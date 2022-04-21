@@ -52,14 +52,32 @@ void getEnd(ft::vector<int>& vector, ft::vector<int>::reverse_iterator& iterator
 // 	iterator = vector.rend();
 // }
 
+static std::string *to_string (int number)
+{
+	std::string *string = new std::string();
+	while (number / 10)
+	{
+		string->insert(0, 1, number % 10 + '0');
+		number /= 10;
+	}
+	string->insert(0, 1, number % 10 + '0');
+	return string;
+
+}
+
 void	change_value(ft::vector<int>& vector, int index1, int index2)
 {
+	std::string *index;
 	std::string instruction("");
 
 	instruction.append("vector[");
-	instruction.append(std::to_string(index1));
+	index = to_string(index1);
+	instruction.append(*index);
+	delete index;
 	instruction.append("] = vector[");
-	instruction.append(std::to_string(index2));
+	index = to_string(index2);
+	instruction.append(*index);
+	delete index;
 	instruction.append("];");
 	print_instructions(instruction);
 	vector[index1] = vector[index2];
