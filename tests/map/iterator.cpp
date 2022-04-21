@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 21:01:35 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/21 19:34:50 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,19 @@ void	test_iterators(void)
 	{
 		std::cout << reverse_it->first << ", " << reverse_it->second << std::endl;
 	}
+	
+	print_subheading("comparisons");
+	it = map.begin();
+	const_it = map.begin();
+	reverse_it = map.rend();
+	const_reverse_it = map.rend();
+
+	print_instructions("it == const_it");
+	std::cout << (it == const_it) << std::endl;
+	print_instructions("it == it");
+	std::cout << (it == it) << std::endl;
+	print_instructions("reverse_it == const_reverse_it");
+	std::cout << (reverse_it == const_reverse_it) << std::endl;
+	print_instructions("const_it == const_it");
+	std::cout << (const_it == const_it) << std::endl;
 }
