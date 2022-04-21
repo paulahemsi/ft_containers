@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 12:11:37 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/15 12:10:47 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/21 17:57:44 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,43 @@ namespace ft
 			Alloc		_allocator;
 			pointer		_element;
 			
-			void	_checkOutOfBounds(int pos)
+			void	_checkOutOfBounds(size_type pos)
 			{
-				if(pos < 0 || pos >= static_cast<int>(this->_size))
+				if (pos >= this->_size)
 					throw OutOfBoundsException(pos);
 			}
 
 			void	_reAlloc(size_type newCapacity)
 			{
-				value_type	*newBlock = this->_allocator.allocate(newCapacity);
+				value_type	*newBlock;
 
-				if(newCapacity < this->_size)
-					this->_size = newCapacity;
-				for(size_type i = 0; i < this->_size; i++)
+				if (newCapacity < this->_capacity)
+					return ;
+				newBlock = this->_allocator.allocate(newCapacity);
+				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&newBlock[i], this->_element[i]);
 				this->_allocator.deallocate(this->_element, this->_capacity);
-				_element = newBlock;
-				_capacity = newCapacity;
+				this->_element = newBlock;
+				this->_capacity = newCapacity;
+			}
+
+			void	_smart_reAlloc(size_type newCapacity)
+			{
+				if (newCapacity <= this->_capacity)
+					return ;
+				if (this->_size == 0)
+					this->_reAlloc(1);
+				else if(newCapacity > (this->_size * 2))
+					this->_reAlloc(newCapacity);
+				else
+					this->_reAlloc(this->_size * 2);
+			}
+
+			void _open_space(size_type n, size_type index_to_insert)
+			{
+				this->_smart_reAlloc(this->_size + n);
+				for (size_type i = this->_size + n - 1; i > (index_to_insert + n - 1); i--)
+					this->_allocator.construct(&this->_element[i], this->_element[i - n]);
 			}
 
 		public:
@@ -124,9 +144,10 @@ namespace ft
 			 * in the same order
 			 */
 			vector(const vector& other):
-				_size(other._size),
-				_capacity(other._capacity),
-				_element(this->_allocator.allocate(this->_capacity))
+				_size(0),
+				_capacity(0),
+				_allocator(other._allocator),
+				_element(NULL)
 			{
 				*this = other;
 			}
@@ -138,16 +159,21 @@ namespace ft
 
 			vector&	operator=(const vector& other)
 			{
-				if (this->_capacity < other._size)
-					this->_reAlloc(other._size);
-				for(size_type i = 0; i < other._size; i++)
+				this->clear();
+				this->_reAlloc(other._size);
+				for (size_type i = 0; i < other._size; i++)
 					this->_allocator.construct(&this->_element[i], other._element[i]);
-				if(this->_size < other._size)
-					this->_size = other._size;
+				this->_size = other._size;
 				return (*this);
 			}
 
-			reference	operator[](int pos)
+			reference	operator[](size_type pos)
+			{
+				this->_checkOutOfBounds(pos);
+				return (this->_element[pos]);
+			}
+
+			const_reference operator[] (size_type pos) const
 			{
 				this->_checkOutOfBounds(pos);
 				return (this->_element[pos]);
@@ -175,31 +201,25 @@ namespace ft
 
 			reverse_iterator rbegin(void)
 			{
-				return reverse_iterator(this->end() - 1);
+				return reverse_iterator(--this->end());
 			}
 
 			reverse_iterator rend(void)
 			{
-				return reverse_iterator(this->begin() - 1);
+				return reverse_iterator(--this->begin());
 			}
 
 			const_reverse_iterator rbegin(void) const
 			{
-				return const_reverse_iterator(this->end() - 1);
+				return const_reverse_iterator(--this->end());
 			}
 
 			const_reverse_iterator rend(void) const
 			{
-				return const_reverse_iterator(this->begin()  - 1);
+				return const_reverse_iterator(--this->begin());
 			}
 
-			const reference	operator[](int pos) const
-			{
-				this->_checkOutOfBounds(pos);
-				return (this->_element[pos]);
-			}
-
-			reference	at(int pos)
+			reference	at(size_type pos)
 			{
 				this->_checkOutOfBounds(pos);
 				return (this->_element[pos]);
@@ -222,16 +242,7 @@ namespace ft
 
 			void push_back(const value_type& value)
 			{
-				if(this->_size == this->_capacity)
-				{
-					if(this->_capacity == 0)
-					{
-						this->_capacity = 1;
-						this->_reAlloc(this->_capacity);
-					}
-					else
-						this->_reAlloc(this->_capacity * 2);
-				}
+				this->_smart_reAlloc(this->_size + 1);
 				this->_allocator.construct(&this->_element[this->_size], value);
 				this->_size++;
 			}
@@ -268,7 +279,7 @@ namespace ft
 				if (this->_capacity < this->_size)
 					this->_capacity = this->_size;
 				this->_element = this->_allocator.allocate(this->_capacity);
-				for(size_type i = 0; i < this->_size; i++)
+				for (size_type i = 0; i < this->_size; i++)
 					this->_element[i] = value;
 			}
 
@@ -282,7 +293,7 @@ namespace ft
 				if (this->_capacity < this->_size)
 					this->_capacity = this->_size;
 				this->_element = this->_allocator.allocate(this->_capacity);
-				for(size_type i = 0; i < this->_size; i++)
+				for (size_type i = 0; i < this->_size; i++)
 					this->_allocator.construct(&this->_element[i], *(first + i));
 			}
 
@@ -307,7 +318,7 @@ namespace ft
 			//Removes from the vector either a single element (position) or a range of elements ([first,last)) This effectively reduces the container size by the number of elements removed, which are destroyed.
 			iterator erase(iterator position)
 			{
-				for(size_type i = 0; (position + i + 1) != this->end(); i++)
+				for (size_type i = 0; (position + i + 1) != this->end(); i++)
 					this->_allocator.construct(&(*(position + i)), *(position + i + 1));
 				this->_size--;
 				return (position);
@@ -315,7 +326,7 @@ namespace ft
 
 			iterator erase(iterator first, iterator last)
 			{
-				for(int i = 0; (last + i) != this->end(); i++)
+				for (int i = 0; (last + i) != this->end(); i++)
 					this->_allocator.construct(&(*(first + i)), *(last + i));
 				this->_size -= last - first;
 				return(first);
@@ -324,34 +335,30 @@ namespace ft
 			//Requests that the vector capacity be at least enough to contain n elements.
 			void reserve(size_type n)
 			{
-				if (this->_capacity < n)
-					this->_reAlloc(n);
+				this->_reAlloc(n);
 			}
 
 			//Returns a copy of the allocator object associated with the vector.
 			allocator_type get_allocator() const { return (this->_allocator); }
 
-			//!Dá diferença pro workspace
 			//Resizes the container so that it contains n elements.
 			//If n is smaller than the current container size, the content is reduced to its first n elements, removing those beyond (and destroying them).
 			//If n is greater than the current container size, the content is expanded by inserting at the end as many elements as needed to reach a size of n. If val is specified, the new elements are initialized as copies of val, otherwise, they are value-initialized.
 			//If n is also greater than the current container capacity, an automatic reallocation of the allocated storage space takes place.
 			void resize (size_type n, value_type val = value_type())
 			{
-				if(n < this->_size)
-				{
-					for(size_type i = n; i <= this->_size; i++)
+				if (n == this->_size)
+					return ;
+				if (n < this->_size)
+					for (size_type i = n; i <= this->_size; i++)
 						this->_allocator.destroy(&this->_element[i]);
-					this->_size = n;
-				}
-				else if (n > this->_size)
+				else
 				{
-					if (n > this->_capacity)
-						this->_reAlloc(n);
-					for(size_type i = this->_size; i < n; i++)
+					this->_reAlloc(n);
+					for (size_type i = this->_size; i < n; i++)
 						this->_allocator.construct(&this->_element[i], val);
-					this->_size = n;
 				}
+				this->_size = n;
 			}
 
 			//The vector is extended by inserting new elements before the element at the specified position, effectively increasing the container size by the number of elements inserted. The parameters determine how many elements are inserted and to which values they are initialized.
@@ -361,10 +368,7 @@ namespace ft
 			{
 				size_type index_to_insert = position - this->begin();
 
-				if((this->_size + 1) > this->_capacity)
-					this->_reAlloc(this->_size + 1);
-				for(size_t i = this->_size; i > index_to_insert; i--)
-					this->_allocator.construct(&this->_element[i], this->_element[i - 1]);
+				this->_open_space(1, index_to_insert);
 				this->_allocator.construct(&this->_element[index_to_insert], val);
 				this->_size++;
 				return (this->begin() + index_to_insert);
@@ -373,11 +377,9 @@ namespace ft
 			void insert(iterator position, size_type n, const value_type& val)
 			{
 				size_type index_to_insert = position - this->begin();
-				if((this->_size + n) > this->_capacity)
-					this->_reAlloc(this->_size + n);
-				for(size_type i = this->_size + n - 1, j = 1; i >= (index_to_insert + n); i--, j++)
-					this->_allocator.construct(&this->_element[i], this->_element[this->_size - j]);
-				for(size_type i = 0; i < n; i++)
+
+				this->_open_space(n, index_to_insert);
+				for (size_type i = 0; i < n; i++)
 					this->_allocator.construct(&this->_element[index_to_insert + i], val);
 				this->_size += n;
 			}
@@ -387,14 +389,12 @@ namespace ft
 			typename ft::enable_if<!ft::is_integral<InputIterator>::value, int>::type = 666)
 			{
 				size_type index_to_insert = position - this->begin();
-				size_type quantity_to_insert = last - first;
-				if((this->_size + quantity_to_insert) > this->_capacity)
-					this->_reAlloc(this->_size + quantity_to_insert);
-				for(size_type i = this->_size + quantity_to_insert - 1, j = 1; i >= (index_to_insert + quantity_to_insert); i--, j++)
-					this->_allocator.construct(&this->_element[i], this->_element[this->_size - j]);
-				for(size_type i = 0; i < quantity_to_insert; i++)
+				size_type n = last - first;
+
+				this->_open_space(n, index_to_insert);
+				for (size_type i = 0; i < n; i++)
 					this->_allocator.construct(&this->_element[index_to_insert + i], *(first + i));
-				this->_size += quantity_to_insert;
+				this->_size += n;
 			}
 
 			//Exchanges the contents of the container with those of other. Does not invoke any move, copy, or swap operations on individual elements. All iterators and references remain valid. The past-the-end iterator is invalidated.
@@ -418,14 +418,12 @@ namespace ft
 
 			class OutOfBoundsException : public std::exception
 			{
-				int _pos;
+				size_t _pos;
 
 				public:
 					OutOfBoundsException(int pos) : _pos(pos){}
 					virtual const char* what() const throw()
 					{
-						if(this->_pos < 0)
-							return ("vector::_M_range_check: index < 0");
 						return ("vector::_M_range_check: index >= this->_size()");
 					}
 			};

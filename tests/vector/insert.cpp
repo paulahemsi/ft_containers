@@ -6,7 +6,7 @@
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 21:02:19 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/02/28 16:14:18 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/21 16:13:54 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,32 @@ void test_insert(void)
 	print_instructions("integers.insert(integers.begin() + 1, 77);");
 	std::cout << "first element inserted: " << *(integers.insert(integers.begin() + 1, 77)) << std::endl;
 	displayVector(integers);
+	
+	integers.insert(integers.begin(), 9, 0);
+	displayVector(integers);
+
 	print_instructions("integers.push_back(number) x 8");
 	integers.push_back(50);
+	displayVector(integers);
+	
 	integers.push_back(1);
+	displayVector(integers);
+	
 	integers.push_back(987);
+	displayVector(integers);
+	
 	integers.push_back(1001);
+	displayVector(integers);
+	
 	integers.push_back(50);
+	displayVector(integers);
+	
 	integers.push_back(1);
+	displayVector(integers);
+	
 	integers.push_back(987);
+	displayVector(integers);
+	
 	integers.push_back(1001);
 	displayVector(integers);
 	print_instructions("integers.insert(integers.end() - 3, 777);");
@@ -56,6 +74,6 @@ void test_insert(void)
 	vector_to_insert.push_back(7);
 	vector_to_insert.push_back(8);
 	print_instructions("integers.insert(integers.begin() + 2, vector_to_insert.begin(), 1111);");
-	integers.insert(integers.begin() + 2, vector_to_insert.begin(), vector_to_insert.begin() + 4);
+	integers.insert(integers.begin() + 2, vector_to_insert.begin(), vector_to_insert.begin() + 5);
 	displayVector(integers);
 }
