@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aux_iterators.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 21:28:44 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/03/03 16:48:01 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/21 18:27:28 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void getBegin(ft::vector<int>& vector, ft::vector<int>::reverse_iterator& iterat
 	iterator = vector.rbegin();
 }
 
-// void getBegin(ft::vector<int>& vector, ft::vector<int>::const_reverse_iterator& iterator)
-// {
-// 	iterator = vector.rbegin();
-// }
+void getBegin(ft::vector<int>& vector, ft::vector<int>::const_reverse_iterator& iterator)
+{
+	iterator = vector.rbegin();
+}
 
 void getEnd(ft::vector<int>& vector, ft::vector<int>::iterator& iterator)
 {
@@ -47,10 +47,10 @@ void getEnd(ft::vector<int>& vector, ft::vector<int>::reverse_iterator& iterator
 	iterator = vector.rend();
 }
 
-// void getEnd(ft::vector<int>& vector, ft::vector<int>::const_reverse_iterator& iterator)
-// {
-// 	iterator = vector.rend();
-// }
+void getEnd(ft::vector<int>& vector, ft::vector<int>::const_reverse_iterator& iterator)
+{
+	iterator = vector.rend();
+}
 
 static std::string *to_string (int number)
 {

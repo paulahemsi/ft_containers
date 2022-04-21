@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iterators.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 19:40:06 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/19 21:48:03 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/21 18:24:33 by phemsi-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void test_const_reverse_iterators(void)
 {
 	print_title("CONST REVERSE ITERATORS");
-	// iterate_through_vector<ft::vector<int>::const_reverse_iterator>();
+	iterate_through_vector<ft::vector<int>::const_reverse_iterator>();
 }
 
 void test_reverse_iterators(void)
