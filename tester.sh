@@ -14,6 +14,7 @@ usage()
 	echo -e "bash tester.sh map"
 	echo -e "bash tester.sh stack"
 	echo -e "bash tester.sh set"
+	echo -e "bash tester.sh intra"
 	exit
 }
 
