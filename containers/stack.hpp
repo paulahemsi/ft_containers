@@ -22,8 +22,8 @@ namespace ft
 	{
 		public:
 
-			typedef	Container							container_type;
 			typedef	typename Container::value_type		value_type;
+			typedef	Container							container_type;
 			typedef	typename Container::size_type		size_type;
 			typedef	typename Container::reference		reference;
 			typedef	typename Container::const_reference	const_reference;
@@ -35,11 +35,11 @@ namespace ft
 			friend bool operator < (const ft::stack<T2, Container2> & lhs, const ft::stack<T2, Container2> & rhs);
 
 		protected:
-			container_type						c;
+			container_type	c;
 			
 		public:
 
-			explicit stack( const Container& cont = Container() ): c(cont) {}
+			explicit stack( const container_type& cont = container_type() ): c(cont) {}
 
 			stack( const stack& other ): c(other.c) {}
 
@@ -51,9 +51,29 @@ namespace ft
 				return (*this);
 			}
 			
+			bool empty() const
+			{
+				return (this->c.empty());
+			}
+			
 			size_type size(void) const
 			{
 				return (this->c.size());
+			}
+			
+			reference top(void)
+			{
+				return (this->c.back());
+			}
+
+			const_reference top(void) const
+			{
+				return (this->c.back());
+			}
+
+			void push (const value_type& val)
+			{
+				this->c.push_back(val);
 			}
 
 			void pop(void)
@@ -61,25 +81,6 @@ namespace ft
 				this->c.pop_back();
 			}
 
-			void push (const value_type& val)
-			{
-				this->c.push_back(val);
-			}
-			
-			reference top(void)
-			{
-				return (this->c.back());
-			}
-			
-			const_reference top(void) const
-			{
-				return (this->c.back());
-			}
-			
-			bool empty() const
-			{
-				return (this->c.empty());
-			}
 	};
 	
 	template<class T, class Container >
