@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 12:41:52 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/22 15:54:20 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define TESTS_HPP
 
 #include <iostream>
-#include "Stack.hpp"
+#include <stack.hpp>
 #include "auxiliary.hpp"
 
 #ifdef STD_VERSION

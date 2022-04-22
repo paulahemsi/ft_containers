@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tests.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/19 20:42:01 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/22 15:53:55 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define TESTS_HPP
 
 #include <iostream>
-#include "Map.hpp"
+#include <map.hpp>
 #include "auxiliary.hpp"
 
 #ifdef STD_VERSION

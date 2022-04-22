@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:54:09 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/19 20:53:04 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/22 15:54:35 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 	#include <vector>
 #else
 	#define VERSION "FT_VERSION"
-	#include "Vector.hpp"
+	#include <vector.hpp>
 #endif
 
 template <typename T>

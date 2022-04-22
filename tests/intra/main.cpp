@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 21:02:07 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/22 15:32:01 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/22 15:52:08 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 	namespace ft = std;
 #else
 	#define VERSION "FT_VERSION"
-	#include <Map.hpp>
-	#include <Stack.hpp>
-	#include <Vector.hpp>
+	#include <map.hpp>
+	#include <stack.hpp>
+	#include <vector.hpp>
 #endif
 
 #include <stdlib.h>
