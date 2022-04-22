@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constructors.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 20:19:52 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/15 16:37:43 by phemsi-a         ###   ########.fr       */
+/*   Updated: 2022/04/22 16:05:29 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void test_constructors(void)
 
 	ft::set<int, classcomp> fourth;                 // class as Compare
 
-	// bool(*fn_pt)(char,char) = fncomp;
-	// ft::map<char,int,bool(*)(char,char)> fifth (fn_pt); // function pointer as Compare
+	bool(*fn_pt)(char, char) = fncomp;
+	ft::set<char, bool(*)(char, char)> fifth (fn_pt); // function pointer as Compare
 }

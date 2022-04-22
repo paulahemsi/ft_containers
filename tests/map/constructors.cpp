@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 20:19:52 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/12 18:51:01 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/22 16:02:23 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void test_constructors(void)
 
 	ft::map<char,int,classcomp> fourth;                 // class as Compare
 
-	// bool(*fn_pt)(char,char) = fncomp;
-	// ft::map<char,int,bool(*)(char,char)> fifth (fn_pt); // function pointer as Compare
+	bool(*fn_pt)(char,char) = fncomp;
+	ft::map<char,int,bool(*)(char,char)> fifth (fn_pt); // function pointer as Compare
 }
