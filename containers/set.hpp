@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 15:07:36 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/22 15:51:03 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/22 16:21:37 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ namespace ft
 			size_type				_size;
 			key_compare				_compare;
 			allocator_type			_allocator;
-			// allocator_type			_node_allocator;
 			ft::btree<value_type>	*_root;
 
 			bool _position_precedes_val(iterator position, const value_type& val)

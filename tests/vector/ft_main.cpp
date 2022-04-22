@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 19:35:20 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/03/01 10:25:26 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/22 17:57:26 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int main(void)
 	test_out_of_bounds();
 	test_assign();
 	test_at_front_back_and_dereference();
-	test_data();
 	test_clear();
 	test_erase();
 	test_reserve();

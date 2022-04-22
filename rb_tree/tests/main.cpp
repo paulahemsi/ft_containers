@@ -73,8 +73,6 @@ void print_previous(const ft::btree<T> *root)
 template< class T>
 class value_compare
 {
-	friend class map;
-
 	public:
 	std::less<int> comp;
 	value_compare (void) : comp(std::less<int>()) {}

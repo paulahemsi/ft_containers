@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:20:16 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/22 15:51:41 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/22 16:15:35 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ namespace ft
 			typedef typename Alloc::template rebind< ft::btree<value_type> >::other		node_allocator_type;
 
 			class value_compare
-			{   // in C++98, it is required to inherit binary_function<value_type,value_type,bool>
+			{
 				friend class map;
 
 				protected:
 				Compare comp;
-				value_compare (Compare c) : comp(c) {}  // constructed with map's comparison object
+				value_compare (Compare c) : comp(c) {}
 
 				public:
 

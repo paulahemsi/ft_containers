@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 18:39:11 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/19 21:15:37 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/22 17:57:46 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ SRC			+=	ft_main.cpp\
 				empty.cpp\
 				assign.cpp\
 				clear.cpp\
-				data.cpp\
 				erase.cpp\
 				insert.cpp\
 				swap.cpp\
