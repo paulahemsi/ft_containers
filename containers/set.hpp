@@ -31,8 +31,6 @@ namespace ft
 		public:
 			typedef Key 																key_type;
 			typedef Key 																value_type;
-			typedef std::size_t															size_type;
-			typedef std::ptrdiff_t														difference_type;
 			typedef Compare																key_compare;
 			typedef Compare																value_compare;
 			typedef Alloc																allocator_type;
@@ -44,6 +42,8 @@ namespace ft
 			typedef ft::map_iterator<value_type>										const_iterator;
 			typedef ft::reverse_iterator<iterator>										reverse_iterator;
 			typedef ft::reverse_iterator<const_iterator>								const_reverse_iterator;
+			typedef std::ptrdiff_t														difference_type;
+			typedef std::size_t															size_type;
 
 		private:
 			size_type				_size;
@@ -104,14 +104,12 @@ namespace ft
 				this->clear();
 			}
 
-			set& operator= (const set& other)
+			set& operator = (const set& other)
 			{
 				this->clear();
 				this->insert(other.begin(), other.end());
 				return (*this);
 			}
-			
-			allocator_type get_allocator() const { return (this->_allocator);}
 			
 			iterator begin(void)
 			{
@@ -133,25 +131,25 @@ namespace ft
 				return const_iterator(btree_end(_root));
 			}
 
-			reverse_iterator rbegin(void) const
+			reverse_iterator rbegin(void)
 			{
 				return reverse_iterator(--this->end());
+			}
+			
+			const_reverse_iterator rbegin(void) const
+			{
+				return const_reverse_iterator(--this->end());
 			}
 
 			reverse_iterator rend(void)
 			{
 				return reverse_iterator(--this->begin());
 			}
-			
-			// const_reverse_iterator rbegin(void) const
-			// {
-			// 	return const_reverse_iterator(this->end());
-			// }
 
-			// const_reverse_iterator rend(void)
-			// {
-			// 	return const_reverse_iterator(this->begin());
-			// }
+			const_reverse_iterator rend(void) const
+			{
+				return const_reverse_iterator(--this->begin());
+			}
 
 			bool	empty(void) const
 			{
@@ -168,12 +166,6 @@ namespace ft
 			size_type max_size(void) const
 			{
 				return (_allocator.max_size());
-			}
-
-			void clear(void)
-			{
-				this->erase(this->begin(), this->end());
-				this->_root = NULL;
 			}
 
 			ft::pair<iterator, bool> insert (const value_type& val)
@@ -249,19 +241,29 @@ namespace ft
 				size_t					size_tmp;
 
 				root_tmp = other._root;
-				other._root = this->_root;
-				this->_root = root_tmp;
-
 				size_tmp = other._size;
+			
+				other._root = this->_root;
 				other._size = this->_size;
+
+				this->_root = root_tmp;
 				this->_size = size_tmp;
 			}
 			
-			size_type count (const Key& key) const
+			void clear(void)
 			{
-				if (btree_search_node<value_type>(_root, key, this->_compare))
-					return (1);
-				return (0);
+				this->erase(this->begin(), this->end());
+				this->_root = NULL;
+			}
+			
+			key_compare key_comp(void) const
+			{
+				return (this->_compare);
+			}
+	
+			value_compare	value_comp(void) const
+			{
+				return (this->_compare);
 			}
 
 			iterator find (const Key& key)
@@ -282,14 +284,11 @@ namespace ft
 				return const_iterator(btree_end(_root));
 			}
 
-			ft::pair<iterator,iterator> equal_range (const Key& key)
+			size_type count (const Key& key) const
 			{
-				return (ft::make_pair(this->lower_bound(key), this->upper_bound(key)));
-			}
-
-			ft::pair<const_iterator,const_iterator> equal_range (const Key& key) const
-			{
-				return (ft::make_pair(this->lower_bound(key), this->upper_bound(key)));
+				if (btree_search_node<value_type>(_root, key, this->_compare))
+					return (1);
+				return (0);
 			}
 
 			iterator lower_bound (const Key& key)
@@ -352,15 +351,22 @@ namespace ft
 				return (const_iterator(end_node));
 			}
 
-			key_compare key_comp(void) const
+			ft::pair<iterator,iterator> equal_range (const Key& key)
 			{
-				return (this->_compare);
+				return (ft::make_pair(this->lower_bound(key), this->upper_bound(key)));
+			}
+
+			ft::pair<const_iterator,const_iterator> equal_range (const Key& key) const
+			{
+				return (ft::make_pair(this->lower_bound(key), this->upper_bound(key)));
+			}
+
+	
+			allocator_type get_allocator() const
+			{ 
+				return (this->_allocator);
 			}
 	
-			value_compare	value_comp(void) const
-			{
-				return (this->_compare);
-			}
 
 	};
 
@@ -371,7 +377,7 @@ namespace ft
 	}
 
 	template <class Key, class Compare, class Alloc>
-	bool operator== (const set<Key, Compare, Alloc> &lhs,
+	bool operator == (const set<Key, Compare, Alloc> &lhs,
 					 const set<Key, Compare, Alloc> &rhs)
 	{
 		if (lhs.size() != rhs.size())
@@ -380,28 +386,28 @@ namespace ft
 	}
 
 	template <class Key, class Compare, class Alloc>
-	bool operator!= (const set<Key, Compare, Alloc> &lhs,
+	bool operator != (const set<Key, Compare, Alloc> &lhs,
 					 const set<Key, Compare, Alloc> &rhs)
 	{
 		return (!(lhs == rhs));
 	}
 
 	template <class Key, class Compare, class Alloc>
-	bool operator<  ( const set<Key, Compare,Alloc>& lhs,
+	bool operator < ( const set<Key, Compare,Alloc>& lhs,
 					const set<Key, Compare,Alloc>& rhs )
 	{
 		return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
 	}
 
 	template <class Key, class Compare, class Alloc>
-	bool operator<= ( const set<Key, Compare,Alloc>& lhs,
+	bool operator <= ( const set<Key, Compare,Alloc>& lhs,
 					const set<Key, Compare,Alloc>& rhs )
 	{
 		return ((lhs < rhs) || (lhs == rhs));
 	}
 
 	template <class Key, class Compare, class Alloc>
-	bool operator>  ( const set<Key, Compare,Alloc>& lhs,
+	bool operator > ( const set<Key, Compare,Alloc>& lhs,
 					const set<Key, Compare,Alloc>& rhs )
 	{
 		if (lhs == rhs)
@@ -410,7 +416,7 @@ namespace ft
 	}
 
 	template <class Key, class Compare, class Alloc>
-	bool operator>= ( const set<Key, Compare,Alloc>& lhs,
+	bool operator >= ( const set<Key, Compare,Alloc>& lhs,
 					const set<Key, Compare,Alloc>& rhs )
 	{
 		return ((lhs > rhs) || (lhs == rhs));
