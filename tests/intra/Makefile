@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/18 21:04:02 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/18 22:48:19 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/22 15:31:39 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ CFLAGS	:= -Wall -Wextra -Werror
 CFLAGS	+= -g
 CFLAGS	+= -std=c++98
 
-STD_VERSION := -D STD_VERSION
+STD_VERSION 		:=	-D STD_VERSION
+AVAILABLE_MEMORY	:=	$(shell free -t | grep "Mem"| grep -oP '\w+' | tail -1)
+AVAILABLE_MEMORY	:=	-D MAX_RAM=$(AVAILABLE_MEMORY)
 
 RM		:=	rm -rf
 
@@ -34,10 +36,10 @@ OBJS		:= $(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 FT_OBJS		:= $(addprefix $(FT_OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 
 $(OBJ_DIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
-				$(CC) $(STD_VERSION) $(CFLAGS) $(INCLUDES) -c $< -o $@
+				$(CC) $(STD_VERSION) $(AVAILABLE_MEMORY) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(FT_OBJ_DIR)%.o:	%.cpp $(TEMPLATES) $(HEADER)
-					$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+					$(CC) $(CFLAGS) $(AVAILABLE_MEMORY) $(INCLUDES) -c $< -o $@
 
 $(NAME):	$(FT_OBJS) 
 			$(CC) $(CFLAGS) $^ -o $@ 

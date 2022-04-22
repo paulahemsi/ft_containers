@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 21:02:07 by lfrasson          #+#    #+#             */
-/*   Updated: 2022/04/18 23:08:35 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/22 15:32:01 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@
 #include <stdlib.h>
 #include "auxiliary.hpp"
 
-#define MAX_RAM 4294967296
+#ifndef MAX_RAM
+	#define MAX_RAM 8342680
+#endif
+
 #define BUFFER_SIZE 4096
 struct Buffer
 {
@@ -65,6 +68,7 @@ int main(int argc, char** argv) {
 		std::cerr << "Usage: ./test seed" << std::endl;
 		std::cerr << "Provide a seed please" << std::endl;
 		std::cerr << "Count value:" << COUNT << std::endl;
+		std::cerr << "Max RAM:" << MAX_RAM << std::endl;
 		return 1;
 	}
 	const int seed = atoi(argv[1]);
