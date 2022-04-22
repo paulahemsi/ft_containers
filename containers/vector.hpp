@@ -345,7 +345,7 @@ namespace ft
 				iterator iter = position;
 				
 				this->_allocator.destroy(&(*position));
-				while (iter != this->end())
+				while (iter != (this->end() - 1))
 					this->_allocator.construct(&(*iter), *(++iter));
 				this->_size--;
 				return (position);
