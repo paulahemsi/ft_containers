@@ -1,10 +1,64 @@
 # ft_containers
 
-[Wiki version](https://github.com/paulahemsi/ft_containers/wiki)
+[Wiki](https://github.com/paulahemsi/ft_containers/wiki)
 
 C++ containers re-implementation | école 42
 
-* [Intro](#Intro)
+# Intro
+
+This project is about implementing the various container types of the C++ standard template library, coding in C++98
+
+![image](https://user-images.githubusercontent.com/63563271/164947012-ab2370d6-06a2-4fd5-92ef-e8c2f320fab3.png)
+
+
+
+Some rules:
+
+Any new feature of the containers MUST NOT be implemented, but every old feature (even deprecated) is expected. Member functions, Non-member and overloads are expected, and the implemented containers can bu up to 20 times slower compares to STL ones (tests are expected). 
+
+`std::allocator` must be used and the inner data structure for each container must be coherent (using a simple array for a map is not ok). `iterators_traits`, `reverse_iterator`, `enable_if`, `is_integral`, `equal/lexicographical compare`, `std::pair`, `std::make_pair`, must be reimplemented. 
+
+For non-member overloads, the keyword `friend` is allowed. Each use of `friend` must be justified.
+
+## Usage
+
+```bash
+git clone git@github.com:paulahemsi/ft_containers.git
+cd ft_containers
+
+make #compile all ft::<container> versions
+make <container>_script #execute tests with ft::<container> and std::<container> (compare outputs and time)
+./tests/<container>/ft.out #ft::<container> test output
+./tests/<container>/original #std::<container> test output
+make test #execute all containers tests
+
+```
+
+
+## folder-structure
+
+
+    ├── aux_templates  		#lexicographical compare, pair and type_traits
+    │    
+    ├── containers   		#vector, map, set and stack
+    │   
+    ├── iterators		#random access, biderectional, reverse and traits
+    │   
+    ├── rb_tree			#red-black tree
+    │   ├── includes    
+    │   └── tests         
+    │          
+    └── tests        		#containers tests
+ 	├── auxiliary         
+    	├── intra
+    	├── map         
+    	├── mk      		#makefile includes
+    	├── set        
+    	├── stack
+    	└── vector
+
+
+
 * [Vector](#Vector)
     * [Allocators](#Allocators)
     * [Size_and_Capacity](#Size_and_Capacity)
@@ -27,22 +81,6 @@ C++ containers re-implementation | école 42
     * [Sentinel node](#Sentinel_node)
 * [Value type C++98](#Value_type_C++98)
 * [Allocator Rebind](#Allocator_Rebind)
-
-# Intro
-
-This project is about implementing the various container types of the C++ standard template library, coding in C++98
-
-![image](https://user-images.githubusercontent.com/63563271/164947012-ab2370d6-06a2-4fd5-92ef-e8c2f320fab3.png)
-
-
-
-Some rules:
-
-Any new feature of the containers MUST NOT be implemented, but every old feature (even deprecated) is expected. Member functions, Non-member and overloads are expected, and the implemented containers can bu up to 20 times slower compares to STL ones (tests are expected). 
-
-`std::allocator` must be used and the inner data structure for each container must be coherent (using a simple array for a map is not ok). `iterators_traits`, `reverse_iterator`, `enable_if`, `is_integral`, `equal/lexicographical compare`, `std::pair`, `std::make_pair`, must be reimplemented. 
-
-For non-member overloads, the keyword `friend` is allowed. Each use of `friend` must be justified.
 
 # Vector
 
