@@ -4,10 +4,7 @@
 
 C++ containers re-implementation | école 42
 
-Some rules:
-
-This project is about implementing the various container types of the C++ standard template library, coding in C++98, so any new feature of the containers MUST NOT be implemented, but every old feature (even deprecated) is expected. Member functions, Non-member and overloads are expected, and the implemented containers can bu up to 20 times slower compares to STL ones (tests are expected). Names must be respected. std::allocator must be used and the inner data structure for each container must be coherent (using a simple array for a map is not ok). iterators_traits, reverse_iterator, enable_if, is_integral, equal/lexicographical compare, std::pair, std::make_pair, must be reimplemented. For non-member overloads, the keyword `friend` is allowed. Each use of `friend` must be justified.
-
+* [Intro](#Intro)
 * [Vector](#Vector)
     * [Allocators](#Allocators)
     * [Size_and_Capacity](#Size_and_Capacity)
@@ -27,9 +24,25 @@ This project is about implementing the various container types of the C++ standa
     * [Map in C++98](#Map_in_C++98)
     * [std::pair C++98](#std::pair_C++98)
 * [Red-black tree](#Red-black_tree)
-    *[Sentinel node](#Sentinel_node)
+    * [Sentinel node](#Sentinel_node)
 * [Value type C++98](#Value_type_C++98)
 * [Allocator Rebind](#Allocator_Rebind)
+
+# Intro
+
+This project is about implementing the various container types of the C++ standard template library, coding in C++98
+
+![image](https://user-images.githubusercontent.com/63563271/164947012-ab2370d6-06a2-4fd5-92ef-e8c2f320fab3.png)
+
+
+
+Some rules:
+
+Any new feature of the containers MUST NOT be implemented, but every old feature (even deprecated) is expected. Member functions, Non-member and overloads are expected, and the implemented containers can bu up to 20 times slower compares to STL ones (tests are expected). 
+
+`std::allocator` must be used and the inner data structure for each container must be coherent (using a simple array for a map is not ok). `iterators_traits`, `reverse_iterator`, `enable_if`, `is_integral`, `equal/lexicographical compare`, `std::pair`, `std::make_pair`, must be reimplemented. 
+
+For non-member overloads, the keyword `friend` is allowed. Each use of `friend` must be justified.
 
 # Vector
 
