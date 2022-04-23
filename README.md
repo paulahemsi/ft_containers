@@ -521,6 +521,8 @@ public:
 
 # Iterators
 
+[Iterator source code](https://code.woboq.org/gcc/libstdc++-v3/include/bits/stl_iterator.h.html#_ZNSt16reverse_iteratorpLENSt15iterator_traitsIT_E15difference_typeE)
+	
 ## Iterators_traits
 
 std::iterator_traits is the type trait class that provides uniform interface to the properties of LegacyIterator types. This makes it possible to implement algorithms only in terms of iterators.
