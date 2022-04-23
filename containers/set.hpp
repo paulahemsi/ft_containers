@@ -6,7 +6,7 @@
 /*   By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 15:07:36 by phemsi-a          #+#    #+#             */
-/*   Updated: 2022/04/22 16:21:37 by lfrasson         ###   ########.fr       */
+/*   Updated: 2022/04/23 21:03:24 by lfrasson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include <functional>
 #include "rb_tree.hpp"
-#include "map_iterator.hpp"
+#include "bidirectional_iterator.hpp"
 #include "reverse_iterator.hpp"
 #include "lexicographical_compare.tpp"
 
@@ -38,8 +38,8 @@ namespace ft
 			typedef typename allocator_type::const_reference							const_reference;
 			typedef typename Alloc::pointer												pointer;
 			typedef typename Alloc::const_pointer										const_pointer;
-			typedef ft::map_iterator<value_type>										iterator;
-			typedef ft::map_iterator<value_type>										const_iterator;
+			typedef ft::bidirectional_iterator<value_type>										iterator;
+			typedef ft::bidirectional_iterator<value_type>										const_iterator;
 			typedef ft::reverse_iterator<iterator>										reverse_iterator;
 			typedef ft::reverse_iterator<const_iterator>								const_reverse_iterator;
 			typedef std::ptrdiff_t														difference_type;

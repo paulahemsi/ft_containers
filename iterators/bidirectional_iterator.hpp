@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_iterator.hpp                                   :+:      :+:    :+:   */
+/*   bidirectional_iterator.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phemsi-a <phemsi-a@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_ITERATOR
-#define MAP_ITERATOR
+#ifndef BIDIRECTIONAL_ITERATOR
+#define BIDIRECTIONAL_ITERATOR
 
 #include "rb_tree.hpp"
-#include "iterators_traits.hpp"
 
 namespace ft {
 	
 	template <typename T>
-	class map_iterator
+	class	bidirectional_iterator
 	{
 		public:
 
-			typedef	map_iterator<T>					iterator;
+			typedef	bidirectional_iterator<T>		iterator;
 			typedef std::bidirectional_iterator_tag	iterator_category;
 			typedef T								value_type;
 			typedef T*								pointer;
@@ -38,11 +37,11 @@ namespace ft {
 		public:
 		
 			//canonical
-			map_iterator(): _node_pointer(NULL) {};
-			explicit map_iterator(node_pointer ptr): _node_pointer(ptr) {}
-			map_iterator(const map_iterator& instance) {*this = instance;}
-			~map_iterator() {};
-			map_iterator& operator=(const map_iterator& right_hand_side)
+			bidirectional_iterator(): _node_pointer(NULL) {};
+			explicit bidirectional_iterator(node_pointer ptr): _node_pointer(ptr) {}
+			bidirectional_iterator(const bidirectional_iterator& instance) {*this = instance;}
+			~bidirectional_iterator() {};
+			bidirectional_iterator& operator=(const bidirectional_iterator& right_hand_side)
 			{
 				this->_node_pointer = right_hand_side._node_pointer;
 				return *this;
