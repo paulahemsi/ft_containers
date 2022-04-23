@@ -42,14 +42,14 @@ make test #execute all containers tests
     │    
     ├── containers   		#vector, map, set and stack
     │   
-    ├── iterators		#random access, biderectional, reverse and traits
+    ├── iterators			#random access, biderectional, reverse and traits
     │   
     ├── rb_tree			#red-black tree
     │   ├── includes    
     │   └── tests         
     │          
     └── tests        		#containers tests
- 	├── auxiliary         
+ 		├── auxiliary         
     	├── intra
     	├── map         
     	├── mk      		#makefile includes
