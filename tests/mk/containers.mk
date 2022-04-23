@@ -6,7 +6,7 @@
 #    By: lfrasson <lfrasson@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/06 16:41:12 by lfrasson          #+#    #+#              #
-#    Updated: 2022/04/22 15:52:08 by lfrasson         ###   ########.fr        #
+#    Updated: 2022/04/23 21:03:24 by lfrasson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CONTAINERS		:=	vector.hpp\
 					set.hpp
 
 ITERATORS_DIR	:=	$(ROOT)iterators/
-ITERATORS		:=	map_iterator.hpp\
+ITERATORS		:=	bidirectional_iterator.hpp\
 					random_access_iterator.hpp\
 					iterators_traits.hpp\
 					reverse_iterator.hpp

@@ -6,7 +6,7 @@ SRC_DIR			:=	./src/
 TESTS_DIR		:=	./tests/
 OBJS_DIR		:=	./objs/
 
-CC				:=	clang++
+CC				:=	c++
 CFLAGS			:=	-Wall -Wextra -Werror
 CFLAGS			+=	-g3
 CFLAGS			+=	-std=c++98
